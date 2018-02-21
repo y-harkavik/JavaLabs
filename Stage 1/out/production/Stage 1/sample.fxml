@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="400.0" minWidth="400.0" prefHeight="440.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+       <MenuBar maxHeight="40" prefHeight="40" prefWidth="900" style="-fx-background-color: transparent; -fx-border-color: grey;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+           <menus>
+               <Menu mnemonicParsing="false" style="-fx-font-size: 18; -fx-font-family: 'Times New Roman'; " text="Settings">
+                   <items>
+                       <MenuItem mnemonicParsing="false" text="Close" />
+                   </items>
+               </Menu>
+           </menus>
+       </MenuBar>
+      <VBox layoutY="40.0">
+         <children>
+             <Button fx:id="documentsButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#documentButton" prefHeight="100.0" prefWidth="180" style="-fx-background-color: transparent; -fx-border-color: grey;" text="Documents" />
+             <Button fx:id="imagesButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#imagesButton" prefHeight="100.0" prefWidth="180" style="-fx-background-color: transparent; -fx-border-color: grey;" text="Jenya loh" />
+             <Button fx:id="videoButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#videoButton" prefHeight="100.0" prefWidth="180" style="-fx-background-color: transparent; -fx-border-color: grey;" text="Video" />
+             <Button fx:id="audioButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#audioButton" prefHeight="100.0" prefWidth="180" style="-fx-background-color: transparent; -fx-border-color: grey;" text="Audio" />
+         </children>
+      </VBox>
+      <GridPane layoutX="180.0" layoutY="40.0" AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="0.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" />
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="160.0" prefWidth="320.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+             <TextField fx:id="searchField" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="160.0" prefHeight="40.0" prefWidth="320.0" promptText="Search..." style="-fx-background-color: transparent; -fx-border-color: grey;" GridPane.columnIndex="1">
+               <font>
+                  <Font name="Times New Roman Italic" size="19.0" />
+               </font>
+            </TextField>
+            <GridPane>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="NEVER" minWidth="-Infinity" />
+                  <ColumnConstraints hgrow="NEVER" minWidth="-Infinity" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Button fx:id="addButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addButton" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: grey;" text="Add" />
+                  <Button fx:id="removeButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#removeButton" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: grey;" text="Remove" GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
+       <TableView fx:id="tableView" layoutX="180.0" layoutY="80.0" prefHeight="360.0" prefWidth="720.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0" />
+   </children>
+</AnchorPane>
