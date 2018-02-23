@@ -6,7 +6,6 @@ public class Item {
     private FileSize fileSize;
     private String itemType;
 
-
     class FileSize {
         private long size;
 
@@ -20,12 +19,49 @@ public class Item {
                 return "1 KB";
             }
             if (size <= this.MB) {
-                return Double.toString((double) size / this.KB) + " KB";
+                return formatFileSize(size, this.KB) + " KB";
             }
             if (size <= this.GB) {
-                return Double.toString((double) size / this.MB) + " MB";
+                return formatFileSize(size, this.MB) + " MB";
             }
-            return Double.toString((double) size / this.GB) + " GB";
+            return formatFileSize(size, this.GB) + " GB";
         }
+
+        private String formatFileSize(long size, long format) {
+            String string = Double.toString((double) size / format);
+            string.substring(0, string.indexOf(".") + 2);
+            return string;
+        }
+    }
+
+    public void setName(String name) {
+        this.name=name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setItemType(String itemType) {
+        this.itemType = itemType;
+    }
+
+    public String getItemType() {
+        return itemType;
+    }
+
+    public void setFileSize(long  fileSize) {
+    }
+
+    public String getFileSize() {
+        return fileSize.toString();
     }
 }
