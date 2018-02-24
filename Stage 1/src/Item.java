@@ -1,10 +1,13 @@
-import java.util.Date;
+import java.io.File;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Item {
-    private String name;
-    private Date date;
-    private FileSize fileSize;
-    private String itemType;
+    private String name;            //name of file
+    private String date;            //Upload date
+    private FileSize fileSize;      //File size
+    private String itemType;        //Object type in table
+    private File path;              //path to the file
 
     class FileSize {
         private long size;
@@ -34,6 +37,21 @@ public class Item {
         }
     }
 
+    Item(File filePath,String itemType) {
+        setPath(filePath);
+        setItemType(itemType);
+        setName(path.getName());
+        setFileSize();
+        setDate();
+    }
+
+    void setPath(File filePath) {
+        this.path = filePath;
+    }
+
+    File getPath() {
+        return this.path;
+    }
     public void setName(String name) {
         this.name=name;
     }
@@ -42,12 +60,13 @@ public class Item {
         return name;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    private void setDate() {
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        this.date = LocalDateTime.now().format(dateTimeFormatter);
     }
 
-    public Date getDate() {
-        return date;
+    public String getDate() {
+        return this.date;
     }
 
     public void setItemType(String itemType) {
@@ -58,10 +77,12 @@ public class Item {
         return itemType;
     }
 
-    public void setFileSize(long  fileSize) {
+    public void setFileSize() {
+        fileSize.size = path.length();
     }
 
     public String getFileSize() {
         return fileSize.toString();
     }
+
 }

@@ -13,6 +13,8 @@ import javafx.scene.effect.Reflection;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 
 public class CheckBoxDemo extends Application {
@@ -20,7 +22,7 @@ public class CheckBoxDemo extends Application {
     Label response;
     @Override
     public void start(Stage myStage) throws Exception {
-        myStage.setTitle("Demonstrate Check Boxes");
+        /*myStage.setTitle("Demonstrate Check Boxes");
         FlowPane rootNode = new FlowPane(10, 10);
         rootNode.setAlignment(Pos.CENTER);
         Scene myScene = new Scene(rootNode,200,300);
@@ -41,7 +43,10 @@ public class CheckBoxDemo extends Application {
             response.setText("computer selected is " +newVal);
         });
         rootNode.getChildren().addAll(lvComputers,response,textField);
-        myStage.show();
+        myStage.show();*/
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        String a = LocalDateTime.now().format(dateTimeFormatter);
+        System.out.println(a);
     }
 
     public static void main(String[] args) {
