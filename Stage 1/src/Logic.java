@@ -24,16 +24,20 @@ public class Logic {
 
     private void setFilter(FileChooser fileChooser,String neededFiles) {
         switch(neededFiles) {
-            case DOCUMENTS: fileChooser.getExtensionFilters().addAll(
+            case DOCUMENTS:
+                fileChooser.getExtensionFilters().addAll(
                     new FileChooser.ExtensionFilter("Documents",DOCUMENTS_EXTENSIONS)
             );
-            case IMAGES: fileChooser.getExtensionFilters().addAll(
+            case IMAGES:
+                fileChooser.getExtensionFilters().addAll(
                     new FileChooser.ExtensionFilter("Images",IMAGES_EXTENSIONS)
             );
-            case VIDEO: fileChooser.getExtensionFilters().addAll(
+            case VIDEO:
+                fileChooser.getExtensionFilters().addAll(
                     new FileChooser.ExtensionFilter("Video",VIDEO_EXTENSIONS)
             );
-            case AUDIO: fileChooser.getExtensionFilters().addAll(
+            case AUDIO:
+                fileChooser.getExtensionFilters().addAll(
                     new FileChooser.ExtensionFilter("Audio",AUDIO_EXTENSIONS)
             );
         }

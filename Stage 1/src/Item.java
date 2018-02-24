@@ -3,11 +3,11 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Item {
-    private String name;            //name of file
-    private String date;            //Upload date
-    private FileSize fileSize;      //File size
-    private String itemType;        //Object type in table
-    private File path;              //path to the file
+    private String name;                                    //name of file
+    private String date;                                    //Upload date
+    private FileSize fileSize = new FileSize();             //File size
+    private String itemType;                                //Object type in table
+    private File path;                                      //path to the file
 
     class FileSize {
         private long size;
@@ -37,7 +37,7 @@ public class Item {
         }
     }
 
-    Item(File filePath,String itemType) {
+    Item(File filePath, String itemType) {
         setPath(filePath);
         setItemType(itemType);
         setName(path.getName());
@@ -52,8 +52,9 @@ public class Item {
     File getPath() {
         return this.path;
     }
+
     public void setName(String name) {
-        this.name=name;
+        this.name = name;
     }
 
     public String getName() {

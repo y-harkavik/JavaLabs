@@ -44,9 +44,6 @@ public class CheckBoxDemo extends Application {
         });
         rootNode.getChildren().addAll(lvComputers,response,textField);
         myStage.show();*/
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-        String a = LocalDateTime.now().format(dateTimeFormatter);
-        System.out.println(a);
     }
 
     public static void main(String[] args) {
