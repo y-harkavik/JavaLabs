@@ -1,13 +1,20 @@
+import javafx.beans.property.SimpleStringProperty;
+
 import java.io.File;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Item {
-    private String name;                                    //name of file
-    private String date;                                    //Upload date
+    private SimpleStringProperty name = new SimpleStringProperty("");                                    //name of file
+    private SimpleStringProperty date= new SimpleStringProperty("");;                                    //Upload date
     private FileSize fileSize = new FileSize();             //File size
-    private String itemType;                                //Object type in table
+    private SimpleStringProperty itemType = new SimpleStringProperty("");;                                //Object type in table
+    private SimpleStringProperty fileType = new SimpleStringProperty("");
     private File path;                                      //path to the file
+    private SimpleStringProperty itemPreview = new SimpleStringProperty("fffffa");
+    private SimpleStringProperty pre = new SimpleStringProperty("sass");
+
+
 
     class FileSize {
         private long size;
@@ -32,17 +39,26 @@ public class Item {
 
         private String formatFileSize(long size, long format) {
             String string = Double.toString((double) size / format);
-            string.substring(0, string.indexOf(".") + 2);
-            return string;
+            return string.substring(0, string.indexOf(".") + 2);
         }
     }
 
     Item(File filePath, String itemType) {
         setPath(filePath);
         setItemType(itemType);
-        setName(path.getName());
+        String name = path.getName();
+        setName(name.substring(0,name.lastIndexOf(".")));
+        setFileType(name.substring(name.lastIndexOf(".")+1,name.length()));
         setFileSize();
         setDate();
+    }
+    public String getFileType() {
+        return fileType.get();
+    }
+
+    public void setFileType(String fileType) {
+
+        this.fileType.set(fileType);
     }
 
     void setPath(File filePath) {
@@ -54,28 +70,29 @@ public class Item {
     }
 
     public void setName(String name) {
-        this.name = name;
+
+        this.name.set(name);
     }
 
     public String getName() {
-        return name;
+        return name.get();
     }
 
     private void setDate() {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-        this.date = LocalDateTime.now().format(dateTimeFormatter);
+        this.date.set(LocalDateTime.now().format(dateTimeFormatter));
     }
 
     public String getDate() {
-        return this.date;
+        return this.date.get();
     }
 
     public void setItemType(String itemType) {
-        this.itemType = itemType;
+        this.itemType.set(itemType);
     }
 
     public String getItemType() {
-        return itemType;
+        return itemType.get();
     }
 
     public void setFileSize() {
