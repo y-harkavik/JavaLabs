@@ -21,9 +21,9 @@ public class Controller {
     private TableColumn sizeColumn;
     @FXML
     private TableColumn dateColumn;*/
-    private String tableState = Logic.DOCUMENTS;
+    private String tableState = Model.DOCUMENTS;
 
-    private Logic logic = new Logic();
+    private Model model = new Model();
 
     public void initialize() {
         documentsButton.fire();
@@ -31,31 +31,31 @@ public class Controller {
 
     @FXML
     private void documentAction(ActionEvent event) {
-        tableState = Logic.DOCUMENTS;
+        tableState = Model.DOCUMENTS;
         setRows();
     }
 
     @FXML
     private void imagesAction(ActionEvent event) {
-        tableState = Logic.IMAGES;
+        tableState = Model.IMAGES;
         setRows();
     }
 
     @FXML
     private void videoAction(ActionEvent event) {
-        tableState = Logic.VIDEO;
+        tableState = Model.VIDEO;
         setRows();
     }
 
     @FXML
     private void audioAction(ActionEvent event) {
-        tableState = Logic.AUDIO;
+        tableState = Model.AUDIO;
         setRows();
     }
 
     @FXML
     private void addAction(ActionEvent event) {
-        List<Item> list = logic.addFiles(tableState);
+        List<Item> list = model.addFiles(tableState);
         clearRows();
         tableView.getItems().addAll(list);
     }
@@ -67,7 +67,7 @@ public class Controller {
 
     void setRows() {
         clearRows();
-        tableView.getItems().addAll(logic.getItems(tableState));
+        tableView.getItems().addAll(model.getItems(tableState));
     }
 
     void clearRows() {

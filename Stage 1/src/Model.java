@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 
 
-public class Logic {
+public class Model {
     private Data data = new Data();
 
     public static final String DOCUMENTS = "DOCUMENTS";
