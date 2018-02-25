@@ -46,9 +46,9 @@ public class Model {
         }
     }
 
-    List<Item> addFiles(String typeOfItem) {
+    void addFiles(String typeOfItem) {
         saveFiles(getPaths(typeOfItem), typeOfItem);
-        return getItems(typeOfItem);
+        //return getItems(typeOfItem);
     }
 
     List<Item> getItems(String type) {

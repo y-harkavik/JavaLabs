@@ -55,9 +55,8 @@ public class Controller {
 
     @FXML
     private void addAction(ActionEvent event) {
-        List<Item> list = model.addFiles(tableState);
-        clearRows();
-        tableView.getItems().addAll(list);
+        model.addFiles(tableState);
+        setRows();
     }
 
     @FXML
