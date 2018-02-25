@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8f7478b7-9a42-4db1-b126-d12d4a154750" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Controller.class" afterPath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Controller.class" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Logic$Data.class" afterPath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Logic$Data.class" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Logic.class" afterPath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Logic.class" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/src/Controller.java" afterPath="$PROJECT_DIR$/Stage 1/src/Controller.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -412,12 +408,12 @@
       <updated>1519244135307</updated>
       <workItem from="1519244137056" duration="6881000" />
       <workItem from="1519374608010" duration="8734000" />
-      <workItem from="1519492563387" duration="20228000" />
+      <workItem from="1519492563387" duration="20694000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35843000" />
+    <option name="totallyTimeSpent" value="36309000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1060" extended-state="6" />
