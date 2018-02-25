@@ -1,18 +1,14 @@
-import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
-
-
-import java.io.File;
-
 
 public class Controller {
     @FXML
     private TableView<Item> tableView;
+
+    @FXML
+    private Button documentButton;
     /*@FXML
     private TableColumn previewColumn;
     @FXML
@@ -23,39 +19,49 @@ public class Controller {
     private TableColumn sizeColumn;
     @FXML
     private TableColumn dateColumn;*/
+    private String tableState = Logic.DOCUMENTS;
 
     private Logic logic = new Logic();
 
+    public void initialize() {
+        documentButton.fire();
+    }
+
     @FXML
     private void documentAction(ActionEvent event) {
-        tableView.getItems().addAll(logic.getItems(Logic.DOCUMENTS));
+        tableState = Logic.DOCUMENTS;
+        setRows();
     }
 
     @FXML
     private void imagesAction(ActionEvent event) {
-        // File file = logic.getFile(logic.IMAGES);
-
+        tableState = Logic.IMAGES;
+        setRows();
     }
 
     @FXML
     private void videoAction(ActionEvent event) {
-        //File file = logic.getFile(logic.VIDEO);
-
+        tableState = Logic.VIDEO;
+        setRows();
     }
 
     @FXML
     private void audioAction(ActionEvent event) {
-        // File file = logic.getFile(logic.AUDIO);
-
+        tableState = Logic.AUDIO;
+        setRows();
     }
 
     @FXML
     private void addAction(ActionEvent event) {
-
+        tableView.getItems().addAll(logic.addFiles(tableState));
     }
 
     @FXML
     private void removeAction(ActionEvent event) {
+        //tableView.getItems().addAll(logic.addFiles(tableState));
+    }
 
+    void setRows() {
+        tableView.getItems().addAll(logic.getItems(tableState));
     }
 }

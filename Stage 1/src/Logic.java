@@ -47,7 +47,7 @@ public class Logic {
     }
 
     List<Item> addFiles(String typeOfItem) {
-        getInformation(getFiles(typeOfItem),typeOfItem);
+        saveFiles(getPaths(typeOfItem), typeOfItem);
         return getItems(typeOfItem);
     }
 
@@ -55,13 +55,15 @@ public class Logic {
         return data.getItemsList(type);
     }
 
-    void getInformation(List<File> files,String typeOfItem) {
-        for (File file : files) {
-            data.addItemInList(new Item(file,typeOfItem));
+    void saveFiles(List<File> files, String typeOfItem) {
+        if (files!=null) {
+            for (File file : files) {
+                data.addItemInList(new Item(file, typeOfItem));
+            }
         }
     }
 
-    List<File> getFiles(String neededFiles) {
+    List<File> getPaths(String neededFiles) {
         FileChooser fileChooser = new FileChooser();
         setFilter(fileChooser, neededFiles);
         return fileChooser.showOpenMultipleDialog(new Stage());
