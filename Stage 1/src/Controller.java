@@ -3,12 +3,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 
+import java.util.List;
+
 public class Controller {
     @FXML
     private TableView<Item> tableView;
 
     @FXML
-    private Button documentButton;
+    private Button documentsButton;
     /*@FXML
     private TableColumn previewColumn;
     @FXML
@@ -24,7 +26,7 @@ public class Controller {
     private Logic logic = new Logic();
 
     public void initialize() {
-        documentButton.fire();
+        documentsButton.fire();
     }
 
     @FXML
@@ -53,7 +55,9 @@ public class Controller {
 
     @FXML
     private void addAction(ActionEvent event) {
-        tableView.getItems().addAll(logic.addFiles(tableState));
+        List<Item> list = logic.addFiles(tableState);
+        clearRows();
+        tableView.getItems().addAll(list);
     }
 
     @FXML
@@ -62,6 +66,11 @@ public class Controller {
     }
 
     void setRows() {
+        clearRows();
         tableView.getItems().addAll(logic.getItems(tableState));
+    }
+
+    void clearRows() {
+        tableView.getItems().clear();
     }
 }
