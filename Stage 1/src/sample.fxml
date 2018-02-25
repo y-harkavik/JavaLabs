@@ -81,12 +81,12 @@
         </GridPane>
         <TableView fx:id="tableView" layoutX="180.0" layoutY="80.0" prefHeight="360.0" prefWidth="720.0"
                    AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="0.0"
-                   AnchorPane.topAnchor="80.0">
+                   AnchorPane.topAnchor="80.0" style="-fx-font-family: Corbel;">
             <columns>
                 <TableColumn fx:id="previewColumn" editable="false" maxWidth="170.0" minWidth="170.0" prefWidth="170.0"
-                             sortable="false" text="Preview">
+                             resizable="false" sortable="false" text="Preview">
                     <cellValueFactory>
-                        <PropertyValueFactory property="pre"/>
+                        <PropertyValueFactory property="preview"/>
                     </cellValueFactory>
                 </TableColumn>
                 <TableColumn fx:id="nameColumn" editable="false" minWidth="200.0" prefWidth="200.0" sortable="false"

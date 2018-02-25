@@ -5,15 +5,15 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Item {
-    private SimpleStringProperty name = new SimpleStringProperty("");                                    //name of file
-    private SimpleStringProperty date= new SimpleStringProperty("");;                                    //Upload date
-    private FileSize fileSize = new FileSize();             //File size
-    private SimpleStringProperty itemType = new SimpleStringProperty("");;                                //Object type in table
+    private SimpleStringProperty name = new SimpleStringProperty("");
+    private SimpleStringProperty date = new SimpleStringProperty("");
+    private SimpleStringProperty itemType = new SimpleStringProperty("");
     private SimpleStringProperty fileType = new SimpleStringProperty("");
-    private File path;                                      //path to the file
-    private SimpleStringProperty itemPreview = new SimpleStringProperty("fffffa");
-    private SimpleStringProperty pre = new SimpleStringProperty("sass");
+    private SimpleStringProperty preview = new SimpleStringProperty("");
 
+    private FileSize fileSize = new FileSize();
+
+    private File path;
 
 
     class FileSize {
@@ -47,11 +47,21 @@ public class Item {
         setPath(filePath);
         setItemType(itemType);
         String name = path.getName();
-        setName(name.substring(0,name.lastIndexOf(".")));
-        setFileType(name.substring(name.lastIndexOf(".")+1,name.length()));
+        setName(name.substring(0, name.lastIndexOf(".")));
+        setFileType(name.substring(name.lastIndexOf(".") + 1, name.length()));
         setFileSize();
         setDate();
+        setPreview("preview");
     }
+
+    public String getPreview() {
+        return preview.get();
+    }
+
+    public void setPreview(String preview) {
+        this.preview.set(preview);
+    }
+
     public String getFileType() {
         return fileType.get();
     }
@@ -102,5 +112,4 @@ public class Item {
     public String getFileSize() {
         return fileSize.toString();
     }
-
 }
