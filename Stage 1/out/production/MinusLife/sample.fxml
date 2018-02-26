@@ -54,7 +54,7 @@
                 <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
             </rowConstraints>
             <children>
-                <TextField fx:id="searchField" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                <TextField fx:id="searchField" onAction="#searchInTable" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
                            minWidth="160.0" prefHeight="40.0" prefWidth="320.0" promptText="Search..."
                            style="-fx-background-color: transparent; -fx-border-color: grey; -fx-font-size: 17;"
                            GridPane.columnIndex="1"/>

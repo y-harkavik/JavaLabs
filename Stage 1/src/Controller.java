@@ -3,6 +3,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -11,12 +12,15 @@ import javafx.util.Callback;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Controller {
     @FXML
     private TableView<Item> tableView;
-
+    @FXML
+    private TextField searchField;
     @FXML
     private Button documentsButton;
     /*@FXML
@@ -99,6 +103,30 @@ public class Controller {
             setRows();
         }
     }
+
+    @FXML
+    private void searchInTable(ActionEvent event) {
+        String searchRequest = searchField.getText();
+            if (!model.getItems(tableState).isEmpty()) {
+                List<Item> resultOfSearch = new ArrayList<Item>(model.getItems(tableState));
+                clearRows();
+                for (Item findItem : resultOfSearch) {
+                    if (findItem.getName().contains(searchRequest)) {
+                        tableView.getItems().add(findItem);
+                    }
+                }
+            }
+        /*String searchRequest = searchField.getText();
+        if (!model.getItems(tableState).isEmpty()) {
+            //List<Item> resultOfSearch = new ArrayList<Item>(model.getItems(tableState));
+            Iterator<Item> iterator = model.getItems(tableState).iterator();
+            clearRows();
+            while(iterator.hasNext()) {
+                if (iterator.next().getName().contains(searchRequest)) {
+                    tableView.getItems().add(iterator.next());
+                }
+            }*/
+        }
 
     void setRows() {
         clearRows();
