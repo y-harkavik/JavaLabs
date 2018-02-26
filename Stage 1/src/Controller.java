@@ -1,8 +1,14 @@
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableView;
+import javafx.scene.input.MouseEvent;
+import javafx.util.Callback;
 
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 public class Controller {
@@ -27,6 +33,22 @@ public class Controller {
 
     public void initialize() {
         documentsButton.fire();
+        tableView.setRowFactory(tv->{
+            TableRow<Item> row= new TableRow<Item>();
+            row.setOnMouseClicked(event -> {
+                if(!row.isEmpty()&&event.getClickCount()==2) {
+                    try {
+                        Desktop.getDesktop().open(row.getItem().getPath());
+                    }catch (Exception ex) {
+                        Alert alertFileNotFound = new Alert(Alert.AlertType.ERROR);
+                        alertFileNotFound.setTitle("Hello amigo");
+                        alertFileNotFound.setContentText("File not found.");
+                        alertFileNotFound.showAndWait();
+                    }
+                }
+            });
+            return row;
+        });
     }
 
     @FXML
@@ -64,6 +86,10 @@ public class Controller {
         //tableView.getItems().addAll(logic.addFiles(tableState));
     }
 
+    @FXML
+    private void rowFactory(Callback<TableView<Item>,TableRow<Item>> event) {
+
+    }
     void setRows() {
         clearRows();
         tableView.getItems().addAll(model.getItems(tableState));
