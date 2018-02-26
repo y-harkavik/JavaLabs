@@ -33,17 +33,19 @@ public class Controller {
 
     public void initialize() {
         documentsButton.fire();
-        tableView.setRowFactory(tv->{
-            TableRow<Item> row= new TableRow<Item>();
+        tableView.setRowFactory(tv -> {
+            TableRow<Item> row = new TableRow<Item>();
             row.setOnMouseClicked(event -> {
-                if(!row.isEmpty()&&event.getClickCount()==2) {
+                if (!row.isEmpty() && event.getClickCount() == 2) {
                     try {
                         Desktop.getDesktop().open(row.getItem().getPath());
-                    }catch (Exception ex) {
+                    } catch (Exception ex) {
                         Alert alertFileNotFound = new Alert(Alert.AlertType.ERROR);
                         alertFileNotFound.setTitle("Hello amigo");
                         alertFileNotFound.setContentText("File not found.");
                         alertFileNotFound.showAndWait();
+                        model.removeFile(row.getItem());
+                        setRows();
                     }
                 }
             });
@@ -83,13 +85,10 @@ public class Controller {
 
     @FXML
     private void removeAction(ActionEvent event) {
-        //tableView.getItems().addAll(logic.addFiles(tableState));
+        model.removeFile(tableView.getSelectionModel().getSelectedItem());
+        setRows();
     }
 
-    @FXML
-    private void rowFactory(Callback<TableView<Item>,TableRow<Item>> event) {
-
-    }
     void setRows() {
         clearRows();
         tableView.getItems().addAll(model.getItems(tableState));

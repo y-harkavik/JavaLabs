@@ -51,12 +51,16 @@ public class Model {
         //return getItems(typeOfItem);
     }
 
+    void removeFile(Item removedItem) {
+        data.getItemsList(removedItem.getItemType()).remove(removedItem);
+    }
+
     List<Item> getItems(String type) {
         return data.getItemsList(type);
     }
 
     void saveFiles(List<File> files, String typeOfItem) {
-        if (files!=null) {
+        if (files != null) {
             for (File file : files) {
                 data.addItemInList(new Item(file, typeOfItem));
             }
