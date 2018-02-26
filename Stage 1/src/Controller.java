@@ -3,6 +3,8 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 
@@ -87,6 +89,15 @@ public class Controller {
     private void removeAction(ActionEvent event) {
         model.removeFile(tableView.getSelectionModel().getSelectedItem());
         setRows();
+    }
+
+    @FXML
+    private void removeOnDeleteButton(KeyEvent keyEvent) {
+        Item focusedItem = tableView.getSelectionModel().getSelectedItem();
+        if ((focusedItem != null) && (keyEvent.getCode().equals(KeyCode.DELETE))) {
+            model.removeFile(focusedItem);
+            setRows();
+        }
     }
 
     void setRows() {

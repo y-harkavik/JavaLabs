@@ -79,7 +79,7 @@
                 </GridPane>
             </children>
         </GridPane>
-        <TableView fx:id="tableView" layoutX="180.0" layoutY="80.0" prefHeight="360.0" prefWidth="720.0"
+        <TableView fx:id="tableView" onKeyPressed="#removeOnDeleteButton" layoutX="180.0" layoutY="80.0" prefHeight="360.0" prefWidth="720.0"
                    AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="0.0"
                    AnchorPane.topAnchor="80.0" style="-fx-font-family: Corbel;">
             <columns>
