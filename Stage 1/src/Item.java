@@ -3,7 +3,6 @@ import javafx.beans.property.SimpleStringProperty;
 import java.io.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 public class Item implements Serializable {
     private transient SimpleStringProperty name = new SimpleStringProperty("");
@@ -11,11 +10,12 @@ public class Item implements Serializable {
     private transient SimpleStringProperty itemType = new SimpleStringProperty("");
     private transient SimpleStringProperty fileType = new SimpleStringProperty("");
     private transient SimpleStringProperty preview = new SimpleStringProperty("");
+
     private FileSize fileSize = new FileSize();
 
     private File path;
 
-    class FileSize implements Serializable{ //Если внешний класс Serializazble внутренний не надо
+    class FileSize implements Serializable { //Если внешний класс Serializazble внутренний не надо
         private long size;
 
         private final long KB = 1024;
@@ -60,8 +60,6 @@ public class Item implements Serializable {
         stream.writeUTF(getItemType());
         stream.writeUTF(getFileType());
         stream.writeUTF(getPreview());
-        /*stream.writeUTF(getFileSize());
-        stream.writeUTF(getPath().toString());*/
     }
 
     private void readObject(ObjectInputStream stream) throws IOException, ClassNotFoundException {
@@ -70,10 +68,7 @@ public class Item implements Serializable {
         date = new SimpleStringProperty(stream.readUTF());
         itemType = new SimpleStringProperty(stream.readUTF());
         fileType = new SimpleStringProperty(stream.readUTF());
-        preview =  new SimpleStringProperty(stream.readUTF());
-       /* fileSize = new FileSize();
-        fileSize.size = stream.readLong();
-        path = new File(stream.readUTF());*/
+        preview = new SimpleStringProperty(stream.readUTF());
     }
 
     public String getPreview() {
@@ -130,7 +125,7 @@ public class Item implements Serializable {
         fileSize.size = path.length();
     }
 
-    public String getFileSize() {
-        return fileSize.toString();
+    public FileSize getFileSize() {
+        return fileSize;
     }
 }
