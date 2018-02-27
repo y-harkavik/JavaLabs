@@ -61,10 +61,12 @@ public class Controller {
 
     private void readItemsFromFile() {
         try(ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("structure.ser"))){
-            HashMap<String,ArrayList<Item>> allItems = (HashMap<String,ArrayList<Item>>)objectInputStream.readObject();
-            model.setList(allItems);
+            model.setList((HashMap<String,ArrayList<Item>>)objectInputStream.readObject());
         }catch (Exception e) {
-            e.printStackTrace();
+            Alert alertFileNotFound = new Alert(Alert.AlertType.ERROR);
+            alertFileNotFound.setTitle("Hello amigo");
+            alertFileNotFound.setContentText("Файл структуры не найден.");
+            alertFileNotFound.show();
         }
     }
 

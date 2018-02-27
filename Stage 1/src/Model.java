@@ -36,6 +36,7 @@ public class Model {
             listOfItem.put(VIDEO, new ArrayList<Item>());
             listOfItem.put(AUDIO, new ArrayList<Item>());
         }
+
         HashMap<String, ArrayList<Item>> getAllItems() {
             return listOfItem;
         }
@@ -47,6 +48,7 @@ public class Model {
         void setListOfItem(HashMap<String, ArrayList<Item>> hashMapOfItems) {
             listOfItem = hashMapOfItems;
         }
+
         void addItemInList(Item item) {
             listOfItem.get(item.getItemType()).add(item);
         }
@@ -69,9 +71,9 @@ public class Model {
     }
 
     void saveItemsInFile() {
-        try(ObjectOutputStream saveFilesStream = new ObjectOutputStream(new FileOutputStream("structure.ser"))){
+        try (ObjectOutputStream saveFilesStream = new ObjectOutputStream(new FileOutputStream("structure.ser"))) {
             saveFilesStream.writeObject(data.getAllItems());
-        }catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -80,21 +82,21 @@ public class Model {
         data.getItemsListByKey(removedItem.getItemType()).remove(removedItem);
     }
 
-    List<Item> findNeededItems(String searchRequest,String itemType) {
+    List<Item> findNeededItems(String searchRequest, String itemType) {
         List<Item> resultOfSearch = new ArrayList<Item>();
         if (!getItems(itemType).isEmpty()) {
-            for (Item findItem : resultOfSearch) {
-                if (findItem.getName().contains(searchRequest)) {
+            for (Item findItem : data.getItemsListByKey(itemType)) {
+                if (findItem.getName().toLowerCase().contains(searchRequest.toLowerCase())) {
                     resultOfSearch.add(findItem);
                 }
             }
         }
         return resultOfSearch;
     }
+
     List<Item> getItems(String type) {
         return data.getItemsListByKey(type);
     }
-
 
     List<File> getPaths(String neededFiles) {
         FileChooser fileChooser = new FileChooser();
