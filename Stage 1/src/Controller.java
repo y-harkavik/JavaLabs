@@ -1,20 +1,14 @@
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.stage.Window;
 import javafx.stage.WindowEvent;
 
 import java.awt.*;
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Controller {
     @FXML
@@ -111,7 +105,10 @@ public class Controller {
 
     @FXML
     private void searchInTable(ActionEvent event) {
-        String searchRequest = searchField.getText();
+        clearRows();
+        tableView.getItems().addAll(model.findNeededItems(searchField.getText(),tableState));
+
+        /*String searchRequest = searchField.getText();
         if (!model.getItems(tableState).isEmpty()) {
             List<Item> resultOfSearch = new ArrayList<Item>(model.getItems(tableState));
             clearRows();
@@ -120,7 +117,7 @@ public class Controller {
                     tableView.getItems().add(findItem);
                 }
             }
-        }
+        }*/
         /*String searchRequest = searchField.getText();
         if (!model.getItems(tableState).isEmpty()) {
             //List<Item> resultOfSearch = new ArrayList<Item>(model.getItems(tableState));

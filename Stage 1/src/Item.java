@@ -1,23 +1,21 @@
 import javafx.beans.property.SimpleStringProperty;
 
-import java.io.File;
-import java.io.Serializable;
+import java.io.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
-public class Item implements Serializable{
-    private SimpleStringProperty name = new SimpleStringProperty("");
-    private SimpleStringProperty date = new SimpleStringProperty("");
-    private SimpleStringProperty itemType = new SimpleStringProperty("");
-    private SimpleStringProperty fileType = new SimpleStringProperty("");
-    private SimpleStringProperty preview = new SimpleStringProperty("");
-
+public class Item implements Serializable {
+    private transient SimpleStringProperty name = new SimpleStringProperty("");
+    private transient SimpleStringProperty date = new SimpleStringProperty("");
+    private transient SimpleStringProperty itemType = new SimpleStringProperty("");
+    private transient SimpleStringProperty fileType = new SimpleStringProperty("");
+    private transient SimpleStringProperty preview = new SimpleStringProperty("");
     private FileSize fileSize = new FileSize();
 
     private File path;
 
-
-    class FileSize {
+    class FileSize implements Serializable{ //Если внешний класс Serializazble внутренний не надо
         private long size;
 
         private final long KB = 1024;
@@ -55,6 +53,29 @@ public class Item implements Serializable{
         setPreview("preview");
     }
 
+    private void writeObject(ObjectOutputStream stream) throws IOException {
+        stream.defaultWriteObject();
+        stream.writeUTF(getName());
+        stream.writeUTF(getDate());
+        stream.writeUTF(getItemType());
+        stream.writeUTF(getFileType());
+        stream.writeUTF(getPreview());
+        /*stream.writeUTF(getFileSize());
+        stream.writeUTF(getPath().toString());*/
+    }
+
+    private void readObject(ObjectInputStream stream) throws IOException, ClassNotFoundException {
+        stream.defaultReadObject();
+        name = new SimpleStringProperty(stream.readUTF());
+        date = new SimpleStringProperty(stream.readUTF());
+        itemType = new SimpleStringProperty(stream.readUTF());
+        fileType = new SimpleStringProperty(stream.readUTF());
+        preview =  new SimpleStringProperty(stream.readUTF());
+       /* fileSize = new FileSize();
+        fileSize.size = stream.readLong();
+        path = new File(stream.readUTF());*/
+    }
+
     public String getPreview() {
         return preview.get();
     }
@@ -68,7 +89,6 @@ public class Item implements Serializable{
     }
 
     public void setFileType(String fileType) {
-
         this.fileType.set(fileType);
     }
 

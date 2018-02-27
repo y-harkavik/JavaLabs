@@ -86,7 +86,7 @@
                 <TableColumn fx:id="previewColumn" editable="false" maxWidth="170.0" minWidth="170.0" prefWidth="170.0"
                              resizable="false" sortable="false" text="Preview">
                     <cellValueFactory>
-                        <PropertyValueFactory property="preview"/>
+                        <PropertyValueFactory property="name"/>
                     </cellValueFactory>
                 </TableColumn>
                 <TableColumn fx:id="nameColumn" editable="false" minWidth="200.0" prefWidth="200.0" sortable="false"

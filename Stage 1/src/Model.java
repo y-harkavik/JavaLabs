@@ -73,9 +73,21 @@ public class Model {
         data.getItemsListByKey(removedItem.getItemType()).remove(removedItem);
     }
 
+    List<Item> findNeededItems(String searchRequest,String itemType) {
+        List<Item> resultOfSearch = new ArrayList<Item>();
+        if (!getItems(itemType).isEmpty()) {
+            for (Item findItem : resultOfSearch) {
+                if (findItem.getName().contains(searchRequest)) {
+                    resultOfSearch.add(findItem);
+                }
+            }
+        }
+        return resultOfSearch;
+    }
     List<Item> getItems(String type) {
         return data.getItemsListByKey(type);
     }
+
 
     List<File> getPaths(String neededFiles) {
         FileChooser fileChooser = new FileChooser();
