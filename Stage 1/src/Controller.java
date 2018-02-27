@@ -21,16 +21,7 @@ public class Controller {
     private TextField searchField;
     @FXML
     private Button documentsButton;
-    /*@FXML
-    private TableColumn previewColumn;
-    @FXML
-    private TableColumn nameColumn;
-    @FXML
-    private TableColumn typeColumn;
-    @FXML
-    private TableColumn sizeColumn;
-    @FXML
-    private TableColumn dateColumn;*/
+
     private String tableState = Model.DOCUMENTS;
 
     private Model model = new Model();
@@ -60,9 +51,9 @@ public class Controller {
     }
 
     private void readItemsFromFile() {
-        try(ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("structure.ser"))){
-            model.setList((HashMap<String,ArrayList<Item>>)objectInputStream.readObject());
-        }catch (Exception e) {
+        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("structure.ser"))) {
+            model.setList((HashMap<String, ArrayList<Item>>) objectInputStream.readObject());
+        } catch (Exception e) {
             Alert alertFileNotFound = new Alert(Alert.AlertType.ERROR);
             alertFileNotFound.setTitle("Hello amigo");
             alertFileNotFound.setContentText("Файл структуры не найден.");
@@ -123,28 +114,7 @@ public class Controller {
     @FXML
     private void searchInTable(ActionEvent event) {
         clearRows();
-        tableView.getItems().addAll(model.findNeededItems(searchField.getText(),tableState));
-
-        /*String searchRequest = searchField.getText();
-        if (!model.getItems(tableState).isEmpty()) {
-            List<Item> resultOfSearch = new ArrayList<Item>(model.getItems(tableState));
-            clearRows();
-            for (Item findItem : resultOfSearch) {
-                if (findItem.getName().contains(searchRequest)) {
-                    tableView.getItems().add(findItem);
-                }
-            }
-        }*/
-        /*String searchRequest = searchField.getText();
-        if (!model.getItems(tableState).isEmpty()) {
-            //List<Item> resultOfSearch = new ArrayList<Item>(model.getItems(tableState));
-            Iterator<Item> iterator = model.getItems(tableState).iterator();
-            clearRows();
-            while(iterator.hasNext()) {
-                if (iterator.next().getName().contains(searchRequest)) {
-                    tableView.getItems().add(iterator.next());
-                }
-            }*/
+        tableView.getItems().addAll(model.findNeededItems(searchField.getText(), tableState));
     }
 
     void setRows() {
