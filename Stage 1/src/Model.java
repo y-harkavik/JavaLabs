@@ -1,8 +1,8 @@
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.lang.String;
 import java.io.File;
 import java.util.ArrayList;
@@ -36,8 +36,11 @@ public class Model {
             listOfItem.put(VIDEO, new ArrayList<Item>());
             listOfItem.put(AUDIO, new ArrayList<Item>());
         }
+        HashMap<String, ArrayList<Item>> getAllItems() {
+            return listOfItem;
+        }
 
-        List<Item> getItemsList(String key) {
+        List<Item> getItemsListByKey(String key) {
             return listOfItem.get(key);
         }
 
@@ -47,24 +50,31 @@ public class Model {
     }
 
     void addFiles(String typeOfItem) {
-        saveFiles(getPaths(typeOfItem), typeOfItem);
-        //return getItems(typeOfItem);
+        addItems(getPaths(typeOfItem), typeOfItem);
     }
 
-    void removeFile(Item removedItem) {
-        data.getItemsList(removedItem.getItemType()).remove(removedItem);
-    }
-
-    List<Item> getItems(String type) {
-        return data.getItemsList(type);
-    }
-
-    void saveFiles(List<File> files, String typeOfItem) {
+    void addItems(List<File> files, String typeOfItem) {
         if (files != null) {
             for (File file : files) {
                 data.addItemInList(new Item(file, typeOfItem));
             }
         }
+    }
+
+    void saveItemsInFile() {
+        try(ObjectOutputStream saveFilesStream = new ObjectOutputStream(new FileOutputStream("structure.ser"))){
+            saveFilesStream.writeObject(data.getAllItems());
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    void removeFile(Item removedItem) {
+        data.getItemsListByKey(removedItem.getItemType()).remove(removedItem);
+    }
+
+    List<Item> getItems(String type) {
+        return data.getItemsListByKey(type);
     }
 
     List<File> getPaths(String neededFiles) {

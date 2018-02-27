@@ -1,10 +1,11 @@
 import javafx.beans.property.SimpleStringProperty;
 
 import java.io.File;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class Item {
+public class Item implements Serializable{
     private SimpleStringProperty name = new SimpleStringProperty("");
     private SimpleStringProperty date = new SimpleStringProperty("");
     private SimpleStringProperty itemType = new SimpleStringProperty("");

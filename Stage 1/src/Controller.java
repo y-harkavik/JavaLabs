@@ -1,3 +1,4 @@
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -6,14 +7,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
-import javafx.util.Callback;
+import javafx.stage.Window;
+import javafx.stage.WindowEvent;
 
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class Controller {
@@ -57,6 +57,11 @@ public class Controller {
             });
             return row;
         });
+    }
+
+    public void exitApplication(WindowEvent value) {
+        model.saveItemsInFile();
+        Platform.exit();
     }
 
     @FXML
@@ -107,15 +112,15 @@ public class Controller {
     @FXML
     private void searchInTable(ActionEvent event) {
         String searchRequest = searchField.getText();
-            if (!model.getItems(tableState).isEmpty()) {
-                List<Item> resultOfSearch = new ArrayList<Item>(model.getItems(tableState));
-                clearRows();
-                for (Item findItem : resultOfSearch) {
-                    if (findItem.getName().contains(searchRequest)) {
-                        tableView.getItems().add(findItem);
-                    }
+        if (!model.getItems(tableState).isEmpty()) {
+            List<Item> resultOfSearch = new ArrayList<Item>(model.getItems(tableState));
+            clearRows();
+            for (Item findItem : resultOfSearch) {
+                if (findItem.getName().contains(searchRequest)) {
+                    tableView.getItems().add(findItem);
                 }
             }
+        }
         /*String searchRequest = searchField.getText();
         if (!model.getItems(tableState).isEmpty()) {
             //List<Item> resultOfSearch = new ArrayList<Item>(model.getItems(tableState));
@@ -126,7 +131,7 @@ public class Controller {
                     tableView.getItems().add(iterator.next());
                 }
             }*/
-        }
+    }
 
     void setRows() {
         clearRows();
