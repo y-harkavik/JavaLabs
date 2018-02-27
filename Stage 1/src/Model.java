@@ -44,9 +44,16 @@ public class Model {
             return listOfItem.get(key);
         }
 
+        void setListOfItem(HashMap<String, ArrayList<Item>> hashMapOfItems) {
+            listOfItem = hashMapOfItems;
+        }
         void addItemInList(Item item) {
             listOfItem.get(item.getItemType()).add(item);
         }
+    }
+
+    void setList(HashMap<String, ArrayList<Item>> hashMapOfItems) {
+        data.setListOfItem(hashMapOfItems);
     }
 
     void addFiles(String typeOfItem) {

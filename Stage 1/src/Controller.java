@@ -9,6 +9,10 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.WindowEvent;
 
 import java.awt.*;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Controller {
     @FXML
@@ -51,6 +55,17 @@ public class Controller {
             });
             return row;
         });
+        readItemsFromFile();
+        setRows();
+    }
+
+    private void readItemsFromFile() {
+        try(ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("structure.ser"))){
+            HashMap<String,ArrayList<Item>> allItems = (HashMap<String,ArrayList<Item>>)objectInputStream.readObject();
+            model.setList(allItems);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void exitApplication(WindowEvent value) {
