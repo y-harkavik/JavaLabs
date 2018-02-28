@@ -32,16 +32,15 @@ public class Controller {
             TableRow<Item> row = new TableRow<Item>();
             row.setOnMouseClicked(event -> {
                 if (!row.isEmpty() && event.getClickCount() == 2) {
-                    try {
-                        Desktop.getDesktop().open(row.getItem().getPath());
-                    } catch (Exception ex) {
-                        model.createAlertError(Model.PATH_ERROR);
-                        model.removeFile(row.getItem());
-                        setRows();
-                    }
+                    openFile(row.getItem());
                 }
             });
             return row;
+        });
+        tableView.setOnKeyReleased(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                openFile(tableView.getSelectionModel().getSelectedItem());
+            }
         });
         searchField.textProperty().addListener(((observable, oldValue, newValue) -> {
             clearRows();
@@ -49,6 +48,16 @@ public class Controller {
         }));
         readItemsFromFile();
         setRows();
+    }
+
+    void openFile(Item openedItem) {
+        try {
+            Desktop.getDesktop().open(openedItem.getPath());
+        } catch (Exception ex) {
+            model.createAlertError(Model.PATH_ERROR);
+            model.removeFile(openedItem);
+            setRows();
+        }
     }
 
     private void readItemsFromFile() {
@@ -109,11 +118,11 @@ public class Controller {
         }
     }
 
-    @FXML
+    /*@FXML
     private void searchInTable(ActionEvent event) {
         clearRows();
         tableView.getItems().addAll(model.findNeededItems(searchField.getText(), tableState));
-    }
+    }*/
 
     void setRows() {
         clearRows();

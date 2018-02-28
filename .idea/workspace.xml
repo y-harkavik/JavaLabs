@@ -3,19 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="8f7478b7-9a42-4db1-b126-d12d4a154750" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/CheckBoxDemo.class" afterPath="" />
       <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Controller.class" afterPath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Controller.class" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Item.class" afterPath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Item.class" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Main.class" afterPath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Main.class" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Model$Data.class" afterPath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Model$Data.class" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Model.class" afterPath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Model.class" />
       <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/sample.fxml" afterPath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/sample.fxml" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/src/CheckBoxDemo.java" afterPath="" />
       <change beforePath="$PROJECT_DIR$/Stage 1/src/Controller.java" afterPath="$PROJECT_DIR$/Stage 1/src/Controller.java" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/src/Item.java" afterPath="$PROJECT_DIR$/Stage 1/src/Item.java" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/src/Model.java" afterPath="$PROJECT_DIR$/Stage 1/src/Model.java" />
       <change beforePath="$PROJECT_DIR$/Stage 1/src/sample.fxml" afterPath="$PROJECT_DIR$/Stage 1/src/sample.fxml" />
-      <change beforePath="$PROJECT_DIR$/structure.ser" afterPath="$PROJECT_DIR$/structure.ser" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,12 +22,12 @@
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file leaf-file-name="sample.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Stage 1/src/sample.fxml">
-          <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+          <provider editor-type-id="JavaFX-Scene-Builder">
             <state />
           </provider>
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="1911">
-              <caret line="91" column="45" lean-forward="false" selection-start-line="91" selection-start-column="45" selection-end-line="91" selection-end-column="45" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="56" column="46" lean-forward="false" selection-start-line="56" selection-start-column="46" selection-end-line="56" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -45,13 +36,16 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Stage 1/src/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="45" column="38" lean-forward="false" selection-start-line="45" selection-start-column="38" selection-end-line="45" selection-end-column="38" />
+            <state relative-caret-position="-42">
+              <caret line="54" column="58" lean-forward="false" selection-start-line="54" selection-start-column="58" selection-end-line="54" selection-end-column="58" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#797#1367#0" expanded="false" />
+                <element signature="method#initialize#0;class#Controller#0" expanded="false" />
+                <element signature="e#797#1085#0" expanded="false" />
                 <element signature="e#850#856#0" expanded="true" />
-                <element signature="e#894#1331#0" expanded="false" />
+                <element signature="e#894#1049#0" expanded="false" />
+                <element signature="e#1123#1284#0" expanded="false" />
+                <element signature="e#1335#1506#0" expanded="false" />
                 <element signature="method#readItemsFromFile#0;class#Controller#0" expanded="false" />
                 <element signature="method#exitApplication#0;class#Controller#0" expanded="false" />
                 <element signature="method#documentAction#0;class#Controller#0" expanded="false" />
@@ -62,6 +56,8 @@
                 <element signature="method#removeAction#0;class#Controller#0" expanded="false" />
                 <element signature="method#removeOnDeleteButton#0;class#Controller#0" expanded="false" />
                 <element signature="method#setRows#0;class#Controller#0" expanded="false" />
+                <element signature="e#3721#3722#0" expanded="true" />
+                <element signature="e#3765#3766#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -151,9 +147,9 @@
         <option value="$PROJECT_DIR$/Stage 1/src/Example.java" />
         <option value="$PROJECT_DIR$/Stage 1/src/Logic.java" />
         <option value="$PROJECT_DIR$/Stage 1/src/Main.java" />
-        <option value="$PROJECT_DIR$/Stage 1/src/sample.fxml" />
         <option value="$PROJECT_DIR$/Stage 1/src/Item.java" />
         <option value="$PROJECT_DIR$/Stage 1/src/Model.java" />
+        <option value="$PROJECT_DIR$/Stage 1/src/sample.fxml" />
         <option value="$PROJECT_DIR$/Stage 1/src/Controller.java" />
       </list>
     </option>
@@ -415,12 +411,12 @@
       <workItem from="1519244137056" duration="6881000" />
       <workItem from="1519374608010" duration="8734000" />
       <workItem from="1519492563387" duration="45207000" />
-      <workItem from="1519767142022" duration="5572000" />
+      <workItem from="1519767142022" duration="7304000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66394000" />
+    <option name="totallyTimeSpent" value="68126000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1060" extended-state="6" />
@@ -464,7 +460,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="43" />
+      <option name="time" value="45" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -500,9 +496,12 @@
           <caret line="129" column="3" lean-forward="false" selection-start-line="129" selection-start-column="3" selection-end-line="129" selection-end-column="3" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#797#1367#0" expanded="false" />
+            <element signature="method#initialize#0;class#Controller#0" expanded="false" />
+            <element signature="e#797#1085#0" expanded="false" />
             <element signature="e#850#856#0" expanded="true" />
-            <element signature="e#894#1331#0" expanded="false" />
+            <element signature="e#894#1049#0" expanded="false" />
+            <element signature="e#1123#1284#0" expanded="false" />
+            <element signature="e#1335#1506#0" expanded="false" />
             <element signature="method#readItemsFromFile#0;class#Controller#0" expanded="false" />
             <element signature="method#exitApplication#0;class#Controller#0" expanded="false" />
             <element signature="method#documentAction#0;class#Controller#0" expanded="false" />
@@ -513,6 +512,8 @@
             <element signature="method#removeAction#0;class#Controller#0" expanded="false" />
             <element signature="method#removeOnDeleteButton#0;class#Controller#0" expanded="false" />
             <element signature="method#setRows#0;class#Controller#0" expanded="false" />
+            <element signature="e#3721#3722#0" expanded="true" />
+            <element signature="e#3765#3766#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -623,9 +624,12 @@
           <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#797#1367#0" expanded="false" />
+            <element signature="method#initialize#0;class#Controller#0" expanded="false" />
+            <element signature="e#797#1085#0" expanded="false" />
             <element signature="e#850#856#0" expanded="true" />
-            <element signature="e#894#1331#0" expanded="false" />
+            <element signature="e#894#1049#0" expanded="false" />
+            <element signature="e#1123#1284#0" expanded="false" />
+            <element signature="e#1335#1506#0" expanded="false" />
             <element signature="method#readItemsFromFile#0;class#Controller#0" expanded="false" />
             <element signature="method#exitApplication#0;class#Controller#0" expanded="false" />
             <element signature="method#documentAction#0;class#Controller#0" expanded="false" />
@@ -636,6 +640,8 @@
             <element signature="method#removeAction#0;class#Controller#0" expanded="false" />
             <element signature="method#removeOnDeleteButton#0;class#Controller#0" expanded="false" />
             <element signature="method#setRows#0;class#Controller#0" expanded="false" />
+            <element signature="e#3721#3722#0" expanded="true" />
+            <element signature="e#3765#3766#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -718,9 +724,12 @@
           <caret line="11" column="44" lean-forward="false" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#797#1367#0" expanded="false" />
+            <element signature="method#initialize#0;class#Controller#0" expanded="false" />
+            <element signature="e#797#1085#0" expanded="false" />
             <element signature="e#850#856#0" expanded="true" />
-            <element signature="e#894#1331#0" expanded="false" />
+            <element signature="e#894#1049#0" expanded="false" />
+            <element signature="e#1123#1284#0" expanded="false" />
+            <element signature="e#1335#1506#0" expanded="false" />
             <element signature="method#readItemsFromFile#0;class#Controller#0" expanded="false" />
             <element signature="method#exitApplication#0;class#Controller#0" expanded="false" />
             <element signature="method#documentAction#0;class#Controller#0" expanded="false" />
@@ -731,6 +740,8 @@
             <element signature="method#removeAction#0;class#Controller#0" expanded="false" />
             <element signature="method#removeOnDeleteButton#0;class#Controller#0" expanded="false" />
             <element signature="method#setRows#0;class#Controller#0" expanded="false" />
+            <element signature="e#3721#3722#0" expanded="true" />
+            <element signature="e#3765#3766#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -951,17 +962,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Stage 1/src/sample.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="1911">
-          <caret line="91" column="45" lean-forward="false" selection-start-line="91" selection-start-column="45" selection-end-line="91" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Stage 1/src/Model.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-101">
@@ -978,14 +978,6 @@
             <element signature="method#setFilter#0;class#Model#0" expanded="false" />
             <element signature="method#createAlertError#0;class#Model#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Stage 1/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="24" column="28" lean-forward="true" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1007,15 +999,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Stage 1/src/sample.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="56" column="46" lean-forward="false" selection-start-line="56" selection-start-column="46" selection-end-line="56" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Stage 1/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="24" column="28" lean-forward="true" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Stage 1/src/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="45" column="38" lean-forward="false" selection-start-line="45" selection-start-column="38" selection-end-line="45" selection-end-column="38" />
+        <state relative-caret-position="-42">
+          <caret line="54" column="58" lean-forward="false" selection-start-line="54" selection-start-column="58" selection-end-line="54" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#797#1367#0" expanded="false" />
+            <element signature="method#initialize#0;class#Controller#0" expanded="false" />
+            <element signature="e#797#1085#0" expanded="false" />
             <element signature="e#850#856#0" expanded="true" />
-            <element signature="e#894#1331#0" expanded="false" />
+            <element signature="e#894#1049#0" expanded="false" />
+            <element signature="e#1123#1284#0" expanded="false" />
+            <element signature="e#1335#1506#0" expanded="false" />
             <element signature="method#readItemsFromFile#0;class#Controller#0" expanded="false" />
             <element signature="method#exitApplication#0;class#Controller#0" expanded="false" />
             <element signature="method#documentAction#0;class#Controller#0" expanded="false" />
@@ -1026,6 +1040,8 @@
             <element signature="method#removeAction#0;class#Controller#0" expanded="false" />
             <element signature="method#removeOnDeleteButton#0;class#Controller#0" expanded="false" />
             <element signature="method#setRows#0;class#Controller#0" expanded="false" />
+            <element signature="e#3721#3722#0" expanded="true" />
+            <element signature="e#3765#3766#0" expanded="true" />
           </folding>
         </state>
       </provider>
