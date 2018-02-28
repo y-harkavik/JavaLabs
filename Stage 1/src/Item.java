@@ -9,7 +9,7 @@ public class Item implements Serializable {
     private transient SimpleStringProperty date = new SimpleStringProperty("");
     private transient SimpleStringProperty itemType = new SimpleStringProperty("");
     private transient SimpleStringProperty fileType = new SimpleStringProperty("");
-    private transient SimpleStringProperty preview = new SimpleStringProperty("");
+    //private transient SimpleStringProperty preview = new SimpleStringProperty("");
 
     private FileSize fileSize = new FileSize();
 
@@ -50,7 +50,7 @@ public class Item implements Serializable {
         setFileType(name.substring(name.lastIndexOf(".") + 1, name.length()));
         setFileSize();
         setDate();
-        setPreview("preview");
+        //setPreview("preview");
     }
 
     private void writeObject(ObjectOutputStream stream) throws IOException {
@@ -59,7 +59,7 @@ public class Item implements Serializable {
         stream.writeUTF(getDate());
         stream.writeUTF(getItemType());
         stream.writeUTF(getFileType());
-        stream.writeUTF(getPreview());
+       // stream.writeUTF(getPreview());
     }
 
     private void readObject(ObjectInputStream stream) throws IOException, ClassNotFoundException {
@@ -68,16 +68,16 @@ public class Item implements Serializable {
         date = new SimpleStringProperty(stream.readUTF());
         itemType = new SimpleStringProperty(stream.readUTF());
         fileType = new SimpleStringProperty(stream.readUTF());
-        preview = new SimpleStringProperty(stream.readUTF());
+       // preview = new SimpleStringProperty(stream.readUTF());
     }
 
-    public String getPreview() {
+    /*public String getPreview() {
         return preview.get();
-    }
+    }*/
 
-    public void setPreview(String preview) {
+    /*public void setPreview(String preview) {
         this.preview.set(preview);
-    }
+    }*/
 
     public String getFileType() {
         return fileType.get();

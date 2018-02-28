@@ -35,10 +35,7 @@ public class Controller {
                     try {
                         Desktop.getDesktop().open(row.getItem().getPath());
                     } catch (Exception ex) {
-                        Alert alertFileNotFound = new Alert(Alert.AlertType.ERROR);
-                        alertFileNotFound.setTitle("Hello amigo");
-                        alertFileNotFound.setContentText("File not found.");
-                        alertFileNotFound.showAndWait();
+                        model.createAlertError(Model.PATH_ERROR);
                         model.removeFile(row.getItem());
                         setRows();
                     }
@@ -46,6 +43,10 @@ public class Controller {
             });
             return row;
         });
+        searchField.textProperty().addListener(((observable, oldValue, newValue) -> {
+            clearRows();
+            tableView.getItems().addAll(model.findNeededItems(searchField.getText(), tableState));
+        }));
         readItemsFromFile();
         setRows();
     }
@@ -54,10 +55,7 @@ public class Controller {
         try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("structure.ser"))) {
             model.setList((HashMap<String, ArrayList<Item>>) objectInputStream.readObject());
         } catch (Exception e) {
-            Alert alertFileNotFound = new Alert(Alert.AlertType.ERROR);
-            alertFileNotFound.setTitle("Hello amigo");
-            alertFileNotFound.setContentText("Файл структуры не найден.");
-            alertFileNotFound.show();
+            model.createAlertError(Model.READ_ERROR);
         }
     }
 
