@@ -147,20 +147,19 @@ public class Controller {
         tableView.getItems().clear();
     }
 
-    public void setUserMode(String userMode) {
-        switch (userMode) {
-            case Person.GUEST:
-                removeButton.setDisable(true);
-                addButton.setDisable(true);
-                break;
-            case Person.USER:
-                tableView.setOnKeyPressed(keyEvent -> {
-                    Item focusedItem = tableView.getSelectionModel().getSelectedItem();
-                    if ((focusedItem != null) && (keyEvent.getCode().equals(KeyCode.DELETE))) {
-                        model.removeFile(focusedItem);
-                        setRows();
-                    }
-                });
+    public void setUser(Person account) {
+        model.setAccount(account);
+        if (account==null) {
+            removeButton.setDisable(true);
+            addButton.setDisable(true);
+        } else {
+            tableView.setOnKeyPressed(keyEvent -> {
+                Item focusedItem = tableView.getSelectionModel().getSelectedItem();
+                if ((focusedItem != null) && (keyEvent.getCode().equals(KeyCode.DELETE))) {
+                    model.removeFile(focusedItem);
+                    setRows();
+                }
+            });
         }
     }
 }

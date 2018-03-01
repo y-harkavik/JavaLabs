@@ -3,6 +3,7 @@ package Catalog;
 import javafx.scene.control.Alert;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import person.Person;
 
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
@@ -29,6 +30,16 @@ public class Model {
     private static final String[] IMAGES_EXTENSIONS = {"*.png", "*.jpg", "*.jpeg", "*.bmp"};
     private static final String[] VIDEO_EXTENSIONS = {"*.mkv", "*.avi", "*.mp4"};
     private static final String[] AUDIO_EXTENSIONS = {"*.mp3", "*.wav"};
+
+    private Person account;
+
+    public Person getAccount() {
+        return account;
+    }
+
+    public void setAccount(Person account) {
+        this.account = account;
+    }
 
     class Data {
         private HashMap<String, ArrayList<Item>> listOfItem = new HashMap<String, ArrayList<Item>>();

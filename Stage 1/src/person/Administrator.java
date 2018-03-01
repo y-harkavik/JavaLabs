@@ -4,8 +4,8 @@ import Authentication.AuthModel;
 
 public class Administrator extends Person{
 
-    Administrator(String password, byte[] salt) {
-        super(password, salt);
+    Administrator(String password,String login, byte[] salt) {
+        super(password,login, salt);
     }
 
     @Override

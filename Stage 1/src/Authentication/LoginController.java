@@ -13,7 +13,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import person.Person;
 
-import javax.jws.WebParam;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
@@ -33,11 +32,11 @@ public class LoginController {
     AuthModel authModel = new AuthModel();
 
     public void initialize() {
-        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("usersInfo.ser"))) {
+        /*try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("usersInfo.ser"))) {
             authModel.setListOfAccounts((ArrayList<Person>) objectInputStream.readObject());
         } catch (Exception e) {
             Catalog.Model.createAlertError(Model.READ_ERROR);
-        }
+        }*/
     }
 
     @FXML
@@ -49,20 +48,20 @@ public class LoginController {
     private void loginAction(ActionEvent event) {
         Person account = authModel.checkEnteredInformation(loginTextField.getText(), passwordTextField.getText());
         if (account!=null) {
-            createCatalog(account.toString());
+            createCatalog(account);
         } else {
             Model.createAlertError(AuthModel.LOGIN_ERROR);
         }
     }
 
-    void createCatalog(String mode) {
+    void createCatalog(Person account) {
         Platform.exit();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Catalog/sample.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Controller catalogController = loader.getController();
-            catalogController.setUserMode(mode);
+            catalogController.setUser(account);
             primaryStage.setOnHidden(event -> catalogController.exitApplication(event));
             primaryStage.setScene(scene);
             primaryStage.setTitle("Catalog");

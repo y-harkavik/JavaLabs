@@ -1,22 +1,26 @@
 package Authentication;
 
+import person.Administrator;
 import person.Person;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.security.spec.KeySpec;
 import java.util.ArrayList;
 import java.util.Base64;
-import java.util.HashMap;
 
 public class AuthModel {
     private static final String ALGORITHM = "PBKDF2WithHmacSHA1";
     private static final int ITERATION_COUNT = 65536;
     private static final int KEY_LENGTH = 256;
+    private static final int NUM_OF_BYTES = 32;
     public static final String LOGIN_ERROR = "Username or password entered incorrect.";
 
-    private ArrayList<Person> listOfAccounts = new ArrayList<>();
+    private ArrayList<Person> listOfAccounts = new ArrayList<>().addAll(new Administrator(getSaltedHash("admin",getSalt()),"admin"));
 
+    public byte[] salt;
     public String getSaltedHash(String password, byte[] salt) {
         String saltedHash = null;
         try {
@@ -32,6 +36,14 @@ public class AuthModel {
         return saltedHash;
     }
 
+    public byte[] getSalt() {
+        try {
+            salt=SecureRandom.getInstanceStrong().generateSeed(NUM_OF_BYTES);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return salt;
+    }
     private boolean checkPassword(String enteredPassword, String accountPassword) {
         boolean answer;
         if (enteredPassword == accountPassword) {

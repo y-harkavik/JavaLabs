@@ -19,7 +19,7 @@ public abstract class Person implements Serializable{
     //protected static final int ITERATION_COUNT = 65536;
     //protected static final int KEY_LENGTH = 256;
 
-    Person(String password, byte[] salt) {
+    Person(String password, String accountLogin, byte[] salt) {
         //setPasswordAndSalt(password);
         passwordAndSaltHash = password;
         this.salt = salt;
