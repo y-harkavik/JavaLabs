@@ -24,6 +24,7 @@ public class Model {
     public static final String PATH_ERROR = "File not found.";
     public static final String SAVE_ERROR = "Save error.";
     public static final String READ_ERROR = "Structure file not found.";
+
     private static final String[] DOCUMENTS_EXTENSIONS = {"*.docx", "*.doc", "*.ppt", ".pptx", "*.xlsx","*.kwm"};
     private static final String[] IMAGES_EXTENSIONS = {"*.png", "*.jpg", "*.jpeg", "*.bmp"};
     private static final String[] VIDEO_EXTENSIONS = {"*.mkv", "*.avi", "*.mp4"};

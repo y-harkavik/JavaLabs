@@ -65,6 +65,7 @@ public class AuthModel {
             if (checkPassword(getSaltedHash(password, account.getSalt()), account.getPasswordAndSaltHash())) {
                 return account;
             }
-            return null;
         }
+        return null;
     }
+}

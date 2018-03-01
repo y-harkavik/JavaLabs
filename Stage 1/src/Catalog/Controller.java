@@ -1,5 +1,6 @@
 package Catalog;
 
+import person.Person;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,8 +24,10 @@ public class Controller {
     private TextField searchField;
     @FXML
     private Button documentsButton;
-
-    private String userMode;
+    @FXML
+    private Button removeButton;
+    @FXML
+    private Button addButton;
 
     private String tableState = Model.DOCUMENTS;
 
@@ -46,13 +49,13 @@ public class Controller {
                 openFile(tableView.getSelectionModel().getSelectedItem());
             }
         });
-        tableView.setOnKeyPressed(keyEvent -> {
+        /*tableView.setOnKeyPressed(keyEvent -> {
             Item focusedItem = tableView.getSelectionModel().getSelectedItem();
             if ((focusedItem != null) && (keyEvent.getCode().equals(KeyCode.DELETE))) {
                 model.removeFile(focusedItem);
                 setRows();
             }
-        });
+        });*/
         searchField.textProperty().addListener(((observable, oldValue, newValue) -> {
             clearRows();
             tableView.getItems().addAll(model.findNeededItems(searchField.getText(), tableState));
@@ -144,11 +147,20 @@ public class Controller {
         tableView.getItems().clear();
     }
 
-    public String getUserMode() {
-        return userMode;
-    }
-
     public void setUserMode(String userMode) {
-        this.userMode = userMode;
+        switch (userMode) {
+            case Person.GUEST:
+                removeButton.setDisable(true);
+                addButton.setDisable(true);
+                break;
+            case Person.USER:
+                tableView.setOnKeyPressed(keyEvent -> {
+                    Item focusedItem = tableView.getSelectionModel().getSelectedItem();
+                    if ((focusedItem != null) && (keyEvent.getCode().equals(KeyCode.DELETE))) {
+                        model.removeFile(focusedItem);
+                        setRows();
+                    }
+                });
+        }
     }
 }
