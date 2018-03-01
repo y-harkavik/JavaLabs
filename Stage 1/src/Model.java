@@ -84,7 +84,9 @@ public class Model {
     }
 
     void removeFile(Item removedItem) {
-        data.getItemsListByKey(removedItem.getItemType()).remove(removedItem);
+        if(removedItem!=null) {
+            data.getItemsListByKey(removedItem.getItemType()).remove(removedItem);
+        }
     }
 
     List<Item> findNeededItems(String searchRequest, String itemType) {
@@ -115,18 +117,22 @@ public class Model {
                 fileChooser.getExtensionFilters().addAll(
                         new FileChooser.ExtensionFilter("Documents", DOCUMENTS_EXTENSIONS)
                 );
+                break;
             case IMAGES:
                 fileChooser.getExtensionFilters().addAll(
                         new FileChooser.ExtensionFilter("Images", IMAGES_EXTENSIONS)
                 );
+                break;
             case VIDEO:
                 fileChooser.getExtensionFilters().addAll(
                         new FileChooser.ExtensionFilter("Video", VIDEO_EXTENSIONS)
                 );
+                break;
             case AUDIO:
                 fileChooser.getExtensionFilters().addAll(
                         new FileChooser.ExtensionFilter("Audio", AUDIO_EXTENSIONS)
                 );
+                break;
         }
     }
 

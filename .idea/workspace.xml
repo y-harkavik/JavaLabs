@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8f7478b7-9a42-4db1-b126-d12d4a154750" name="Default" comment="" />
+    <list default="true" id="8f7478b7-9a42-4db1-b126-d12d4a154750" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/Stage 1/src/Authentication/login.fxml" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Controller.class" afterPath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Controller.class" />
+      <change beforePath="$PROJECT_DIR$/Stage 1/src/Authentication/Controller.java" afterPath="$PROJECT_DIR$/Stage 1/src/Authentication/enterController.java" />
+      <change beforePath="$PROJECT_DIR$/Stage 1/src/Authentication/sample.fxml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Stage 1/src/Main.java" afterPath="$PROJECT_DIR$/Stage 1/src/Main.java" />
+      <change beforePath="$PROJECT_DIR$/Stage 1/src/Model.java" afterPath="$PROJECT_DIR$/Stage 1/src/Model.java" />
+      <change beforePath="$PROJECT_DIR$/structure.ser" afterPath="$PROJECT_DIR$/structure.ser" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,22 +25,22 @@
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file leaf-file-name="sample.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Stage 1/src/sample.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder">
-            <state />
-          </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
+            <state relative-caret-position="0">
               <caret line="56" column="46" lean-forward="false" selection-start-line="56" selection-start-column="46" selection-end-line="56" selection-end-column="46" />
               <folding />
             </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder">
+            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Stage 1/src/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-393">
-              <caret line="52" column="35" lean-forward="false" selection-start-line="52" selection-start-column="35" selection-end-line="52" selection-end-column="35" />
+            <state relative-caret-position="323">
+              <caret line="119" column="0" lean-forward="true" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#initialize#0;class#Controller#0" expanded="false" />
@@ -48,7 +57,6 @@
                 <element signature="method#videoAction#0;class#Controller#0" expanded="false" />
                 <element signature="method#audioAction#0;class#Controller#0" expanded="false" />
                 <element signature="method#addAction#0;class#Controller#0" expanded="false" />
-                <element signature="method#removeAction#0;class#Controller#0" expanded="false" />
                 <element signature="method#removeOnDeleteButton#0;class#Controller#0" expanded="false" />
                 <element signature="method#setRows#0;class#Controller#0" expanded="false" />
                 <element signature="e#3721#3722#0" expanded="true" />
@@ -58,24 +66,56 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sample.fxml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Stage 1/src/Authentication/sample.fxml">
+      <file leaf-file-name="login.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Stage 1/src/Authentication/login.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="399">
+              <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
           <provider editor-type-id="JavaFX-Scene-Builder">
             <state />
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="enterController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Stage 1/src/Authentication/enterController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+            <state relative-caret-position="126">
+              <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Guest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Stage 1/src/person/Guest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="42">
+              <caret line="2" column="18" lean-forward="false" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Stage 1/src/Authentication/Controller.java">
+      <file leaf-file-name="Administrator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Stage 1/src/person/Administrator.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="42">
-              <caret line="2" column="23" lean-forward="false" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+              <caret line="2" column="26" lean-forward="false" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Stage 1/src/person/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="84">
+              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -84,10 +124,9 @@
       <file leaf-file-name="Item.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Stage 1/src/Item.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="634">
+            <state relative-caret-position="777">
               <caret line="97" column="9" lean-forward="false" selection-start-line="97" selection-start-column="9" selection-end-line="97" selection-end-column="9" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="class#FileSize#0;class#Item#0" expanded="false" />
                 <element signature="method#toString#0;class#FileSize#0;class#Item#0" expanded="false" />
                 <element signature="method#formatFileSize#0;class#FileSize#0;class#Item#0" expanded="false" />
@@ -105,17 +144,17 @@
         <entry file="file://$PROJECT_DIR$/Stage 1/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="315">
-              <caret line="24" column="28" lean-forward="true" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
+              <caret line="24" column="28" lean-forward="false" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Model.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Model.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Stage 1/src/Model.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-101">
-              <caret line="23" column="71" lean-forward="false" selection-start-line="23" selection-start-column="71" selection-end-line="23" selection-end-column="71" />
+            <state relative-caret-position="428">
+              <caret line="126" column="57" lean-forward="true" selection-start-line="126" selection-start-column="57" selection-end-line="126" selection-end-column="57" />
               <folding>
                 <element signature="class#Data#0;class#Model#0" expanded="false" />
                 <element signature="e#1198#1223#0" expanded="true" />
@@ -123,9 +162,10 @@
                 <element signature="method#addItems#0;class#Model#0" expanded="false" />
                 <element signature="method#saveItemsInFile#0;class#Model#0" expanded="false" />
                 <element signature="method#findNeededItems#0;class#Model#0" expanded="false" />
-                <element signature="e#3248#3254#0" expanded="true" />
+                <element signature="e#3294#3300#0" expanded="true" />
+                <element signature="e#3679#3680#0" expanded="true" />
+                <element signature="e#3730#3731#0" expanded="true" />
                 <element signature="method#getPaths#0;class#Model#0" expanded="false" />
-                <element signature="method#setFilter#0;class#Model#0" expanded="false" />
                 <element signature="method#createAlertError#0;class#Model#0" expanded="false" />
               </folding>
             </state>
@@ -167,11 +207,16 @@
         <option value="$PROJECT_DIR$/Stage 1/src/Logic.java" />
         <option value="$PROJECT_DIR$/Stage 1/src/Main.java" />
         <option value="$PROJECT_DIR$/Stage 1/src/Item.java" />
-        <option value="$PROJECT_DIR$/Stage 1/src/Model.java" />
         <option value="$PROJECT_DIR$/Stage 1/src/sample.fxml" />
-        <option value="$PROJECT_DIR$/Stage 1/src/Controller.java" />
         <option value="$PROJECT_DIR$/Stage 1/src/Authentication.fxml" />
         <option value="$PROJECT_DIR$/Stage 1/src/Authentication/sample.fxml" />
+        <option value="$PROJECT_DIR$/Stage 1/src/Authentication/Controller.java" />
+        <option value="$PROJECT_DIR$/Stage 1/src/Controller.java" />
+        <option value="$PROJECT_DIR$/Stage 1/src/enterController.java" />
+        <option value="$PROJECT_DIR$/Stage 1/src/Authentication/login.fxml" />
+        <option value="$PROJECT_DIR$/Stage 1/src/Authentication/enterController.java" />
+        <option value="$PROJECT_DIR$/Stage 1/src/person/User.java" />
+        <option value="$PROJECT_DIR$/Stage 1/src/Model.java" />
       </list>
     </option>
   </component>
@@ -181,7 +226,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1612" />
@@ -224,10 +269,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -253,10 +297,18 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Authentication" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="MinusLife" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MinusLife" type="462c0819:PsiDirectoryNode" />
+              <item name="Stage 1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="person" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -444,15 +496,16 @@
       <workItem from="1519244137056" duration="6881000" />
       <workItem from="1519374608010" duration="8734000" />
       <workItem from="1519492563387" duration="45207000" />
-      <workItem from="1519767142022" duration="9661000" />
+      <workItem from="1519767142022" duration="9734000" />
+      <workItem from="1519896986030" duration="1879000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70483000" />
+    <option name="totallyTimeSpent" value="72435000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1060" extended-state="7" />
+    <frame x="-9" y="-9" width="1938" height="1060" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -470,6 +523,7 @@
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20729166" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293348" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -482,7 +536,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -512,58 +565,10 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk-9.0.1/lib/src.zip!/javafx.base/javafx/event/Event.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3381">
-          <caret line="198" column="0" lean-forward="false" selection-start-line="198" selection-start-column="0" selection-end-line="198" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-9.0.1/lib/src.zip!/javafx.graphics/javafx/stage/Window.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21273">
-          <caret line="1211" column="0" lean-forward="false" selection-start-line="1211" selection-start-column="0" selection-end-line="1211" selection-end-column="0" />
-          <folding>
-            <element signature="e#44762#44763#0" expanded="false" />
-            <element signature="e#51509#51510#0" expanded="false" />
-            <element signature="e#51553#51554#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-9.0.1/lib/src.zip!/javafx.base/javafx/beans/property/BooleanPropertyBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2310">
-          <caret line="146" column="0" lean-forward="false" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Stage 1/src/Model.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1134">
-          <caret line="54" column="67" lean-forward="true" selection-start-line="54" selection-start-column="67" selection-end-line="54" selection-end-column="67" />
-          <folding>
-            <element signature="class#Data#0;class#Model#0" expanded="false" />
-            <element signature="e#1198#1223#0" expanded="true" />
-            <element signature="method#Data#0;class#Data#0;class#Model#0" expanded="false" />
-            <element signature="method#addItems#0;class#Model#0" expanded="false" />
-            <element signature="method#saveItemsInFile#0;class#Model#0" expanded="false" />
-            <element signature="method#findNeededItems#0;class#Model#0" expanded="false" />
-            <element signature="e#3248#3254#0" expanded="true" />
-            <element signature="method#getPaths#0;class#Model#0" expanded="false" />
-            <element signature="method#setFilter#0;class#Model#0" expanded="false" />
-            <element signature="method#createAlertError#0;class#Model#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Stage 1/Stage 1.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -580,7 +585,6 @@
         <state relative-caret-position="357">
           <caret line="17" column="42" lean-forward="false" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="42" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="class#FileSize#0;class#Item#0" expanded="false" />
             <element signature="method#toString#0;class#FileSize#0;class#Item#0" expanded="false" />
             <element signature="method#formatFileSize#0;class#FileSize#0;class#Item#0" expanded="false" />
@@ -594,24 +598,17 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Stage 1/src/sample.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="1239">
           <caret line="59" column="18" lean-forward="false" selection-start-line="59" selection-start-column="18" selection-end-line="59" selection-end-column="18" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Stage 1/src/CheckBoxDemo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-          <folding />
-        </state>
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Stage 1/src/CheckBoxDemo.java" />
     <entry file="file://$PROJECT_DIR$/Stage 1/src/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -632,7 +629,6 @@
             <element signature="method#videoAction#0;class#Controller#0" expanded="false" />
             <element signature="method#audioAction#0;class#Controller#0" expanded="false" />
             <element signature="method#addAction#0;class#Controller#0" expanded="false" />
-            <element signature="method#removeAction#0;class#Controller#0" expanded="false" />
             <element signature="method#removeOnDeleteButton#0;class#Controller#0" expanded="false" />
             <element signature="method#setRows#0;class#Controller#0" expanded="false" />
             <element signature="e#3721#3722#0" expanded="true" />
@@ -652,9 +648,10 @@
             <element signature="method#addItems#0;class#Model#0" expanded="false" />
             <element signature="method#saveItemsInFile#0;class#Model#0" expanded="false" />
             <element signature="method#findNeededItems#0;class#Model#0" expanded="false" />
-            <element signature="e#3248#3254#0" expanded="true" />
+            <element signature="e#3294#3300#0" expanded="true" />
+            <element signature="e#3679#3680#0" expanded="true" />
+            <element signature="e#3730#3731#0" expanded="true" />
             <element signature="method#getPaths#0;class#Model#0" expanded="false" />
-            <element signature="method#setFilter#0;class#Model#0" expanded="false" />
             <element signature="method#createAlertError#0;class#Model#0" expanded="false" />
           </folding>
         </state>
@@ -673,7 +670,6 @@
         <state relative-caret-position="1029">
           <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="class#FileSize#0;class#Item#0" expanded="false" />
             <element signature="method#toString#0;class#FileSize#0;class#Item#0" expanded="false" />
             <element signature="method#formatFileSize#0;class#FileSize#0;class#Item#0" expanded="false" />
@@ -687,24 +683,17 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Stage 1/src/sample.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="1302">
           <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Stage 1/src/CheckBoxDemo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-          <folding />
-        </state>
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Stage 1/src/CheckBoxDemo.java" />
     <entry file="file://$PROJECT_DIR$/Stage 1/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
@@ -733,7 +722,6 @@
             <element signature="method#videoAction#0;class#Controller#0" expanded="false" />
             <element signature="method#audioAction#0;class#Controller#0" expanded="false" />
             <element signature="method#addAction#0;class#Controller#0" expanded="false" />
-            <element signature="method#removeAction#0;class#Controller#0" expanded="false" />
             <element signature="method#removeOnDeleteButton#0;class#Controller#0" expanded="false" />
             <element signature="method#setRows#0;class#Controller#0" expanded="false" />
             <element signature="e#3721#3722#0" expanded="true" />
@@ -755,9 +743,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="173">
           <caret line="157" column="0" lean-forward="false" selection-start-line="157" selection-start-column="0" selection-end-line="157" selection-end-column="0" />
-          <folding>
-            <element signature="e#4603#4604#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -765,7 +750,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="173">
           <caret line="201" column="0" lean-forward="false" selection-start-line="201" selection-start-column="0" selection-end-line="201" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -773,7 +757,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="458">
           <caret line="107" column="26" lean-forward="true" selection-start-line="107" selection-start-column="26" selection-end-line="107" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -781,7 +764,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
           <caret line="168" column="20" lean-forward="false" selection-start-line="168" selection-start-column="20" selection-end-line="168" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -789,7 +771,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
           <caret line="108" column="0" lean-forward="false" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -797,9 +778,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="173">
           <caret line="212" column="0" lean-forward="false" selection-start-line="212" selection-start-column="0" selection-end-line="212" selection-end-column="0" />
-          <folding>
-            <element signature="e#7978#7979#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -807,9 +785,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="164">
           <caret line="89" column="0" lean-forward="false" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
-          <folding>
-            <element signature="e#2757#2758#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -817,7 +792,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="227">
           <caret line="1269" column="0" lean-forward="false" selection-start-line="1269" selection-start-column="0" selection-end-line="1269" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -825,7 +799,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="446">
           <caret line="1241" column="0" lean-forward="false" selection-start-line="1241" selection-start-column="0" selection-end-line="1241" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -840,7 +813,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -856,7 +828,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2310">
           <caret line="146" column="0" lean-forward="false" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -894,7 +865,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="198" column="0" lean-forward="false" selection-start-line="198" selection-start-column="0" selection-end-line="198" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -914,7 +884,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="173">
           <caret line="120" column="0" lean-forward="false" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -922,7 +891,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="194">
           <caret line="700" column="0" lean-forward="false" selection-start-line="700" selection-start-column="0" selection-end-line="700" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -930,7 +898,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="164">
           <caret line="153" column="0" lean-forward="false" selection-start-line="153" selection-start-column="0" selection-end-line="153" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -938,7 +905,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="164">
           <caret line="577" column="0" lean-forward="false" selection-start-line="577" selection-start-column="0" selection-end-line="577" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -946,43 +912,63 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="674" column="0" lean-forward="false" selection-start-line="674" selection-start-column="0" selection-end-line="674" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Stage 1/src/CheckBoxDemo.java" />
+    <entry file="file://$PROJECT_DIR$/Stage 1/src/enterController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Stage 1/src/CheckBoxDemo.java">
+    <entry file="file://$PROJECT_DIR$/Stage 1/src/Authentication/login.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="609">
-          <caret line="45" column="25" lean-forward="false" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
+        <state relative-caret-position="399">
+          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Stage 1/src/Model.java">
+    <entry file="file://$PROJECT_DIR$/Stage 1/src/Authentication/enterController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-101">
-          <caret line="23" column="71" lean-forward="false" selection-start-line="23" selection-start-column="71" selection-end-line="23" selection-end-column="71" />
+        <state relative-caret-position="126">
+          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding>
-            <element signature="class#Data#0;class#Model#0" expanded="false" />
-            <element signature="e#1198#1223#0" expanded="true" />
-            <element signature="method#Data#0;class#Data#0;class#Model#0" expanded="false" />
-            <element signature="method#addItems#0;class#Model#0" expanded="false" />
-            <element signature="method#saveItemsInFile#0;class#Model#0" expanded="false" />
-            <element signature="method#findNeededItems#0;class#Model#0" expanded="false" />
-            <element signature="e#3248#3254#0" expanded="true" />
-            <element signature="method#getPaths#0;class#Model#0" expanded="false" />
-            <element signature="method#setFilter#0;class#Model#0" expanded="false" />
-            <element signature="method#createAlertError#0;class#Model#0" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Stage 1/src/sample.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="56" column="46" lean-forward="false" selection-start-line="56" selection-start-column="46" selection-end-line="56" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Stage 1/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="24" column="28" lean-forward="false" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Stage 1/src/Item.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="634">
+        <state relative-caret-position="777">
           <caret line="97" column="9" lean-forward="false" selection-start-line="97" selection-start-column="9" selection-end-line="97" selection-end-column="9" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="class#FileSize#0;class#Item#0" expanded="false" />
             <element signature="method#toString#0;class#FileSize#0;class#Item#0" expanded="false" />
             <element signature="method#formatFileSize#0;class#FileSize#0;class#Item#0" expanded="false" />
@@ -995,29 +981,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Stage 1/src/sample.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
+    <entry file="file://$PROJECT_DIR$/Stage 1/src/person/Administrator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="56" column="46" lean-forward="false" selection-start-line="56" selection-start-column="46" selection-end-line="56" selection-end-column="46" />
+        <state relative-caret-position="42">
+          <caret line="2" column="26" lean-forward="false" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Stage 1/src/Main.java">
+    <entry file="file://$PROJECT_DIR$/Stage 1/src/person/Guest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="24" column="28" lean-forward="true" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
+        <state relative-caret-position="42">
+          <caret line="2" column="18" lean-forward="false" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Stage 1/src/person/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Stage 1/src/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-393">
-          <caret line="52" column="35" lean-forward="false" selection-start-line="52" selection-start-column="35" selection-end-line="52" selection-end-column="35" />
+        <state relative-caret-position="323">
+          <caret line="119" column="0" lean-forward="true" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#initialize#0;class#Controller#0" expanded="false" />
@@ -1034,7 +1025,6 @@
             <element signature="method#videoAction#0;class#Controller#0" expanded="false" />
             <element signature="method#audioAction#0;class#Controller#0" expanded="false" />
             <element signature="method#addAction#0;class#Controller#0" expanded="false" />
-            <element signature="method#removeAction#0;class#Controller#0" expanded="false" />
             <element signature="method#removeOnDeleteButton#0;class#Controller#0" expanded="false" />
             <element signature="method#setRows#0;class#Controller#0" expanded="false" />
             <element signature="e#3721#3722#0" expanded="true" />
@@ -1043,22 +1033,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Stage 1/src/Authentication/Controller.java">
+    <entry file="file://$PROJECT_DIR$/Stage 1/src/Model.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="23" lean-forward="false" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Stage 1/src/Authentication/sample.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="428">
+          <caret line="126" column="57" lean-forward="true" selection-start-line="126" selection-start-column="57" selection-end-line="126" selection-end-column="57" />
+          <folding>
+            <element signature="class#Data#0;class#Model#0" expanded="false" />
+            <element signature="e#1198#1223#0" expanded="true" />
+            <element signature="method#Data#0;class#Data#0;class#Model#0" expanded="false" />
+            <element signature="method#addItems#0;class#Model#0" expanded="false" />
+            <element signature="method#saveItemsInFile#0;class#Model#0" expanded="false" />
+            <element signature="method#findNeededItems#0;class#Model#0" expanded="false" />
+            <element signature="e#3294#3300#0" expanded="true" />
+            <element signature="e#3679#3680#0" expanded="true" />
+            <element signature="e#3730#3731#0" expanded="true" />
+            <element signature="method#getPaths#0;class#Model#0" expanded="false" />
+            <element signature="method#createAlertError#0;class#Model#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
