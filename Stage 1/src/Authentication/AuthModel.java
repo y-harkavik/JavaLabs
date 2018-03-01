@@ -13,6 +13,7 @@ public class AuthModel {
     private static final String ALGORITHM = "PBKDF2WithHmacSHA1";
     private static final int ITERATION_COUNT = 65536;
     private static final int KEY_LENGTH = 256;
+    public static final String LOGIN_ERROR = "Username or password entered incorrect.";
 
     private ArrayList<Person> listOfAccounts = new ArrayList<>();
 
@@ -31,7 +32,7 @@ public class AuthModel {
         return saltedHash;
     }
 
-    public boolean checkPassword(String enteredPassword, String accountPassword) {
+    private boolean checkPassword(String enteredPassword, String accountPassword) {
         boolean answer;
         if (enteredPassword == accountPassword) {
             answer = true;
@@ -41,6 +42,15 @@ public class AuthModel {
         return answer;
     }
 
+    private Person checkLogin(String login) {
+        if (!listOfAccounts.isEmpty()) {
+            for (Person account : listOfAccounts) {
+                if (account.getAccountLogin() == login) return account;
+            }
+        }
+        return null;
+    }
+
     public ArrayList<Person> getListOfAccounts() {
         return listOfAccounts;
     }
@@ -48,4 +58,13 @@ public class AuthModel {
     public void setListOfAccounts(ArrayList<Person> listOfAccounts) {
         this.listOfAccounts = listOfAccounts;
     }
-}
+
+    Person checkEnteredInformation(String login, String password) {
+        Person account = checkLogin(login);
+        if (account != null) {
+            if (checkPassword(getSaltedHash(password, account.getSalt()), account.getPasswordAndSaltHash())) {
+                return account;
+            }
+            return null;
+        }
+    }

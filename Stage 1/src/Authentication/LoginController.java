@@ -1,20 +1,41 @@
 package Authentication;
 
+import Catalog.Controller;
 import Catalog.Model;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import person.Person;
 
+import javax.jws.WebParam;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
+import java.util.ArrayList;
 
 public class LoginController {
+    @FXML
+    private PasswordField passwordTextField;
+    @FXML
+    private TextField loginTextField;
+
+    private Stage primaryStage;
+
+    void setPrimaryStage(Stage stage) {
+        this.primaryStage = stage;
+    }
+
     AuthModel authModel = new AuthModel();
 
     public void initialize() {
-        try(ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("usersInfo.ser")))
-        {
-
-        }catch (Exception e) {
+        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("usersInfo.ser"))) {
+            authModel.setListOfAccounts((ArrayList<Person>) objectInputStream.readObject());
+        } catch (Exception e) {
             Catalog.Model.createAlertError(Model.READ_ERROR);
         }
     }
@@ -26,6 +47,28 @@ public class LoginController {
 
     @FXML
     private void loginAction(ActionEvent event) {
+        Person account = authModel.checkEnteredInformation(loginTextField.getText(), passwordTextField.getText());
+        if (account!=null) {
+            createCatalog(account.toString());
+        } else {
+            Model.createAlertError(AuthModel.LOGIN_ERROR);
+        }
+    }
 
+    void createCatalog(String mode) {
+        Platform.exit();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Catalog/sample.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Controller catalogController = loader.getController();
+            catalogController.setUserMode(mode);
+            primaryStage.setOnHidden(event -> catalogController.exitApplication(event));
+            primaryStage.setScene(scene);
+            primaryStage.setTitle("Catalog");
+            primaryStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

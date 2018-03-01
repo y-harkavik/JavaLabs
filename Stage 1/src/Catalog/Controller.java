@@ -24,6 +24,8 @@ public class Controller {
     @FXML
     private Button documentsButton;
 
+    private String userMode;
+
     private String tableState = Model.DOCUMENTS;
 
     private Model model = new Model();
@@ -42,6 +44,13 @@ public class Controller {
         tableView.setOnKeyReleased(event -> {
             if (event.getCode() == KeyCode.ENTER) {
                 openFile(tableView.getSelectionModel().getSelectedItem());
+            }
+        });
+        tableView.setOnKeyPressed(keyEvent -> {
+            Item focusedItem = tableView.getSelectionModel().getSelectedItem();
+            if ((focusedItem != null) && (keyEvent.getCode().equals(KeyCode.DELETE))) {
+                model.removeFile(focusedItem);
+                setRows();
             }
         });
         searchField.textProperty().addListener(((observable, oldValue, newValue) -> {
@@ -111,14 +120,14 @@ public class Controller {
         setRows();
     }
 
-    @FXML
+    /*@FXML
     private void removeOnDeleteButton(KeyEvent keyEvent) {
         Item focusedItem = tableView.getSelectionModel().getSelectedItem();
         if ((focusedItem != null) && (keyEvent.getCode().equals(KeyCode.DELETE))) {
             model.removeFile(focusedItem);
             setRows();
         }
-    }
+    }*/
 
     /*@FXML
     private void searchInTable(ActionEvent event) {
@@ -133,5 +142,13 @@ public class Controller {
 
     void clearRows() {
         tableView.getItems().clear();
+    }
+
+    public String getUserMode() {
+        return userMode;
+    }
+
+    public void setUserMode(String userMode) {
+        this.userMode = userMode;
     }
 }

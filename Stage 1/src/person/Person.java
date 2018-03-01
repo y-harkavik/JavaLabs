@@ -12,6 +12,10 @@ public abstract class Person implements Serializable{
     protected String passwordAndSaltHash;
     protected String accountLogin;
 
+    public static final String ADMIN = "ADMIN";
+    public static final String GUEST = "GUEST";
+    public static final String USER = "USER";
+
     //protected static final int ITERATION_COUNT = 65536;
     //protected static final int KEY_LENGTH = 256;
 
@@ -19,6 +23,10 @@ public abstract class Person implements Serializable{
         //setPasswordAndSalt(password);
         passwordAndSaltHash = password;
         this.salt = salt;
+    }
+
+    public byte[] getSalt() {
+        return salt;
     }
 
     public String getAccountLogin() {
