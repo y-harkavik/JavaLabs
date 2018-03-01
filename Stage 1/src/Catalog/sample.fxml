@@ -16,7 +16,7 @@
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="400.0" prefHeight="440.0"
             prefWidth="900.0" style="-fx-font-family: Corbel; -fx-font-size: 19;" xmlns="http://javafx.com/javafx/9.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="Catalog.Controller">
     <children>
         <MenuBar maxHeight="40" prefHeight="40" prefWidth="900"
                  style="-fx-background-color: transparent; -fx-border-color: grey;" AnchorPane.leftAnchor="0.0"

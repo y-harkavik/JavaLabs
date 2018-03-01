@@ -1,3 +1,5 @@
+package Catalog;
+
 import javafx.beans.property.SimpleStringProperty;
 
 import java.io.*;

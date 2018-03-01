@@ -1,20 +1,17 @@
+package Catalog;
+
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
-
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         //Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Catalog/sample.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         primaryStage.setMinHeight(400);
