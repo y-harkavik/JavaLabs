@@ -16,7 +16,7 @@ public class AuthModel {
 
     ArrayList<Person> listOfAccounts = new ArrayList<>();
 
-    
+
 
     public String getSaltedHash(String password, byte[] salt) {
         String saltedHash = null;
