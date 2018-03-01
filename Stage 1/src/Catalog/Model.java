@@ -138,7 +138,7 @@ public class Model {
         }
     }
 
-    void createAlertError(String alertMessage) {
+    public static void createAlertError(String alertMessage) {
         Alert alertFileNotFound = new Alert(Alert.AlertType.ERROR);
         alertFileNotFound.setTitle("Hello amigo");
         alertFileNotFound.setContentText(alertMessage);

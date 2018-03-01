@@ -14,9 +14,7 @@ public class AuthModel {
     private static final int ITERATION_COUNT = 65536;
     private static final int KEY_LENGTH = 256;
 
-    ArrayList<Person> listOfAccounts = new ArrayList<>();
-
-
+    private ArrayList<Person> listOfAccounts = new ArrayList<>();
 
     public String getSaltedHash(String password, byte[] salt) {
         String saltedHash = null;
@@ -41,5 +39,13 @@ public class AuthModel {
             answer = false;
         }
         return answer;
+    }
+
+    public ArrayList<Person> getListOfAccounts() {
+        return listOfAccounts;
+    }
+
+    public void setListOfAccounts(ArrayList<Person> listOfAccounts) {
+        this.listOfAccounts = listOfAccounts;
     }
 }

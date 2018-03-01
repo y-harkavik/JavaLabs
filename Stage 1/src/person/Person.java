@@ -2,11 +2,12 @@ package person;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
+import java.io.Serializable;
 import java.security.SecureRandom;
 import java.security.spec.KeySpec;
 import java.util.Base64;
 
-public abstract class Person {
+public abstract class Person implements Serializable{
     protected byte[] salt;
     protected String passwordAndSaltHash;
     protected String accountLogin;
