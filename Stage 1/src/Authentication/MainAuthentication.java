@@ -12,7 +12,6 @@ public class MainAuthentication extends Application {
         //Parent root = FXMLLoader.load(getClass().getResource("Authentication/login.fxml"));
         FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
         Parent root = loader.load();
-        ((LoginController) loader.getController()).setPrimaryStage(primaryStage);
         Scene scene = new Scene(root);
         primaryStage.setResizable(false);
         primaryStage.setScene(scene);

@@ -18,9 +18,9 @@
     <children>
         <MenuBar maxHeight="40" prefHeight="40" prefWidth="900" style="-fx-background-color: transparent; -fx-border-color: grey;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <menus>
-                <Menu mnemonicParsing="false" style="-fx-font-size: 18;" text="Settings">
+                <Menu mnemonicParsing="false"  style="-fx-font-size: 18;" text="Settings">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Change user" />
+                        <MenuItem mnemonicParsing="false" onAction="#changeUser" text="Change user" />
                     </items>
                 </Menu>
             </menus>

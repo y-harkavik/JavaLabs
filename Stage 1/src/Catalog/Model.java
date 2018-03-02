@@ -146,7 +146,7 @@ public class Model {
         }
     }
 
-    void saveItemsInFile() {
+    private void saveItemsInFile() {
         try (ObjectOutputStream saveFilesStream = new ObjectOutputStream(new FileOutputStream("structure.ser"))) {
             saveFilesStream.writeObject(data.getAllItems());
         } catch (Exception e) {
@@ -213,6 +213,13 @@ public class Model {
         alertFileNotFound.setTitle("Hello amigo");
         alertFileNotFound.setContentText(alertMessage);
         alertFileNotFound.showAndWait();
+    }
+
+    public void saveProgramInformation() {
+        if(baseOfAccounts!=null) {
+            saveItemsInFile();
+            getBaseOfAccounts().saveBase();
+        }
     }
 }
 

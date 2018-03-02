@@ -25,12 +25,6 @@ public class LoginController {
     @FXML
     private TextField loginTextField;
 
-    private Stage primaryStage;
-
-    void setPrimaryStage(Stage stage) {
-        this.primaryStage = stage;
-    }
-
     AuthModel authModel = new AuthModel();
 
     public void initialize() {
@@ -57,6 +51,7 @@ public class LoginController {
 
     void createCatalog(Base base,int index) {
         try {
+            Stage primaryStage = (Stage)loginTextField.getScene().getWindow();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("..\\Catalog\\sample.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);

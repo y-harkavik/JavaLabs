@@ -1,5 +1,11 @@
 package Catalog;
 
+import Authentication.LoginController;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import person.Base;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -83,8 +89,7 @@ public class Controller {
     }
 
     public void exitApplication(WindowEvent value) {
-        model.saveItemsInFile();
-        model.getBaseOfAccounts().saveBase();
+        model.saveProgramInformation();
         Platform.exit();
     }
 
@@ -148,13 +153,15 @@ public class Controller {
     void clearRows() {
         tableView.getItems().clear();
     }
+
     void setSizeUserCanAdd() {
         if (model.getAccount() instanceof User) {
             addButton.setText("Add (" + model.getCanAdd() + " bytes left)");
-            if(model.getCanAdd()==0) addButton.setDisable(true);
+            if (model.getCanAdd() == 0) addButton.setDisable(true);
         }
     }
-    public void setUser(Base base,int index) {
+
+    public void setUser(Base base, int index) {
         model.setBaseOfAccounts(base);
         if (model.getBaseOfAccounts() == null) {
             removeButton.setDisable(true);
@@ -169,6 +176,23 @@ public class Controller {
                     setRows();
                 }
             });
+        }
+    }
+
+    @FXML
+    public void changeUser(ActionEvent event) {
+        try {
+            Stage primaryStage = (Stage) addButton.getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("..\\Authentication\\login.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            model.saveProgramInformation();
+            primaryStage.setResizable(false);
+            primaryStage.setScene(scene);
+            primaryStage.setTitle("Sign in");
+            primaryStage.show();
+        }catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
