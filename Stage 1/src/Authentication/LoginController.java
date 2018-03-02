@@ -62,7 +62,10 @@ public class LoginController {
             Scene scene = new Scene(root);
             Controller catalogController = loader.getController();
             catalogController.setUser(base,index);
-            primaryStage.setOnHidden(event -> catalogController.exitApplication(event));
+            primaryStage.setResizable(true);
+            if(base!=null){
+                primaryStage.setOnHidden(event -> catalogController.exitApplication(event));
+            }
             primaryStage.setScene(scene);
             primaryStage.setTitle("Catalog");
             primaryStage.show();
