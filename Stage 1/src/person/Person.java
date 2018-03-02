@@ -23,6 +23,7 @@ public abstract class Person implements Serializable{
         //setPasswordAndSalt(password);
         passwordAndSaltHash = password;
         this.salt = salt;
+        this.accountLogin=accountLogin;
     }
 
     public byte[] getSalt() {

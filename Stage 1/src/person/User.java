@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class User extends Person{
+
     public static final long SIZE_OF_DATA_10MB = 10485760;
 
     private long addedData;
@@ -11,8 +12,8 @@ public class User extends Person{
 
     /*DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         this.date.set(LocalDateTime.now().format(dateTimeFormatter));*/
-    User(String password, byte[] salt) {
-        super(password, salt);
+    public User(String password,String login, byte[] salt) {
+        super(password, login, salt);
     }
 
     @Override

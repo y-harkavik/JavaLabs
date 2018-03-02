@@ -32,11 +32,12 @@ public class LoginController {
     AuthModel authModel = new AuthModel();
 
     public void initialize() {
-        /*try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("usersInfo.ser"))) {
+        //authModel.example();
+        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("login.ser"))) {
             authModel.setListOfAccounts((ArrayList<Person>) objectInputStream.readObject());
         } catch (Exception e) {
             Catalog.Model.createAlertError(Model.READ_ERROR);
-        }*/
+        }
     }
 
     @FXML
@@ -46,18 +47,19 @@ public class LoginController {
 
     @FXML
     private void loginAction(ActionEvent event) {
-        Person account = authModel.checkEnteredInformation(loginTextField.getText(), passwordTextField.getText());
-        if (account!=null) {
-            createCatalog(account);
-        } else {
-            Model.createAlertError(AuthModel.LOGIN_ERROR);
+        if (!loginTextField.getText().isEmpty() && !passwordTextField.getText().isEmpty()) {
+            Person account = authModel.checkEnteredInformation(loginTextField.getText(), passwordTextField.getText());
+            if (account != null) {
+                createCatalog(account);
+            } else {
+                Model.createAlertError(AuthModel.LOGIN_ERROR);
+            }
         }
     }
 
     void createCatalog(Person account) {
-        Platform.exit();
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Catalog/sample.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("..\\Catalog\\sample.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Controller catalogController = loader.getController();

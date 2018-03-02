@@ -2,9 +2,12 @@ package Authentication;
 
 import person.Administrator;
 import person.Person;
+import person.User;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.KeySpec;
@@ -17,10 +20,30 @@ public class AuthModel {
     private static final int KEY_LENGTH = 256;
     private static final int NUM_OF_BYTES = 32;
     public static final String LOGIN_ERROR = "Username or password entered incorrect.";
+    private byte[] salt;
 
-    private ArrayList<Person> listOfAccounts = new ArrayList<>().addAll(new Administrator(getSaltedHash("admin",getSalt()),"admin"));
+    private ArrayList<Person> listOfAccounts = new ArrayList<>();
 
-    public byte[] salt;
+    /*void createPerson(String password, String login) {
+        salt = getSalt();
+        String hashedPassword = getSaltedHash(password,salt);
+        listOfAccounts.add(new User(hashedPassword,login,salt));
+    }*/
+    /*void example() {
+        salt = getSalt();
+        String hashedPassword = getSaltedHash("admin",salt);
+        listOfAccounts.add(new Administrator(hashedPassword,"admin",salt));
+
+        salt = getSalt();
+        hashedPassword = getSaltedHash("user",salt);
+        listOfAccounts.add(new Administrator(hashedPassword,"user",salt));
+
+        try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("login.ser"))){
+            objectOutputStream.writeObject(listOfAccounts);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }*/
     public String getSaltedHash(String password, byte[] salt) {
         String saltedHash = null;
         try {
@@ -36,17 +59,17 @@ public class AuthModel {
         return saltedHash;
     }
 
-    public byte[] getSalt() {
+    public void getSalt() {
         try {
-            salt=SecureRandom.getInstanceStrong().generateSeed(NUM_OF_BYTES);
+            salt = SecureRandom.getInstanceStrong().generateSeed(NUM_OF_BYTES);
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
-        return salt;
     }
+
     private boolean checkPassword(String enteredPassword, String accountPassword) {
         boolean answer;
-        if (enteredPassword == accountPassword) {
+        if (enteredPassword.equals(accountPassword)) {
             answer = true;
         } else {
             answer = false;
@@ -57,7 +80,10 @@ public class AuthModel {
     private Person checkLogin(String login) {
         if (!listOfAccounts.isEmpty()) {
             for (Person account : listOfAccounts) {
-                if (account.getAccountLogin() == login) return account;
+
+                if (account.getAccountLogin().equals(login)) {
+                    return account;
+                }
             }
         }
         return null;
