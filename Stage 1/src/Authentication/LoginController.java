@@ -35,7 +35,7 @@ public class LoginController {
 
     public void initialize() {
         //authModel.example();
-        authModel.getBaseOfAccounts();
+        authModel.getBaseOfAccounts().getBaseFromFile();
     }
 
     @FXML

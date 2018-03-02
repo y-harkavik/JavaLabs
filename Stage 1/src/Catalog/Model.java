@@ -29,7 +29,7 @@ public class Model {
     public static final String PATH_ERROR = "File not found.";
     public static final String SAVE_ERROR = "Save error.";
     public static final String READ_ERROR = "Structure file not found.";
-    public static final String SIZE_ERROR = "size error";
+    public static final String SIZE_ERROR = "Один или более файлов не подходят по размеру.";
 
     private static final String[] DOCUMENTS_EXTENSIONS = {"*.docx", "*.doc", "*.ppt", ".pptx", "*.xlsx", "*.kwm"};
     private static final String[] IMAGES_EXTENSIONS = {"*.png", "*.jpg", "*.jpeg", "*.bmp"};
@@ -45,7 +45,7 @@ public class Model {
         return account;
     }
 
-    public void setAccount (Person account) {
+    public void setAccount(Person account) {
         this.account = account;
         if (account instanceof User) {
             setCanAdd((User) account);
@@ -63,7 +63,7 @@ public class Model {
                 canAdd = User.SIZE_OF_DATA_10MB;
                 user.setLastUpdated(getCurrentDate());
             } else {
-                canAdd = User.SIZE_OF_DATA_10MB-user.getAddedData();
+                canAdd = User.SIZE_OF_DATA_10MB - user.getAddedData();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -131,11 +131,11 @@ public class Model {
     void addItems(List<File> files, String typeOfItem) {
         if (files != null) {
             for (File file : files) {
-                if(canAdd>0) {
-                    if(file.length()<=canAdd) {
+                if (canAdd > 0) {
+                    if (file.length() <= canAdd) {
                         data.addItemInList(new Item(file, typeOfItem));
-                        canAdd-=file.length();
-                        ((User)account).setAddedData(file.length());
+                        canAdd -= file.length();
+                        ((User) account).setAddedData(file.length());
                     } else {
                         createAlertError(SIZE_ERROR);
                     }

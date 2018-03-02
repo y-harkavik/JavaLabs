@@ -1,7 +1,6 @@
 package Catalog;
 
 import person.Base;
-import person.Person;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,7 +8,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.WindowEvent;
 import person.User;
 
@@ -86,6 +84,7 @@ public class Controller {
 
     public void exitApplication(WindowEvent value) {
         model.saveItemsInFile();
+        model.getBaseOfAccounts().saveBase();
         Platform.exit();
     }
 
@@ -151,7 +150,8 @@ public class Controller {
     }
     void setSizeUserCanAdd() {
         if (model.getAccount() instanceof User) {
-            addButton.setText("Add (" + model.getCanAdd() + " left)");
+            addButton.setText("Add (" + model.getCanAdd() + " bytes left)");
+            if(model.getCanAdd()==0) addButton.setDisable(true);
         }
     }
     public void setUser(Base base,int index) {

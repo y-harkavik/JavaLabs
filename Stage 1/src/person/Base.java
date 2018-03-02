@@ -128,4 +128,8 @@ public class Base {
             Catalog.Model.createAlertError(Model.READ_ERROR);
         }
     }
+
+    public static void main(String[] args) {
+        new Base().example();
+    }
 }
