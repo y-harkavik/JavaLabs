@@ -7,7 +7,7 @@ import java.security.SecureRandom;
 import java.security.spec.KeySpec;
 import java.util.Base64;
 
-public abstract class Person implements Serializable{
+public abstract class Person implements Serializable {
     protected byte[] salt;
     protected String passwordAndSaltHash;
     protected String accountLogin;
@@ -23,7 +23,7 @@ public abstract class Person implements Serializable{
         //setPasswordAndSalt(password);
         passwordAndSaltHash = password;
         this.salt = salt;
-        this.accountLogin=accountLogin;
+        this.accountLogin = accountLogin;
     }
 
     public byte[] getSalt() {

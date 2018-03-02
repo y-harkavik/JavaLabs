@@ -3,18 +3,22 @@ package Catalog;
 import javafx.scene.control.Alert;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import person.Base;
 import person.Person;
+import person.User;
 
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.lang.String;
 import java.io.File;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 
 public class Model {
+
     private Data data = new Data();
 
     public static final String DOCUMENTS = "DOCUMENTS";
@@ -25,20 +29,64 @@ public class Model {
     public static final String PATH_ERROR = "File not found.";
     public static final String SAVE_ERROR = "Save error.";
     public static final String READ_ERROR = "Structure file not found.";
+    public static final String SIZE_ERROR = "size error";
 
-    private static final String[] DOCUMENTS_EXTENSIONS = {"*.docx", "*.doc", "*.ppt", ".pptx", "*.xlsx","*.kwm"};
+    private static final String[] DOCUMENTS_EXTENSIONS = {"*.docx", "*.doc", "*.ppt", ".pptx", "*.xlsx", "*.kwm"};
     private static final String[] IMAGES_EXTENSIONS = {"*.png", "*.jpg", "*.jpeg", "*.bmp"};
     private static final String[] VIDEO_EXTENSIONS = {"*.mkv", "*.avi", "*.mp4"};
     private static final String[] AUDIO_EXTENSIONS = {"*.mp3", "*.wav"};
 
+    private long canAdd = -1;
+
+    private Base baseOfAccounts;
     private Person account;
 
     public Person getAccount() {
         return account;
     }
 
-    public void setAccount(Person account) {
+    public void setAccount (Person account) {
         this.account = account;
+        if (account instanceof User) {
+            setCanAdd((User) account);
+        }
+    }
+
+    public long getCanAdd() {
+        return canAdd;
+    }
+
+    public void setCanAdd(User user) {
+        try {
+            if (checkDateIsBefore(user.getLastUpdated())) {
+                user.setAddedData(0);
+                canAdd = User.SIZE_OF_DATA_10MB;
+                user.setLastUpdated(getCurrentDate());
+            } else {
+                canAdd = User.SIZE_OF_DATA_10MB-user.getAddedData();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    LocalDate getCurrentDate() {
+        return LocalDate.now();
+    }
+
+    boolean checkDateIsBefore(LocalDate userDate) {
+        if (userDate.isBefore(getCurrentDate())) {
+            return true;
+        }
+        return false;
+    }
+
+    public Base getBaseOfAccounts() {
+        return baseOfAccounts;
+    }
+
+    public void setBaseOfAccounts(Base baseOfAccounts) {
+        this.baseOfAccounts = baseOfAccounts;
     }
 
     class Data {
@@ -83,7 +131,17 @@ public class Model {
     void addItems(List<File> files, String typeOfItem) {
         if (files != null) {
             for (File file : files) {
-                data.addItemInList(new Item(file, typeOfItem));
+                if(canAdd>0) {
+                    if(file.length()<=canAdd) {
+                        data.addItemInList(new Item(file, typeOfItem));
+                        canAdd-=file.length();
+                        ((User)account).setAddedData(file.length());
+                    } else {
+                        createAlertError(SIZE_ERROR);
+                    }
+                } else {
+                    data.addItemInList(new Item(file, typeOfItem));
+                }
             }
         }
     }
@@ -98,7 +156,7 @@ public class Model {
     }
 
     void removeFile(Item removedItem) {
-        if(removedItem!=null) {
+        if (removedItem != null) {
             data.getItemsListByKey(removedItem.getItemType()).remove(removedItem);
         }
     }

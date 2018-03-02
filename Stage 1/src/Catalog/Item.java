@@ -17,7 +17,7 @@ public class Item implements Serializable {
 
     private File path;
 
-    class FileSize implements Serializable { //Если внешний класс Serializazble внутренний не надо
+    class FileSize implements Serializable {
         private long size;
 
         private final long KB = 1024;
@@ -61,7 +61,7 @@ public class Item implements Serializable {
         stream.writeUTF(getDate());
         stream.writeUTF(getItemType());
         stream.writeUTF(getFileType());
-       // stream.writeUTF(getPreview());
+        // stream.writeUTF(getPreview());
     }
 
     private void readObject(ObjectInputStream stream) throws IOException, ClassNotFoundException {
@@ -70,7 +70,7 @@ public class Item implements Serializable {
         date = new SimpleStringProperty(stream.readUTF());
         itemType = new SimpleStringProperty(stream.readUTF());
         fileType = new SimpleStringProperty(stream.readUTF());
-       // preview = new SimpleStringProperty(stream.readUTF());
+        // preview = new SimpleStringProperty(stream.readUTF());
     }
 
     /*public String getPreview() {

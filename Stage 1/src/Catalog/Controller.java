@@ -1,5 +1,6 @@
 package Catalog;
 
+import person.Base;
 import person.Person;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -10,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.WindowEvent;
+import person.User;
 
 import java.awt.*;
 import java.io.FileInputStream;
@@ -114,6 +116,7 @@ public class Controller {
     @FXML
     private void addAction(ActionEvent event) {
         model.addFiles(tableState);
+        setSizeUserCanAdd();
         setRows();
     }
 
@@ -146,13 +149,19 @@ public class Controller {
     void clearRows() {
         tableView.getItems().clear();
     }
-
-    public void setUser(Person account) {
-        model.setAccount(account);
-        if (account==null) {
+    void setSizeUserCanAdd() {
+        if (model.getAccount() instanceof User) {
+            addButton.setText("Add (" + model.getCanAdd() + " left)");
+        }
+    }
+    public void setUser(Base base,int index) {
+        model.setBaseOfAccounts(base);
+        if (model.getBaseOfAccounts() == null) {
             removeButton.setDisable(true);
             addButton.setDisable(true);
         } else {
+            model.setAccount(base.getListOfAccounts().get(index));
+            setSizeUserCanAdd();
             tableView.setOnKeyPressed(keyEvent -> {
                 Item focusedItem = tableView.getSelectionModel().getSelectedItem();
                 if ((focusedItem != null) && (keyEvent.getCode().equals(KeyCode.DELETE))) {

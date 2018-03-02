@@ -1,18 +1,21 @@
 package person;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
-public class User extends Person{
+public class User extends Person {
 
     public static final long SIZE_OF_DATA_10MB = 10485760;
 
     private long addedData;
 
+    private LocalDate lastUpdated;
 
     /*DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         this.date.set(LocalDateTime.now().format(dateTimeFormatter));*/
-    public User(String password,String login, byte[] salt) {
+    public User(String password, String login, byte[] salt) {
         super(password, login, salt);
     }
 
@@ -26,6 +29,14 @@ public class User extends Person{
     }
 
     public void setAddedData(long addedData) {
-        this.addedData = addedData;
+        this.addedData += addedData;
+    }
+
+    public LocalDate getLastUpdated() {
+        return lastUpdated;
+    }
+
+    public void setLastUpdated(LocalDate lastUpdated) {
+        this.lastUpdated = lastUpdated;
     }
 }

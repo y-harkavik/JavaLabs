@@ -5,16 +5,24 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Authentication/AuthModel.class" afterPath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Authentication/AuthModel.class" />
       <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Authentication/LoginController.class" afterPath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Authentication/LoginController.class" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Authentication/MainAuthentication.class" afterPath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Authentication/MainAuthentication.class" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/person/Administrator.class" afterPath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/person/Administrator.class" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/person/Person.class" afterPath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/person/Person.class" />
+      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Catalog/Controller.class" afterPath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Catalog/Controller.class" />
+      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Catalog/Model$Data.class" afterPath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Catalog/Model$Data.class" />
+      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Catalog/Model.class" afterPath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Catalog/Model.class" />
+      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Catalog/sample.fxml" afterPath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Catalog/sample.fxml" />
       <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/person/User.class" afterPath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/person/User.class" />
+      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/sdf.class" afterPath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/sdf.class" />
       <change beforePath="$PROJECT_DIR$/Stage 1/src/Authentication/AuthModel.java" afterPath="$PROJECT_DIR$/Stage 1/src/Authentication/AuthModel.java" />
       <change beforePath="$PROJECT_DIR$/Stage 1/src/Authentication/LoginController.java" afterPath="$PROJECT_DIR$/Stage 1/src/Authentication/LoginController.java" />
       <change beforePath="$PROJECT_DIR$/Stage 1/src/Authentication/MainAuthentication.java" afterPath="$PROJECT_DIR$/Stage 1/src/Authentication/MainAuthentication.java" />
+      <change beforePath="$PROJECT_DIR$/Stage 1/src/Catalog/Controller.java" afterPath="$PROJECT_DIR$/Stage 1/src/Catalog/Controller.java" />
+      <change beforePath="$PROJECT_DIR$/Stage 1/src/Catalog/Item.java" afterPath="$PROJECT_DIR$/Stage 1/src/Catalog/Item.java" />
+      <change beforePath="$PROJECT_DIR$/Stage 1/src/Catalog/Model.java" afterPath="$PROJECT_DIR$/Stage 1/src/Catalog/Model.java" />
+      <change beforePath="$PROJECT_DIR$/Stage 1/src/Catalog/sample.fxml" afterPath="$PROJECT_DIR$/Stage 1/src/Catalog/sample.fxml" />
       <change beforePath="$PROJECT_DIR$/Stage 1/src/person/Administrator.java" afterPath="$PROJECT_DIR$/Stage 1/src/person/Administrator.java" />
       <change beforePath="$PROJECT_DIR$/Stage 1/src/person/Person.java" afterPath="$PROJECT_DIR$/Stage 1/src/person/Person.java" />
       <change beforePath="$PROJECT_DIR$/Stage 1/src/person/User.java" afterPath="$PROJECT_DIR$/Stage 1/src/person/User.java" />
+      <change beforePath="$PROJECT_DIR$/Stage 1/src/sdf.java" afterPath="$PROJECT_DIR$/Stage 1/src/sdf.java" />
+      <change beforePath="$PROJECT_DIR$/login.ser" afterPath="$PROJECT_DIR$/login.ser" />
       <change beforePath="$PROJECT_DIR$/structure.ser" afterPath="$PROJECT_DIR$/structure.ser" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,107 +37,103 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Stage 1/src/Authentication/LoginController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="676">
-              <caret line="62" column="21" lean-forward="false" selection-start-line="62" selection-start-column="21" selection-end-line="62" selection-end-column="21" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#687#688#0" expanded="true" />
-                <element signature="e#728#729#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainAuthentication.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainAuthentication.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Stage 1/src/Authentication/MainAuthentication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="12" column="67" lean-forward="false" selection-start-line="12" selection-start-column="67" selection-end-line="12" selection-end-column="67" />
+            <state relative-caret-position="294">
+              <caret line="14" column="7" lean-forward="true" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#799#800#0" expanded="true" />
-                <element signature="e#827#828#0" expanded="true" />
+                <element signature="e#800#801#0" expanded="true" />
+                <element signature="e#828#829#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AuthModel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Stage 1/src/Authentication/AuthModel.java">
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Stage 1/src/Catalog/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="61" column="19" lean-forward="true" selection-start-line="61" selection-start-column="19" selection-end-line="61" selection-end-column="19" />
+            <state relative-caret-position="429">
+              <caret line="172" column="0" lean-forward="false" selection-start-line="172" selection-start-column="0" selection-end-line="172" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#getSaltedHash#0;class#AuthModel#0" expanded="false" />
-                <element signature="method#getSalt#0;class#AuthModel#0" expanded="false" />
-                <element signature="method#checkPassword#0;class#AuthModel#0" expanded="false" />
-                <element signature="method#checkLogin#0;class#AuthModel#0" expanded="false" />
-                <element signature="method#checkEnteredInformation#0;class#AuthModel#0" expanded="false" />
+                <element signature="e#1013#1019#0" expanded="true" />
+                <element signature="e#1057#1212#0" expanded="false" />
+                <element signature="method#openFile#0;class#Controller#0" expanded="false" />
+                <element signature="method#readItemsFromFile#0;class#Controller#0" expanded="false" />
+                <element signature="method#exitApplication#0;class#Controller#0" expanded="false" />
+                <element signature="method#documentAction#0;class#Controller#0" expanded="false" />
+                <element signature="method#imagesAction#0;class#Controller#0" expanded="false" />
+                <element signature="method#videoAction#0;class#Controller#0" expanded="false" />
+                <element signature="method#audioAction#0;class#Controller#0" expanded="false" />
+                <element signature="method#setRows#0;class#Controller#0" expanded="false" />
+                <element signature="e#4237#4238#0" expanded="true" />
+                <element signature="e#4281#4282#0" expanded="true" />
+                <element signature="e#4824#5127#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Event.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk-9.0.1/lib/src.zip!/javafx.base/javafx/event/Event.java">
+      <file leaf-file-name="Item.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Stage 1/src/Catalog/Item.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="198" column="0" lean-forward="false" selection-start-line="198" selection-start-column="0" selection-end-line="198" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="315">
+              <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+              <folding>
+                <element signature="class#FileSize#0;class#Item#0" expanded="false" />
+                <element signature="method#Item#0;class#Item#0" expanded="false" />
+                <element signature="method#writeObject#0;class#Item#0" expanded="false" />
+                <element signature="method#readObject#0;class#Item#0" expanded="false" />
+                <element signature="method#setName#0;class#Item#0" expanded="false" />
+                <element signature="e#3703#3704#0" expanded="true" />
+                <element signature="e#3748#3749#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Scene.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk-9.0.1/lib/src.zip!/javafx.graphics/javafx/scene/Scene.java">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Stage 1/src/Catalog/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="431">
+              <caret line="25" column="8" lean-forward="false" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
+              <folding>
+                <element signature="e#868#869#0" expanded="true" />
+                <element signature="e#896#897#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Stage 1/src/Authentication/LoginController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="192">
-              <caret line="2613" column="0" lean-forward="false" selection-start-line="2613" selection-start-column="0" selection-end-line="2613" selection-end-column="0" />
+              <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
               <folding>
-                <element signature="e#70559#70560#0" expanded="true" />
-                <element signature="e#70605#70606#0" expanded="true" />
+                <element signature="e#728#729#0" expanded="true" />
+                <element signature="e#769#770#0" expanded="true" />
+                <element signature="e#982#983#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Stage 1/src/person/User.java">
+      <file leaf-file-name="Base.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Stage 1/src/person/Base.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="14" column="11" lean-forward="false" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+            <state relative-caret-position="1512">
+              <caret line="124" column="88" lean-forward="true" selection-start-line="124" selection-start-column="88" selection-end-line="124" selection-end-column="88" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#436#437#0" expanded="true" />
-                <element signature="e#480#481#0" expanded="true" />
-                <element signature="e#526#527#0" expanded="true" />
-                <element signature="e#553#554#0" expanded="true" />
-                <element signature="e#587#588#0" expanded="true" />
-                <element signature="e#619#620#0" expanded="true" />
-                <element signature="e#667#668#0" expanded="true" />
-                <element signature="e#709#710#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Person.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Stage 1/src/person/Person.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="693">
-              <caret line="33" column="26" lean-forward="false" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#874#875#0" expanded="true" />
-                <element signature="e#901#902#0" expanded="true" />
-                <element signature="e#940#941#0" expanded="true" />
-                <element signature="e#975#976#0" expanded="true" />
-                <element signature="e#1065#1066#0" expanded="true" />
-                <element signature="e#1107#1108#0" expanded="true" />
+                <element signature="method#createPerson#0;class#Base#0" expanded="false" />
+                <element signature="method#getSaltedHash#0;class#Base#0" expanded="false" />
+                <element signature="method#getSalt#0;class#Base#0" expanded="false" />
+                <element signature="method#checkAccount#0;class#Base#0" expanded="false" />
+                <element signature="method#checkPassword#0;class#Base#0" expanded="false" />
+                <element signature="method#checkLogin#0;class#Base#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -138,34 +142,60 @@
       <file leaf-file-name="Administrator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Stage 1/src/person/Administrator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="6" column="11" lean-forward="false" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
+            <state relative-caret-position="105">
+              <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding>
-                <element signature="e#163#164#0" expanded="true" />
-                <element signature="e#206#207#0" expanded="true" />
-                <element signature="e#252#253#0" expanded="true" />
-                <element signature="e#280#281#0" expanded="true" />
+                <element signature="e#165#166#0" expanded="true" />
+                <element signature="e#209#210#0" expanded="true" />
+                <element signature="e#255#256#0" expanded="true" />
+                <element signature="e#283#284#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Node.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk-9.0.1/lib/src.zip!/javafx.graphics/javafx/scene/Node.java">
+      <file leaf-file-name="AuthModel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Stage 1/src/Authentication/AuthModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
-              <caret line="8863" column="0" lean-forward="false" selection-start-line="8863" selection-start-column="0" selection-end-line="8863" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="214">
+              <caret line="21" column="12" lean-forward="true" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#656#657#0" expanded="true" />
+                <element signature="e#693#694#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Button.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk-9.0.1/lib/src.zip!/javafx.controls/javafx/scene/control/Button.java">
+      <file leaf-file-name="Model.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Stage 1/src/Catalog/Model.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
-              <caret line="201" column="0" lean-forward="false" selection-start-line="201" selection-start-column="0" selection-end-line="201" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="108">
+              <caret line="84" column="0" lean-forward="false" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1401#1402#0" expanded="true" />
+                <element signature="e#1431#1432#0" expanded="true" />
+                <element signature="e#1635#1636#0" expanded="true" />
+                <element signature="e#1664#1665#0" expanded="true" />
+                <element signature="e#2420#2421#0" expanded="true" />
+                <element signature="e#2478#2479#0" expanded="true" />
+                <element signature="e#2530#2531#0" expanded="true" />
+                <element signature="class#Data#0;class#Model#0" expanded="false" />
+                <element signature="e#2623#2648#0" expanded="true" />
+                <element signature="method#Data#0;class#Data#0;class#Model#0" expanded="false" />
+                <element signature="e#3817#3818#0" expanded="true" />
+                <element signature="e#3875#3876#0" expanded="true" />
+                <element signature="method#saveItemsInFile#0;class#Model#0" expanded="false" />
+                <element signature="method#removeFile#0;class#Model#0" expanded="false" />
+                <element signature="method#findNeededItems#0;class#Model#0" expanded="false" />
+                <element signature="e#5526#5527#0" expanded="true" />
+                <element signature="e#5577#5578#0" expanded="true" />
+                <element signature="method#getPaths#0;class#Model#0" expanded="false" />
+                <element signature="method#setFilter#0;class#Model#0" expanded="false" />
+                <element signature="method#createAlertError#0;class#Model#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -214,21 +244,23 @@
         <option value="$PROJECT_DIR$/Stage 1/src/Model.java" />
         <option value="$PROJECT_DIR$/Stage 1/src/Authentication/login.fxml" />
         <option value="$PROJECT_DIR$/Stage 1/src/Authentication/enterController.java" />
-        <option value="$PROJECT_DIR$/Stage 1/src/Catalog/Item.java" />
         <option value="$PROJECT_DIR$/Stage 1/src/person/Password.java" />
         <option value="$PROJECT_DIR$/Stage 1/src/Authentication/loginController.java" />
-        <option value="$PROJECT_DIR$/Stage 1/src/sdf.java" />
-        <option value="$PROJECT_DIR$/Stage 1/src/Catalog/sample.fxml" />
         <option value="$PROJECT_DIR$/Stage 1/src/Authentication/OpenedMode.java" />
-        <option value="$PROJECT_DIR$/Stage 1/src/Catalog/Model.java" />
-        <option value="$PROJECT_DIR$/Stage 1/src/Catalog/Main.java" />
-        <option value="$PROJECT_DIR$/Stage 1/src/Catalog/Controller.java" />
         <option value="$PROJECT_DIR$/Stage 1/src/person/Administrator.java" />
-        <option value="$PROJECT_DIR$/Stage 1/src/person/User.java" />
-        <option value="$PROJECT_DIR$/Stage 1/src/Authentication/MainAuthentication.java" />
         <option value="$PROJECT_DIR$/Stage 1/src/person/Person.java" />
+        <option value="$PROJECT_DIR$/Stage 1/src/Catalog/sample.fxml" />
+        <option value="$PROJECT_DIR$/Stage 1/src/as.java" />
+        <option value="$PROJECT_DIR$/Stage 1/src/sdf.java" />
+        <option value="$PROJECT_DIR$/Stage 1/src/Authentication/MainAuthentication.java" />
+        <option value="$PROJECT_DIR$/Stage 1/src/Catalog/Main.java" />
+        <option value="$PROJECT_DIR$/Stage 1/src/Catalog/Item.java" />
+        <option value="$PROJECT_DIR$/Stage 1/src/person/User.java" />
         <option value="$PROJECT_DIR$/Stage 1/src/Authentication/AuthModel.java" />
+        <option value="$PROJECT_DIR$/Stage 1/src/person/Base.java" />
         <option value="$PROJECT_DIR$/Stage 1/src/Authentication/LoginController.java" />
+        <option value="$PROJECT_DIR$/Stage 1/src/Catalog/Model.java" />
+        <option value="$PROJECT_DIR$/Stage 1/src/Catalog/Controller.java" />
       </list>
     </option>
   </component>
@@ -240,8 +272,9 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
-    <option name="width" value="1096" />
-    <option name="height" value="876" />
+    <option name="y" value="-8" />
+    <option name="width" value="1386" />
+    <option name="height" value="788" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -333,7 +366,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="D:/Загрузки/Зкшьук" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -529,8 +562,8 @@
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Application.MainAuthentication" />
-        <item index="1" class="java.lang.String" itemvalue="Application.Main" />
-        <item index="2" class="java.lang.String" itemvalue="Application.sdf" />
+        <item index="1" class="java.lang.String" itemvalue="Application.sdf" />
+        <item index="2" class="java.lang.String" itemvalue="Application.Main" />
         <item index="3" class="java.lang.String" itemvalue="Application.Password" />
         <item index="4" class="java.lang.String" itemvalue="Application.Example" />
       </list>
@@ -558,12 +591,12 @@
       <workItem from="1519374608010" duration="8734000" />
       <workItem from="1519492563387" duration="45207000" />
       <workItem from="1519767142022" duration="9734000" />
-      <workItem from="1519896986030" duration="21153000" />
+      <workItem from="1519896986030" duration="33204000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="91709000" />
+    <option name="totallyTimeSpent" value="103760000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1060" extended-state="6" />
@@ -575,10 +608,10 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3991276" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30861506" sideWeight="0.50416666" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29116684" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29116684" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -590,7 +623,7 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30861506" sideWeight="0.49791667" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30861506" sideWeight="0.49583334" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -609,19 +642,55 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Stage 1/src/Catalog/Controller.java</url>
-          <line>150</line>
+          <url>file://$PROJECT_DIR$/Stage 1/src/Catalog/Model.java</url>
+          <line>131</line>
           <properties />
-          <option name="timeStamp" value="67" />
+          <option name="timeStamp" value="84" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Stage 1/src/Catalog/Model.java</url>
+          <line>88</line>
+          <properties />
+          <option name="timeStamp" value="85" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Stage 1/src/Catalog/Model.java</url>
+          <line>84</line>
+          <properties />
+          <option name="timeStamp" value="86" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Stage 1/src/Catalog/Model.java</url>
+          <line>59</line>
+          <properties />
+          <option name="timeStamp" value="88" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Stage 1/src/Catalog/Model.java</url>
+          <line>49</line>
+          <properties />
+          <option name="timeStamp" value="90" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Stage 1/src/Catalog/Controller.java</url>
-          <line>37</line>
+          <line>157</line>
           <properties />
-          <option name="timeStamp" value="69" />
+          <option name="timeStamp" value="91" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Stage 1/src/Authentication/LoginController.java</url>
+          <line>63</line>
+          <properties />
+          <option name="timeStamp" value="92" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Stage 1/src/Authentication/LoginController.java</url>
+          <line>42</line>
+          <properties />
+          <option name="timeStamp" value="93" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="71" />
+      <option name="time" value="94" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -640,31 +709,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Stage 1/src/Catalog/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Stage 1/src/Catalog/Item.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1029">
-          <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-          <folding>
-            <element signature="class#FileSize#0;class#Item#0" expanded="false" />
-            <element signature="method#toString#0;class#FileSize#0;class#Item#0" expanded="false" />
-            <element signature="method#formatFileSize#0;class#FileSize#0;class#Item#0" expanded="false" />
-            <element signature="method#Item#0;class#Item#0" expanded="false" />
-            <element signature="method#writeObject#0;class#Item#0" expanded="false" />
-            <element signature="method#readObject#0;class#Item#0" expanded="false" />
-            <element signature="method#setName#0;class#Item#0" expanded="false" />
-            <element signature="method#setDate#0;class#Item#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Stage 1/src/Catalog/sample.fxml">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="1302">
@@ -691,8 +735,8 @@
           <caret line="11" column="44" lean-forward="false" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#973#979#0" expanded="true" />
-            <element signature="e#1017#1172#0" expanded="false" />
+            <element signature="e#1013#1019#0" expanded="true" />
+            <element signature="e#1057#1212#0" expanded="false" />
             <element signature="method#openFile#0;class#Controller#0" expanded="false" />
             <element signature="method#readItemsFromFile#0;class#Controller#0" expanded="false" />
             <element signature="method#exitApplication#0;class#Controller#0" expanded="false" />
@@ -700,10 +744,10 @@
             <element signature="method#imagesAction#0;class#Controller#0" expanded="false" />
             <element signature="method#videoAction#0;class#Controller#0" expanded="false" />
             <element signature="method#audioAction#0;class#Controller#0" expanded="false" />
-            <element signature="method#addAction#0;class#Controller#0" expanded="false" />
             <element signature="method#setRows#0;class#Controller#0" expanded="false" />
-            <element signature="e#4168#4169#0" expanded="true" />
-            <element signature="e#4212#4213#0" expanded="true" />
+            <element signature="e#4237#4238#0" expanded="true" />
+            <element signature="e#4281#4282#0" expanded="true" />
+            <element signature="e#4824#5127#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -864,49 +908,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Stage 1/src/sdf.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="27" lean-forward="false" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
-          <folding>
-            <element signature="e#81#82#0" expanded="true" />
-            <element signature="e#115#116#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Stage 1/src/Authentication/OpenedMode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="5" column="9" lean-forward="false" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Stage 1/src/Catalog/sample.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="81" column="36" lean-forward="false" selection-start-line="81" selection-start-column="36" selection-end-line="81" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Stage 1/src/Catalog/Item.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="626">
-          <caret line="110" column="69" lean-forward="false" selection-start-line="109" selection-start-column="8" selection-end-line="110" selection-end-column="69" />
-          <folding>
-            <element signature="class#FileSize#0;class#Item#0" expanded="false" />
-            <element signature="method#toString#0;class#FileSize#0;class#Item#0" expanded="false" />
-            <element signature="method#formatFileSize#0;class#FileSize#0;class#Item#0" expanded="false" />
-            <element signature="method#Item#0;class#Item#0" expanded="false" />
-            <element signature="method#writeObject#0;class#Item#0" expanded="false" />
-            <element signature="method#readObject#0;class#Item#0" expanded="false" />
-            <element signature="method#setName#0;class#Item#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -918,94 +924,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Stage 1/src/Catalog/Model.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="609">
-          <caret line="40" column="23" lean-forward="false" selection-start-line="40" selection-start-column="23" selection-end-line="40" selection-end-column="23" />
-          <folding>
-            <element signature="e#1209#1210#0" expanded="true" />
-            <element signature="e#1239#1240#0" expanded="true" />
-            <element signature="e#1285#1286#0" expanded="true" />
-            <element signature="e#1323#1324#0" expanded="true" />
-            <element signature="class#Data#0;class#Model#0" expanded="false" />
-            <element signature="e#1416#1441#0" expanded="true" />
-            <element signature="method#Data#0;class#Data#0;class#Model#0" expanded="false" />
-            <element signature="method#addItems#0;class#Model#0" expanded="false" />
-            <element signature="method#saveItemsInFile#0;class#Model#0" expanded="false" />
-            <element signature="method#removeFile#0;class#Model#0" expanded="false" />
-            <element signature="method#findNeededItems#0;class#Model#0" expanded="false" />
-            <element signature="method#getPaths#0;class#Model#0" expanded="false" />
-            <element signature="method#setFilter#0;class#Model#0" expanded="false" />
-            <element signature="method#createAlertError#0;class#Model#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Stage 1/src/person/Guest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="18" lean-forward="false" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Stage 1/src/Catalog/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Stage 1/src/Authentication/login.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" column="77" lean-forward="false" selection-start-line="12" selection-start-column="77" selection-end-line="12" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/login.ser">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Stage 1/src/Catalog/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="163" column="0" lean-forward="false" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#973#979#0" expanded="true" />
-            <element signature="e#1017#1172#0" expanded="false" />
-            <element signature="method#openFile#0;class#Controller#0" expanded="false" />
-            <element signature="method#readItemsFromFile#0;class#Controller#0" expanded="false" />
-            <element signature="method#exitApplication#0;class#Controller#0" expanded="false" />
-            <element signature="method#documentAction#0;class#Controller#0" expanded="false" />
-            <element signature="method#imagesAction#0;class#Controller#0" expanded="false" />
-            <element signature="method#videoAction#0;class#Controller#0" expanded="false" />
-            <element signature="method#audioAction#0;class#Controller#0" expanded="false" />
-            <element signature="method#addAction#0;class#Controller#0" expanded="false" />
-            <element signature="method#setRows#0;class#Controller#0" expanded="false" />
-            <element signature="e#4168#4169#0" expanded="true" />
-            <element signature="e#4212#4213#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-9.0.1/lib/src.zip!/javafx.fxml/javafx/fxml/FXMLLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="1670" column="0" lean-forward="false" selection-start-line="1670" selection-start-column="0" selection-end-line="1670" selection-end-column="0" />
-          <folding>
-            <element signature="e#67760#67761#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1038,94 +961,249 @@
         <state relative-caret-position="192">
           <caret line="2613" column="0" lean-forward="false" selection-start-line="2613" selection-start-column="0" selection-end-line="2613" selection-end-column="0" />
           <folding>
-            <element signature="e#70559#70560#0" expanded="true" />
-            <element signature="e#70605#70606#0" expanded="true" />
+            <element signature="e#70559#70560#0" expanded="false" />
+            <element signature="e#70605#70606#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Stage 1/src/person/User.java">
+    <entry file="file://$PROJECT_DIR$/Stage 1/src/as.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="14" column="11" lean-forward="false" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+        <state relative-caret-position="0">
+          <caret line="0" column="15" lean-forward="false" selection-start-line="0" selection-start-column="15" selection-end-line="0" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Stage 1/src/person/Guest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Stage 1/src/sdf.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8" column="5" lean-forward="true" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#436#437#0" expanded="true" />
-            <element signature="e#480#481#0" expanded="true" />
-            <element signature="e#526#527#0" expanded="true" />
-            <element signature="e#553#554#0" expanded="true" />
-            <element signature="e#587#588#0" expanded="true" />
-            <element signature="e#619#620#0" expanded="true" />
-            <element signature="e#667#668#0" expanded="true" />
-            <element signature="e#709#710#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#155#156#0" expanded="false" />
+            <element signature="e#206#207#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Stage 1/src/person/Person.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="693">
-          <caret line="33" column="26" lean-forward="false" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
+        <state relative-caret-position="210">
+          <caret line="14" column="35" lean-forward="false" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#874#875#0" expanded="true" />
-            <element signature="e#901#902#0" expanded="true" />
-            <element signature="e#940#941#0" expanded="true" />
-            <element signature="e#975#976#0" expanded="true" />
-            <element signature="e#1065#1066#0" expanded="true" />
-            <element signature="e#1107#1108#0" expanded="true" />
+            <element signature="e#877#878#0" expanded="true" />
+            <element signature="e#904#905#0" expanded="true" />
+            <element signature="e#943#944#0" expanded="true" />
+            <element signature="e#978#979#0" expanded="true" />
+            <element signature="e#1068#1069#0" expanded="true" />
+            <element signature="e#1110#1111#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Stage 1/src/Catalog/sample.fxml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Stage 1/src/person/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="27" column="21" lean-forward="true" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#524#525#0" expanded="true" />
+            <element signature="e#568#569#0" expanded="true" />
+            <element signature="e#614#615#0" expanded="true" />
+            <element signature="e#641#642#0" expanded="true" />
+            <element signature="e#675#676#0" expanded="true" />
+            <element signature="e#707#708#0" expanded="true" />
+            <element signature="e#755#756#0" expanded="true" />
+            <element signature="e#798#799#0" expanded="true" />
+            <element signature="e#839#840#0" expanded="true" />
+            <element signature="e#873#874#0" expanded="true" />
+            <element signature="e#930#931#0" expanded="true" />
+            <element signature="e#976#977#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Stage 1/src/Authentication/login.fxml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="12" column="77" lean-forward="false" selection-start-line="12" selection-start-column="77" selection-end-line="12" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Stage 1/src/Catalog/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="431">
+          <caret line="25" column="8" lean-forward="false" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
+          <folding>
+            <element signature="e#868#869#0" expanded="true" />
+            <element signature="e#896#897#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Stage 1/src/person/Administrator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="6" column="11" lean-forward="false" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
+        <state relative-caret-position="105">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding>
-            <element signature="e#163#164#0" expanded="true" />
-            <element signature="e#206#207#0" expanded="true" />
-            <element signature="e#252#253#0" expanded="true" />
-            <element signature="e#280#281#0" expanded="true" />
+            <element signature="e#165#166#0" expanded="true" />
+            <element signature="e#209#210#0" expanded="true" />
+            <element signature="e#255#256#0" expanded="true" />
+            <element signature="e#283#284#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Stage 1/src/Authentication/AuthModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="61" column="19" lean-forward="true" selection-start-line="61" selection-start-column="19" selection-end-line="61" selection-end-column="19" />
+        <state relative-caret-position="214">
+          <caret line="21" column="12" lean-forward="true" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#getSaltedHash#0;class#AuthModel#0" expanded="false" />
-            <element signature="method#getSalt#0;class#AuthModel#0" expanded="false" />
-            <element signature="method#checkPassword#0;class#AuthModel#0" expanded="false" />
-            <element signature="method#checkLogin#0;class#AuthModel#0" expanded="false" />
-            <element signature="method#checkEnteredInformation#0;class#AuthModel#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Stage 1/src/Authentication/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="676">
-          <caret line="62" column="21" lean-forward="false" selection-start-line="62" selection-start-column="21" selection-end-line="62" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#687#688#0" expanded="true" />
-            <element signature="e#728#729#0" expanded="true" />
+            <element signature="e#656#657#0" expanded="true" />
+            <element signature="e#693#694#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Stage 1/src/Authentication/MainAuthentication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="12" column="67" lean-forward="false" selection-start-line="12" selection-start-column="67" selection-end-line="12" selection-end-column="67" />
+        <state relative-caret-position="294">
+          <caret line="14" column="7" lean-forward="true" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#799#800#0" expanded="true" />
-            <element signature="e#827#828#0" expanded="true" />
+            <element signature="e#800#801#0" expanded="true" />
+            <element signature="e#828#829#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Stage 1/src/Catalog/Item.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding>
+            <element signature="class#FileSize#0;class#Item#0" expanded="false" />
+            <element signature="method#Item#0;class#Item#0" expanded="false" />
+            <element signature="method#writeObject#0;class#Item#0" expanded="false" />
+            <element signature="method#readObject#0;class#Item#0" expanded="false" />
+            <element signature="method#setName#0;class#Item#0" expanded="false" />
+            <element signature="e#3703#3704#0" expanded="true" />
+            <element signature="e#3748#3749#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Stage 1/src/person/Base.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1512">
+          <caret line="124" column="88" lean-forward="true" selection-start-line="124" selection-start-column="88" selection-end-line="124" selection-end-column="88" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#createPerson#0;class#Base#0" expanded="false" />
+            <element signature="method#getSaltedHash#0;class#Base#0" expanded="false" />
+            <element signature="method#getSalt#0;class#Base#0" expanded="false" />
+            <element signature="method#checkAccount#0;class#Base#0" expanded="false" />
+            <element signature="method#checkPassword#0;class#Base#0" expanded="false" />
+            <element signature="method#checkLogin#0;class#Base#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Stage 1/src/Catalog/Model.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="84" column="0" lean-forward="false" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1401#1402#0" expanded="true" />
+            <element signature="e#1431#1432#0" expanded="true" />
+            <element signature="e#1635#1636#0" expanded="true" />
+            <element signature="e#1664#1665#0" expanded="true" />
+            <element signature="e#2420#2421#0" expanded="true" />
+            <element signature="e#2478#2479#0" expanded="true" />
+            <element signature="e#2530#2531#0" expanded="true" />
+            <element signature="class#Data#0;class#Model#0" expanded="false" />
+            <element signature="e#2623#2648#0" expanded="true" />
+            <element signature="method#Data#0;class#Data#0;class#Model#0" expanded="false" />
+            <element signature="e#3817#3818#0" expanded="true" />
+            <element signature="e#3875#3876#0" expanded="true" />
+            <element signature="method#saveItemsInFile#0;class#Model#0" expanded="false" />
+            <element signature="method#removeFile#0;class#Model#0" expanded="false" />
+            <element signature="method#findNeededItems#0;class#Model#0" expanded="false" />
+            <element signature="e#5526#5527#0" expanded="true" />
+            <element signature="e#5577#5578#0" expanded="true" />
+            <element signature="method#getPaths#0;class#Model#0" expanded="false" />
+            <element signature="method#setFilter#0;class#Model#0" expanded="false" />
+            <element signature="method#createAlertError#0;class#Model#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Stage 1/src/Catalog/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="172" column="0" lean-forward="false" selection-start-line="172" selection-start-column="0" selection-end-line="172" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1013#1019#0" expanded="true" />
+            <element signature="e#1057#1212#0" expanded="false" />
+            <element signature="method#openFile#0;class#Controller#0" expanded="false" />
+            <element signature="method#readItemsFromFile#0;class#Controller#0" expanded="false" />
+            <element signature="method#exitApplication#0;class#Controller#0" expanded="false" />
+            <element signature="method#documentAction#0;class#Controller#0" expanded="false" />
+            <element signature="method#imagesAction#0;class#Controller#0" expanded="false" />
+            <element signature="method#videoAction#0;class#Controller#0" expanded="false" />
+            <element signature="method#audioAction#0;class#Controller#0" expanded="false" />
+            <element signature="method#setRows#0;class#Controller#0" expanded="false" />
+            <element signature="e#4237#4238#0" expanded="true" />
+            <element signature="e#4281#4282#0" expanded="true" />
+            <element signature="e#4824#5127#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-9.0.1/lib/src.zip!/javafx.fxml/javafx/fxml/FXMLLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="1781" column="0" lean-forward="false" selection-start-line="1781" selection-start-column="0" selection-end-line="1781" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Stage 1/src/Authentication/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding>
+            <element signature="e#728#729#0" expanded="true" />
+            <element signature="e#769#770#0" expanded="true" />
+            <element signature="e#982#983#0" expanded="true" />
           </folding>
         </state>
       </provider>

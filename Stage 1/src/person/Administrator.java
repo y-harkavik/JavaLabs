@@ -2,10 +2,10 @@ package person;
 
 import Authentication.AuthModel;
 
-public class Administrator extends Person{
+public class Administrator extends Person {
 
-    public Administrator(String password,String login, byte[] salt) {
-        super(password,login, salt);
+    public Administrator(String password, String login, byte[] salt) {
+        super(password, login, salt);
     }
 
     @Override

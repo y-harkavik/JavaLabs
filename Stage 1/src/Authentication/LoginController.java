@@ -11,6 +11,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import person.Base;
+import person.Guest;
 import person.Person;
 
 import java.io.FileInputStream;
@@ -33,37 +35,33 @@ public class LoginController {
 
     public void initialize() {
         //authModel.example();
-        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("login.ser"))) {
-            authModel.setListOfAccounts((ArrayList<Person>) objectInputStream.readObject());
-        } catch (Exception e) {
-            Catalog.Model.createAlertError(Model.READ_ERROR);
-        }
+        authModel.getBaseOfAccounts();
     }
 
     @FXML
     private void guestAction(ActionEvent event) {
-
+        createCatalog(null,-1);
     }
 
     @FXML
     private void loginAction(ActionEvent event) {
         if (!loginTextField.getText().isEmpty() && !passwordTextField.getText().isEmpty()) {
-            Person account = authModel.checkEnteredInformation(loginTextField.getText(), passwordTextField.getText());
-            if (account != null) {
-                createCatalog(account);
+            int index = authModel.checkEnteredInformation(loginTextField.getText(), passwordTextField.getText());
+            if (index >= 0) {
+                createCatalog(authModel.getBaseOfAccounts(),index);
             } else {
                 Model.createAlertError(AuthModel.LOGIN_ERROR);
             }
         }
     }
 
-    void createCatalog(Person account) {
+    void createCatalog(Base base,int index) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("..\\Catalog\\sample.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Controller catalogController = loader.getController();
-            catalogController.setUser(account);
+            catalogController.setUser(base,index);
             primaryStage.setOnHidden(event -> catalogController.exitApplication(event));
             primaryStage.setScene(scene);
             primaryStage.setTitle("Catalog");
