@@ -16,35 +16,64 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-
+/**
+ * Class that contains business logic of Catalog window.
+ * @author Yauheni
+ *@version 1.0
+ */
 public class Model {
-
+    /** Variable that contains Data objects and allow to work with catalog structure.*/
     private Data data = new Data();
-
+    /** Variable that contains file type in table.*/
     public static final String DOCUMENTS = "DOCUMENTS";
+    /** Variable that contains file type in table.*/
     public static final String IMAGES = "IMAGES";
+    /** Variable that contains file type in table.*/
     public static final String VIDEO = "VIDEO";
+    /** Variable that contains file type in table.*/
     public static final String AUDIO = "AUDIO";
 
+    /** Variable that contains error text in alert.*/
     public static final String PATH_ERROR = "File not found.";
+    /** Variable that contains error text in alert.*/
     public static final String SAVE_ERROR = "Save error.";
+    /** Variable that contains error text in alert.*/
     public static final String READ_ERROR = "Structure file not found.";
+    /** Variable that contains error text in alert.*/
     public static final String SIZE_ERROR = "Один или более файлов не подходят по размеру.";
 
+    /** Variable that contains extensions of added file by file type.*/
     private static final String[] DOCUMENTS_EXTENSIONS = {"*.docx", "*.doc", "*.ppt", ".pptx", "*.xlsx", "*.kwm"};
+    /** Variable that contains extensions of added file by file type.*/
     private static final String[] IMAGES_EXTENSIONS = {"*.png", "*.jpg", "*.jpeg", "*.bmp"};
+    /** Variable that contains extensions of added file by file type.*/
     private static final String[] VIDEO_EXTENSIONS = {"*.mkv", "*.avi", "*.mp4"};
+    /** Variable that contains extensions of added file by file type.*/
     private static final String[] AUDIO_EXTENSIONS = {"*.mp3", "*.wav"};
 
+    /** Variable that contains count accessible memory for add.*/
     private long canAdd = -1;
 
+    /** Variable that contains base of accounts.*/
     private Base baseOfAccounts;
+    /** Variable that contains current user.*/
     private Person account;
 
+    /**
+     * Return current user.
+     * @return Type Person. Current user.
+     * @see Person
+     * @see User
+     * @see person.Administrator
+     */
     public Person getAccount() {
         return account;
     }
 
+    /**
+     * Set current user. If user type is User, set canAdd variable.
+     * @param account Current user.
+     */
     public void setAccount(Person account) {
         this.account = account;
         if (account instanceof User) {
@@ -52,10 +81,18 @@ public class Model {
         }
     }
 
+    /**
+     * Count of accessible memory for add.
+     * @return Long canAdd.
+     */
     public long getCanAdd() {
         return canAdd;
     }
 
+    /**
+     * Set size of accessible memory for add.
+     * @param user Current user.
+     */
     public void setCanAdd(User user) {
         try {
             if (checkDateIsBefore(user.getLastUpdated())) {
@@ -70,10 +107,20 @@ public class Model {
         }
     }
 
+    /**
+     * Get current date.
+     * @return Current date.
+     */
     LocalDate getCurrentDate() {
         return LocalDate.now();
     }
 
+    /**
+     * Check date of last add.
+     * @param userDate Last date when user added files.
+     * @return True - if user added before current date. False - if user date coincides with current date.
+     *
+     */
     boolean checkDateIsBefore(LocalDate userDate) {
         if (userDate.isBefore(getCurrentDate())) {
             return true;
@@ -81,17 +128,34 @@ public class Model {
         return false;
     }
 
+    /**
+     * Return base of account.
+     * @return Base of accounts.
+     * @see Base
+     */
     public Base getBaseOfAccounts() {
         return baseOfAccounts;
     }
 
+    /**
+     * Set base of accounts.
+     * @param baseOfAccounts Added base.
+     *                       @see Base
+     */
     public void setBaseOfAccounts(Base baseOfAccounts) {
         this.baseOfAccounts = baseOfAccounts;
     }
 
+    /**
+     * Supporting inner class for work with Data.
+     */
     class Data {
+        /** Variable that contains list of items with keys.*/
         private HashMap<String, ArrayList<Item>> listOfItem = new HashMap<String, ArrayList<Item>>();
 
+        /**
+         * Create a lists of items by Type in table.
+         */
         Data() {
             /*listOfItem.put(DOCUMENTS, FXCollections.observableArrayList());
             listOfItem.put(IMAGES, FXCollections.observableArrayList());
@@ -103,31 +167,62 @@ public class Model {
             listOfItem.put(AUDIO, new ArrayList<Item>());
         }
 
+        /**
+         *Return list of all items.
+         * @return HashMap of Data that contains items and keys.
+         * @see Item
+         */
         HashMap<String, ArrayList<Item>> getAllItems() {
             return listOfItem;
         }
 
+        /**
+         * Return item list by key.
+         * @param key Type of items in table.
+         * @return List of items by key.
+         */
         List<Item> getItemsListByKey(String key) {
             return listOfItem.get(key);
         }
 
+        /**
+         * Set list of all items.
+         * @param hashMapOfItems List of all items.
+         */
         void setListOfItem(HashMap<String, ArrayList<Item>> hashMapOfItems) {
             listOfItem = hashMapOfItems;
         }
 
+        /**
+         * Add item in list.
+         * @param item Added item.
+         */
         void addItemInList(Item item) {
             listOfItem.get(item.getItemType()).add(item);
         }
     }
 
+    /**
+     * Set list of items by cause Data.setListOfItem
+     * @param hashMapOfItems
+     */
     void setList(HashMap<String, ArrayList<Item>> hashMapOfItems) {
         data.setListOfItem(hashMapOfItems);
     }
 
+    /**
+     * Add files by cause addItems.
+     * @param typeOfItem Type of files in table for add.
+     */
     void addFiles(String typeOfItem) {
         addItems(getPaths(typeOfItem), typeOfItem);
     }
 
+    /**
+     * Add items in Data list.
+     * @param files Cheesed files.
+     * @param typeOfItem Type of item in table.
+     */
     void addItems(List<File> files, String typeOfItem) {
         if (files != null) {
             for (File file : files) {
@@ -146,6 +241,9 @@ public class Model {
         }
     }
 
+    /**
+     * Save list of items in file.
+     */
     private void saveItemsInFile() {
         try (ObjectOutputStream saveFilesStream = new ObjectOutputStream(new FileOutputStream("structure.ser"))) {
             saveFilesStream.writeObject(data.getAllItems());
@@ -155,12 +253,22 @@ public class Model {
         }
     }
 
+    /**
+     * Remove file in list.
+     * @param removedItem Removed file.
+     */
     void removeFile(Item removedItem) {
         if (removedItem != null) {
             data.getItemsListByKey(removedItem.getItemType()).remove(removedItem);
         }
     }
 
+    /**
+     * Find items in list.
+     * @param searchRequest Search request
+     * @param itemType Item type in table.
+     * @return List of found items.
+     */
     List<Item> findNeededItems(String searchRequest, String itemType) {
         List<Item> resultOfSearch = new ArrayList<Item>();
         if (!getItems(itemType).isEmpty()) {
@@ -173,16 +281,31 @@ public class Model {
         return resultOfSearch;
     }
 
+    /**
+     * Get list of items by key.
+     * @param type Type of files.
+     * @return List of items
+     */
     List<Item> getItems(String type) {
         return data.getItemsListByKey(type);
     }
 
+    /**
+     * Choose files and get paths of files.
+     * @param neededFiles Extensions of needed files.
+     * @return List of
+     */
     List<File> getPaths(String neededFiles) {
         FileChooser fileChooser = new FileChooser();
         setFilter(fileChooser, neededFiles);
         return fileChooser.showOpenMultipleDialog(new Stage());
     }
 
+    /**
+     * Set extensions of needed files.
+     * @param fileChooser Causing fileChooser.
+     * @param neededFiles Extensions of needed files.
+     */
     private void setFilter(FileChooser fileChooser, String neededFiles) {
         switch (neededFiles) {
             case DOCUMENTS:
@@ -208,6 +331,10 @@ public class Model {
         }
     }
 
+    /**
+     * Create alert error.
+     * @param alertMessage Alert message
+     */
     public static void createAlertError(String alertMessage) {
         Alert alertFileNotFound = new Alert(Alert.AlertType.ERROR);
         alertFileNotFound.setTitle("Hello amigo");
@@ -215,6 +342,9 @@ public class Model {
         alertFileNotFound.showAndWait();
     }
 
+    /**
+     * Save items and base in file.
+     */
     public void saveProgramInformation() {
         if(baseOfAccounts!=null) {
             saveItemsInFile();

@@ -6,7 +6,13 @@ import java.io.Serializable;
 import java.security.SecureRandom;
 import java.security.spec.KeySpec;
 import java.util.Base64;
-
+/**
+ *Abstract class define common behavior for Administrator and User.
+ * @see User
+ * @see Administrator
+ * @author Yauheni
+ *@version 1.0
+ */
 public abstract class Person implements Serializable {
     protected byte[] salt;
     protected String passwordAndSaltHash;

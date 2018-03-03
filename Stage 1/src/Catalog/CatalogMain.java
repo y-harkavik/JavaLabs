@@ -6,7 +6,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Main extends Application {
+import java.awt.*;
+/**
+ * Class is used to create catalog window and start app.
+ * @author Yauheni
+ *@version 1.0
+ */
+public class CatalogMain extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
