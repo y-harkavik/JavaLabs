@@ -3,8 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/MinusLife.iml" filepath="$PROJECT_DIR$/.idea/MinusLife.iml" />
-      <module fileurl="file://$PROJECT_DIR$/PortSystem/PortSystem.iml" filepath="$PROJECT_DIR$/PortSystem/PortSystem.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Stage 1/Stage 1.iml" filepath="$PROJECT_DIR$/Stage 1/Stage 1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Stage 1. Cataloguer/Stage 1. Cataloguer.iml" filepath="$PROJECT_DIR$/Stage 1. Cataloguer/Stage 1. Cataloguer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Stage 2. PortSystem/Stage 2. PortSystem.iml" filepath="$PROJECT_DIR$/Stage 2. PortSystem/Stage 2. PortSystem.iml" />
     </modules>
   </component>
 </project>

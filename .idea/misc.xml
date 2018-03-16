@@ -19,6 +19,6 @@
     <option name="OPTION_INCLUDE_LIBS" value="false" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_9" default="false" project-jdk-name="9.0" project-jdk-type="JavaSDK">
-    <output url="file://$PROJECT_DIR$/Stage 1/out" />
+    <output url="file://$PROJECT_DIR$/Stage 1. Cataloguer/out" />
   </component>
 </project>
