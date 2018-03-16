@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8f7478b7-9a42-4db1-b126-d12d4a154750" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/MinusLife.iml" afterPath="$PROJECT_DIR$/.idea/MinusLife.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/PortSystem/Source/objects/ShipPort.java" afterPath="$PROJECT_DIR$/PortSystem/Source/objects/ShipPort.java" />
-      <change beforePath="$PROJECT_DIR$/PortSystem/Source/system/systemWindow.fxml" afterPath="$PROJECT_DIR$/PortSystem/Source/system/systemWindow.fxml" />
+      <change beforePath="$PROJECT_DIR$/Stage 1/Tests/TestForMathFunction.java" afterPath="$PROJECT_DIR$/Stage 1/Tests/TestForMathFunction.java" />
+      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/TestForMathFunction.class" afterPath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/TestForMathFunction.class" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,20 +17,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="MainAuthentication.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Stage 1/Part 2. Cataloguer/Authentication/MainAuthentication.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="23" column="26" lean-forward="false" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#865#866#0" expanded="true" />
-                <element signature="e#893#894#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ShipPort.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PortSystem/Source/objects/ShipPort.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -46,10 +30,12 @@
       <file leaf-file-name="TestForMathFunction.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Stage 1/Tests/TestForMathFunction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="8" column="34" lean-forward="true" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+            <state relative-caret-position="207">
+              <caret line="11" column="16" lean-forward="false" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#215#216#0" expanded="true" />
+                <element signature="e#264#265#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -125,7 +111,17 @@
         <entry file="file://$PROJECT_DIR$/Stage 1/Part 1. Math function/MathFunction.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="420">
-              <caret line="20" column="9" lean-forward="true" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
+              <caret line="20" column="9" lean-forward="false" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Stage 1.iml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Stage 1/Stage 1.iml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -199,6 +195,7 @@
         <option value="$PROJECT_DIR$/Stage 1/src/Catalog/Controller.java" />
         <option value="$PROJECT_DIR$/PortSystem/Source/system/systemWindow.fxml" />
         <option value="$PROJECT_DIR$/PortSystem/Source/objects/ShipPort.java" />
+        <option value="$PROJECT_DIR$/Stage 1/Part 1. Math function/MathFunction.java" />
         <option value="$PROJECT_DIR$/Stage 1/Tests/TestForMathFunction.java" />
       </list>
     </option>
@@ -349,32 +346,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TestForMathFunction.functionTest">
+  <component name="RunManager" selected="JUnit.TestForMathFunction">
     <configuration default="true" type="Applet" factoryName="Applet">
       <module />
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
       <option name="HEIGHT" value="300" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-    </configuration>
-    <configuration name="Base" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="person.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="person.Base" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="MinusLife" />
-      <envs />
     </configuration>
     <configuration name="MainAuthentication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
@@ -423,19 +401,25 @@
       <module name="" />
       <envs />
     </configuration>
-    <configuration name="sdf" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="TestForMathFunction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="sdf" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <module name="MinusLife" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestForMathFunction" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="MinusLife" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
       <envs />
+      <patterns />
     </configuration>
     <configuration name="TestForMathFunction.functionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
@@ -445,6 +429,26 @@
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="TestForMathFunction" />
       <option name="METHOD_NAME" value="functionTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration name="TestForMathFunction.functionTest1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="MinusLife" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestForMathFunction" />
+      <option name="METHOD_NAME" value="functionTest1" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -518,19 +522,19 @@
       <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Application.sdf" />
-      <item index="1" class="java.lang.String" itemvalue="Application.MainAuthentication" />
-      <item index="2" class="java.lang.String" itemvalue="Application.Base" />
-      <item index="3" class="java.lang.String" itemvalue="Application.MathFunction" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.TestForMathFunction.functionTest" />
+      <item index="0" class="java.lang.String" itemvalue="Application.MainAuthentication" />
+      <item index="1" class="java.lang.String" itemvalue="Application.MathFunction" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.TestForMathFunction.functionTest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.TestForMathFunction.functionTest1" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.TestForMathFunction" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.TestForMathFunction.functionTest" />
-        <item index="1" class="java.lang.String" itemvalue="Application.MathFunction" />
-        <item index="2" class="java.lang.String" itemvalue="Application.MainAuthentication" />
-        <item index="3" class="java.lang.String" itemvalue="Application.Base" />
-        <item index="4" class="java.lang.String" itemvalue="Application.sdf" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.TestForMathFunction" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.TestForMathFunction.functionTest1" />
+        <item index="2" class="java.lang.String" itemvalue="Application.MathFunction" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.TestForMathFunction.functionTest" />
+        <item index="4" class="java.lang.String" itemvalue="Application.MainAuthentication" />
       </list>
     </recent_temporary>
   </component>
@@ -559,16 +563,13 @@
       <workItem from="1519896986030" duration="50081000" />
       <workItem from="1520197443894" duration="590000" />
       <workItem from="1520770106784" duration="730000" />
-      <workItem from="1521103620011" duration="6029000" />
+      <workItem from="1521103620011" duration="6925000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestForMathFunction_functionTest - 2018.03.16 at 14h 16m 53s.xml">
-      <configuration name="TestForMathFunction.functionTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestForMathFunction_functionTest - 2018.03.16 at 14h 17m 13s.xml">
-      <configuration name="TestForMathFunction.functionTest" configurationId="JUnit" />
+    <history-entry file="TestForMathFunction - 2018.03.16 at 14h 38m 03s.xml">
+      <configuration name="TestForMathFunction" configurationId="JUnit" />
     </history-entry>
     <history-entry file="TestForMathFunction_functionTest - 2018.03.16 at 14h 17m 37s.xml">
       <configuration name="TestForMathFunction.functionTest" configurationId="JUnit" />
@@ -588,9 +589,18 @@
     <history-entry file="TestForMathFunction_functionTest - 2018.03.16 at 14h 19m 05s.xml">
       <configuration name="TestForMathFunction.functionTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="TestForMathFunction_functionTest - 2018.03.16 at 14h 34m 55s.xml">
+      <configuration name="TestForMathFunction.functionTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestForMathFunction_functionTest - 2018.03.16 at 14h 36m 31s.xml">
+      <configuration name="TestForMathFunction.functionTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestForMathFunction_functionTest1 - 2018.03.16 at 14h 37m 55s.xml">
+      <configuration name="TestForMathFunction.functionTest1" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="127986000" />
+    <option name="totallyTimeSpent" value="128882000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1060" extended-state="6" />
@@ -699,13 +709,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="206">
           <caret line="367" column="0" lean-forward="false" selection-start-line="367" selection-start-column="0" selection-end-line="367" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Stage 1/Stage 1.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1032,14 +1035,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Stage 1/Part 1. Math function/MathFunction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="20" column="9" lean-forward="true" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Stage 1/Part 2. Cataloguer/Authentication/AuthModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
@@ -1048,12 +1043,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Stage 1/Part 1. Math function/MathFunction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="20" column="9" lean-forward="false" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Stage 1/Stage 1.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Stage 1/Tests/TestForMathFunction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="34" lean-forward="true" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+        <state relative-caret-position="207">
+          <caret line="11" column="16" lean-forward="false" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#215#216#0" expanded="true" />
+            <element signature="e#264#265#0" expanded="true" />
           </folding>
         </state>
       </provider>
