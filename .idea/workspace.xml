@@ -2,44 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8f7478b7-9a42-4db1-b126-d12d4a154750" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/PortSystem/PortSystem.iml" afterPath="$PROJECT_DIR$/PortSystem/PortSystem.iml" />
-      <change beforePath="$PROJECT_DIR$/PortSystem/Source/system/SystemMain.java" afterPath="$PROJECT_DIR$/PortSystem/Source/system/SystemMain.java" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/Part 2. Cataloguer/Authentication/AuthModel.java" afterPath="$PROJECT_DIR$/Stage 1/Part 2. Cataloguer/Authentication/AuthModel.java" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/Part 2. Cataloguer/Authentication/LoginController.java" afterPath="$PROJECT_DIR$/Stage 1/Part 2. Cataloguer/Authentication/LoginController.java" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/Part 2. Cataloguer/Authentication/MainAuthentication.java" afterPath="$PROJECT_DIR$/Stage 1/Part 2. Cataloguer/Authentication/MainAuthentication.java" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/Part 2. Cataloguer/Authentication/TestForAuthModel.java" afterPath="$PROJECT_DIR$/Stage 1/Part 2. Cataloguer/Authentication/TestForAuthModel.java" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/Part 2. Cataloguer/Catalog/Controller.java" afterPath="$PROJECT_DIR$/Stage 1/Part 2. Cataloguer/Catalog/Controller.java" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/Part 2. Cataloguer/Catalog/Model.java" afterPath="$PROJECT_DIR$/Stage 1/Part 2. Cataloguer/Catalog/Model.java" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/Part 2. Cataloguer/person/Administrator.java" afterPath="$PROJECT_DIR$/Stage 1/Part 2. Cataloguer/Persons/Administrator.java" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/Part 2. Cataloguer/person/Base.java" afterPath="$PROJECT_DIR$/Stage 1/Part 2. Cataloguer/Persons/Base.java" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/Part 2. Cataloguer/person/Guest.java" afterPath="$PROJECT_DIR$/Stage 1/Part 2. Cataloguer/Persons/Guest.java" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/Part 2. Cataloguer/person/Person.java" afterPath="$PROJECT_DIR$/Stage 1/Part 2. Cataloguer/Persons/Person.java" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/Part 2. Cataloguer/person/User.java" afterPath="$PROJECT_DIR$/Stage 1/Part 2. Cataloguer/Persons/User.java" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/Part 2. Cataloguer/person/testBase.java" afterPath="$PROJECT_DIR$/Stage 1/Part 2. Cataloguer/Persons/testBase.java" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Authentication/AuthModel.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Authentication/LoginController.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Authentication/MainAuthentication.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Authentication/TestForAuthModel.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Authentication/login.fxml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Catalog/CatalogMain.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Catalog/Controller.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Catalog/Item$FileSize.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Catalog/Item.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Catalog/Model$Data.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Catalog/Model.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/Catalog/sample.fxml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/MathFunction.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/TestForMathFunction.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/person/Administrator.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/person/Base.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/person/Guest.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/person/Person.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/person/User.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/MinusLife/person/testBase.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/Stage 1/CheckBoxDemo.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Stage 1/out/production/Stage 1/sample.fxml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/login.ser" afterPath="$PROJECT_DIR$/login.ser" />
+      <change beforePath="$PROJECT_DIR$/Stage 1/Stage 1.iml" afterPath="$PROJECT_DIR$/Stage 1/Stage 1.iml" />
+      <change beforePath="$PROJECT_DIR$/lib/hamcrest-core-1.3.jar" afterPath="$PROJECT_DIR$/lib/hamcrest-core-1.3.jar" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -57,25 +23,12 @@
         <entry file="file://$PROJECT_DIR$/Stage 1/Part 2. Cataloguer/Authentication/MainAuthentication.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-28">
-              <caret line="4" column="14" lean-forward="true" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+              <caret line="4" column="14" lean-forward="false" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#771#772#0" expanded="true" />
                 <element signature="e#799#800#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Stage 1/Part 2. Cataloguer/Authentication/login.fxml">
-          <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
-            <state />
-          </provider>
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="12" column="77" lean-forward="false" selection-start-line="12" selection-start-column="77" selection-end-line="12" selection-end-column="77" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -100,11 +53,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Person.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Person.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Stage 1/Part 2. Cataloguer/Persons/Person.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-805">
-              <caret line="13" column="40" lean-forward="false" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="40" />
+            <state relative-caret-position="329">
+              <caret line="73" column="12" lean-forward="false" selection-start-line="73" selection-start-column="12" selection-end-line="73" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -117,6 +70,24 @@
               <caret line="10" column="35" lean-forward="false" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Model.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Stage 1/Part 2. Cataloguer/Catalog/Model.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="210" column="5" lean-forward="false" selection-start-line="210" selection-start-column="5" selection-end-line="210" selection-end-column="5" />
+              <folding>
+                <element signature="docComment;method#addItems#0;class#Model#0" expanded="false" />
+                <element signature="method#addItems#0;class#Model#0" expanded="false" />
+                <element signature="method#saveItemsInFile#0;class#Model#0" expanded="false" />
+                <element signature="method#removeFile#0;class#Model#0" expanded="false" />
+                <element signature="method#findNeededItems#0;class#Model#0" expanded="false" />
+                <element signature="method#setFilter#0;class#Model#0" expanded="false" />
+                <element signature="method#createAlertError#0;class#Model#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -325,32 +296,6 @@
               <item name="MinusLife" type="b2602c69:ProjectViewProjectNode" />
               <item name="MinusLife" type="462c0819:PsiDirectoryNode" />
               <item name="Stage 1" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MinusLife" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MinusLife" type="462c0819:PsiDirectoryNode" />
-              <item name="Stage 1" type="462c0819:PsiDirectoryNode" />
-              <item name="Part 1. Math function" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MinusLife" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MinusLife" type="462c0819:PsiDirectoryNode" />
-              <item name="Stage 1" type="462c0819:PsiDirectoryNode" />
-              <item name="Part 2. Cataloguer" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MinusLife" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MinusLife" type="462c0819:PsiDirectoryNode" />
-              <item name="Stage 1" type="462c0819:PsiDirectoryNode" />
-              <item name="Part 2. Cataloguer" type="462c0819:PsiDirectoryNode" />
-              <item name="Authentication" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MinusLife" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MinusLife" type="462c0819:PsiDirectoryNode" />
-              <item name="Stage 1" type="462c0819:PsiDirectoryNode" />
-              <item name="Part 2. Cataloguer" type="462c0819:PsiDirectoryNode" />
-              <item name="Persons" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -628,7 +573,7 @@
       <workItem from="1519896986030" duration="50081000" />
       <workItem from="1520197443894" duration="590000" />
       <workItem from="1520770106784" duration="730000" />
-      <workItem from="1521103620011" duration="10379000" />
+      <workItem from="1521103620011" duration="10684000" />
     </task>
     <servers />
   </component>
@@ -665,11 +610,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="132336000" />
+    <option name="totallyTimeSpent" value="132641000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1060" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -684,7 +628,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -874,39 +818,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Stage 1/Part 2. Cataloguer/Catalog/Model.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="210" column="5" lean-forward="false" selection-start-line="210" selection-start-column="5" selection-end-line="210" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#2659#2660#0" expanded="false" />
-            <element signature="e#2689#2690#0" expanded="false" />
-            <element signature="e#3099#3100#0" expanded="false" />
-            <element signature="e#3128#3129#0" expanded="false" />
-            <element signature="e#3770#3771#0" expanded="false" />
-            <element signature="e#3808#3809#0" expanded="false" />
-            <element signature="e#4328#4329#0" expanded="false" />
-            <element signature="e#4365#4366#0" expanded="false" />
-            <element signature="e#4548#4549#0" expanded="false" />
-            <element signature="e#4600#4601#0" expanded="false" />
-            <element signature="e#5691#5692#0" expanded="false" />
-            <element signature="e#5732#5733#0" expanded="false" />
-            <element signature="e#6591#6592#0" expanded="false" />
-            <element signature="e#6641#6642#0" expanded="false" />
-            <element signature="docComment;method#addItems#0;class#Model#0" expanded="false" />
-            <element signature="method#addItems#0;class#Model#0" expanded="false" />
-            <element signature="method#saveItemsInFile#0;class#Model#0" expanded="false" />
-            <element signature="method#removeFile#0;class#Model#0" expanded="false" />
-            <element signature="method#findNeededItems#0;class#Model#0" expanded="false" />
-            <element signature="e#9058#9059#0" expanded="false" />
-            <element signature="e#9109#9110#0" expanded="false" />
-            <element signature="method#setFilter#0;class#Model#0" expanded="false" />
-            <element signature="method#createAlertError#0;class#Model#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Stage 1/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
@@ -1048,7 +959,7 @@
         <state relative-caret-position="126">
           <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1116,7 +1027,7 @@
     <entry file="file://$PROJECT_DIR$/Stage 1/Part 2. Cataloguer/Authentication/MainAuthentication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-28">
-          <caret line="4" column="14" lean-forward="true" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+          <caret line="4" column="14" lean-forward="false" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#771#772#0" expanded="true" />
@@ -1145,9 +1056,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Stage 1/Part 2. Cataloguer/Persons/Person.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-805">
-          <caret line="13" column="40" lean-forward="false" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="40" />
+        <state relative-caret-position="329">
+          <caret line="73" column="12" lean-forward="false" selection-start-line="73" selection-start-column="12" selection-end-line="73" selection-end-column="12" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Stage 1/Part 2. Cataloguer/Catalog/Model.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="210" column="5" lean-forward="false" selection-start-line="210" selection-start-column="5" selection-end-line="210" selection-end-column="5" />
+          <folding>
+            <element signature="docComment;method#addItems#0;class#Model#0" expanded="false" />
+            <element signature="method#addItems#0;class#Model#0" expanded="false" />
+            <element signature="method#saveItemsInFile#0;class#Model#0" expanded="false" />
+            <element signature="method#removeFile#0;class#Model#0" expanded="false" />
+            <element signature="method#findNeededItems#0;class#Model#0" expanded="false" />
+            <element signature="method#setFilter#0;class#Model#0" expanded="false" />
+            <element signature="method#createAlertError#0;class#Model#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1204,7 +1131,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>MinusLife</last-edited>
+          <last-edited>Stage 1</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
