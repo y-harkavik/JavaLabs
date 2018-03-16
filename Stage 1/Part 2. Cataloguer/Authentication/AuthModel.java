@@ -1,20 +1,8 @@
 package Authentication;
 
-import person.Administrator;
-import person.Base;
-import person.Person;
-import person.User;
 
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.PBEKeySpec;
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
-import java.security.spec.KeySpec;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Base64;
+import person.Base;
+
 
 /**
  * Class that contains business logic of Authentication window.
