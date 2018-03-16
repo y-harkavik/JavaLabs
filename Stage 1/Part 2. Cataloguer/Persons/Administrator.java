@@ -1,6 +1,4 @@
-package person;
-
-import Authentication.AuthModel;
+package Persons;
 
 public class Administrator extends Person {
 

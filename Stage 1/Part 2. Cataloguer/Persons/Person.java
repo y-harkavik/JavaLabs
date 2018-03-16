@@ -1,11 +1,7 @@
-package person;
+package Persons;
 
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.PBEKeySpec;
 import java.io.Serializable;
-import java.security.SecureRandom;
-import java.security.spec.KeySpec;
-import java.util.Base64;
+
 /**
  *Abstract class define common behavior for Administrator and User.
  * @see User

@@ -1,7 +1,7 @@
 package Authentication;
 
 
-import person.Base;
+import Persons.Base;
 
 
 /**

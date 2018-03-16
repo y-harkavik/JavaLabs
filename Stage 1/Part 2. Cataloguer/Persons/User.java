@@ -1,9 +1,6 @@
-package person;
+package Persons;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 public class User extends Person {
 

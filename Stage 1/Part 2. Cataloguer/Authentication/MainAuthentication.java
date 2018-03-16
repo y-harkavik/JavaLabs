@@ -14,7 +14,6 @@ import javafx.stage.Stage;
 public class MainAuthentication extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        //Parent root = FXMLLoader.load(getClass().getResource("Authentication/login.fxml"));
         FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);

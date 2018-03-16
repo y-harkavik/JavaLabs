@@ -1,4 +1,4 @@
-package person;
+package Persons;
 
 import org.junit.Assert;
 import org.junit.BeforeClass;

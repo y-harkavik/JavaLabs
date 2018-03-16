@@ -1,4 +1,4 @@
 package system;
 
-public class SystemMain {
+public class SystemMain  {
 }

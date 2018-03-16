@@ -1,4 +1,4 @@
-package person;
+package Persons;
 
 import Catalog.Model;
 

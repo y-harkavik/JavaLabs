@@ -3,9 +3,9 @@ package Catalog;
 import javafx.scene.control.Alert;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import person.Base;
-import person.Person;
-import person.User;
+import Persons.Base;
+import Persons.Person;
+import Persons.User;
 
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
@@ -64,7 +64,7 @@ public class Model {
      * @return Type Person. Current user.
      * @see Person
      * @see User
-     * @see person.Administrator
+     * @see Persons.Administrator
      */
     public Person getAccount() {
         return account;

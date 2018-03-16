@@ -2,7 +2,6 @@ package Authentication;
 
 import Catalog.Controller;
 import Catalog.Model;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,13 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import person.Base;
-import person.Guest;
-import person.Person;
-
-import java.io.FileInputStream;
-import java.io.ObjectInputStream;
-import java.util.ArrayList;
+import Persons.Base;
 
 /**
  * Class controller for Authentication window.
