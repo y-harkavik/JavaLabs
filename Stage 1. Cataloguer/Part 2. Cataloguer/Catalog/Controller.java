@@ -70,7 +70,7 @@ public class Controller {
             clearRows();
             tableView.getItems().addAll(model.findNeededItems(newValue, tableState));
         }));
-        readItemsFromFile();
+        model.getItemsFromFile();
         setRows();
     }
 
@@ -85,17 +85,6 @@ public class Controller {
             model.createAlertError(Model.PATH_ERROR);
             model.removeFile(openedItem);
             setRows();
-        }
-    }
-
-    /**
-     * This method read items from file for catalog.
-     */
-    private void readItemsFromFile() {
-        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("structure.ser"))) {
-            model.setList((HashMap<String, ArrayList<Item>>) objectInputStream.readObject());
-        } catch (Exception e) {
-            model.createAlertError(Model.READ_ERROR);
         }
     }
 

@@ -19,7 +19,6 @@ public class Item implements Serializable {
     private transient SimpleStringProperty itemType = new SimpleStringProperty("");
     /** SimpleStringProperty that contains type of file.*/
     private transient SimpleStringProperty fileType = new SimpleStringProperty("");
-    //private transient SimpleStringProperty preview = new SimpleStringProperty("");
     /** Variable of FileSize class, that works with size of file.*/
     private FileSize fileSize = new FileSize();
     /**
@@ -104,7 +103,6 @@ public class Item implements Serializable {
         stream.writeUTF(getDate());
         stream.writeUTF(getItemType());
         stream.writeUTF(getFileType());
-        // stream.writeUTF(getPreview());
     }
 
     /**
@@ -119,17 +117,7 @@ public class Item implements Serializable {
         date = new SimpleStringProperty(stream.readUTF());
         itemType = new SimpleStringProperty(stream.readUTF());
         fileType = new SimpleStringProperty(stream.readUTF());
-        // preview = new SimpleStringProperty(stream.readUTF());
     }
-
-    /*public String getPreview() {
-        return preview.get();
-    }*/
-
-    /*public void setPreview(String preview) {
-        this.preview.set(preview);
-    }*/
-
     /**
      * Used to get file type.
      * @return String of file type.

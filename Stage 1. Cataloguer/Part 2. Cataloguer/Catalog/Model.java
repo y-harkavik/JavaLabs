@@ -7,10 +7,8 @@ import Persons.Base;
 import Persons.Person;
 import Persons.User;
 
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.lang.String;
-import java.io.File;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -245,7 +243,7 @@ public class Model {
      * Save list of items in file.
      */
     private void saveItemsInFile() {
-        try (ObjectOutputStream saveFilesStream = new ObjectOutputStream(new FileOutputStream("structure.ser"))) {
+        try (ObjectOutputStream saveFilesStream = new ObjectOutputStream(new FileOutputStream("..\\structure.ser"))) {
             saveFilesStream.writeObject(data.getAllItems());
         } catch (Exception e) {
             createAlertError(SAVE_ERROR);
@@ -253,6 +251,13 @@ public class Model {
         }
     }
 
+    void getItemsFromFile() {
+        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("..\\structure.ser"))) {
+            setList((HashMap<String, ArrayList<Item>>) objectInputStream.readObject());
+        } catch (Exception e) {
+            createAlertError(Model.READ_ERROR);
+        }
+    }
     /**
      * Remove file in list.
      * @param removedItem Removed file.
