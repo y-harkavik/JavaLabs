@@ -23,10 +23,15 @@ public class PortSystemGUI extends JFrame {
     JScrollPane portTreeJScrollPane;
     JScrollPane shipsTableJScrollPane;
     JScrollPane logTextAreaJScrollPane;
+    JScrollPane queueTableJScrollPane;
     JTable shipsTable;
+    JTable queueTable;
     JTextArea logTextArea;
     JTree portTree;
-    ShipTableModel tableModel;
+
+    ShipTableModel portTableModel;
+    ShipTableModel queueTableModel;
+
     unloadingShipProgressBar progressBarRenderer;
 
     /**
@@ -44,26 +49,26 @@ public class PortSystemGUI extends JFrame {
         setResizable(false);
 
         GroupLayout groupLayout = new GroupLayout(mainJPanel);
-
         mainJPanel.setLayout(groupLayout);
-
         groupLayout.setHorizontalGroup(
                 groupLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(groupLayout.createSequentialGroup()
                                 .addComponent(portTreeJScrollPane, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(shipsTableJScrollPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                .addGroup(groupLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                        .addComponent(shipsTableJScrollPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(queueTableJScrollPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                                 .addComponent(logTextAreaJScrollPane, GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE))
         );
-
         groupLayout.setVerticalGroup(
                 groupLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addComponent(portTreeJScrollPane)
-                        .addComponent(shipsTableJScrollPane, GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE)
+                        .addComponent(portTreeJScrollPane, GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
+                        .addGroup(groupLayout.createSequentialGroup()
+                                .addComponent(shipsTableJScrollPane, GroupLayout.PREFERRED_SIZE, 300, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(queueTableJScrollPane, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addComponent(logTextAreaJScrollPane)
         );
 
         GroupLayout layout = new GroupLayout(getContentPane());
-
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -71,8 +76,9 @@ public class PortSystemGUI extends JFrame {
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addComponent(mainJPanel, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+                        .addGroup(layout.createSequentialGroup()
+                                .addComponent(mainJPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        ));
 
         setJMenuBar(appMenuBar);
 
@@ -80,7 +86,8 @@ public class PortSystemGUI extends JFrame {
     }
 
     private void initComponents() {
-        tableModel = new ShipTableModel();
+        portTableModel = new ShipTableModel();
+        queueTableModel = new ShipTableModel();
 
         progressBarRenderer = new unloadingShipProgressBar(0, 100);
 
@@ -89,8 +96,11 @@ public class PortSystemGUI extends JFrame {
         portTree = new JTree();
         portTreeJScrollPane = new JScrollPane(portTree);
 
-        shipsTable = new JTable(tableModel);
+        shipsTable = new JTable(portTableModel);
         shipsTableJScrollPane = new JScrollPane(shipsTable);
+
+        queueTable = new JTable(queueTableModel);
+        queueTableJScrollPane = new JScrollPane(queueTable);
 
         logTextArea = new JTextArea();
         logTextAreaJScrollPane = new JScrollPane(logTextArea);
@@ -130,7 +140,7 @@ public class PortSystemGUI extends JFrame {
         final Vector data = new Vector();
 
         public void addAll(List<Ship> shipsList) {
-            for(Ship ship: shipsList) {
+            for (Ship ship : shipsList) {
                 addShip(ship);
             }
         }
