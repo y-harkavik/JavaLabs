@@ -12,27 +12,28 @@ import java.awt.event.KeyEvent;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Vector;
+import java.util.List;
 
-public class MainWindow extends JFrame {
+public class PortSystemGUI extends JFrame {
 
-    private JMenu appMenu;
-    private JMenuBar appMenuBar;
-    private JMenuItem addShip;
-    private JPanel mainJPanel;
-    private JScrollPane portTreeJScrollPane;
-    private JScrollPane shipsTableJScrollPane;
-    private JScrollPane logTextAreaJScrollPane;
-    private JTable shipsTable;
-    private JTextArea logTextArea;
-    private JTree portTree;
-    private ShipTableModel tableModel;
-    private unloadingShipProgressBar progressBarRenderer;
+    JMenu appMenu;
+    JMenuBar appMenuBar;
+    JMenuItem addShip;
+    JPanel mainJPanel;
+    JScrollPane portTreeJScrollPane;
+    JScrollPane shipsTableJScrollPane;
+    JScrollPane logTextAreaJScrollPane;
+    JTable shipsTable;
+    JTextArea logTextArea;
+    JTree portTree;
+    ShipTableModel tableModel;
+    unloadingShipProgressBar progressBarRenderer;
 
     /**
-     * Creates new form MainWindow
+     * Creates new form PortSystemGUI
      */
 
-    public MainWindow() {
+    public PortSystemGUI() {
         initComponents();
         setComponents();
     }
@@ -79,7 +80,6 @@ public class MainWindow extends JFrame {
     }
 
     private void initComponents() {
-
         tableModel = new ShipTableModel();
 
         progressBarRenderer = new unloadingShipProgressBar(0, 100);
@@ -100,7 +100,7 @@ public class MainWindow extends JFrame {
         addShip = new JMenuItem();
 
         progressBarRenderer.setStringPainted(true);
-        
+
         shipsTable.setDefaultRenderer(JProgressBar.class, progressBarRenderer);
 
         shipsTable.setRowHeight((int) progressBarRenderer.getPreferredSize().getHeight());
@@ -120,7 +120,7 @@ public class MainWindow extends JFrame {
     public static void main(String args[]) {
 
         EventQueue.invokeLater(() -> {
-            new MainWindow().setVisible(true);
+            new PortSystemGUI().setVisible(true);
         });
     }
 
@@ -129,9 +129,18 @@ public class MainWindow extends JFrame {
         final Class[] columnClasses = {String.class, String.class, Integer.class, JProgressBar.class};
         final Vector data = new Vector();
 
+        public void addAll(List<Ship> shipsList) {
+            for(Ship ship: shipsList) {
+                addShip(ship);
+            }
+        }
+
+        public void clearTable() {
+            data.removeAllElements();
+        }
+
         public void addShip(Ship addingShip) {
             data.addElement(addingShip);
-
             addingShip.addObserver(this);
             fireTableRowsInserted(data.size() - 1, data.size() - 1);
         }
