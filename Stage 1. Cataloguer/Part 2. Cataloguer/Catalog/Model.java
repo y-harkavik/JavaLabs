@@ -243,7 +243,7 @@ public class Model {
      * Save list of items in file.
      */
     private void saveItemsInFile() {
-        try (ObjectOutputStream saveFilesStream = new ObjectOutputStream(new FileOutputStream("..\\structure.ser"))) {
+        try (ObjectOutputStream saveFilesStream = new ObjectOutputStream(new FileOutputStream("structure.ser"))) {
             saveFilesStream.writeObject(data.getAllItems());
         } catch (Exception e) {
             createAlertError(SAVE_ERROR);
@@ -252,7 +252,7 @@ public class Model {
     }
 
     void getItemsFromFile() {
-        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("..\\structure.ser"))) {
+        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("structure.ser"))) {
             setList((HashMap<String, ArrayList<Item>>) objectInputStream.readObject());
         } catch (Exception e) {
             createAlertError(Model.READ_ERROR);

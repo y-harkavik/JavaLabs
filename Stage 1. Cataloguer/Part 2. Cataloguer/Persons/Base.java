@@ -114,7 +114,7 @@ public class Base {
     }
 
     public void saveBase() {
-        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("..\\login.ser"))) {
+        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("login.ser"))) {
             objectOutputStream.writeObject(listOfAccounts);
         } catch (Exception e) {
             e.printStackTrace();
@@ -122,7 +122,7 @@ public class Base {
     }
 
     public void getBaseFromFile() {
-        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("..\\login.ser"))) {
+        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("login.ser"))) {
             listOfAccounts = ((ArrayList<Person>) objectInputStream.readObject());
         } catch (Exception e) {
             Catalog.Model.createAlertError(Model.READ_ERROR);
