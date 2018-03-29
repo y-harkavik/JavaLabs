@@ -6,6 +6,9 @@ import objects.Ship;
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeSelectionModel;
 import java.awt.*;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
@@ -41,6 +44,7 @@ public class PortSystemGUI extends JFrame {
     public PortSystemGUI() {
         initComponents();
         setComponents();
+        createTree();
     }
 
     private void setComponents() {
@@ -78,7 +82,7 @@ public class PortSystemGUI extends JFrame {
                 layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addComponent(mainJPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        ));
+                        ));
 
         setJMenuBar(appMenuBar);
 
@@ -125,6 +129,46 @@ public class PortSystemGUI extends JFrame {
         addShip.setText("Add ship");
         appMenu.add(addShip);
         appMenuBar.add(appMenu);
+    }
+
+    private void createTree() {
+        portTree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+
+        DefaultMutableTreeNode rootNode = new DefaultMutableTreeNode("Ports");
+
+        DefaultMutableTreeNode firstPort = new DefaultMutableTreeNode("Port 1");
+        DefaultMutableTreeNode secondPort = new DefaultMutableTreeNode("Port 2");
+        DefaultMutableTreeNode thirdPort = new DefaultMutableTreeNode("Port 3");
+
+        DefaultMutableTreeNode firstPier = new DefaultMutableTreeNode("Pier 1");
+        DefaultMutableTreeNode secondPier = new DefaultMutableTreeNode("Pier 2");
+        DefaultMutableTreeNode thirdPier = new DefaultMutableTreeNode("Pier 3");
+
+        DefaultMutableTreeNode fourthPier = new DefaultMutableTreeNode("Pier 1");
+        DefaultMutableTreeNode fifthPier = new DefaultMutableTreeNode("Pier 2");
+
+        DefaultMutableTreeNode sixthPier = new DefaultMutableTreeNode("Pier 1");
+
+
+        rootNode.add(firstPort);
+        rootNode.add(secondPort);
+        rootNode.add(thirdPort);
+
+        firstPort.add(firstPier);
+        firstPort.add(secondPier);
+        firstPort.add(thirdPier);
+
+        secondPort.add(fourthPier);
+        secondPort.add(fifthPier);
+
+        thirdPort.add(sixthPier);
+
+        portTree.addTreeSelectionListener((event)-> {
+           String a = event.getNewLeadSelectionPath().getLastPathComponent().toString();
+            System.out.println(a);
+            System.out.println(event.getNewLeadSelectionPath().getParentPath().getLastPathComponent().toString());
+        });
+        ((DefaultTreeModel)portTree.getModel()).setRoot(rootNode);
     }
 
     public static void main(String args[]) {

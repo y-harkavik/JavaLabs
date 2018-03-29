@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8f7478b7-9a42-4db1-b126-d12d4a154750" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/Stage 2. PortSystem/Source/GUI/PortSystemGUI.java" afterPath="$PROJECT_DIR$/Stage 2. PortSystem/Source/GUI/PortSystemGUI.java" />
-      <change beforePath="$PROJECT_DIR$/Stage 2. PortSystem/Source/GUI/PortSystemGUIController.java" afterPath="$PROJECT_DIR$/Stage 2. PortSystem/Source/GUI/PortSystemGUIController.java" />
-      <change beforePath="$PROJECT_DIR$/Stage 2. PortSystem/Source/objects/ShipPort.java" afterPath="$PROJECT_DIR$/Stage 2. PortSystem/Source/objects/ShipPort.java" />
+      <change beforePath="$PROJECT_DIR$/out/production/Stage 2. PortSystem/objects/ShipPort.class" afterPath="$PROJECT_DIR$/out/production/Stage 2. PortSystem/objects/ShipPort.class" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -62,29 +61,30 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PortSystemGUI.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PortSystemGUI.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Stage 2. PortSystem/Source/GUI/PortSystemGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1298">
-              <caret line="80" column="10" lean-forward="false" selection-start-line="80" selection-start-column="10" selection-end-line="80" selection-end-column="10" />
+            <state relative-caret-position="269">
+              <caret line="168" column="112" lean-forward="false" selection-start-line="168" selection-start-column="112" selection-end-line="168" selection-end-column="112" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#PortSystemGUI#0;class#PortSystemGUI#0" expanded="false" />
-                <element signature="e#5487#5488#0" expanded="true" />
-                <element signature="e#5535#5536#0" expanded="true" />
-                <element signature="e#6005#6006#0" expanded="true" />
-                <element signature="e#6047#6048#0" expanded="true" />
-                <element signature="e#6104#6105#0" expanded="true" />
-                <element signature="e#6149#6150#0" expanded="true" />
-                <element signature="e#6213#6214#0" expanded="true" />
-                <element signature="e#6260#6261#0" expanded="true" />
-                <element signature="e#6326#6327#0" expanded="true" />
-                <element signature="e#6369#6370#0" expanded="true" />
-                <element signature="e#6900#6901#0" expanded="true" />
-                <element signature="e#6936#6937#0" expanded="true" />
+                <element signature="method#setComponents#0;class#PortSystemGUI#0" expanded="false" />
+                <element signature="method#initComponents#0;class#PortSystemGUI#0" expanded="false" />
+                <element signature="e#7297#7298#0" expanded="true" />
+                <element signature="e#7345#7346#0" expanded="true" />
+                <element signature="e#7815#7816#0" expanded="true" />
+                <element signature="e#7857#7858#0" expanded="true" />
+                <element signature="e#7914#7915#0" expanded="true" />
+                <element signature="e#7959#7960#0" expanded="true" />
+                <element signature="e#8023#8024#0" expanded="true" />
+                <element signature="e#8070#8071#0" expanded="true" />
+                <element signature="e#8136#8137#0" expanded="true" />
+                <element signature="e#8179#8180#0" expanded="true" />
+                <element signature="e#8710#8711#0" expanded="true" />
+                <element signature="e#8746#8747#0" expanded="true" />
                 <element signature="class#unloadingShipProgressBar#0;class#PortSystemGUI#0" expanded="false" />
-                <element signature="e#7091#7092#0" expanded="true" />
-                <element signature="e#7130#7131#0" expanded="true" />
+                <element signature="e#8901#8902#0" expanded="true" />
+                <element signature="e#8940#8941#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -113,7 +113,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ShipPort.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ShipPort.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Stage 2. PortSystem/Source/objects/ShipPort.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="231">
@@ -286,8 +286,8 @@
         <option value="$PROJECT_DIR$/Stage 2. PortSystem/Source/GUI/WindowApp.java" />
         <option value="$PROJECT_DIR$/Stage 2. PortSystem/Source/GUI/Main.java" />
         <option value="$PROJECT_DIR$/Stage 2. PortSystem/Source/GUI/PortSystemGUIController.java" />
-        <option value="$PROJECT_DIR$/Stage 2. PortSystem/Source/GUI/PortSystemGUI.java" />
         <option value="$PROJECT_DIR$/Stage 2. PortSystem/Source/objects/ShipPort.java" />
+        <option value="$PROJECT_DIR$/Stage 2. PortSystem/Source/GUI/PortSystemGUI.java" />
       </list>
     </option>
   </component>
@@ -672,7 +672,7 @@
       <workItem from="1521280345100" duration="5261000" />
       <workItem from="1521326176071" duration="975000" />
       <workItem from="1522219946319" duration="2835000" />
-      <workItem from="1522309158283" duration="15053000" />
+      <workItem from="1522309158283" duration="18618000" />
     </task>
     <servers />
   </component>
@@ -709,10 +709,11 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="160275000" />
+    <option name="totallyTimeSpent" value="163840000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1060" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -727,7 +728,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31952018" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.184375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.184375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293348" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -752,7 +753,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="137" />
+      <option name="time" value="138" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -1093,32 +1094,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Stage 2. PortSystem/Source/GUI/PortSystemGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1298">
-          <caret line="80" column="10" lean-forward="false" selection-start-line="80" selection-start-column="10" selection-end-line="80" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#PortSystemGUI#0;class#PortSystemGUI#0" expanded="false" />
-            <element signature="e#5487#5488#0" expanded="true" />
-            <element signature="e#5535#5536#0" expanded="true" />
-            <element signature="e#6005#6006#0" expanded="true" />
-            <element signature="e#6047#6048#0" expanded="true" />
-            <element signature="e#6104#6105#0" expanded="true" />
-            <element signature="e#6149#6150#0" expanded="true" />
-            <element signature="e#6213#6214#0" expanded="true" />
-            <element signature="e#6260#6261#0" expanded="true" />
-            <element signature="e#6326#6327#0" expanded="true" />
-            <element signature="e#6369#6370#0" expanded="true" />
-            <element signature="e#6900#6901#0" expanded="true" />
-            <element signature="e#6936#6937#0" expanded="true" />
-            <element signature="class#unloadingShipProgressBar#0;class#PortSystemGUI#0" expanded="false" />
-            <element signature="e#7091#7092#0" expanded="true" />
-            <element signature="e#7130#7131#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Stage 2. PortSystem/Source/objects/Pier.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -1149,6 +1124,33 @@
           <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Stage 2. PortSystem/Source/GUI/PortSystemGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="168" column="112" lean-forward="false" selection-start-line="168" selection-start-column="112" selection-end-line="168" selection-end-column="112" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#setComponents#0;class#PortSystemGUI#0" expanded="false" />
+            <element signature="method#initComponents#0;class#PortSystemGUI#0" expanded="false" />
+            <element signature="e#7297#7298#0" expanded="true" />
+            <element signature="e#7345#7346#0" expanded="true" />
+            <element signature="e#7815#7816#0" expanded="true" />
+            <element signature="e#7857#7858#0" expanded="true" />
+            <element signature="e#7914#7915#0" expanded="true" />
+            <element signature="e#7959#7960#0" expanded="true" />
+            <element signature="e#8023#8024#0" expanded="true" />
+            <element signature="e#8070#8071#0" expanded="true" />
+            <element signature="e#8136#8137#0" expanded="true" />
+            <element signature="e#8179#8180#0" expanded="true" />
+            <element signature="e#8710#8711#0" expanded="true" />
+            <element signature="e#8746#8747#0" expanded="true" />
+            <element signature="class#unloadingShipProgressBar#0;class#PortSystemGUI#0" expanded="false" />
+            <element signature="e#8901#8902#0" expanded="true" />
+            <element signature="e#8940#8941#0" expanded="true" />
           </folding>
         </state>
       </provider>
