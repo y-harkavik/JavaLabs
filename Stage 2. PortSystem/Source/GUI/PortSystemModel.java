@@ -10,7 +10,6 @@ public class PortSystemModel {
     private Map<String, ShipPort> shipPorts;
 
     public PortSystemModel() {
-        //shipPorts = new ArrayList<>(Arrays.asList(new ShipPort("1",3),new ShipPort("2",2),new ShipPort("3",1)));
         shipPorts = new LinkedHashMap<>();
     }
 
@@ -39,5 +38,13 @@ public class PortSystemModel {
 
     List<ShipPort> getListOfShipPorts() {
         return new ArrayList<ShipPort>(shipPorts.values());
+    }
+
+    List<Ship> getAllShipsList() {
+        List<Ship> shipList = new ArrayList<>();
+        for (ShipPort shipPort : getListOfShipPorts()) {
+           shipList.addAll(shipPort.getListOfShipsInPort());
+        }
+        return shipList;
     }
 }
