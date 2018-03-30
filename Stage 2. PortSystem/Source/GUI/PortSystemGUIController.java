@@ -3,6 +3,7 @@ package GUI;
 import objects.Ship;
 
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -11,17 +12,16 @@ import java.util.List;
 public class PortSystemGUIController {
     private static PortSystemGUI mainWindow;
     private PortSystemModel systemModel;
+    private int portCount;
 
     private void initializeListeners() {
         mainWindow.addShipItem.addActionListener((event) -> {
             List<Ship> ships = new ArrayList<Ship>(Arrays.asList(new Ship("1", "a", 100), new Ship("2", "b", 100), new Ship("3", "c", 100)));
-            mainWindow.portTableModel.addAll(ships);
+            systemModel.getListOfShipPorts().get(portCount-1).getListOfPiers().get(1).setListOfShips(ships);
         });
 
         mainWindow.addPortItem.addActionListener(e -> {
-            addPort("Port1", 3);
-            addPort("Port2", 2);
-            addPort("Port3", 1);
+            addPort("Port" + String.valueOf(portCount++ + 1), 3);
         });
 
         mainWindow.portTree.addTreeSelectionListener((event) -> {
@@ -29,29 +29,42 @@ public class PortSystemGUIController {
                 String child = event.getNewLeadSelectionPath().getLastPathComponent().toString();
                 String parent = event.getNewLeadSelectionPath().getParentPath().getLastPathComponent().toString();
 
-                setShipsInTable(parent, child);
+                checkSelectedElement(parent, child);
 
             } catch (NullPointerException ex) {
-
+                ex.printStackTrace();
+            } catch (Exception exc) {
+                exc.printStackTrace();
             }
         });
     }
 
-    private void setShipsInTable(String port, String pier) {
-        int portIndex = systemModel.checkPort(port);
+    private void checkSelectedElement(String port, String pier) {
+        boolean containsPort = systemModel.checkPort(port);
 
-        if (portIndex < 0) {
-            portIndex = systemModel.checkPort(pier);
-            if (portIndex > 0) {
-                
+        if (!containsPort) {
+            containsPort = systemModel.checkPort(pier);
+
+            if (containsPort) {
+                mainWindow.portTableModel.clearTable();
+                mainWindow.portTableModel.addAll(systemModel.getListOfShipsInPort(pier));
+                return;
+            } else {
+                return;
             }
         }
+        setShipsInTable(port, pier);
+    }
 
+    private void setShipsInTable(String port, String pier) {
+        mainWindow.portTableModel.clearTable();
+        mainWindow.portTableModel.addAll(systemModel.getListOfShipsInPier(port, pier));
     }
 
     void addPort(String name, int numOfPiers) {
         systemModel.addPortInList(name, numOfPiers);
         addPortInTree(name, numOfPiers);
+        ((DefaultTreeModel)mainWindow.portTree.getModel()).reload();
     }
 
     void addPortInTree(String name, int numOfPiers) {

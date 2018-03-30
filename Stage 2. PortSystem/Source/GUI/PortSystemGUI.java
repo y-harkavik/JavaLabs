@@ -142,37 +142,6 @@ public class PortSystemGUI extends JFrame {
         portTree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 
         rootNode = new DefaultMutableTreeNode("Ports");
-/*
-
-        DefaultMutableTreeNode firstPort = new DefaultMutableTreeNode("Port 1");
-        DefaultMutableTreeNode secondPort = new DefaultMutableTreeNode("Port 2");
-        DefaultMutableTreeNode thirdPort = new DefaultMutableTreeNode("Port 3");
-
-        DefaultMutableTreeNode firstPier = new DefaultMutableTreeNode("Pier 1");
-        DefaultMutableTreeNode secondPier = new DefaultMutableTreeNode("Pier 2");
-        DefaultMutableTreeNode thirdPier = new DefaultMutableTreeNode("Pier 3");
-
-        DefaultMutableTreeNode fourthPier = new DefaultMutableTreeNode("Pier 1");
-        DefaultMutableTreeNode fifthPier = new DefaultMutableTreeNode("Pier 2");
-
-        DefaultMutableTreeNode sixthPier = new DefaultMutableTreeNode("Pier 1");
-
-
-        rootNode.add(firstPort);
-        rootNode.add(secondPort);
-        rootNode.add(thirdPort);
-
-        firstPort.add(firstPier);
-        firstPort.add(secondPier);
-        firstPort.add(thirdPier);
-
-        secondPort.add(fourthPier);
-        secondPort.add(fifthPier);
-
-        thirdPort.add(sixthPier);
-*/
-
-
         ((DefaultTreeModel) portTree.getModel()).setRoot(rootNode);
     }
 
@@ -195,6 +164,7 @@ public class PortSystemGUI extends JFrame {
 
         public void clearTable() {
             data.removeAllElements();
+            fireTableDataChanged();
         }
 
         public void addShip(Ship addingShip) {
@@ -206,8 +176,9 @@ public class PortSystemGUI extends JFrame {
         @Override
         public void update(Observable o, Object arg) {
             int index = data.indexOf(o);
-            if (index != -1)
-                fireTableRowsUpdated(index, index);
+            //if (index != -1)
+                //fireTableRowsUpdated(index, index);
+            fireTableDataChanged();
         }
 
         @Override

@@ -1,9 +1,17 @@
 package objects;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Pier {
-    private ArrayList<Ship> listOfShips = new ArrayList<>();
+    private List<Ship> listOfShips = new ArrayList<>();
 
 
+    public List<Ship> getListOfShips() {
+        return listOfShips;
+    }
+
+    public void setListOfShips(List<Ship> listOfShips) {
+        this.listOfShips = listOfShips;
+    }
 }
