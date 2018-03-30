@@ -21,7 +21,8 @@ public class PortSystemGUI extends JFrame {
 
     JMenu appMenu;
     JMenuBar appMenuBar;
-    JMenuItem addShip;
+    JMenuItem addShipItem;
+    JMenuItem addPortItem;
     JPanel mainJPanel;
     JScrollPane portTreeJScrollPane;
     JScrollPane shipsTableJScrollPane;
@@ -111,7 +112,8 @@ public class PortSystemGUI extends JFrame {
 
         appMenuBar = new JMenuBar();
         appMenu = new JMenu();
-        addShip = new JMenuItem();
+        addShipItem = new JMenuItem();
+        addPortItem = new JMenuItem();
 
         progressBarRenderer.setStringPainted(true);
 
@@ -125,9 +127,12 @@ public class PortSystemGUI extends JFrame {
         logTextArea.setEditable(false);
 
         appMenu.setText("Settings");
-        addShip.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, InputEvent.ALT_MASK));
-        addShip.setText("Add ship");
-        appMenu.add(addShip);
+        addShipItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, InputEvent.ALT_MASK));
+        addShipItem.setText("Add ship");
+        addPortItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.ALT_MASK));
+        addPortItem.setText("Add port");
+        appMenu.add(addShipItem);
+        appMenu.add(addPortItem);
         appMenuBar.add(appMenu);
     }
 
@@ -168,7 +173,6 @@ public class PortSystemGUI extends JFrame {
     }
 
     public static void main(String args[]) {
-
         EventQueue.invokeLater(() -> {
             new PortSystemGUI().setVisible(true);
         });
