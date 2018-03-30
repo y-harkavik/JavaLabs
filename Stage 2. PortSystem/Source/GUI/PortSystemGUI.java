@@ -163,12 +163,8 @@ public class PortSystemGUI extends JFrame {
 
         thirdPort.add(sixthPier);
 
-        portTree.addTreeSelectionListener((event)-> {
-           String a = event.getNewLeadSelectionPath().getLastPathComponent().toString();
-            System.out.println(a);
-            System.out.println(event.getNewLeadSelectionPath().getParentPath().getLastPathComponent().toString());
-        });
-        ((DefaultTreeModel)portTree.getModel()).setRoot(rootNode);
+
+        ((DefaultTreeModel) portTree.getModel()).setRoot(rootNode);
     }
 
     public static void main(String args[]) {
