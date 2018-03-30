@@ -160,11 +160,11 @@ public class PortSystemGUI extends JFrame {
             for (Ship ship : shipsList) {
                 addShip(ship);
             }
+            fireTableDataChanged();
         }
 
         public void clearTable() {
             data.removeAllElements();
-            fireTableDataChanged();
         }
 
         public void addShip(Ship addingShip) {
@@ -177,7 +177,7 @@ public class PortSystemGUI extends JFrame {
         public void update(Observable o, Object arg) {
             int index = data.indexOf(o);
             //if (index != -1)
-                //fireTableRowsUpdated(index, index);
+            //fireTableRowsUpdated(index, index);
             fireTableDataChanged();
         }
 

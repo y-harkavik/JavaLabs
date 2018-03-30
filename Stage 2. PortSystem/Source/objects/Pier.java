@@ -12,6 +12,6 @@ public class Pier {
     }
 
     public void setListOfShips(List<Ship> listOfShips) {
-        this.listOfShips = listOfShips;
+        this.listOfShips.addAll(listOfShips);
     }
 }

@@ -17,7 +17,13 @@ public class PortSystemGUIController {
     private void initializeListeners() {
         mainWindow.addShipItem.addActionListener((event) -> {
             List<Ship> ships = new ArrayList<Ship>(Arrays.asList(new Ship("1", "a", 100), new Ship("2", "b", 100), new Ship("3", "c", 100)));
-            systemModel.getListOfShipPorts().get(portCount-1).getListOfPiers().get(1).setListOfShips(ships);
+            for (Ship ship : ships) {
+                ship.addObserver(mainWindow.portTableModel);
+            }
+            if (mainWindow.portTableModel.data.containsAll(systemModel.getListOfShipPorts().get(portCount - 1).getListOfPiers().get(1).getListOfShips())) {
+                mainWindow.portTableModel.data.addAll(ships);
+            }
+            systemModel.getListOfShipPorts().get(portCount - 1).getListOfPiers().get(1).setListOfShips(ships);
         });
 
         mainWindow.addPortItem.addActionListener(e -> {
@@ -64,7 +70,7 @@ public class PortSystemGUIController {
     void addPort(String name, int numOfPiers) {
         systemModel.addPortInList(name, numOfPiers);
         addPortInTree(name, numOfPiers);
-        ((DefaultTreeModel)mainWindow.portTree.getModel()).reload();
+        ((DefaultTreeModel) mainWindow.portTree.getModel()).reload();
     }
 
     void addPortInTree(String name, int numOfPiers) {
