@@ -8,6 +8,12 @@
       <change beforePath="$PROJECT_DIR$/Stage 2. PortSystem/Source/GUI/PortSystemGUI.java" afterPath="$PROJECT_DIR$/Stage 2. PortSystem/Source/GUI/PortSystemGUI.java" />
       <change beforePath="$PROJECT_DIR$/Stage 2. PortSystem/Source/GUI/PortSystemGUIController.java" afterPath="$PROJECT_DIR$/Stage 2. PortSystem/Source/GUI/PortSystemGUIController.java" />
       <change beforePath="$PROJECT_DIR$/Stage 2. PortSystem/Source/GUI/PortSystemModel.java" afterPath="$PROJECT_DIR$/Stage 2. PortSystem/Source/GUI/PortSystemModel.java" />
+      <change beforePath="$PROJECT_DIR$/Stage 2. PortSystem/Source/objects/Pier.java" afterPath="$PROJECT_DIR$/Stage 2. PortSystem/Source/objects/Pier.java" />
+      <change beforePath="$PROJECT_DIR$/Stage 2. PortSystem/Source/objects/ShipPort.java" afterPath="$PROJECT_DIR$/Stage 2. PortSystem/Source/objects/ShipPort.java" />
+      <change beforePath="$PROJECT_DIR$/out/production/Stage 2. PortSystem/GUI/PortSystemGUI$ShipTableModel.class" afterPath="$PROJECT_DIR$/out/production/Stage 2. PortSystem/GUI/PortSystemGUI$ShipTableModel.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Stage 2. PortSystem/GUI/PortSystemGUI$unloadingShipProgressBar.class" afterPath="$PROJECT_DIR$/out/production/Stage 2. PortSystem/GUI/PortSystemGUI$unloadingShipProgressBar.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Stage 2. PortSystem/GUI/PortSystemGUI.class" afterPath="$PROJECT_DIR$/out/production/Stage 2. PortSystem/GUI/PortSystemGUI.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/Stage 2. PortSystem/objects/ShipPort.class" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -55,28 +61,29 @@
       <file leaf-file-name="PortSystemGUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Stage 2. PortSystem/Source/GUI/PortSystemGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
-              <caret line="130" column="12" lean-forward="false" selection-start-line="130" selection-start-column="12" selection-end-line="130" selection-end-column="12" />
+            <state relative-caret-position="933">
+              <caret line="168" column="35" lean-forward="true" selection-start-line="168" selection-start-column="35" selection-end-line="168" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#setComponents#0;class#PortSystemGUI#0" expanded="false" />
                 <element signature="method#main#0;class#PortSystemGUI#0" expanded="false" />
-                <element signature="e#6699#6766#0" expanded="false" />
+                <element signature="e#6720#6787#0" expanded="false" />
                 <element signature="class#ShipTableModel#0;class#PortSystemGUI#0" expanded="false" />
-                <element signature="e#7250#7251#0" expanded="true" />
-                <element signature="e#7298#7299#0" expanded="true" />
-                <element signature="e#7768#7769#0" expanded="true" />
-                <element signature="e#7810#7811#0" expanded="true" />
-                <element signature="e#7867#7868#0" expanded="true" />
-                <element signature="e#7912#7913#0" expanded="true" />
-                <element signature="e#7976#7977#0" expanded="true" />
-                <element signature="e#8023#8024#0" expanded="true" />
-                <element signature="e#8089#8090#0" expanded="true" />
-                <element signature="e#8132#8133#0" expanded="true" />
-                <element signature="e#8663#8664#0" expanded="true" />
-                <element signature="e#8699#8700#0" expanded="true" />
+                <element signature="e#7271#7272#0" expanded="true" />
+                <element signature="e#7319#7320#0" expanded="true" />
+                <element signature="e#7789#7790#0" expanded="true" />
+                <element signature="e#7831#7832#0" expanded="true" />
+                <element signature="e#7888#7889#0" expanded="true" />
+                <element signature="e#7933#7934#0" expanded="true" />
+                <element signature="e#7997#7998#0" expanded="true" />
+                <element signature="e#8044#8045#0" expanded="true" />
+                <element signature="e#8110#8111#0" expanded="true" />
+                <element signature="e#8153#8154#0" expanded="true" />
+                <element signature="e#8684#8685#0" expanded="true" />
+                <element signature="e#8720#8721#0" expanded="true" />
                 <element signature="class#unloadingShipProgressBar#0;class#PortSystemGUI#0" expanded="false" />
-                <element signature="e#8854#8855#0" expanded="true" />
-                <element signature="e#8893#8894#0" expanded="true" />
+                <element signature="e#8875#8876#0" expanded="true" />
+                <element signature="e#8914#8915#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -85,13 +92,11 @@
       <file leaf-file-name="PortSystemGUIController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Stage 2. PortSystem/Source/GUI/PortSystemGUIController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="57" column="22" lean-forward="false" selection-start-line="57" selection-start-column="22" selection-end-line="57" selection-end-column="22" />
+            <state relative-caret-position="712">
+              <caret line="45" column="16" lean-forward="false" selection-start-line="45" selection-start-column="16" selection-end-line="45" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#387#393#0" expanded="true" />
-                <element signature="e#1498#1499#0" expanded="true" />
-                <element signature="e#1522#1523#0" expanded="true" />
+                <element signature="e#435#441#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -100,10 +105,12 @@
       <file leaf-file-name="PortSystemModel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Stage 2. PortSystem/Source/GUI/PortSystemModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+            <state relative-caret-position="441">
+              <caret line="21" column="5" lean-forward="false" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#485#486#0" expanded="true" />
+                <element signature="e#565#566#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -132,8 +139,8 @@
       <file leaf-file-name="ShipPort.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Stage 2. PortSystem/Source/objects/ShipPort.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="14" column="23" lean-forward="true" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
+            <state relative-caret-position="441">
+              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -144,8 +151,8 @@
       <file leaf-file-name="Pier.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Stage 2. PortSystem/Source/objects/Pier.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="5" column="60" lean-forward="false" selection-start-line="5" selection-start-column="60" selection-end-line="5" selection-end-column="60" />
+            <state relative-caret-position="147">
+              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -253,13 +260,13 @@
         <option value="$PROJECT_DIR$/Stage 2. PortSystem/Source/system/Kirill.form" />
         <option value="$PROJECT_DIR$/Stage 2. PortSystem/Source/objects/Ship.java" />
         <option value="$PROJECT_DIR$/Stage 2. PortSystem/Source/system/SystemMain.java" />
-        <option value="$PROJECT_DIR$/Stage 2. PortSystem/Source/objects/Pier.java" />
         <option value="$PROJECT_DIR$/Stage 2. PortSystem/Source/GUI/MainWindow.java" />
         <option value="$PROJECT_DIR$/Stage 2. PortSystem/Source/GUI/WindowController.java" />
         <option value="$PROJECT_DIR$/Stage 2. PortSystem/Source/GUI/WindowApp.java" />
         <option value="$PROJECT_DIR$/Stage 2. PortSystem/Source/GUI/Main.java" />
-        <option value="$PROJECT_DIR$/Stage 2. PortSystem/Source/objects/ShipPort.java" />
         <option value="$PROJECT_DIR$/Stage 2. PortSystem/Source/GUI/PortSystemGUI.java" />
+        <option value="$PROJECT_DIR$/Stage 2. PortSystem/Source/objects/ShipPort.java" />
+        <option value="$PROJECT_DIR$/Stage 2. PortSystem/Source/objects/Pier.java" />
         <option value="$PROJECT_DIR$/Stage 2. PortSystem/Source/GUI/PortSystemModel.java" />
         <option value="$PROJECT_DIR$/Stage 2. PortSystem/Source/GUI/PortSystemGUIController.java" />
       </list>
@@ -646,7 +653,7 @@
       <workItem from="1521280345100" duration="5261000" />
       <workItem from="1521326176071" duration="975000" />
       <workItem from="1522219946319" duration="2835000" />
-      <workItem from="1522309158283" duration="22077000" />
+      <workItem from="1522309158283" duration="26315000" />
     </task>
     <servers />
   </component>
@@ -683,7 +690,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="167299000" />
+    <option name="totallyTimeSpent" value="171537000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1060" extended-state="6" />
@@ -710,7 +717,7 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30861506" sideWeight="0.49583334" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30861506" sideWeight="0.49583334" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1032,11 +1039,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Stage 2. PortSystem/Source/objects/Pier.java">
+    <entry file="file://$PROJECT_DIR$/Stage 2. PortSystem/Source/system/SystemMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="60" lean-forward="false" selection-start-line="5" selection-start-column="60" selection-end-line="5" selection-end-column="60" />
+        <state relative-caret-position="42">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Stage 2. PortSystem/Source/system/SystemController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="29" lean-forward="false" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Stage 2. PortSystem/Source/GUI/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8" column="36" lean-forward="true" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Stage 2. PortSystem/Source/GUI/PortSystemGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="933">
+          <caret line="168" column="35" lean-forward="true" selection-start-line="168" selection-start-column="35" selection-end-line="168" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#setComponents#0;class#PortSystemGUI#0" expanded="false" />
+            <element signature="method#main#0;class#PortSystemGUI#0" expanded="false" />
+            <element signature="e#6720#6787#0" expanded="false" />
+            <element signature="class#ShipTableModel#0;class#PortSystemGUI#0" expanded="false" />
+            <element signature="e#7271#7272#0" expanded="true" />
+            <element signature="e#7319#7320#0" expanded="true" />
+            <element signature="e#7789#7790#0" expanded="true" />
+            <element signature="e#7831#7832#0" expanded="true" />
+            <element signature="e#7888#7889#0" expanded="true" />
+            <element signature="e#7933#7934#0" expanded="true" />
+            <element signature="e#7997#7998#0" expanded="true" />
+            <element signature="e#8044#8045#0" expanded="true" />
+            <element signature="e#8110#8111#0" expanded="true" />
+            <element signature="e#8153#8154#0" expanded="true" />
+            <element signature="e#8684#8685#0" expanded="true" />
+            <element signature="e#8720#8721#0" expanded="true" />
+            <element signature="class#unloadingShipProgressBar#0;class#PortSystemGUI#0" expanded="false" />
+            <element signature="e#8875#8876#0" expanded="true" />
+            <element signature="e#8914#8915#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Stage 2. PortSystem/Source/objects/ShipPort.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1056,87 +1118,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Stage 2. PortSystem/Source/GUI/Main.java">
+    <entry file="file://$PROJECT_DIR$/Stage 2. PortSystem/Source/objects/Pier.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="36" lean-forward="true" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
+        <state relative-caret-position="147">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Stage 2. PortSystem/Source/system/SystemMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Stage 2. PortSystem/Source/system/SystemController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="29" lean-forward="false" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Stage 2. PortSystem/Source/objects/ShipPort.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="14" column="23" lean-forward="true" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Stage 2. PortSystem/Source/GUI/PortSystemGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="130" column="12" lean-forward="false" selection-start-line="130" selection-start-column="12" selection-end-line="130" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#main#0;class#PortSystemGUI#0" expanded="false" />
-            <element signature="e#6699#6766#0" expanded="false" />
-            <element signature="class#ShipTableModel#0;class#PortSystemGUI#0" expanded="false" />
-            <element signature="e#7250#7251#0" expanded="true" />
-            <element signature="e#7298#7299#0" expanded="true" />
-            <element signature="e#7768#7769#0" expanded="true" />
-            <element signature="e#7810#7811#0" expanded="true" />
-            <element signature="e#7867#7868#0" expanded="true" />
-            <element signature="e#7912#7913#0" expanded="true" />
-            <element signature="e#7976#7977#0" expanded="true" />
-            <element signature="e#8023#8024#0" expanded="true" />
-            <element signature="e#8089#8090#0" expanded="true" />
-            <element signature="e#8132#8133#0" expanded="true" />
-            <element signature="e#8663#8664#0" expanded="true" />
-            <element signature="e#8699#8700#0" expanded="true" />
-            <element signature="class#unloadingShipProgressBar#0;class#PortSystemGUI#0" expanded="false" />
-            <element signature="e#8854#8855#0" expanded="true" />
-            <element signature="e#8893#8894#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Stage 2. PortSystem/Source/GUI/PortSystemModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        <state relative-caret-position="441">
+          <caret line="21" column="5" lean-forward="false" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#485#486#0" expanded="true" />
+            <element signature="e#565#566#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Stage 2. PortSystem/Source/GUI/PortSystemGUIController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="57" column="22" lean-forward="false" selection-start-line="57" selection-start-column="22" selection-end-line="57" selection-end-column="22" />
+        <state relative-caret-position="712">
+          <caret line="45" column="16" lean-forward="false" selection-start-line="45" selection-start-column="16" selection-end-line="45" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#387#393#0" expanded="true" />
-            <element signature="e#1498#1499#0" expanded="true" />
-            <element signature="e#1522#1523#0" expanded="true" />
+            <element signature="e#435#441#0" expanded="true" />
           </folding>
         </state>
       </provider>

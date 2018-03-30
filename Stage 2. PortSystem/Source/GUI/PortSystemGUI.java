@@ -33,6 +33,8 @@ public class PortSystemGUI extends JFrame {
     JTextArea logTextArea;
     JTree portTree;
 
+    DefaultMutableTreeNode rootNode;
+
     ShipTableModel portTableModel;
     ShipTableModel queueTableModel;
 
@@ -139,7 +141,8 @@ public class PortSystemGUI extends JFrame {
     private void createTree() {
         portTree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 
-        DefaultMutableTreeNode rootNode = new DefaultMutableTreeNode("Ports");
+        rootNode = new DefaultMutableTreeNode("Ports");
+/*
 
         DefaultMutableTreeNode firstPort = new DefaultMutableTreeNode("Port 1");
         DefaultMutableTreeNode secondPort = new DefaultMutableTreeNode("Port 2");
@@ -167,6 +170,7 @@ public class PortSystemGUI extends JFrame {
         secondPort.add(fifthPier);
 
         thirdPort.add(sixthPier);
+*/
 
 
         ((DefaultTreeModel) portTree.getModel()).setRoot(rootNode);

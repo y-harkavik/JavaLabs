@@ -2,6 +2,7 @@ package GUI;
 
 import objects.Ship;
 
+import javax.swing.tree.DefaultMutableTreeNode;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,9 +19,9 @@ public class PortSystemGUIController {
         });
 
         mainWindow.addPortItem.addActionListener(e -> {
-            addPort("Port1",3);
-            addPort("Port2",2);
-            addPort("Port3",1);
+            addPort("Port1", 3);
+            addPort("Port2", 2);
+            addPort("Port3", 1);
         });
 
         mainWindow.portTree.addTreeSelectionListener((event) -> {
@@ -28,6 +29,7 @@ public class PortSystemGUIController {
                 String child = event.getNewLeadSelectionPath().getLastPathComponent().toString();
                 String parent = event.getNewLeadSelectionPath().getParentPath().getLastPathComponent().toString();
 
+                setShipsInTable(parent, child);
 
             } catch (NullPointerException ex) {
 
@@ -35,31 +37,31 @@ public class PortSystemGUIController {
         });
     }
 
-    private int checkPort(String portName {
-        switch (portName) {
-            case "Ports":
-                return -1;
-            case "Port 1":
-                return 1;
-            case "Port 2":
-                System.out.println(child);
-                break;
-            case "Port 3":
-                System.out.println(child);
+    private void setShipsInTable(String port, String pier) {
+        int portIndex = systemModel.checkPort(port);
+
+        if (portIndex < 0) {
+            portIndex = systemModel.checkPort(pier);
+            if (portIndex > 0) {
+                
+            }
         }
+
     }
 
-    private int checkPier(String pierName) {
-        return 0;
+    void addPort(String name, int numOfPiers) {
+        systemModel.addPortInList(name, numOfPiers);
+        addPortInTree(name, numOfPiers);
     }
 
-    void addPort(String name,int numOfPiers) {
-        systemModel.addPortInList(name,numOfPiers);
-        addPortInTree();
-    }
+    void addPortInTree(String name, int numOfPiers) {
+        DefaultMutableTreeNode port = new DefaultMutableTreeNode(name);
+        mainWindow.rootNode.add(port);
 
-    void addPortInTree() {
-
+        for (int i = 0; i < numOfPiers; i++) {
+            DefaultMutableTreeNode pier = new DefaultMutableTreeNode("Pier " + String.valueOf(i + 1));
+            port.add(pier);
+        }
     }
 
     public void start() {

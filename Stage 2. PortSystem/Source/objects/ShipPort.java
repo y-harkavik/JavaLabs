@@ -18,5 +18,7 @@ public class ShipPort {
         for(int i=0;i<num;i++) {
             listOfPiers.add(new Pier());
         }
+
+
     }
 }
