@@ -1,6 +1,9 @@
 package objects;
 
 
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+
 import java.util.Observable;
 import java.util.Random;
 
@@ -11,12 +14,15 @@ public class Ship extends Observable implements Runnable{
     private String cargo;
     private int weight;
     private float progress;
+    private ShipStatus status;
 
     public Ship(String nameShip, String cargo, int weight){
 
         this.nameShip = nameShip;
         this.cargo = cargo;
         this.weight = weight;
+        status = ShipStatus.ON_WAY;
+
         progress = 0.0f;
         thisThread = new Thread(this);
         thisThread.start();

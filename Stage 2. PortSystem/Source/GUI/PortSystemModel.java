@@ -47,4 +47,9 @@ public class PortSystemModel {
         }
         return shipList;
     }
+
+    synchronized StringBuilder getShipsLog() {
+        StringBuilder log = new StringBuilder("1\n");
+        return log;
+    }
 }

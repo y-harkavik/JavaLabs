@@ -42,14 +42,23 @@ public class PortSystemGUIController {
                 if (child.equals("Ports")) {
                     mainWindow.portTableModel.clearTable();
                     parent = null;
-                    for (ShipPort shipPort : systemModel.getListOfShipPorts()) {
-                        mainWindow.portTableModel.addAll(shipPort.getListOfShipsInPort());
-                    }
+                    mainWindow.portTableModel.addAll(systemModel.getAllShipsList());
                 }
             } catch (Exception exc) {
                 exc.printStackTrace();
             }
         });
+
+        new Thread(()->{
+            while(true) {
+                mainWindow.logTextArea.append(systemModel.getShipsLog().toString());
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 
     private void checkSelectedElement(String port, String pier) {
