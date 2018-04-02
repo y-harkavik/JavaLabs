@@ -16,16 +16,24 @@ public class PortSystemGUIController {
     private String child;
     private String parent;
 
+    public PortSystemGUI getMainWindow() {
+        return mainWindow;
+    }
     private void initializeListeners() {
         mainWindow.addShipItem.addActionListener((event) -> {
-            List<Ship> ships = new ArrayList<Ship>(Arrays.asList(new Ship("1", "a", 100), new Ship("2", "b", 100), new Ship("3", "c", 100)));
+            List<Ship> ships = new ArrayList<Ship>(Arrays.asList(
+                    new Ship("1", "a", 100,systemModel.getListOfShipPorts())/*,
+                    new Ship("2", "b", 100,systemModel.getListOfShipPorts()),
+                    new Ship("3", "c", 100,systemModel.getListOfShipPorts()))*/));
             for (Ship ship : ships) {
                 ship.addObserver(mainWindow.portTableModel);
+                new Thread(ship).start();
             }
-            systemModel.getListOfShipPorts().get(portCount - 1).getListOfPiers().get(1).setListOfShips(ships);
+
+           // systemModel.getListOfShipPorts().get(portCount - 1).getListOfPiers().get(1).setListOfShips(ships);
             checkedSelectedElement(parent, child);
         });
-
+        //mainWindow.queueTableModel.addShip(new Ship("1", "a", 100,systemModel.getListOfShipPorts()));
         mainWindow.addPortItem.addActionListener(e -> {
             addPort("Port" + String.valueOf(portCount++ + 1), 3);
         });
@@ -48,8 +56,8 @@ public class PortSystemGUIController {
             }
         });
 
-        new Thread(()->{
-            while(true) {
+        new Thread(() -> {
+            while (true) {
                 mainWindow.logTextArea.append(systemModel.getShipsLog().toString());
                 try {
                     Thread.sleep(5000);
@@ -60,29 +68,41 @@ public class PortSystemGUIController {
         }).start();
     }
 
+    public synchronized void repaintTable() {
+        checkedSelectedElement(this.parent,this.child);
+    }
+
     private void checkedSelectedElement(String port, String pier) {
         boolean containsPort = systemModel.checkPort(port);
 
         if (!containsPort) {
             containsPort = systemModel.checkPort(pier);
             if (containsPort) {
-                updateTable(systemModel.getListOfShipsInPort(pier));
+                updatePortTable(systemModel.getListOfShipsInPort(pier));
+                updateQueueTable(systemModel.getMapOfShipPorts().get(pier).getListOfShipsInQueue());
                 return;
             } else {
-                updateTable(systemModel.getAllShipsList());
+                updatePortTable(systemModel.getAllShipsList());
                 return;
             }
         }
-        updateTable(systemModel.getListOfShipsInPier(port, pier));
+        mainWindow.portTableModel.clearTable();
+        mainWindow.portTableModel.addShip(systemModel.getShipInPier(port, pier));
+        updateQueueTable(systemModel.getMapOfShipPorts().get(port).getListOfShipsInQueue());
     }
 
-    public void updateTable(List<Ship> shipList) {
+    public void updateQueueTable(List<Ship> shipList) {
+        mainWindow.queueTableModel.clearTable();
+        mainWindow.queueTableModel.addAll(shipList);
+    }
+
+    public void updatePortTable(List<Ship> shipList) {
         mainWindow.portTableModel.clearTable();
         mainWindow.portTableModel.addAll(shipList);
     }
 
     void addPort(String name, int numOfPiers) {
-        systemModel.addPortInList(name, numOfPiers);
+        systemModel.addPortInList(name, numOfPiers,this);
         addPortInTree(name, numOfPiers);
         ((DefaultTreeModel) mainWindow.portTree.getModel()).reload();
     }

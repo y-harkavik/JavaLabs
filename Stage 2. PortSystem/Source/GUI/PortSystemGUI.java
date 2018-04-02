@@ -17,8 +17,6 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.Vector;
 import java.util.List;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
 
 public class PortSystemGUI extends JFrame {
 
@@ -33,13 +31,13 @@ public class PortSystemGUI extends JFrame {
     JScrollPane queueTableJScrollPane;
     JTable shipsTable;
     JTable queueTable;
-    JTextArea logTextArea;
+    public JTextArea logTextArea;
     JTree portTree;
 
     DefaultMutableTreeNode rootNode;
 
     ShipTableModel portTableModel;
-    ShipTableModel queueTableModel;
+    ShipQueueTableModel queueTableModel;
 
     unloadingShipProgressBar progressBarRenderer;
 
@@ -97,7 +95,7 @@ public class PortSystemGUI extends JFrame {
 
     private void initComponents() {
         portTableModel = new ShipTableModel();
-        queueTableModel = new ShipTableModel();
+        queueTableModel = new ShipQueueTableModel();
 
         progressBarRenderer = new unloadingShipProgressBar(0, 100);
 
@@ -154,15 +152,13 @@ public class PortSystemGUI extends JFrame {
         });
     }
 
-    class ShipQueueTableModel extends AbstractTableModel implements Observer {
+    class ShipQueueTableModel extends AbstractTableModel {
         final String[] headers = {"Ship", "Good","Operation" ,"Count"};
         final Class[] columnClasses = {String.class, String.class, ShipStatus.class, Integer.class};
         final Vector<Ship> shipQueue = new Vector<>();
 
         synchronized public void addAll(List<Ship> shipsList) {
-            for (Ship ship : shipsList) {
-                addShip(ship);
-            }
+            shipQueue.addAll(shipsList);
             fireTableDataChanged();
         }
 
@@ -172,13 +168,7 @@ public class PortSystemGUI extends JFrame {
 
         synchronized public void addShip(Ship addingShip) {
             shipQueue.addElement(addingShip);
-            addingShip.addObserver(this);
             fireTableRowsInserted(shipQueue.size() - 1, shipQueue.size() - 1);
-        }
-
-        @Override
-        public void update(Observable o, Object arg) {
-
         }
 
         @Override
@@ -217,9 +207,7 @@ public class PortSystemGUI extends JFrame {
         final Vector data = new Vector();
 
         public void addAll(List<Ship> shipsList) {
-            for (Ship ship : shipsList) {
-                addShip(ship);
-            }
+            data.addAll(shipsList);
             fireTableDataChanged();
         }
 
@@ -228,8 +216,15 @@ public class PortSystemGUI extends JFrame {
         }
 
         public void addShip(Ship addingShip) {
+            /*if(addingShip==null) {
+                fireTableDataChanged();
+                return;
+            }*/
+            if(addingShip==null) {
+                fireTableDataChanged();
+                return;
+            }
             data.addElement(addingShip);
-            addingShip.addObserver(this);
             fireTableRowsInserted(data.size() - 1, data.size() - 1);
         }
 
@@ -264,6 +259,7 @@ public class PortSystemGUI extends JFrame {
         @Override
         public Object getValueAt(int rowIndex, int columnIndex) {
             Ship ship = (Ship) data.elementAt(rowIndex);
+            if(ship == null) return null;
             if (columnIndex == 0) return ship.getNameShip();
             else if (columnIndex == 1) return ship.getCargo();
             else if(columnIndex == 2) return ship.getStatus().getStatus();
@@ -288,7 +284,7 @@ public class PortSystemGUI extends JFrame {
         public Component getTableCellRendererComponent(
                 JTable table, Object value, boolean isSelected, boolean hasFocus,
                 int row, int column) {
-
+            if(value == null) return this;
             setValue((int) ((Float) value).floatValue());
 
             return this;

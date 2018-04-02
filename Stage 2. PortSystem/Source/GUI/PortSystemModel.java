@@ -1,6 +1,5 @@
 package GUI;
 
-import objects.Pier;
 import objects.Ship;
 import objects.ShipPort;
 
@@ -13,27 +12,32 @@ public class PortSystemModel {
         shipPorts = new LinkedHashMap<>();
     }
 
-    void addPortInList(String name, int numOfPiers) {
-        shipPorts.put(name, new ShipPort(name, numOfPiers));
+    void addPortInList(String name, int numOfPiers, PortSystemGUIController controller) {
+        ShipPort shipPort = new ShipPort(name, numOfPiers, controller);
+        shipPorts.put(name, shipPort);
+        Thread t = new Thread(shipPort);
+        t.setDaemon(true);
+        t.start();
     }
 
     boolean checkPort(String nameOfPort) {
         return shipPorts.containsKey(nameOfPort);
     }
 
-    List getListOfShipsInPier(String port, String nameOfPier) {
-        return shipPorts.get(port).getMapOfPiers().get(nameOfPier).getListOfShips();
+    Ship getShipInPier(String port, String pier) {
+        return shipPorts.get(port).getMapOfPiers().get(pier).getCurrentShip();
     }
 
     List getListOfShipsInPort(String portName) {
-        List<Ship> allShips = new ArrayList();
+        /*List<Ship> allShips = new ArrayList();
         ShipPort shipPort = shipPorts.get(portName);
         List<Pier> piers = new ArrayList<Pier>(shipPort.getMapOfPiers().values());
 
         for (Pier pier : piers) {
             allShips.addAll(pier.getListOfShips());
-        }
-        return allShips;
+        }*/
+
+        return shipPorts.get(portName).getListOfShipsInPort();
     }
 
     List<ShipPort> getListOfShipPorts() {
@@ -51,5 +55,9 @@ public class PortSystemModel {
     synchronized StringBuilder getShipsLog() {
         StringBuilder log = new StringBuilder("1\n");
         return log;
+    }
+
+    Map<String,ShipPort> getMapOfShipPorts() {
+        return shipPorts;
     }
 }
