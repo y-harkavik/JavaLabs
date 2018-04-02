@@ -1,13 +1,9 @@
 package objects;
 
-
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
-
 import java.util.Observable;
 import java.util.Random;
 
-public class Ship extends Observable implements Runnable{
+public class Ship extends Observable implements Runnable {
 
     private Thread thisThread;
     private String nameShip;
@@ -16,7 +12,7 @@ public class Ship extends Observable implements Runnable{
     private float progress;
     private ShipStatus status;
 
-    public Ship(String nameShip, String cargo, int weight){
+    public Ship(String nameShip, String cargo, int weight) {
 
         this.nameShip = nameShip;
         this.cargo = cargo;
@@ -32,24 +28,26 @@ public class Ship extends Observable implements Runnable{
     public void run() {
         Random r = new Random();
         int count = 0;
-        while(count<weight){
+        while (count < weight) {
             int random = Math.abs(r.nextInt() % 10);
-            count+=random;
-            if(count>weight){
+            count += random;
+            if (count > weight) {
                 count = weight;
             }
-            progress = ((float) count/weight)*100;
+            progress = ((float) count / weight) * 100;
             setChanged();
             notifyObservers();
-            try{
+            try {
                 thisThread.sleep(500);
-            }catch (InterruptedException e) {
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    public String getNameShip(){return this.nameShip;}
+    public String getNameShip() {
+        return this.nameShip;
+    }
 
     public String getCargo() {
         return cargo;
@@ -61,5 +59,13 @@ public class Ship extends Observable implements Runnable{
 
     public float getProgress() {
         return progress;
+    }
+
+    public ShipStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ShipStatus status) {
+        this.status = status;
     }
 }

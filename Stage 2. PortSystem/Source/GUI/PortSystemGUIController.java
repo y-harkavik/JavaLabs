@@ -1,7 +1,6 @@
 package GUI;
 
 import objects.Ship;
-import objects.ShipPort;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
@@ -24,7 +23,7 @@ public class PortSystemGUIController {
                 ship.addObserver(mainWindow.portTableModel);
             }
             systemModel.getListOfShipPorts().get(portCount - 1).getListOfPiers().get(1).setListOfShips(ships);
-            checkSelectedElement(parent, child);
+            checkedSelectedElement(parent, child);
         });
 
         mainWindow.addPortItem.addActionListener(e -> {
@@ -36,7 +35,7 @@ public class PortSystemGUIController {
                 child = event.getNewLeadSelectionPath().getLastPathComponent().toString();
                 parent = event.getNewLeadSelectionPath().getParentPath().getLastPathComponent().toString();
 
-                checkSelectedElement(parent, child);
+                checkedSelectedElement(parent, child);
 
             } catch (NullPointerException ex) {
                 if (child.equals("Ports")) {
@@ -61,27 +60,25 @@ public class PortSystemGUIController {
         }).start();
     }
 
-    private void checkSelectedElement(String port, String pier) {
+    private void checkedSelectedElement(String port, String pier) {
         boolean containsPort = systemModel.checkPort(port);
 
         if (!containsPort) {
             containsPort = systemModel.checkPort(pier);
             if (containsPort) {
-                mainWindow.portTableModel.clearTable();
-                mainWindow.portTableModel.addAll(systemModel.getListOfShipsInPort(pier));
+                updateTable(systemModel.getListOfShipsInPort(pier));
                 return;
             } else {
-                mainWindow.portTableModel.clearTable();
-                mainWindow.portTableModel.addAll(systemModel.getAllShipsList());
+                updateTable(systemModel.getAllShipsList());
                 return;
             }
         }
-        setShipsInTable(port, pier);
+        updateTable(systemModel.getListOfShipsInPier(port, pier));
     }
 
-    private void setShipsInTable(String port, String pier) {
+    public void updateTable(List<Ship> shipList) {
         mainWindow.portTableModel.clearTable();
-        mainWindow.portTableModel.addAll(systemModel.getListOfShipsInPier(port, pier));
+        mainWindow.portTableModel.addAll(shipList);
     }
 
     void addPort(String name, int numOfPiers) {

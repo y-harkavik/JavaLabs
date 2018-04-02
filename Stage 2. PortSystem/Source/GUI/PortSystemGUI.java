@@ -2,6 +2,7 @@ package GUI;
 
 
 import objects.Ship;
+import objects.ShipStatus;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
@@ -16,6 +17,8 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.Vector;
 import java.util.List;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class PortSystemGUI extends JFrame {
 
@@ -151,9 +154,66 @@ public class PortSystemGUI extends JFrame {
         });
     }
 
+    class ShipQueueTableModel extends AbstractTableModel implements Observer {
+        final String[] headers = {"Ship", "Good","Operation" ,"Count"};
+        final Class[] columnClasses = {String.class, String.class, ShipStatus.class, Integer.class};
+        final Vector<Ship> shipQueue = new Vector<>();
+
+        synchronized public void addAll(List<Ship> shipsList) {
+            for (Ship ship : shipsList) {
+                addShip(ship);
+            }
+            fireTableDataChanged();
+        }
+
+        synchronized public void clearTable() {
+            shipQueue.removeAllElements();
+        }
+
+        synchronized public void addShip(Ship addingShip) {
+            shipQueue.addElement(addingShip);
+            addingShip.addObserver(this);
+            fireTableRowsInserted(shipQueue.size() - 1, shipQueue.size() - 1);
+        }
+
+        @Override
+        public void update(Observable o, Object arg) {
+
+        }
+
+        @Override
+        public int getRowCount() {
+            return shipQueue.size();
+        }
+
+        @Override
+        public int getColumnCount() {
+            return headers.length;
+        }
+
+        @Override
+        public Class getColumnClass(int c) {
+            return columnClasses[c];
+        }
+
+        @Override
+        public String getColumnName(int col) {
+            return headers[col];
+        }
+
+        @Override
+        public Object getValueAt(int rowIndex, int columnIndex) {
+            Ship ship = (Ship) shipQueue.elementAt(rowIndex);
+            if (columnIndex == 0) return ship.getNameShip();
+            else if (columnIndex == 1) return ship.getCargo();
+            else if(columnIndex == 2) return ship.getStatus().getStatus();
+            else if (columnIndex == 3) return (Integer) ship.getWeight();
+            else return null;
+        }
+    }
     class ShipTableModel extends AbstractTableModel implements Observer {
-        final String[] headers = {"Ship", "Good", "Count", "Progress"};
-        final Class[] columnClasses = {String.class, String.class, Integer.class, JProgressBar.class};
+        final String[] headers = {"Ship", "Good","Operation" ,"Count", "Progress"};
+        final Class[] columnClasses = {String.class, String.class, ShipStatus.class, Integer.class, JProgressBar.class};
         final Vector data = new Vector();
 
         public void addAll(List<Ship> shipsList) {
@@ -175,7 +235,7 @@ public class PortSystemGUI extends JFrame {
 
         @Override
         public void update(Observable o, Object arg) {
-            int index = data.indexOf(o);
+            //int index = data.indexOf(o);
             //if (index != -1)
             //fireTableRowsUpdated(index, index);
             fireTableDataChanged();
@@ -206,8 +266,9 @@ public class PortSystemGUI extends JFrame {
             Ship ship = (Ship) data.elementAt(rowIndex);
             if (columnIndex == 0) return ship.getNameShip();
             else if (columnIndex == 1) return ship.getCargo();
-            else if (columnIndex == 2) return (Integer) ship.getWeight();
-            else if (columnIndex == 3) return (Float) ship.getProgress();
+            else if(columnIndex == 2) return ship.getStatus().getStatus();
+            else if (columnIndex == 3) return (Integer) ship.getWeight();
+            else if (columnIndex == 4) return (Float) ship.getProgress();
             else return null;
         }
 
