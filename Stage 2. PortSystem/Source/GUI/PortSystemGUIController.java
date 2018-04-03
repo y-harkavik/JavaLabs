@@ -22,7 +22,9 @@ public class PortSystemGUIController {
     private void initializeListeners() {
         mainWindow.addShipItem.addActionListener((event) -> {
             List<Ship> ships = new ArrayList<Ship>(Arrays.asList(
-                    new Ship("1", "a", 100,systemModel.getListOfShipPorts())/*,
+                    //new Ship("1", "a", 100,systemModel.getListOfShipPorts())
+                    //
+                    /*,
                     new Ship("2", "b", 100,systemModel.getListOfShipPorts()),
                     new Ship("3", "c", 100,systemModel.getListOfShipPorts()))*/));
             for (Ship ship : ships) {
