@@ -1,38 +1,30 @@
-
-
 package objects;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Observable;
-import java.util.Random;
 
 public class Ship extends Observable implements Runnable {
     private String nameShip;
-    /*private String cargo;
-    private int weight;*/
     private float progress;
     private ShipStatus status;
     private List<ShipPort> shipPorts;
-    private Cargo shipCargo;
+    private Map<Operation,Cargo> shipCargo;
+    private static final int speed = 10;
 
-    public Ship(String nameShip, /*String cargo, int weight,*/ Cargo shipCargo, List<ShipPort> shipPorts) {
+    public Ship(String nameShip, Map<Operation,Cargo> shipCargo, List<ShipPort> shipPorts) {
         this.shipPorts = shipPorts;
         this.nameShip = nameShip;
-        /*this.cargo = cargo;
-        this.weight = weight;*/
-        this.shipCargo = this.shipCargo;
+        this.shipCargo = shipCargo;
         status = ShipStatus.ON_WAY;
-
         progress = 0.0f;
     }
-    public void unloading() {
-        Random r = new Random();
-        long count = shipCargo.getCount();
+    public void unloading(int needUnload) {
+
         while (count > 0) {
-            int random = Math.abs(r.nextInt() % 10);
-            count += random;
-            if (count > shipCargo.getCount()) {
-                count = shipCargo.getCount();
+            count -= speed;
+            if (count <= 0) {
+                shipCargo.setCount(0);
             }
             progress = ((float) count / shipCargo.getCount()) * 100;
             setChanged();
@@ -45,12 +37,11 @@ public class Ship extends Observable implements Runnable {
         }
     }
 
-    public void loading() {
-        Random r = new Random();
+    public void loading(int needLoad) {
         long count = 0;
-        while (count < shipCargo.getCount()) {
-            int random = Math.abs(r.nextInt() % 10);
-            count += random;
+        int shipCount = shipCargo.getCount();
+        while (count < shipCount) {
+            count += speed;
             if (count > shipCargo.getCount()) {
                 count = shipCargo.getCount();
             }
@@ -68,7 +59,7 @@ public class Ship extends Observable implements Runnable {
     @Override
     public void run() {
         try {
-
+            for()
             shipPorts.get(0).getPortEntrance().put(this);
             System.out.println("Ship");
         } catch (InterruptedException e) {
@@ -80,14 +71,6 @@ public class Ship extends Observable implements Runnable {
         return this.nameShip;
     }
 
-    /*public String getCargo() {
-        return cargo;
-    }
-
-    public int getWeight() {
-        return weight;
-    }*/
-
     public float getProgress() {
 
         return progress;
@@ -97,11 +80,11 @@ public class Ship extends Observable implements Runnable {
         return status;
     }
 
-    public Cargo getShipCargo() {
+    public List<Cargo> getShipCargoList() {
         return shipCargo;
     }
 
-    public void setShipCargo(Cargo shipCargo) {
+    public void setShipCargoList(List<Cargo> shipCargo) {
         this.shipCargo = shipCargo;
     }
 
