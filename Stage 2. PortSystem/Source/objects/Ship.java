@@ -23,7 +23,7 @@ public class Ship extends Observable implements Runnable {
         progress = 0.0f;
     }
 
-    public void unloading(int needUnload) {
+    public void unloading() {
         int count = currentCargo.getParameters().getCount();
         while (count > 0) {
             count -= speed;
@@ -41,7 +41,7 @@ public class Ship extends Observable implements Runnable {
         }
     }
 
-    public void loading(int needLoad) {
+    public void loading() {
         int count = 0;
         int shipCount = currentCargo.getParameters().getCount();
         while (count < shipCount) {

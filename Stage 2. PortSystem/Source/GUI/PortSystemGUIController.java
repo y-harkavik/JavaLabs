@@ -19,6 +19,7 @@ public class PortSystemGUIController {
     public PortSystemGUI getMainWindow() {
         return mainWindow;
     }
+
     private void initializeListeners() {
         mainWindow.addShipItem.addActionListener((event) -> {
             List<Ship> ships = new ArrayList<Ship>(Arrays.asList(
@@ -32,7 +33,7 @@ public class PortSystemGUIController {
                 new Thread(ship).start();
             }
 
-           // systemModel.getListOfShipPorts().get(portCount - 1).getListOfPiers().get(1).setListOfShips(ships);
+            // systemModel.getListOfShipPorts().get(portCount - 1).getListOfPiers().get(1).setListOfShips(ships);
             checkedSelectedElement(parent, child);
         });
         //mainWindow.queueTableModel.addShip(new Ship("1", "a", 100,systemModel.getListOfShipPorts()));
@@ -71,7 +72,7 @@ public class PortSystemGUIController {
     }
 
     public synchronized void repaintTable() {
-        checkedSelectedElement(this.parent,this.child);
+        checkedSelectedElement(this.parent, this.child);
     }
 
     private void checkedSelectedElement(String port, String pier) {
@@ -104,7 +105,7 @@ public class PortSystemGUIController {
     }
 
     void addPort(String name, int numOfPiers) {
-        systemModel.addPortInList(name, numOfPiers,this);
+        systemModel.addPortInList(name, numOfPiers, this);
         addPortInTree(name, numOfPiers);
         ((DefaultTreeModel) mainWindow.portTree.getModel()).reload();
     }

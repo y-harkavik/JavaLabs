@@ -47,7 +47,7 @@ public class PortSystemModel {
     List<Ship> getAllShipsList() {
         List<Ship> shipList = new ArrayList<>();
         for (ShipPort shipPort : getListOfShipPorts()) {
-           shipList.addAll(shipPort.getListOfShipsInPort());
+            shipList.addAll(shipPort.getListOfShipsInPort());
         }
         return shipList;
     }
@@ -57,7 +57,7 @@ public class PortSystemModel {
         return log;
     }
 
-    Map<String,ShipPort> getMapOfShipPorts() {
+    Map<String, ShipPort> getMapOfShipPorts() {
         return shipPorts;
     }
 }
