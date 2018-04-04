@@ -1,5 +1,6 @@
 package objects;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Observable;
@@ -9,24 +10,27 @@ public class Ship extends Observable implements Runnable {
     private float progress;
     private ShipStatus status;
     private List<ShipPort> shipPorts;
-    private Map<Operation,Cargo> shipCargo;
+    private List<Cargo> shipCargo;
     private static final int speed = 10;
+    private Cargo currentCargo;
 
-    public Ship(String nameShip, Map<Operation,Cargo> shipCargo, List<ShipPort> shipPorts) {
+    public Ship(String nameShip, List<Cargo> shipCargo, List<ShipPort> shipPorts) {
         this.shipPorts = shipPorts;
         this.nameShip = nameShip;
         this.shipCargo = shipCargo;
+        this.currentCargo = null;
         status = ShipStatus.ON_WAY;
         progress = 0.0f;
     }
-    public void unloading(int needUnload) {
 
+    public void unloading(int needUnload) {
+        int count = currentCargo.getParameters().getCount();
         while (count > 0) {
             count -= speed;
             if (count <= 0) {
-                shipCargo.setCount(0);
+                currentCargo.getParameters().setCount(0);
             }
-            progress = ((float) count / shipCargo.getCount()) * 100;
+            progress = ((float) count / currentCargo.getParameters().getCount()) * 100;
             setChanged();
             notifyObservers();
             try {
@@ -38,14 +42,14 @@ public class Ship extends Observable implements Runnable {
     }
 
     public void loading(int needLoad) {
-        long count = 0;
-        int shipCount = shipCargo.getCount();
+        int count = 0;
+        int shipCount = currentCargo.getParameters().getCount();
         while (count < shipCount) {
             count += speed;
-            if (count > shipCargo.getCount()) {
-                count = shipCargo.getCount();
+            if (count >= shipCount) {
+                currentCargo.getParameters().setCount(count);
             }
-            progress = ((float) count / shipCargo.getCount()) * 100;
+            progress = ((float) count / shipCount) * 100;
             setChanged();
             notifyObservers();
             try {
@@ -56,12 +60,30 @@ public class Ship extends Observable implements Runnable {
         }
     }
 
+    ShipPort checkShipPort(Cargo cargo) {
+        Iterator<ShipPort> shipPortIterator = shipPorts.iterator();
+        Integer count;
+        while (shipPortIterator.hasNext()) {
+            ShipPort shipPort = shipPortIterator.next();
+            Map<TypeOfProduct, Integer> products = shipPort.getPortYard().getProducts();
+            if (((count = products.get(cargo.getParameters().getTypeOfProduct())) != null) && (count >= cargo.getParameters().getCount())) {
+                return shipPort;
+            }
+        }
+        return null;
+    }
+
     @Override
     public void run() {
         try {
-            for()
-            shipPorts.get(0).getPortEntrance().put(this);
-            System.out.println("Ship");
+            ShipPort shipPort;
+            for (Cargo cargo : shipCargo) {
+                if ((shipPort = checkShipPort(cargo)) != null) {
+                    if (cargo.getParameters().getCount() <=0) continue;
+                        currentCargo = cargo;
+                    shipPort.getPortEntrance().put(this);
+                }
+            }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -90,5 +112,9 @@ public class Ship extends Observable implements Runnable {
 
     public void setStatus(ShipStatus status) {
         this.status = status;
+    }
+
+    public Cargo getCurrentCargo() {
+        return currentCargo;
     }
 }

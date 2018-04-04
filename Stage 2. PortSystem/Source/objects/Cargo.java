@@ -1,10 +1,23 @@
 package objects;
 
 public class Cargo {
-    Parameters parameters;
-    Operation operation;
+    private Parameters parameters;
+    private Operation operation;
 
-    class Parameters {
+    Cargo(TypeOfProduct typeOfProduct, Measure measure, int count, Operation operation) {
+        this.parameters = new Parameters(typeOfProduct, measure, count);
+        this.operation = operation;
+    }
+
+    public Parameters getParameters() {
+        return parameters;
+    }
+
+    public Operation getOperation() {
+        return operation;
+    }
+
+    public class Parameters {
         private TypeOfProduct typeOfProduct;
         private Measure measure;
         private int count;
@@ -46,10 +59,5 @@ public class Cargo {
         public void setCount(int count) {
             this.count = count;
         }
-    }
-
-    Cargo(TypeOfProduct typeOfProduct, Measure measure, int count, Operation operation) {
-        this.parameters = new Parameters(typeOfProduct, measure, count);
-        this.operation = operation;
     }
 }
