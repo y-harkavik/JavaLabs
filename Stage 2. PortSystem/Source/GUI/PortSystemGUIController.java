@@ -1,6 +1,6 @@
 package GUI;
 
-import objects.Ship;
+import objects.*;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
@@ -15,6 +15,7 @@ public class PortSystemGUIController {
     private int portCount;
     private String child;
     private String parent;
+    int a;
 
     public PortSystemGUI getMainWindow() {
         return mainWindow;
@@ -23,11 +24,17 @@ public class PortSystemGUIController {
     private void initializeListeners() {
         mainWindow.addShipItem.addActionListener((event) -> {
             List<Ship> ships = new ArrayList<Ship>(Arrays.asList(
-                    //new Ship("1", "a", 100,systemModel.getListOfShipPorts())
-                    //
-                    /*,
-                    new Ship("2", "b", 100,systemModel.getListOfShipPorts()),
-                    new Ship("3", "c", 100,systemModel.getListOfShipPorts()))*/));
+                    new Ship(
+                            String.valueOf(a++),
+                            Arrays.asList
+                                    (
+                                            new Cargo(TypeOfProduct.CLOTH, Measure.METR, 500, Operation.LOADNIG),
+                                            new Cargo(TypeOfProduct.COAL, Measure.KG, 500, Operation.LOADNIG),
+                                            new Cargo(TypeOfProduct.GOLD, Measure.KG, 500, Operation.LOADNIG),
+                                            new Cargo(TypeOfProduct.SLAVES, Measure.PEOPLE, 500, Operation.LOADNIG),
+                                            new Cargo(TypeOfProduct.WEED, Measure.KG, 500, Operation.LOADNIG)
+                                    ),
+                            systemModel.getListOfShipPorts())));
             for (Ship ship : ships) {
                 ship.addObserver(mainWindow.portTableModel);
                 new Thread(ship).start();

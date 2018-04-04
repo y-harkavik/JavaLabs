@@ -4,6 +4,7 @@ import GUI.PortSystemGUIController;
 
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.CountDownLatch;
 
 public class Pier implements Runnable {
     private Ship currentShip;
@@ -29,14 +30,18 @@ public class Pier implements Runnable {
                 currentShip = ship;
                 processingShips.add(ship);
                 controller.repaintTable();
-                if (ship.getStatus() == ShipStatus.LOADING) {
+                if (ship.getCurrentCargo().getOperation() == Operation.LOADNIG) {
+                    ship.setStatus(ShipStatus.LOADING);
                     ship.loading();
                 } else {
+                    ship.setStatus(ShipStatus.UNLOADING);
                     ship.unloading();
                 }
+                ship.setStatus(ShipStatus.ON_WAY);
                 processingShips.remove(ship);
-                controller.getMainWindow().logTextArea.append(ship.getNameShip() + " разгрузился\n");
+                controller.getMainWindow().logTextArea.append(ship.getNameShip() + " " + ship.getCurrentCargo().getOperation() + " " + ship.getCurrentCargo().getParameters().getTypeOfProduct().getType() + "\n");
                 currentShip = null;
+                ship.getPhaser().arriveAndDeregister();
                 controller.repaintTable();
             } catch (InterruptedException e) {
                 e.printStackTrace();

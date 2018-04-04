@@ -2,6 +2,8 @@ package GUI;
 
 import objects.Ship;
 import objects.ShipPort;
+import objects.TypeOfProduct;
+import objects.Yard;
 
 import java.util.*;
 
@@ -14,6 +16,14 @@ public class PortSystemModel {
 
     void addPortInList(String name, int numOfPiers, PortSystemGUIController controller) {
         ShipPort shipPort = new ShipPort(name, numOfPiers, controller);
+        shipPort.setPortYard(new Yard());
+        shipPort.getPortYard().addProduct(TypeOfProduct.WEED, 1000);
+        shipPort.getPortYard().addProduct(TypeOfProduct.CLOTH, 1000);
+        shipPort.getPortYard().addProduct(TypeOfProduct.COAL, 1000);
+        shipPort.getPortYard().addProduct(TypeOfProduct.GOLD, 1000);
+        shipPort.getPortYard().addProduct(TypeOfProduct.SLAVES, 1000);
+        shipPort.getPortYard().addProduct(TypeOfProduct.WOOD, 1000);
+
         shipPorts.put(name, shipPort);
         Thread t = new Thread(shipPort);
         t.setDaemon(true);

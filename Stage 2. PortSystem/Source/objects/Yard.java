@@ -6,7 +6,7 @@ import java.util.concurrent.ConcurrentMap;
 public class Yard {
     private ConcurrentMap<TypeOfProduct, Integer> products;
 
-    Yard() {
+    public Yard() {
         this.products = new ConcurrentHashMap<TypeOfProduct, Integer>();
     }
 
@@ -15,6 +15,16 @@ public class Yard {
     }
 
     public void addProduct(TypeOfProduct typeOfProduct, int count) {
-        products.put(typeOfProduct,count);
+        products.put(typeOfProduct, count);
+    }
+
+    synchronized public void changeProductCount(TypeOfProduct typeOfProduct, int count, Operation operation) {
+        Integer product = products.get(typeOfProduct);
+        if (Operation.LOADNIG == operation) {
+            product -= count;
+        } else {
+            product += count;
+        }
+        products.put(typeOfProduct, product);
     }
 }

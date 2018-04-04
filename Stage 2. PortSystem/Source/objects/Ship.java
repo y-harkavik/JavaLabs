@@ -4,6 +4,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Observable;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.Phaser;
 
 public class Ship extends Observable implements Runnable {
     private String nameShip;
@@ -11,14 +13,16 @@ public class Ship extends Observable implements Runnable {
     private ShipStatus status;
     private List<ShipPort> shipPorts;
     private List<Cargo> shipCargo;
-    private static final int speed = 10;
+    private static final int speed = 50;
     private Cargo currentCargo;
+    private Phaser phaser;
 
     public Ship(String nameShip, List<Cargo> shipCargo, List<ShipPort> shipPorts) {
         this.shipPorts = shipPorts;
         this.nameShip = nameShip;
         this.shipCargo = shipCargo;
         this.currentCargo = null;
+        this.phaser = new Phaser(1);
         status = ShipStatus.ON_WAY;
         progress = 0.0f;
     }
@@ -79,9 +83,11 @@ public class Ship extends Observable implements Runnable {
             ShipPort shipPort;
             for (Cargo cargo : shipCargo) {
                 if ((shipPort = checkShipPort(cargo)) != null) {
-                    if (cargo.getParameters().getCount() <=0) continue;
-                        currentCargo = cargo;
+                    if (cargo.getParameters().getCount() <= 0) continue;
+                    currentCargo = cargo;
                     shipPort.getPortEntrance().put(this);
+                    phaser.register();
+                    phaser.arriveAndAwaitAdvance();
                 }
             }
         } catch (InterruptedException e) {
@@ -116,5 +122,9 @@ public class Ship extends Observable implements Runnable {
 
     public Cargo getCurrentCargo() {
         return currentCargo;
+    }
+
+    public Phaser getPhaser() {
+        return phaser;
     }
 }

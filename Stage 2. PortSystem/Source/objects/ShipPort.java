@@ -26,7 +26,7 @@ public class ShipPort implements Runnable {
         processingShips = new Vector<>();
 
         for (int i = 0; i < numOfPiers; i++) {
-            Pier pier = new Pier(queueOfShips,controller,processingShips);
+            Pier pier = new Pier(queueOfShips, controller, processingShips);
             listOfPiers.put("Pier " + String.valueOf(i + 1), pier);
             Thread thread = new Thread(pier);
             thread.setDaemon(true);
@@ -72,8 +72,10 @@ public class ShipPort implements Runnable {
             try {
 
                 Ship ship = portEntrance.take();
-                controller.getMainWindow().logTextArea.append(ship.getNameShip()+ "   пришвартовался\n");
+                controller.getMainWindow().logTextArea.append(ship.getNameShip() + "   пришвартовался\n");
+                getPortYard().changeProductCount(ship.getCurrentCargo().getParameters().getTypeOfProduct(), ship.getCurrentCargo().getParameters().getCount(), ship.getCurrentCargo().getOperation());
                 synchronized (queueOfShips) {
+                    ship.setStatus(ShipStatus.IN_QUEUE);
                     queueOfShips.put(ship);
 
                     controller.repaintTable();

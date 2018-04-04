@@ -4,7 +4,7 @@ public class Cargo {
     private Parameters parameters;
     private Operation operation;
 
-    Cargo(TypeOfProduct typeOfProduct, Measure measure, int count, Operation operation) {
+    public Cargo(TypeOfProduct typeOfProduct, Measure measure, int count, Operation operation) {
         this.parameters = new Parameters(typeOfProduct, measure, count);
         this.operation = operation;
     }
