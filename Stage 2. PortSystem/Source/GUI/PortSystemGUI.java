@@ -195,9 +195,9 @@ public class PortSystemGUI extends JFrame {
         public Object getValueAt(int rowIndex, int columnIndex) {
             Ship ship = (Ship) shipQueue.elementAt(rowIndex);
             if (columnIndex == 0) return ship.getNameShip();
-            else if (columnIndex == 1) return ship.getShipCargo().getType();
+            else if (columnIndex == 1) return ship.getShipTypeOfProduct().getType();
             else if(columnIndex == 2) return ship.getStatus().getStatus();
-            else if (columnIndex == 3) return (Long) ship.getShipCargo().getCount();
+            else if (columnIndex == 3) return (Long) ship.getShipTypeOfProduct().getCount();
             else return null;
         }
     }
@@ -261,9 +261,9 @@ public class PortSystemGUI extends JFrame {
             Ship ship = (Ship) data.elementAt(rowIndex);
             if(ship == null) return null;
             if (columnIndex == 0) return ship.getNameShip();
-            else if (columnIndex == 1) return ship.getShipCargo().getType();
+            else if (columnIndex == 1) return ship.getShipTypeOfProduct().getType();
             else if(columnIndex == 2) return ship.getStatus().getStatus();
-            else if (columnIndex == 3) return (Long) ship.getShipCargo().getCount();
+            else if (columnIndex == 3) return (Long) ship.getShipTypeOfProduct().getCount();
             else if (columnIndex == 4) return (Float) ship.getProgress();
             else return null;
         }
