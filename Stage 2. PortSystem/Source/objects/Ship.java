@@ -13,28 +13,28 @@ public class Ship extends Observable implements Runnable {
     private float progress;
     private ShipStatus status;
     private List<ShipPort> shipPorts;
-    private TypeOfProduct shipTypeOfProduct;
+    private Cargo shipCargo;
 
-    public Ship(String nameShip, /*String cargo, int weight,*/ TypeOfProduct shipTypeOfProduct, List<ShipPort> shipPorts) {
+    public Ship(String nameShip, /*String cargo, int weight,*/ Cargo shipCargo, List<ShipPort> shipPorts) {
         this.shipPorts = shipPorts;
         this.nameShip = nameShip;
         /*this.cargo = cargo;
         this.weight = weight;*/
-        this.shipTypeOfProduct = shipTypeOfProduct;
+        this.shipCargo = this.shipCargo;
         status = ShipStatus.ON_WAY;
 
         progress = 0.0f;
     }
     public void unloading() {
         Random r = new Random();
-        long count = shipTypeOfProduct.getCount();
+        long count = shipCargo.getCount();
         while (count > 0) {
             int random = Math.abs(r.nextInt() % 10);
             count += random;
-            if (count > shipTypeOfProduct.getCount()) {
-                count = shipTypeOfProduct.getCount();
+            if (count > shipCargo.getCount()) {
+                count = shipCargo.getCount();
             }
-            progress = ((float) count / shipTypeOfProduct.getCount()) * 100;
+            progress = ((float) count / shipCargo.getCount()) * 100;
             setChanged();
             notifyObservers();
             try {
@@ -48,13 +48,13 @@ public class Ship extends Observable implements Runnable {
     public void loading() {
         Random r = new Random();
         long count = 0;
-        while (count < shipTypeOfProduct.getCount()) {
+        while (count < shipCargo.getCount()) {
             int random = Math.abs(r.nextInt() % 10);
             count += random;
-            if (count > shipTypeOfProduct.getCount()) {
-                count = shipTypeOfProduct.getCount();
+            if (count > shipCargo.getCount()) {
+                count = shipCargo.getCount();
             }
-            progress = ((float) count / shipTypeOfProduct.getCount()) * 100;
+            progress = ((float) count / shipCargo.getCount()) * 100;
             setChanged();
             notifyObservers();
             try {
@@ -97,8 +97,12 @@ public class Ship extends Observable implements Runnable {
         return status;
     }
 
-    public TypeOfProduct getShipTypeOfProduct() {
-        return shipTypeOfProduct;
+    public Cargo getShipCargo() {
+        return shipCargo;
+    }
+
+    public void setShipCargo(Cargo shipCargo) {
+        this.shipCargo = shipCargo;
     }
 
     public void setStatus(ShipStatus status) {

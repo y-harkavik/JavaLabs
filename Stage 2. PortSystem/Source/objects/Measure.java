@@ -1,5 +1,15 @@
 package objects;
 
 public enum Measure {
-    KG, FUTS, METR, POUND
+    KG("kg"), FUTS("fut(s)"), METR("metr(s)"), POUND("pound");
+
+    String measure;
+
+    Measure(String measure) {
+        this.measure=measure;
+    }
+
+    public String getMeasure() {
+        return measure;
+    }
 }
