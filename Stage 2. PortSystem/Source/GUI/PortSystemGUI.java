@@ -41,10 +41,6 @@ public class PortSystemGUI extends JFrame {
 
     unloadingShipProgressBar progressBarRenderer;
 
-    /**
-     * Creates new form PortSystemGUI
-     */
-
     public PortSystemGUI() {
         initComponents();
         setComponents();
@@ -146,12 +142,6 @@ public class PortSystemGUI extends JFrame {
         ((DefaultTreeModel) portTree.getModel()).setRoot(rootNode);
     }
 
-    public static void main(String args[]) {
-        EventQueue.invokeLater(() -> {
-            new PortSystemGUI().setVisible(true);
-        });
-    }
-
     class ShipQueueTableModel extends AbstractTableModel {
         final String[] headers = {"Ship", "Good", "Operation", "Count"};
         final Class[] columnClasses = {String.class, String.class, ShipStatus.class, Integer.class};
@@ -164,11 +154,6 @@ public class PortSystemGUI extends JFrame {
 
         synchronized public void clearTable() {
             shipQueue.removeAllElements();
-        }
-
-        synchronized public void addShip(Ship addingShip) {
-            shipQueue.addElement(addingShip);
-            fireTableRowsInserted(shipQueue.size() - 1, shipQueue.size() - 1);
         }
 
         @Override
@@ -193,16 +178,20 @@ public class PortSystemGUI extends JFrame {
 
         @Override
         public Object getValueAt(int rowIndex, int columnIndex) {
-            Ship ship = (Ship) shipQueue.elementAt(rowIndex);
-            if (columnIndex == 0) return ship.getNameShip();
-            else if (columnIndex == 1)
-                return ship.getCurrentCargo().getParameters().getTypeOfProduct().getType() + " " + ship.getCurrentCargo().getParameters().getMeasure();
-            else if (columnIndex == 2)
-                return ship.getStatus().getStatus();
-            else if (columnIndex == 3)
-                return (Integer) ship.getCurrentCargo().getParameters().getCount();
-            else
+            try {
+                Ship ship = (Ship) shipQueue.elementAt(rowIndex);
+                if (columnIndex == 0) return ship.getNameShip();
+                else if (columnIndex == 1)
+                    return ship.getCurrentCargo().getParameters().getTypeOfProduct().getType() + " " + ship.getCurrentCargo().getParameters().getMeasure();
+                else if (columnIndex == 2)
+                    return ship.getStatus().getStatus();
+                else if (columnIndex == 3)
+                    return (Integer) ship.getCurrentCargo().getParameters().getCount();
+                else
+                    return null;
+            }catch (ArrayIndexOutOfBoundsException ex) {
                 return null;
+            }
         }
     }
 
@@ -263,14 +252,19 @@ public class PortSystemGUI extends JFrame {
 
         @Override
         public Object getValueAt(int rowIndex, int columnIndex) {
-            Ship ship = (Ship) data.elementAt(rowIndex);
-            if (ship == null) return null;
-            if (columnIndex == 0) return ship.getNameShip();
-            else if (columnIndex == 1) return ship.getCurrentCargo().getParameters().getTypeOfProduct().getType();
-            else if (columnIndex == 2) return ship.getStatus().getStatus();
-            else if (columnIndex == 3) return (Integer) ship.getCurrentCargo().getParameters().getCount();
-            else if (columnIndex == 4) return (Float) ship.getProgress();
-            else return null;
+                try {
+                    Ship ship = (Ship) data.elementAt(rowIndex);
+                    if (ship == null) return null;
+                    if (columnIndex == 0) return ship.getNameShip();
+                    else if (columnIndex == 1)
+                        return ship.getCurrentCargo().getParameters().getTypeOfProduct().getType();
+                    else if (columnIndex == 2) return ship.getStatus().getStatus();
+                    else if (columnIndex == 3) return (Integer) ship.getCurrentCargo().getParameters().getCount();
+                    else if (columnIndex == 4) return (Float) ship.getProgress();
+                    else return null;
+                }catch (ArrayIndexOutOfBoundsException e) {
+                    return null;
+            }
         }
 
         @Override

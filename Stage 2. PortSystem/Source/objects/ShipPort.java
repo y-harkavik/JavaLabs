@@ -35,23 +35,15 @@ public class ShipPort implements Runnable {
     }
 
     public List<Ship> getListOfShipsInQueue() {
-        synchronized (queueOfShips) {
-            return new ArrayList<Ship>(queueOfShips);
-        }
+        return new ArrayList<Ship>(queueOfShips);
     }
 
     public Map<String, Pier> getMapOfPiers() {
         return listOfPiers;
     }
 
-    public List<Pier> getListOfPiers() {
-        return new ArrayList<Pier>(listOfPiers.values());
-    }
-
-    public List<Ship> getListOfShipsInPort() {
-        synchronized (processingShips) {
-            return processingShips;
-        }
+    public List<Ship> getListOfProcessingShips() {
+        return processingShips;
     }
 
     public Yard getPortYard() {
@@ -70,18 +62,20 @@ public class ShipPort implements Runnable {
     public void run() {
         while (true) {
             try {
-
                 Ship ship = portEntrance.take();
+                System.out.println(ship.getNameShip()+"portEntrance.take()");
+
                 controller.getMainWindow().logTextArea.append(ship.getNameShip() + "   пришвартовался\n");
                 getPortYard().changeProductCount(ship.getCurrentCargo().getParameters().getTypeOfProduct(), ship.getCurrentCargo().getParameters().getCount(), ship.getCurrentCargo().getOperation());
-                synchronized (queueOfShips) {
-                    ship.setStatus(ShipStatus.IN_QUEUE);
-                    queueOfShips.put(ship);
+                System.out.println("ship.getPhaser().arriveAndDeregister();\n");
+                ship.getPhaser().arriveAndDeregister();
+                ship.setStatus(ShipStatus.IN_QUEUE);
+                queueOfShips.put(ship);
+                controller.repaintQueueTable();
 
-                    controller.repaintTable();
-                }
             } catch (InterruptedException e) {
-                e.printStackTrace();
+
+               e.printStackTrace();
             }
         }
     }

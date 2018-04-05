@@ -39,15 +39,7 @@ public class PortSystemModel {
     }
 
     List getListOfShipsInPort(String portName) {
-        /*List<Ship> allShips = new ArrayList();
-        ShipPort shipPort = shipPorts.get(portName);
-        List<Pier> piers = new ArrayList<Pier>(shipPort.getMapOfPiers().values());
-
-        for (Pier pier : piers) {
-            allShips.addAll(pier.getListOfShips());
-        }*/
-
-        return shipPorts.get(portName).getListOfShipsInPort();
+        return shipPorts.get(portName).getListOfProcessingShips();
     }
 
     List<ShipPort> getListOfShipPorts() {
@@ -57,7 +49,7 @@ public class PortSystemModel {
     List<Ship> getAllShipsList() {
         List<Ship> shipList = new ArrayList<>();
         for (ShipPort shipPort : getListOfShipPorts()) {
-            shipList.addAll(shipPort.getListOfShipsInPort());
+            shipList.addAll(shipPort.getListOfProcessingShips());
         }
         return shipList;
     }

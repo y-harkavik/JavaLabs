@@ -4,7 +4,6 @@ import GUI.PortSystemGUIController;
 
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.CountDownLatch;
 
 public class Pier implements Runnable {
     private Ship currentShip;
@@ -26,23 +25,25 @@ public class Pier implements Runnable {
     public void run() {
         while (true) {
             try {
-                Ship ship = queueOfShips.take();
-                currentShip = ship;
-                processingShips.add(ship);
-                controller.repaintTable();
-                if (ship.getCurrentCargo().getOperation() == Operation.LOADNIG) {
-                    ship.setStatus(ShipStatus.LOADING);
-                    ship.loading();
+                currentShip = queueOfShips.take();
+
+                if (currentShip.getCurrentCargo().getOperation() == Operation.LOADNIG) {
+                    currentShip.setStatus(ShipStatus.LOADING);
+                    processingShips.add(currentShip);
+                    controller.repaintTable();
+                    currentShip.loading();
                 } else {
-                    ship.setStatus(ShipStatus.UNLOADING);
-                    ship.unloading();
+                    currentShip.setStatus(ShipStatus.UNLOADING);
+                    processingShips.add(currentShip);
+                    controller.repaintTable();
+                    currentShip.unloading();
                 }
-                ship.setStatus(ShipStatus.ON_WAY);
-                processingShips.remove(ship);
-                controller.getMainWindow().logTextArea.append(ship.getNameShip() + " " + ship.getCurrentCargo().getOperation() + " " + ship.getCurrentCargo().getParameters().getTypeOfProduct().getType() + "\n");
-                currentShip = null;
-                ship.getPhaser().arriveAndDeregister();
+                processingShips.remove(currentShip);
+                currentShip.setStatus(ShipStatus.ON_WAY);
+                controller.getMainWindow().logTextArea.append(currentShip.getNameShip() + " закончил операцию" + "\n");
                 controller.repaintTable();
+                currentShip.getPhaser().arriveAndDeregister();
+                currentShip = null;
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

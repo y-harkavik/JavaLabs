@@ -4,7 +4,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Observable;
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Phaser;
 
 public class Ship extends Observable implements Runnable {
@@ -65,10 +64,8 @@ public class Ship extends Observable implements Runnable {
     }
 
     ShipPort checkShipPort(Cargo cargo) {
-        Iterator<ShipPort> shipPortIterator = shipPorts.iterator();
         Integer count;
-        while (shipPortIterator.hasNext()) {
-            ShipPort shipPort = shipPortIterator.next();
+        for (ShipPort shipPort : shipPorts) {
             Map<TypeOfProduct, Integer> products = shipPort.getPortYard().getProducts();
             if (((count = products.get(cargo.getParameters().getTypeOfProduct())) != null) && (count >= cargo.getParameters().getCount())) {
                 return shipPort;
@@ -82,13 +79,21 @@ public class Ship extends Observable implements Runnable {
         try {
             ShipPort shipPort;
             for (Cargo cargo : shipCargo) {
-                if ((shipPort = checkShipPort(cargo)) != null) {
-                    if (cargo.getParameters().getCount() <= 0) continue;
-                    currentCargo = cargo;
-                    shipPort.getPortEntrance().put(this);
-                    phaser.register();
-                    phaser.arriveAndAwaitAdvance();
+                synchronized (Ship.class) {
+                    if ((shipPort = checkShipPort(cargo)) != null) {
+                        if (cargo.getParameters().getCount() <= 0) continue;
+                        currentCargo = cargo;
+
+                            shipPort.getPortEntrance().put(this);
+                        System.out.println(getNameShip()+" shipPort.getPortEntrance().put(this); + await");
+                        phaser.register();
+                        phaser.arriveAndAwaitAdvance();
+                    } else continue;
                 }
+                System.out.println(getNameShip()+" await loading");
+
+                phaser.register();
+                phaser.arriveAndAwaitAdvance();
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
