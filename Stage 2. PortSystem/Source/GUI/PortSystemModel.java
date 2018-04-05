@@ -62,6 +62,14 @@ public class PortSystemModel {
         return shipList;
     }
 
+    List<Ship> getAllShipsInQueue() {
+        List<Ship> shipsInQueue = new ArrayList<>();
+        for (ShipPort shipPort : getListOfShipPorts()) {
+            shipsInQueue.addAll(shipPort.getListOfShipsInQueue());
+        }
+        return shipsInQueue;
+    }
+
     synchronized StringBuilder getShipsLog() {
         StringBuilder log = new StringBuilder("1\n");
         return log;

@@ -39,11 +39,8 @@ public class PortSystemGUIController {
                 ship.addObserver(mainWindow.portTableModel);
                 new Thread(ship).start();
             }
-
-            // systemModel.getListOfShipPorts().get(portCount - 1).getListOfPiers().get(1).setListOfShips(ships);
             checkedSelectedElement(parent, child);
         });
-        //mainWindow.queueTableModel.addShip(new Ship("1", "a", 100,systemModel.getListOfShipPorts()));
         mainWindow.addPortItem.addActionListener(e -> {
             addPort("Port" + String.valueOf(portCount++ + 1), 3);
         });
@@ -93,6 +90,7 @@ public class PortSystemGUIController {
                 return;
             } else {
                 updatePortTable(systemModel.getAllShipsList());
+                updateQueueTable(systemModel.getAllShipsInQueue());
                 return;
             }
         }

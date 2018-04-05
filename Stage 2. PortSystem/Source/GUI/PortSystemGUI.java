@@ -154,7 +154,7 @@ public class PortSystemGUI extends JFrame {
 
     class ShipQueueTableModel extends AbstractTableModel {
         final String[] headers = {"Ship", "Good", "Operation", "Count"};
-        final Class[] columnClasses = {String.class, String.class, ShipStatus.class, Long.class};
+        final Class[] columnClasses = {String.class, String.class, ShipStatus.class, Integer.class};
         final Vector<Ship> shipQueue = new Vector<>();
 
         synchronized public void addAll(List<Ship> shipsList) {
@@ -208,7 +208,7 @@ public class PortSystemGUI extends JFrame {
 
     class ShipTableModel extends AbstractTableModel implements Observer {
         final String[] headers = {"Ship", "Good", "Operation", "Count", "Progress"};
-        final Class[] columnClasses = {String.class, String.class, ShipStatus.class, Long.class, JProgressBar.class};
+        final Class[] columnClasses = {String.class, String.class, ShipStatus.class, Integer.class, JProgressBar.class};
         final Vector data = new Vector();
 
         public void addAll(List<Ship> shipsList) {
