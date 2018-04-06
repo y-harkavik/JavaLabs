@@ -34,6 +34,36 @@ public class ShipPort implements Runnable {
         }
     }
 
+    @Override
+    public void run() {
+        while (true) {
+            try {
+                Ship ship = portEntrance.take();
+                System.out.println(ship.getNameShip() + "portEntrance.take()");
+
+                controller.getMainWindow().logTextArea.append(ship.getNameShip() + "   пришвартовался\n");
+                System.out.println("getPortYard().changeProductCount");
+                getPortYard().changeProductCount(ship.getCurrentCargo().getParameters().getTypeOfProduct(), ship.getCurrentCargo().getParameters().getCount(), ship.getCurrentCargo().getOperation());
+                System.out.println("ship.getPhaser().arriveAndDeregister();");
+                ship.setStatus(ShipStatus.IN_QUEUE);
+                ship.getPhaser().arriveAndDeregister();
+                System.out.println("queueOfShips.put(ship);");
+                queueOfShips.put(ship);
+                controller.repaintQueueTable();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public BlockingQueue<Ship> getQueueOfShips() {
+        return queueOfShips;
+    }
+
+    public BlockingQueue<Ship> getPortEntrance() {
+        return portEntrance;
+    }
+
     public List<Ship> getListOfShipsInQueue() {
         return new ArrayList<Ship>(queueOfShips);
     }
@@ -56,35 +86,5 @@ public class ShipPort implements Runnable {
 
     public String getName() {
         return name;
-    }
-
-    @Override
-    public void run() {
-        while (true) {
-            try {
-                Ship ship = portEntrance.take();
-                System.out.println(ship.getNameShip()+"portEntrance.take()");
-
-                controller.getMainWindow().logTextArea.append(ship.getNameShip() + "   пришвартовался\n");
-                getPortYard().changeProductCount(ship.getCurrentCargo().getParameters().getTypeOfProduct(), ship.getCurrentCargo().getParameters().getCount(), ship.getCurrentCargo().getOperation());
-                System.out.println("ship.getPhaser().arriveAndDeregister();\n");
-                ship.getPhaser().arriveAndDeregister();
-                ship.setStatus(ShipStatus.IN_QUEUE);
-                queueOfShips.put(ship);
-                controller.repaintQueueTable();
-
-            } catch (InterruptedException e) {
-
-               e.printStackTrace();
-            }
-        }
-    }
-
-    public BlockingQueue<Ship> getQueueOfShips() {
-        return queueOfShips;
-    }
-
-    public BlockingQueue<Ship> getPortEntrance() {
-        return portEntrance;
     }
 }

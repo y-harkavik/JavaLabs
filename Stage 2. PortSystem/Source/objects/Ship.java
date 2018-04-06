@@ -42,6 +42,7 @@ public class Ship extends Observable implements Runnable {
                 e.printStackTrace();
             }
         }
+        progress = 0;
     }
 
     public void loading() {
@@ -61,6 +62,7 @@ public class Ship extends Observable implements Runnable {
                 e.printStackTrace();
             }
         }
+        progress = 0;
     }
 
     ShipPort checkShipPort(Cargo cargo) {
@@ -78,21 +80,27 @@ public class Ship extends Observable implements Runnable {
     public void run() {
         try {
             ShipPort shipPort;
-            for (Cargo cargo : shipCargo) {
+            Iterator<Cargo> cargoIterator = shipCargo.iterator();
+            while (cargoIterator.hasNext()) {
                 synchronized (Ship.class) {
+                    Cargo cargo = cargoIterator.next();
+                    System.out.println(getNameShip());
+                    System.out.println("Cargo cargo = cargoIterator.next();");
                     if ((shipPort = checkShipPort(cargo)) != null) {
                         if (cargo.getParameters().getCount() <= 0) continue;
                         currentCargo = cargo;
-
-                            shipPort.getPortEntrance().put(this);
-                        System.out.println(getNameShip()+" shipPort.getPortEntrance().put(this); + await");
+                        System.out.println("currentCargo = cargo;");
+                        shipPort.getPortEntrance().put(this);
+                        System.out.println(getNameShip() + " shipPort.getPortEntrance().put(this);");
                         phaser.register();
+                        System.out.println(getNameShip() + " phaser.register(); + await");
                         phaser.arriveAndAwaitAdvance();
-                    } else continue;
+                    } else {
+                        continue;
+                    }
                 }
-                System.out.println(getNameShip()+" await loading");
-
                 phaser.register();
+                System.out.println(getNameShip() + "phaser.register(); + await");
                 phaser.arriveAndAwaitAdvance();
             }
         } catch (InterruptedException e) {

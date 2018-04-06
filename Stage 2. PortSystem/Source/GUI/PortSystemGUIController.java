@@ -74,61 +74,6 @@ public class PortSystemGUIController {
                                             new Cargo(TypeOfProduct.SLAVES, Measure.PEOPLE, 500, Operation.LOADNIG),
                                             new Cargo(TypeOfProduct.WEED, Measure.KG, 500, Operation.LOADNIG)
                                     ),
-                            systemModel.getListOfShipPorts()),
-                    new Ship(
-                            String.valueOf(a++),
-                            Arrays.asList
-                                    (
-                                            new Cargo(TypeOfProduct.CLOTH, Measure.METR, 500, Operation.LOADNIG),
-                                            new Cargo(TypeOfProduct.COAL, Measure.KG, 500, Operation.LOADNIG),
-                                            new Cargo(TypeOfProduct.GOLD, Measure.KG, 500, Operation.LOADNIG),
-                                            new Cargo(TypeOfProduct.SLAVES, Measure.PEOPLE, 500, Operation.LOADNIG),
-                                            new Cargo(TypeOfProduct.WEED, Measure.KG, 500, Operation.LOADNIG)
-                                    ),
-                            systemModel.getListOfShipPorts()),
-                    new Ship(
-                            String.valueOf(a++),
-                            Arrays.asList
-                                    (
-                                            new Cargo(TypeOfProduct.CLOTH, Measure.METR, 500, Operation.LOADNIG),
-                                            new Cargo(TypeOfProduct.COAL, Measure.KG, 500, Operation.LOADNIG),
-                                            new Cargo(TypeOfProduct.GOLD, Measure.KG, 500, Operation.LOADNIG),
-                                            new Cargo(TypeOfProduct.SLAVES, Measure.PEOPLE, 500, Operation.LOADNIG),
-                                            new Cargo(TypeOfProduct.WEED, Measure.KG, 500, Operation.LOADNIG)
-                                    ),
-                            systemModel.getListOfShipPorts()),
-                    new Ship(
-                            String.valueOf(a++),
-                            Arrays.asList
-                                    (
-                                            new Cargo(TypeOfProduct.CLOTH, Measure.METR, 500, Operation.LOADNIG),
-                                            new Cargo(TypeOfProduct.COAL, Measure.KG, 500, Operation.LOADNIG),
-                                            new Cargo(TypeOfProduct.GOLD, Measure.KG, 500, Operation.LOADNIG),
-                                            new Cargo(TypeOfProduct.SLAVES, Measure.PEOPLE, 500, Operation.LOADNIG),
-                                            new Cargo(TypeOfProduct.WEED, Measure.KG, 500, Operation.LOADNIG)
-                                    ),
-                            systemModel.getListOfShipPorts()),
-                    new Ship(
-                            String.valueOf(a++),
-                            Arrays.asList
-                                    (
-                                            new Cargo(TypeOfProduct.CLOTH, Measure.METR, 500, Operation.LOADNIG),
-                                            new Cargo(TypeOfProduct.COAL, Measure.KG, 500, Operation.LOADNIG),
-                                            new Cargo(TypeOfProduct.GOLD, Measure.KG, 500, Operation.LOADNIG),
-                                            new Cargo(TypeOfProduct.SLAVES, Measure.PEOPLE, 500, Operation.LOADNIG),
-                                            new Cargo(TypeOfProduct.WEED, Measure.KG, 500, Operation.LOADNIG)
-                                    ),
-                            systemModel.getListOfShipPorts()),
-                    new Ship(
-                            String.valueOf(a++),
-                            Arrays.asList
-                                    (
-                                            new Cargo(TypeOfProduct.CLOTH, Measure.METR, 500, Operation.LOADNIG),
-                                            new Cargo(TypeOfProduct.COAL, Measure.KG, 500, Operation.LOADNIG),
-                                            new Cargo(TypeOfProduct.GOLD, Measure.KG, 500, Operation.LOADNIG),
-                                            new Cargo(TypeOfProduct.SLAVES, Measure.PEOPLE, 500, Operation.LOADNIG),
-                                            new Cargo(TypeOfProduct.WEED, Measure.KG, 500, Operation.LOADNIG)
-                                    ),
                             systemModel.getListOfShipPorts())));
             for (Ship ship : ships) {
                 ship.addObserver(mainWindow.portTableModel);

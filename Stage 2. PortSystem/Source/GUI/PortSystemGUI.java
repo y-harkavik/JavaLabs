@@ -49,7 +49,6 @@ public class PortSystemGUI extends JFrame {
 
     private void setComponents() {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new Dimension(900, 550));
         setResizable(false);
 
         GroupLayout groupLayout = new GroupLayout(mainJPanel);
@@ -65,25 +64,23 @@ public class PortSystemGUI extends JFrame {
         );
         groupLayout.setVerticalGroup(
                 groupLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addComponent(portTreeJScrollPane, GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
                         .addGroup(groupLayout.createSequentialGroup()
                                 .addComponent(shipsTableJScrollPane, GroupLayout.PREFERRED_SIZE, 300, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(queueTableJScrollPane, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                                .addComponent(queueTableJScrollPane, GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))
                         .addComponent(logTextAreaJScrollPane)
+                        .addComponent(portTreeJScrollPane)
         );
 
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addComponent(mainJPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(mainJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addComponent(mainJPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        ));
-
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(mainJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
         setJMenuBar(appMenuBar);
 
         pack();
@@ -102,9 +99,11 @@ public class PortSystemGUI extends JFrame {
 
         shipsTable = new JTable(portTableModel);
         shipsTableJScrollPane = new JScrollPane(shipsTable);
+        shipsTable.getTableHeader().setReorderingAllowed(false);
 
         queueTable = new JTable(queueTableModel);
         queueTableJScrollPane = new JScrollPane(queueTable);
+        queueTable.getTableHeader().setReorderingAllowed(false);
 
         logTextArea = new JTextArea();
         logTextAreaJScrollPane = new JScrollPane(logTextArea);
@@ -189,7 +188,7 @@ public class PortSystemGUI extends JFrame {
                     return (Integer) ship.getCurrentCargo().getParameters().getCount();
                 else
                     return null;
-            }catch (ArrayIndexOutOfBoundsException ex) {
+            } catch (ArrayIndexOutOfBoundsException ex) {
                 return null;
             }
         }
@@ -252,18 +251,18 @@ public class PortSystemGUI extends JFrame {
 
         @Override
         public Object getValueAt(int rowIndex, int columnIndex) {
-                try {
-                    Ship ship = (Ship) data.elementAt(rowIndex);
-                    if (ship == null) return null;
-                    if (columnIndex == 0) return ship.getNameShip();
-                    else if (columnIndex == 1)
-                        return ship.getCurrentCargo().getParameters().getTypeOfProduct().getType();
-                    else if (columnIndex == 2) return ship.getStatus().getStatus();
-                    else if (columnIndex == 3) return (Integer) ship.getCurrentCargo().getParameters().getCount();
-                    else if (columnIndex == 4) return (Float) ship.getProgress();
-                    else return null;
-                }catch (ArrayIndexOutOfBoundsException e) {
-                    return null;
+            try {
+                Ship ship = (Ship) data.elementAt(rowIndex);
+                if (ship == null) return null;
+                if (columnIndex == 0) return ship.getNameShip();
+                else if (columnIndex == 1)
+                    return ship.getCurrentCargo().getParameters().getTypeOfProduct().getType();
+                else if (columnIndex == 2) return ship.getStatus().getStatus();
+                else if (columnIndex == 3) return (Integer) ship.getCurrentCargo().getParameters().getCount();
+                else if (columnIndex == 4) return (Float) ship.getProgress();
+                else return null;
+            } catch (ArrayIndexOutOfBoundsException e) {
+                return null;
             }
         }
 
