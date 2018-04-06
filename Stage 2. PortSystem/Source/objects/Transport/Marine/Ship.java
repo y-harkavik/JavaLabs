@@ -1,5 +1,11 @@
-package objects;
+package objects.Transport.Marine;
 
+
+import objects.Buildings.Port.ShipPort;
+import objects.Product.Cargo.Cargo;
+import objects.Product.Characteristics.Operation;
+import objects.Product.Characteristics.TypeOfProduct;
+import objects.Transport.Status.ShipStatus;
 
 import java.util.*;
 import java.util.concurrent.Phaser;
@@ -69,7 +75,7 @@ public class Ship extends Observable implements Runnable {
 
         if (cargo.getOperation() == Operation.LOADNIG) {
             for (ShipPort shipPort : shipPortsList) {
-                Map<TypeOfProduct, Integer> products = shipPort.getPortYard().getProducts();
+                Map<TypeOfProduct, Integer> products = shipPort.getPortPortYard().getProducts();
                 if (((count = products.get(cargo.getParameters().getTypeOfProduct())) != null) && (count >= cargo.getParameters().getCount())) {
                     if (flag) {
                         minShips = shipPort;
@@ -83,7 +89,7 @@ public class Ship extends Observable implements Runnable {
             }
         } else {
             for (ShipPort shipPort : shipPortsList) {
-                Map<TypeOfProduct, Integer> products = shipPort.getPortYard().getProducts();
+                Map<TypeOfProduct, Integer> products = shipPort.getPortPortYard().getProducts();
                 if(products.containsKey(cargo.getParameters().getTypeOfProduct())) {
                     if (flag) {
                         minShips = shipPort;

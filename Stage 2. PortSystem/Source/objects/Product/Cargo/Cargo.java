@@ -1,4 +1,8 @@
-package objects;
+package objects.Product.Cargo;
+
+import objects.Product.Characteristics.Measure;
+import objects.Product.Characteristics.Operation;
+import objects.Product.Characteristics.TypeOfProduct;
 
 public class Cargo {
     private Parameters parameters;

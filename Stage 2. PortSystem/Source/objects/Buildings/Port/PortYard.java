@@ -1,12 +1,15 @@
-package objects;
+package objects.Buildings.Port;
+
+import objects.Product.Characteristics.Operation;
+import objects.Product.Characteristics.TypeOfProduct;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-public class Yard {
+public class PortYard {
     private ConcurrentMap<TypeOfProduct, Integer> products;
 
-    public Yard() {
+    public PortYard() {
         this.products = new ConcurrentHashMap<TypeOfProduct, Integer>();
     }
 

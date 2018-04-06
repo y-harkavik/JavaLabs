@@ -1,6 +1,10 @@
 package GUI;
 
-import objects.*;
+import objects.Product.Cargo.Cargo;
+import objects.Product.Characteristics.Measure;
+import objects.Product.Characteristics.Operation;
+import objects.Product.Characteristics.TypeOfProduct;
+import objects.Transport.Marine.Ship;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
@@ -149,7 +153,7 @@ public class PortSystemGUIController {
         mainWindow.rootNode.add(port);
 
         for (int i = 0; i < numOfPiers; i++) {
-            DefaultMutableTreeNode pier = new DefaultMutableTreeNode("Pier " + String.valueOf(i + 1));
+            DefaultMutableTreeNode pier = new DefaultMutableTreeNode("PortPier " + String.valueOf(i + 1));
             port.add(pier);
         }
     }

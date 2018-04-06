@@ -1,17 +1,20 @@
-package objects;
+package objects.Buildings.Port;
 
 import GUI.PortSystemGUIController;
+import objects.Product.Characteristics.Operation;
+import objects.Transport.Marine.Ship;
+import objects.Transport.Status.ShipStatus;
 
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 
-public class Pier implements Runnable {
+public class PortPier implements Runnable {
     private Ship currentShip;
     private PortSystemGUIController controller;
     private BlockingQueue<Ship> queueOfShips;
     private List<Ship> processingShips;
 
-    Pier(BlockingQueue<Ship> queue, PortSystemGUIController controller, List<Ship> processingShips) {
+    public PortPier(BlockingQueue<Ship> queue, PortSystemGUIController controller, List<Ship> processingShips) {
         this.controller = controller;
         this.queueOfShips = queue;
         this.processingShips = processingShips;

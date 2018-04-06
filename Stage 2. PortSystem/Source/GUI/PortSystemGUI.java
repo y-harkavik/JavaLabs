@@ -1,8 +1,8 @@
 package GUI;
 
 
-import objects.Ship;
-import objects.ShipStatus;
+import objects.Transport.Marine.Ship;
+import objects.Transport.Status.ShipStatus;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;

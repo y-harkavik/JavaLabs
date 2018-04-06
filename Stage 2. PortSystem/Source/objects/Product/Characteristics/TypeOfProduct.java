@@ -1,4 +1,4 @@
-package objects;
+package objects.Product.Characteristics;
 
 public enum TypeOfProduct {
     COAL("Coal"), WEED("Weed"), WOOD("Wood"), GOLD("Gold"), SLAVES("Slaves"), CLOTH("Cloth");
