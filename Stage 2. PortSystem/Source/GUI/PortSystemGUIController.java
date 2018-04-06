@@ -30,7 +30,7 @@ public class PortSystemGUIController {
                                             new Cargo(TypeOfProduct.SLAVES, Measure.PEOPLE, 500, Operation.LOADNIG),
                                             new Cargo(TypeOfProduct.WEED, Measure.KG, 500, Operation.LOADNIG)
                                     ),
-                            systemModel.getListOfShipPorts()),
+                            systemModel.getMapOfShipPorts()),
                     new Ship(
                             String.valueOf(a++),
                             Arrays.asList
@@ -41,7 +41,7 @@ public class PortSystemGUIController {
                                             new Cargo(TypeOfProduct.SLAVES, Measure.PEOPLE, 500, Operation.LOADNIG),
                                             new Cargo(TypeOfProduct.WEED, Measure.KG, 500, Operation.LOADNIG)
                                     ),
-                            systemModel.getListOfShipPorts()),
+                            systemModel.getMapOfShipPorts()),
                     new Ship(
                             String.valueOf(a++),
                             Arrays.asList
@@ -52,7 +52,7 @@ public class PortSystemGUIController {
                                             new Cargo(TypeOfProduct.SLAVES, Measure.PEOPLE, 500, Operation.LOADNIG),
                                             new Cargo(TypeOfProduct.WEED, Measure.KG, 500, Operation.LOADNIG)
                                     ),
-                            systemModel.getListOfShipPorts()),
+                            systemModel.getMapOfShipPorts()),
                     new Ship(
                             String.valueOf(a++),
                             Arrays.asList
@@ -63,7 +63,7 @@ public class PortSystemGUIController {
                                             new Cargo(TypeOfProduct.SLAVES, Measure.PEOPLE, 500, Operation.LOADNIG),
                                             new Cargo(TypeOfProduct.WEED, Measure.KG, 500, Operation.LOADNIG)
                                     ),
-                            systemModel.getListOfShipPorts()),
+                            systemModel.getMapOfShipPorts()),
                     new Ship(
                             String.valueOf(a++),
                             Arrays.asList
@@ -74,7 +74,7 @@ public class PortSystemGUIController {
                                             new Cargo(TypeOfProduct.SLAVES, Measure.PEOPLE, 500, Operation.LOADNIG),
                                             new Cargo(TypeOfProduct.WEED, Measure.KG, 500, Operation.LOADNIG)
                                     ),
-                            systemModel.getListOfShipPorts())));
+                            systemModel.getMapOfShipPorts())));
             for (Ship ship : ships) {
                 ship.addObserver(mainWindow.portTableModel);
                 new Thread(ship).start();

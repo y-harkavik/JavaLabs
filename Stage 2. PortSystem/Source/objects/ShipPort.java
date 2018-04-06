@@ -39,15 +39,15 @@ public class ShipPort implements Runnable {
         while (true) {
             try {
                 Ship ship = portEntrance.take();
-                System.out.println(ship.getNameShip() + "portEntrance.take()");
+               // System.out.println(ship.getNameShip() + "portEntrance.take()");
 
                 controller.getMainWindow().logTextArea.append(ship.getNameShip() + "   пришвартовался\n");
-                System.out.println("getPortYard().changeProductCount");
+                //System.out.println("getPortYard().changeProductCount");
                 getPortYard().changeProductCount(ship.getCurrentCargo().getParameters().getTypeOfProduct(), ship.getCurrentCargo().getParameters().getCount(), ship.getCurrentCargo().getOperation());
-                System.out.println("ship.getPhaser().arriveAndDeregister();");
+                //System.out.println("ship.getPhaser().arriveAndDeregister();");
                 ship.setStatus(ShipStatus.IN_QUEUE);
                 ship.getPhaser().arriveAndDeregister();
-                System.out.println("queueOfShips.put(ship);");
+                //System.out.println("queueOfShips.put(ship);");
                 queueOfShips.put(ship);
                 controller.repaintQueueTable();
             } catch (InterruptedException e) {

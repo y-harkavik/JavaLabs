@@ -1,25 +1,22 @@
 package objects;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Observable;
+import java.util.*;
 import java.util.concurrent.Phaser;
 
 public class Ship extends Observable implements Runnable {
     private String nameShip;
     private float progress;
     private ShipStatus status;
-    private List<ShipPort> shipPorts;
+    private Map<String, ShipPort> shipPorts;
     private List<Cargo> shipCargo;
     private static final int speed = 50;
     private Cargo currentCargo;
     private Phaser phaser;
 
-    public Ship(String nameShip, List<Cargo> shipCargo, List<ShipPort> shipPorts) {
+    public Ship(String nameShip, List<Cargo> shipCargo, Map<String, ShipPort> shipPorts) {
         this.shipPorts = shipPorts;
         this.nameShip = nameShip;
-        this.shipCargo = shipCargo;
+        this.shipCargo = new LinkedList<>(shipCargo);
         this.currentCargo = null;
         this.phaser = new Phaser(1);
         status = ShipStatus.ON_WAY;
@@ -67,7 +64,8 @@ public class Ship extends Observable implements Runnable {
 
     ShipPort checkShipPort(Cargo cargo) {
         Integer count;
-        for (ShipPort shipPort : shipPorts) {
+        //List<ShipPort> shipPortsList = new ArrayList<>(this.shipPorts.values());
+        for (ShipPort shipPort : shipPorts.values()) {
             Map<TypeOfProduct, Integer> products = shipPort.getPortYard().getProducts();
             if (((count = products.get(cargo.getParameters().getTypeOfProduct())) != null) && (count >= cargo.getParameters().getCount())) {
                 return shipPort;
@@ -80,29 +78,33 @@ public class Ship extends Observable implements Runnable {
     public void run() {
         try {
             ShipPort shipPort;
-            Iterator<Cargo> cargoIterator = shipCargo.iterator();
-            while (cargoIterator.hasNext()) {
-                synchronized (Ship.class) {
-                    Cargo cargo = cargoIterator.next();
-                    System.out.println(getNameShip());
-                    System.out.println("Cargo cargo = cargoIterator.next();");
-                    if ((shipPort = checkShipPort(cargo)) != null) {
-                        if (cargo.getParameters().getCount() <= 0) continue;
-                        currentCargo = cargo;
-                        System.out.println("currentCargo = cargo;");
-                        shipPort.getPortEntrance().put(this);
-                        System.out.println(getNameShip() + " shipPort.getPortEntrance().put(this);");
-                        phaser.register();
-                        System.out.println(getNameShip() + " phaser.register(); + await");
-                        phaser.arriveAndAwaitAdvance();
-                    } else {
-                        continue;
+            do {
+                Iterator<Cargo> cargoIterator = shipCargo.iterator();
+                while (cargoIterator.hasNext()) {
+                    synchronized (Ship.class) {
+                        Cargo cargo = cargoIterator.next();
+                       // System.out.println(getNameShip());
+                        //System.out.println("Cargo cargo = cargoIterator.next();");
+                        if ((shipPort = checkShipPort(cargo)) != null) {
+                            if (cargo.getParameters().getCount() <= 0) continue;
+                            currentCargo = cargo;
+                            //System.out.println("currentCargo = cargo;");
+                            shipPort.getPortEntrance().put(this);
+                           // System.out.println(getNameShip() + " shipPort.getPortEntrance().put(this);");
+                            phaser.register();
+                            //System.out.println(getNameShip() + " phaser.register(); + await");
+                            phaser.arriveAndAwaitAdvance();
+                        } else {
+                            continue;
+                        }
                     }
+                    phaser.register();
+                   // System.out.println(getNameShip() + "phaser.register(); + await");
+                    phaser.arriveAndAwaitAdvance();
+                    cargoIterator.remove();
                 }
-                phaser.register();
-                System.out.println(getNameShip() + "phaser.register(); + await");
-                phaser.arriveAndAwaitAdvance();
-            }
+
+            } while (!shipCargo.isEmpty());
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -113,7 +115,6 @@ public class Ship extends Observable implements Runnable {
     }
 
     public float getProgress() {
-
         return progress;
     }
 
