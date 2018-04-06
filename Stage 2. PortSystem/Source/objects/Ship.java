@@ -1,5 +1,6 @@
 package objects;
 
+
 import java.util.*;
 import java.util.concurrent.Phaser;
 
@@ -25,12 +26,10 @@ public class Ship extends Observable implements Runnable {
 
     public void unloading() {
         int count = currentCargo.getParameters().getCount();
+        int cargoCount = count;
         while (count > 0) {
             count -= speed;
-            if (count <= 0) {
-                currentCargo.getParameters().setCount(0);
-            }
-            progress = ((float) count / currentCargo.getParameters().getCount()) * 100;
+            progress = ((float) (cargoCount-count) / cargoCount) * 100;
             setChanged();
             notifyObservers();
             try {
@@ -39,6 +38,7 @@ public class Ship extends Observable implements Runnable {
                 e.printStackTrace();
             }
         }
+        currentCargo.getParameters().setCount(0);
         progress = 0;
     }
 
@@ -47,9 +47,6 @@ public class Ship extends Observable implements Runnable {
         int shipCount = currentCargo.getParameters().getCount();
         while (count < shipCount) {
             count += speed;
-            if (count >= shipCount) {
-                currentCargo.getParameters().setCount(count);
-            }
             progress = ((float) count / shipCount) * 100;
             setChanged();
             notifyObservers();
@@ -59,19 +56,47 @@ public class Ship extends Observable implements Runnable {
                 e.printStackTrace();
             }
         }
+        currentCargo.getParameters().setCount(count);
         progress = 0;
     }
 
     ShipPort checkShipPort(Cargo cargo) {
         Integer count;
-        //List<ShipPort> shipPortsList = new ArrayList<>(this.shipPorts.values());
-        for (ShipPort shipPort : shipPorts.values()) {
-            Map<TypeOfProduct, Integer> products = shipPort.getPortYard().getProducts();
-            if (((count = products.get(cargo.getParameters().getTypeOfProduct())) != null) && (count >= cargo.getParameters().getCount())) {
-                return shipPort;
+        List<ShipPort> shipPortsList = new ArrayList<>(this.shipPorts.values());
+        ShipPort minShips = null;
+
+        boolean flag = true;
+
+        if (cargo.getOperation() == Operation.LOADNIG) {
+            for (ShipPort shipPort : shipPortsList) {
+                Map<TypeOfProduct, Integer> products = shipPort.getPortYard().getProducts();
+                if (((count = products.get(cargo.getParameters().getTypeOfProduct())) != null) && (count >= cargo.getParameters().getCount())) {
+                    if (flag) {
+                        minShips = shipPort;
+                        flag = false;
+                        continue;
+                    }
+                    if (minShips.getQueueOfShips().size() > shipPort.getQueueOfShips().size()) {
+                        minShips = shipPort;
+                    }
+                }
+            }
+        } else {
+            for (ShipPort shipPort : shipPortsList) {
+                Map<TypeOfProduct, Integer> products = shipPort.getPortYard().getProducts();
+                if(products.containsKey(cargo.getParameters().getTypeOfProduct())) {
+                    if (flag) {
+                        minShips = shipPort;
+                        flag = false;
+                        continue;
+                    }
+                    if (minShips.getQueueOfShips().size() > shipPort.getQueueOfShips().size()) {
+                        minShips = shipPort;
+                    }
+                }
             }
         }
-        return null;
+        return minShips;
     }
 
     @Override
@@ -83,14 +108,14 @@ public class Ship extends Observable implements Runnable {
                 while (cargoIterator.hasNext()) {
                     synchronized (Ship.class) {
                         Cargo cargo = cargoIterator.next();
-                       // System.out.println(getNameShip());
+                        // System.out.println(getNameShip());
                         //System.out.println("Cargo cargo = cargoIterator.next();");
                         if ((shipPort = checkShipPort(cargo)) != null) {
                             if (cargo.getParameters().getCount() <= 0) continue;
                             currentCargo = cargo;
                             //System.out.println("currentCargo = cargo;");
                             shipPort.getPortEntrance().put(this);
-                           // System.out.println(getNameShip() + " shipPort.getPortEntrance().put(this);");
+                            // System.out.println(getNameShip() + " shipPort.getPortEntrance().put(this);");
                             phaser.register();
                             //System.out.println(getNameShip() + " phaser.register(); + await");
                             phaser.arriveAndAwaitAdvance();
@@ -99,11 +124,11 @@ public class Ship extends Observable implements Runnable {
                         }
                     }
                     phaser.register();
-                   // System.out.println(getNameShip() + "phaser.register(); + await");
+                    // System.out.println(getNameShip() + "phaser.register(); + await");
                     phaser.arriveAndAwaitAdvance();
                     cargoIterator.remove();
                 }
-
+                Thread.sleep(100);
             } while (!shipCargo.isEmpty());
         } catch (InterruptedException e) {
             e.printStackTrace();

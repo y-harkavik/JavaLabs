@@ -31,11 +31,13 @@ public class Pier implements Runnable {
                     currentShip.setStatus(ShipStatus.LOADING);
                     processingShips.add(currentShip);
                     controller.repaintTable();
+                    Thread.sleep(200);
                     currentShip.loading();
                 } else {
                     currentShip.setStatus(ShipStatus.UNLOADING);
                     processingShips.add(currentShip);
                     controller.repaintTable();
+                    Thread.sleep(200);
                     currentShip.unloading();
                 }
                 processingShips.remove(currentShip);

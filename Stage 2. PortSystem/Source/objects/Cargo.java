@@ -48,12 +48,12 @@ public class Cargo {
             return count;
         }
 
-        public void addCount(int addedCount) {
-            this.count += addedCount;
+        public void addCount() {
+            this.count += getCount();
         }
 
-        public void subCount(int subCount) {
-            this.count -= subCount;
+        public void subCount() {
+            this.count -= getCount();
         }
 
         public void setCount(int count) {
