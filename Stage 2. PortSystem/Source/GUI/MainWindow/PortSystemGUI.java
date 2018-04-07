@@ -1,8 +1,8 @@
 package GUI.MainWindow;
 
 
+import GUI.MainWindow.GUIConstants.TableConstants;
 import objects.Transport.Marine.Ship;
-import objects.Transport.Status.ShipStatus;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
