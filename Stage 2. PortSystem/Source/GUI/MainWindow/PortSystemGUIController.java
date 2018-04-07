@@ -1,5 +1,6 @@
 package GUI.MainWindow;
 
+import AuxiliaryClasses.StatisticSaver;
 import GUI.Dialogs.AddPortDialog;
 import GUI.Dialogs.AddShipDialog;
 import objects.Buildings.Port.PortYard;
@@ -9,8 +10,11 @@ import objects.Product.Characteristics.Operation;
 import objects.Product.Characteristics.TypeOfProduct;
 import objects.Transport.Marine.Ship;
 
+import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -25,6 +29,8 @@ public class PortSystemGUIController {
     int a;
     private AddShipDialog addShipDialog;
     private AddPortDialog addPortDialog;
+    private StatisticSaver statisticSaver;
+    private Thread statisticSaverThread;
 
     private void initializeListeners() {
         mainWindow.addShipItem.addActionListener(event -> {
@@ -69,7 +75,7 @@ public class PortSystemGUIController {
             //addShipDialog.show();
         });
         mainWindow.addPortItem.addActionListener(e -> {
-           // addPort("Port" + String.valueOf(portCount++ + 1), 3);
+            // addPort("Port" + String.valueOf(portCount++ + 1), 3);
             addPortDialog.show();
         });
         mainWindow.portTree.addTreeSelectionListener(event -> {
@@ -88,6 +94,20 @@ public class PortSystemGUIController {
                 exc.printStackTrace();
             }
         });
+        mainWindow.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        mainWindow.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                statisticSaverThread.interrupt();
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
+                System.exit(0);
+            }
+        });
+        statisticSaverThread.start();
     }
 
     public PortSystemGUI getMainWindow() {
@@ -138,7 +158,7 @@ public class PortSystemGUIController {
     }
 
     public void addPort(String name, int numOfPiers, PortYard portYard) {
-        systemModel.addPortInList(name, numOfPiers, portYard,this);
+        systemModel.addPortInList(name, numOfPiers, portYard, this);
         addPortInTree(name, numOfPiers);
         ((DefaultTreeModel) mainWindow.portTree.getModel()).reload();
     }
@@ -156,8 +176,10 @@ public class PortSystemGUIController {
     public void start() {
         mainWindow = new PortSystemGUI();
         systemModel = new PortSystemModel();
-        addShipDialog = new AddShipDialog(this,systemModel.getMapOfShipPorts(),mainWindow.portTableModel);
+        addShipDialog = new AddShipDialog(this, systemModel.getMapOfShipPorts(), mainWindow.portTableModel);
         addPortDialog = new AddPortDialog(this);
+        statisticSaver = new StatisticSaver(systemModel.getMapOfShipPorts());
+        statisticSaverThread = new Thread(statisticSaver);
         initializeListeners();
         mainWindow.setVisible(true);
     }
