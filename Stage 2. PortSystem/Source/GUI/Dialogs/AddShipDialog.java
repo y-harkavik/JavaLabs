@@ -14,6 +14,7 @@ import java.awt.*;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Observer;
 
 public class AddShipDialog extends JDialog {
     private JCheckBox clothCheckBox;
@@ -39,12 +40,14 @@ public class AddShipDialog extends JDialog {
     private JTextField woodTextField;
     private JButton addButton;
     PortSystemGUIController controller;
-    Map<String,ShipPort> shipPortList;
+    Map<String, ShipPort> shipPortList;
+    Observer observer;
 
-    public AddShipDialog(PortSystemGUIController controller, Map<String,ShipPort> shipPortList) {
-        super((Dialog) null, "Add ship", true);
+    public AddShipDialog(PortSystemGUIController controller, Map<String, ShipPort> shipPortList, Observer observer) {
+        super((Dialog) null, "Add ship", false);
         this.controller = controller;
         this.shipPortList = shipPortList;
+        this.observer = observer;
         initComponents();
         setComponentsParameters();
         setComponentsOnWindow();
@@ -108,7 +111,10 @@ public class AddShipDialog extends JDialog {
         addButton.addActionListener(e -> {
             List<Cargo> cargoList;
             if ((cargoList = checkInfo()) != null) {
-                new Thread(new Ship(nameTextField.getText(),cargoList,shipPortList)).start();
+                Ship ship = new Ship(nameTextField.getText(), cargoList, shipPortList);
+                ship.addObserver(observer);
+                new Thread(ship).start();
+                this.hide();
             }
         });
     }
@@ -211,7 +217,7 @@ public class AddShipDialog extends JDialog {
         List<Cargo> cargoList = new LinkedList<>();
         Operation operation;
 
-        if (!RegEx.chechName(nameTextField.getName())) {
+        if (!RegEx.checkName(nameTextField.getText())) {
             JOptionPane.showMessageDialog(null, "Wrong name", "Error", 2);
             return null;
         }
@@ -221,10 +227,10 @@ public class AddShipDialog extends JDialog {
                 JOptionPane.showMessageDialog(null, "Wrong number", "Error", 2);
                 return null;
             }
-            if (((String) weedComboBox.getSelectedItem()).equals(Operation.LOADNIG)) {
+            if (((String) weedComboBox.getSelectedItem()).equals(Operation.LOADNIG.toString())) {
                 operation = Operation.LOADNIG;
-            }
-            operation = Operation.UNLOADING;
+            } else operation = Operation.UNLOADING;
+            flag++;
             cargoList.add(new Cargo(TypeOfProduct.WEED, Measure.KG, Integer.parseInt(num), operation));
         }
         if (woodCheckBox.isSelected()) {
@@ -233,10 +239,10 @@ public class AddShipDialog extends JDialog {
                 JOptionPane.showMessageDialog(null, "Wrong number", "Error", 2);
                 return null;
             }
-            if (((String) woodComboBox.getSelectedItem()).equals(Operation.LOADNIG)) {
+            if (((String) woodComboBox.getSelectedItem()).equals(Operation.LOADNIG.toString())) {
                 operation = Operation.LOADNIG;
-            }
-            operation = Operation.UNLOADING;
+            } else operation = Operation.UNLOADING;
+            flag++;
             cargoList.add(new Cargo(TypeOfProduct.WOOD, Measure.POUND, Integer.parseInt(num), operation));
         }
         if (goldCheckBox.isSelected()) {
@@ -245,10 +251,10 @@ public class AddShipDialog extends JDialog {
                 JOptionPane.showMessageDialog(null, "Wrong number", "Error", 2);
                 return null;
             }
-            if (((String) goldComboBox.getSelectedItem()).equals(Operation.LOADNIG)) {
+            if (((String) goldComboBox.getSelectedItem()).equals(Operation.LOADNIG.toString())) {
                 operation = Operation.LOADNIG;
-            }
-            operation = Operation.UNLOADING;
+            } else operation = Operation.UNLOADING;
+            flag++;
             cargoList.add(new Cargo(TypeOfProduct.GOLD, Measure.FUTS, Integer.parseInt(num), operation));
         }
         if (coalCheckBox.isSelected()) {
@@ -257,10 +263,10 @@ public class AddShipDialog extends JDialog {
                 JOptionPane.showMessageDialog(null, "Wrong number", "Error", 2);
                 return null;
             }
-            if (((String) coalComboBox.getSelectedItem()).equals(Operation.LOADNIG)) {
+            if (((String) coalComboBox.getSelectedItem()).equals(Operation.LOADNIG.toString())) {
                 operation = Operation.LOADNIG;
-            }
-            operation = Operation.UNLOADING;
+            } else operation = Operation.UNLOADING;
+            flag++;
             cargoList.add(new Cargo(TypeOfProduct.COAL, Measure.KG, Integer.parseInt(num), operation));
         }
         if (clothCheckBox.isSelected()) {
@@ -269,10 +275,10 @@ public class AddShipDialog extends JDialog {
                 JOptionPane.showMessageDialog(null, "Wrong number", "Error", 2);
                 return null;
             }
-            if (((String) clothComboBox.getSelectedItem()).equals(Operation.LOADNIG)) {
+            if (((String) clothComboBox.getSelectedItem()).equals(Operation.LOADNIG.toString())) {
                 operation = Operation.LOADNIG;
-            }
-            operation = Operation.UNLOADING;
+            } else operation = Operation.UNLOADING;
+            flag++;
             cargoList.add(new Cargo(TypeOfProduct.CLOTH, Measure.METR, Integer.parseInt(num), operation));
         }
         if (slavesCheckBox.isSelected()) {
@@ -281,12 +287,15 @@ public class AddShipDialog extends JDialog {
                 JOptionPane.showMessageDialog(null, "Wrong number", "Error", 2);
                 return null;
             }
-            if (((String) slavesComboBox.getSelectedItem()).equals(Operation.LOADNIG)) {
+            if (((String) slavesComboBox.getSelectedItem()).equals(Operation.LOADNIG.toString())) {
                 operation = Operation.LOADNIG;
-            }
-            operation = Operation.UNLOADING;
+            } else operation = Operation.UNLOADING;
+            flag++;
             cargoList.add(new Cargo(TypeOfProduct.SLAVES, Measure.POUND, Integer.parseInt(num), operation));
         }
-        return cargoList;
+        if(flag!=0) {
+            return cargoList;
+        }
+        return null;
     }
 }

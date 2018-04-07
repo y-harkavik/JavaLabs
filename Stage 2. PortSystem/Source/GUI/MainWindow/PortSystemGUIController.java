@@ -1,5 +1,6 @@
 package GUI.MainWindow;
 
+import GUI.Dialogs.AddShipDialog;
 import objects.Product.Cargo.Cargo;
 import objects.Product.Characteristics.Measure;
 import objects.Product.Characteristics.Operation;
@@ -20,10 +21,11 @@ public class PortSystemGUIController {
     private String child;
     private String parent;
     int a;
+    private AddShipDialog addShipDialog;
 
     private void initializeListeners() {
         mainWindow.addShipItem.addActionListener(event -> {
-            List<Ship> ships = new ArrayList<Ship>(Arrays.asList(
+            /*List<Ship> ships = new ArrayList<Ship>(Arrays.asList(
                     new Ship(
                             String.valueOf(a++),
                             Arrays.asList
@@ -60,9 +62,9 @@ public class PortSystemGUIController {
             for (Ship ship : ships) {
                 ship.addObserver(mainWindow.portTableModel);
                 new Thread(ship).start();
-            }
+            }*/
+            addShipDialog.show();
         });
-
         mainWindow.addPortItem.addActionListener(e -> {
             addPort("Port" + String.valueOf(portCount++ + 1), 3);
         });
@@ -71,7 +73,7 @@ public class PortSystemGUIController {
                 child = event.getNewLeadSelectionPath().getLastPathComponent().toString();
                 parent = event.getNewLeadSelectionPath().getParentPath().getLastPathComponent().toString();
 
-                repaintTable();
+                repaintTables();
             } catch (NullPointerException ex) {
                 if (child.equals("Ports")) {
                     mainWindow.portTableModel.clearTable();
@@ -82,24 +84,13 @@ public class PortSystemGUIController {
                 exc.printStackTrace();
             }
         });
-
-        /*new Thread(() -> {
-            while (true) {
-                mainWindow.logTextArea.append(systemModel.getShipsLog().toString());
-                try {
-                    Thread.sleep(5000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();*/
     }
 
     public PortSystemGUI getMainWindow() {
         return mainWindow;
     }
 
-    public void repaintTable() {
+    public void repaintTables() {
         repaintShipTable();
         repaintQueueTable();
     }
@@ -161,7 +152,7 @@ public class PortSystemGUIController {
     public void start() {
         mainWindow = new PortSystemGUI();
         systemModel = new PortSystemModel();
-
+        addShipDialog = new AddShipDialog(this,systemModel.getMapOfShipPorts(),mainWindow.portTableModel);
         initializeListeners();
         mainWindow.setVisible(true);
     }

@@ -112,6 +112,7 @@ public class Ship extends Observable implements Runnable {
     @Override
     public void run() {
         try {
+            Thread.sleep(2000);
             ShipPort shipPort;
             do {
                 Iterator<Cargo> cargoIterator = shipCargo.iterator();
@@ -138,7 +139,7 @@ public class Ship extends Observable implements Runnable {
                     phaser.arriveAndAwaitAdvance();
                     cargoIterator.remove();
                 }
-                Thread.sleep(100);
+                Thread.sleep(2000);
             } while (!shipCargo.isEmpty());
         } catch (InterruptedException e) {
             e.printStackTrace();

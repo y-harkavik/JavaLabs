@@ -32,20 +32,20 @@ public class PortPier implements Runnable {
                 if (currentShip.getCurrentCargo().getOperation() == Operation.LOADNIG) {
                     currentShip.setStatus(ShipStatus.LOADING);
                     processingShips.add(currentShip);
-                    controller.repaintTable();
+                    controller.repaintTables();
                     Thread.sleep(200);
                     currentShip.loading();
                 } else {
                     currentShip.setStatus(ShipStatus.UNLOADING);
                     processingShips.add(currentShip);
-                    controller.repaintTable();
+                    controller.repaintTables();
                     Thread.sleep(200);
                     currentShip.unloading();
                 }
                 processingShips.remove(currentShip);
                 currentShip.setStatus(ShipStatus.ON_WAY);
                 controller.getMainWindow().logTextArea.append(currentShip.getNameShip() + " закончил операцию" + "\n");
-                controller.repaintTable();
+                controller.repaintTables();
                 currentShip.getPhaser().arriveAndDeregister();
                 currentShip = null;
             } catch (InterruptedException e) {
