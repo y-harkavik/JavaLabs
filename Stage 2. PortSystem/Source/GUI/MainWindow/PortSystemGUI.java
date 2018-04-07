@@ -1,4 +1,4 @@
-package GUI;
+package GUI.MainWindow;
 
 
 import objects.Transport.Marine.Ship;

@@ -1,10 +1,9 @@
 package objects.Buildings.Port;
 
-import GUI.PortSystemGUIController;
+import GUI.MainWindow.PortSystemGUIController;
 import objects.Product.Characteristics.Operation;
 import objects.Transport.Marine.Ship;
 import objects.Transport.Status.ShipStatus;
-
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 

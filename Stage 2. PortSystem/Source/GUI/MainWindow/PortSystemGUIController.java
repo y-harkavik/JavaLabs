@@ -1,4 +1,4 @@
-package GUI;
+package GUI.MainWindow;
 
 import objects.Product.Cargo.Cargo;
 import objects.Product.Characteristics.Measure;

@@ -82,7 +82,9 @@ public class Ship extends Observable implements Runnable {
                         flag = false;
                         continue;
                     }
-                    if (minShips.getQueueOfShips().size() > shipPort.getQueueOfShips().size()) {
+                    if (minShips.getListOfProcessingShips().size() > shipPort.getListOfProcessingShips().size()) {
+                        minShips = shipPort;
+                    } else if(minShips.getListOfShipsInQueue().size() > shipPort.getListOfShipsInQueue().size()) {
                         minShips = shipPort;
                     }
                 }
@@ -96,7 +98,9 @@ public class Ship extends Observable implements Runnable {
                         flag = false;
                         continue;
                     }
-                    if (minShips.getQueueOfShips().size() > shipPort.getQueueOfShips().size()) {
+                    if (minShips.getListOfProcessingShips().size() > shipPort.getListOfProcessingShips().size()) {
+                        minShips = shipPort;
+                    } else if(minShips.getListOfShipsInQueue().size() > shipPort.getListOfShipsInQueue().size()) {
                         minShips = shipPort;
                     }
                 }
