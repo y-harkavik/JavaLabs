@@ -1,9 +1,11 @@
 package GUI.Dialogs;
 
+import RegEx.RegEx;
 import objects.Product.Characteristics.Operation;
 
 import javax.swing.*;
 import java.awt.*;
+import java.beans.EventHandler;
 
 public class AddShipDialog extends JDialog {
     private JCheckBox clothCheckBox;
@@ -91,7 +93,9 @@ public class AddShipDialog extends JDialog {
 
         addButton.setText("ADD");
         addButton.setFont(new Font("Corbel", 0, 48));
-        addButton.addActionListener(e -> {});
+        addButton.addActionListener(e -> {
+            checkInfo();
+        });
     }
 
     private void setComponentsOnWindow() {
@@ -185,12 +189,19 @@ public class AddShipDialog extends JDialog {
         pack();
     }
 
-    public static void main(String args[]) {
-        
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AddShipDialog().setVisible(true);
-            }
+    private void checkInfo() {
+        if(RegEx.checkNum(woodTextField.getText())) {
+            System.out.println(true);
+        } else System.out.println(false);
+
+        if(RegEx.chechName(nameTextField.getText())) {
+            System.out.println(true);
+        } else System.out.println(false);
+    }
+
+    public static void main(String[] args) {
+        EventQueue.invokeLater(()-> {
+            new AddShipDialog().setVisible(true);
         });
     }
 }
