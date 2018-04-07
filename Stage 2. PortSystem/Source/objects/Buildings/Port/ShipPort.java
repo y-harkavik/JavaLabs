@@ -15,7 +15,7 @@ public class ShipPort implements Runnable {
     private BlockingQueue<Ship> queueOfShips;
     private BlockingQueue<Ship> portEntrance;
     private List<Ship> processingShips;
-    private PortYard portPortYard;
+    private PortYard portYard;
     private PortSystemGUIController controller;
 
     public ShipPort(String name, int numOfPiers, PortSystemGUIController controller) {
@@ -29,7 +29,8 @@ public class ShipPort implements Runnable {
 
         for (int i = 0; i < numOfPiers; i++) {
             PortPier portPier = new PortPier(queueOfShips, controller, processingShips);
-            listOfPiers.put("PortPier " + String.valueOf(i + 1), portPier);
+            portPier.setName("Pier " + String.valueOf(i + 1));
+            listOfPiers.put("Pier " + String.valueOf(i + 1), portPier);
             Thread thread = new Thread(portPier);
             thread.setDaemon(true);
             thread.start();
@@ -41,11 +42,11 @@ public class ShipPort implements Runnable {
         while (true) {
             try {
                 Ship ship = portEntrance.take();
-               // System.out.println(ship.getNameShip() + "portEntrance.take()");
+                // System.out.println(ship.getNameShip() + "portEntrance.take()");
 
-                controller.getMainWindow().logTextArea.append(ship.getNameShip() + " - пришвартовался\n");
-                //System.out.println("getPortPortYard().changeProductCount");
-                getPortPortYard().changeProductCount(ship.getCurrentCargo().getParameters().getTypeOfProduct(), ship.getCurrentCargo().getParameters().getCount(), ship.getCurrentCargo().getOperation());
+                controller.getMainWindow().printAction(ship.getNameShip() + " - пришвартовался к " + name + "\n");
+                //System.out.println("getPortYard().changeProductCount");
+                getPortYard().changeProductCount(ship.getCurrentCargo().getParameters().getTypeOfProduct(), ship.getCurrentCargo().getParameters().getCount(), ship.getCurrentCargo().getOperation());
                 //System.out.println("ship.getPhaser().arriveAndDeregister();");
                 ship.setStatus(ShipStatus.IN_QUEUE);
                 ship.getPhaser().arriveAndDeregister();
@@ -78,12 +79,12 @@ public class ShipPort implements Runnable {
         return processingShips;
     }
 
-    public PortYard getPortPortYard() {
-        return portPortYard;
+    public PortYard getPortYard() {
+        return portYard;
     }
 
-    public void setPortPortYard(PortYard portPortYard) {
-        this.portPortYard = portPortYard;
+    public void setPortYard(PortYard portYard) {
+        this.portYard = portYard;
     }
 
     public String getName() {

@@ -115,6 +115,7 @@ public class AddShipDialog extends JDialog {
                 ship.addObserver(observer);
                 Thread shipThread = new Thread(ship);
                 shipThread.setDaemon(true);
+                controller.getMainWindow().printAction(ship.getNameShip() + " " + " - в пути" + "\n");
                 shipThread.start();
                 this.hide();
             }
@@ -295,7 +296,7 @@ public class AddShipDialog extends JDialog {
             flag++;
             cargoList.add(new Cargo(TypeOfProduct.SLAVES, Measure.POUND, Integer.parseInt(num), operation));
         }
-        if(flag!=0) {
+        if (flag != 0) {
             return cargoList;
         }
         return null;

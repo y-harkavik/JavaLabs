@@ -31,7 +31,7 @@ public class PortSystemGUI extends JFrame {
     JScrollPane queueTableJScrollPane;
     JTable shipsTable;
     JTable queueTable;
-    public JTextArea logTextArea;
+    JTextArea logTextArea;
     JTree portTree;
 
     DefaultMutableTreeNode rootNode;
@@ -40,6 +40,10 @@ public class PortSystemGUI extends JFrame {
     ShipQueueTableModel queueTableModel;
 
     unloadingShipProgressBar progressBarRenderer;
+
+    synchronized public void printAction(String text) {
+        logTextArea.append(text);
+    }
 
     public PortSystemGUI() {
         initComponents();

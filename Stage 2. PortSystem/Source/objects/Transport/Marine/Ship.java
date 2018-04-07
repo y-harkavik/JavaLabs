@@ -75,7 +75,7 @@ public class Ship extends Observable implements Runnable {
 
         if (cargo.getOperation() == Operation.LOADNIG) {
             for (ShipPort shipPort : shipPortsList) {
-                Map<TypeOfProduct, Integer> products = shipPort.getPortPortYard().getProducts();
+                Map<TypeOfProduct, Integer> products = shipPort.getPortYard().getProducts();
                 if (((count = products.get(cargo.getParameters().getTypeOfProduct())) != null) && (count >= cargo.getParameters().getCount())) {
                     if (flag) {
                         minShips = shipPort;
@@ -91,7 +91,7 @@ public class Ship extends Observable implements Runnable {
             }
         } else {
             for (ShipPort shipPort : shipPortsList) {
-                Map<TypeOfProduct, Integer> products = shipPort.getPortPortYard().getProducts();
+                Map<TypeOfProduct, Integer> products = shipPort.getPortYard().getProducts();
                 if(products.containsKey(cargo.getParameters().getTypeOfProduct())) {
                     if (flag) {
                         minShips = shipPort;
@@ -138,6 +138,7 @@ public class Ship extends Observable implements Runnable {
                     // System.out.println(getNameShip() + "phaser.register(); + await");
                     phaser.arriveAndAwaitAdvance();
                     cargoIterator.remove();
+                    Thread.sleep(1000);
                 }
                 Thread.sleep(2000);
             } while (!shipCargo.isEmpty());

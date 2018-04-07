@@ -2,7 +2,6 @@ package GUI.MainWindow;
 
 import objects.Transport.Marine.Ship;
 import objects.Buildings.Port.ShipPort;
-import objects.Product.Characteristics.TypeOfProduct;
 import objects.Buildings.Port.PortYard;
 
 import java.util.*;
@@ -16,7 +15,7 @@ public class PortSystemModel {
 
     void addPortInList(String name, int numOfPiers, PortYard portYard, PortSystemGUIController controller) {
         ShipPort shipPort = new ShipPort(name, numOfPiers, controller);
-        shipPort.setPortPortYard(portYard);
+        shipPort.setPortYard(portYard);
         shipPorts.put(name, shipPort);
         Thread t = new Thread(shipPort);
         t.setDaemon(true);
@@ -53,11 +52,6 @@ public class PortSystemModel {
             shipsInQueue.addAll(shipPort.getListOfShipsInQueue());
         }
         return shipsInQueue;
-    }
-
-    synchronized StringBuilder getShipsLog() {
-        StringBuilder log = new StringBuilder("1\n");
-        return log;
     }
 
     Map<String, ShipPort> getMapOfShipPorts() {

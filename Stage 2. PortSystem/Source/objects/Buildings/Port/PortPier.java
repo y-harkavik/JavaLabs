@@ -4,6 +4,7 @@ import GUI.MainWindow.PortSystemGUIController;
 import objects.Product.Characteristics.Operation;
 import objects.Transport.Marine.Ship;
 import objects.Transport.Status.ShipStatus;
+
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 
@@ -12,6 +13,7 @@ public class PortPier implements Runnable {
     private PortSystemGUIController controller;
     private BlockingQueue<Ship> queueOfShips;
     private List<Ship> processingShips;
+    private String name;
 
     public PortPier(BlockingQueue<Ship> queue, PortSystemGUIController controller, List<Ship> processingShips) {
         this.controller = controller;
@@ -28,7 +30,7 @@ public class PortPier implements Runnable {
         while (true) {
             try {
                 currentShip = queueOfShips.take();
-
+                controller.getMainWindow().printAction(currentShip.getNameShip() + " - вошёл в " + name + "\n");
                 if (currentShip.getCurrentCargo().getOperation() == Operation.LOADNIG) {
                     currentShip.setStatus(ShipStatus.LOADING);
                     processingShips.add(currentShip);
@@ -43,14 +45,18 @@ public class PortPier implements Runnable {
                     currentShip.unloading();
                 }
                 processingShips.remove(currentShip);
+                controller.getMainWindow().printAction(currentShip.getNameShip() + " - отшвартовался от " + name + "\n");
                 currentShip.setStatus(ShipStatus.ON_WAY);
-                controller.getMainWindow().logTextArea.append(currentShip.getNameShip() + " - закончил операцию" + "\n");
-                controller.repaintTables();
                 currentShip.getPhaser().arriveAndDeregister();
                 currentShip = null;
+                controller.repaintTables();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

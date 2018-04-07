@@ -28,7 +28,7 @@ public class PortSystemGUIController {
 
     private void initializeListeners() {
         mainWindow.addShipItem.addActionListener(event -> {
-            /*List<Ship> ships = new ArrayList<Ship>(Arrays.asList(
+            List<Ship> ships = new ArrayList<Ship>(Arrays.asList(
                     new Ship(
                             String.valueOf(a++),
                             Arrays.asList
@@ -65,8 +65,8 @@ public class PortSystemGUIController {
             for (Ship ship : ships) {
                 ship.addObserver(mainWindow.portTableModel);
                 new Thread(ship).start();
-            }*/
-            addShipDialog.show();
+            }
+            //addShipDialog.show();
         });
         mainWindow.addPortItem.addActionListener(e -> {
            // addPort("Port" + String.valueOf(portCount++ + 1), 3);
@@ -148,7 +148,7 @@ public class PortSystemGUIController {
         mainWindow.rootNode.add(port);
 
         for (int i = 0; i < numOfPiers; i++) {
-            DefaultMutableTreeNode pier = new DefaultMutableTreeNode("PortPier " + String.valueOf(i + 1));
+            DefaultMutableTreeNode pier = new DefaultMutableTreeNode("Pier " + String.valueOf(i + 1));
             port.add(pier);
         }
     }
