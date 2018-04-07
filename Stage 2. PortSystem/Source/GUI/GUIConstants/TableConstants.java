@@ -1,4 +1,4 @@
-package GUI.MainWindow.GUIConstants;
+package GUI.GUIConstants;
 
 import objects.Transport.Status.ShipStatus;
 

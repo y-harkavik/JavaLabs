@@ -1,7 +1,7 @@
 package GUI.MainWindow;
 
 
-import GUI.MainWindow.GUIConstants.TableConstants;
+import GUI.GUIConstants.TableConstants;
 import objects.Transport.Marine.Ship;
 
 import javax.swing.*;
