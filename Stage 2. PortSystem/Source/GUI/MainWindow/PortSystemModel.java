@@ -14,16 +14,9 @@ public class PortSystemModel {
         shipPorts = new LinkedHashMap<>();
     }
 
-    void addPortInList(String name, int numOfPiers, PortSystemGUIController controller) {
+    void addPortInList(String name, int numOfPiers, PortYard portYard, PortSystemGUIController controller) {
         ShipPort shipPort = new ShipPort(name, numOfPiers, controller);
-        shipPort.setPortPortYard(new PortYard());
-        shipPort.getPortPortYard().addProduct(TypeOfProduct.WEED, 1000);
-        shipPort.getPortPortYard().addProduct(TypeOfProduct.CLOTH, 1000);
-        shipPort.getPortPortYard().addProduct(TypeOfProduct.COAL, 1000);
-        shipPort.getPortPortYard().addProduct(TypeOfProduct.GOLD, 1000);
-        shipPort.getPortPortYard().addProduct(TypeOfProduct.SLAVES, 1000);
-        shipPort.getPortPortYard().addProduct(TypeOfProduct.WOOD, 1000);
-
+        shipPort.setPortPortYard(portYard);
         shipPorts.put(name, shipPort);
         Thread t = new Thread(shipPort);
         t.setDaemon(true);

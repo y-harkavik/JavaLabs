@@ -113,7 +113,9 @@ public class AddShipDialog extends JDialog {
             if ((cargoList = checkInfo()) != null) {
                 Ship ship = new Ship(nameTextField.getText(), cargoList, shipPortList);
                 ship.addObserver(observer);
-                new Thread(ship).start();
+                Thread shipThread = new Thread(ship);
+                shipThread.setDaemon(true);
+                shipThread.start();
                 this.hide();
             }
         });

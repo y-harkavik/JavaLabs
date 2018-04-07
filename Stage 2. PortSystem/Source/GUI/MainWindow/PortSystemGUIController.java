@@ -1,6 +1,8 @@
 package GUI.MainWindow;
 
+import GUI.Dialogs.AddPortDialog;
 import GUI.Dialogs.AddShipDialog;
+import objects.Buildings.Port.PortYard;
 import objects.Product.Cargo.Cargo;
 import objects.Product.Characteristics.Measure;
 import objects.Product.Characteristics.Operation;
@@ -22,6 +24,7 @@ public class PortSystemGUIController {
     private String parent;
     int a;
     private AddShipDialog addShipDialog;
+    private AddPortDialog addPortDialog;
 
     private void initializeListeners() {
         mainWindow.addShipItem.addActionListener(event -> {
@@ -66,7 +69,8 @@ public class PortSystemGUIController {
             addShipDialog.show();
         });
         mainWindow.addPortItem.addActionListener(e -> {
-            addPort("Port" + String.valueOf(portCount++ + 1), 3);
+           // addPort("Port" + String.valueOf(portCount++ + 1), 3);
+            addPortDialog.show();
         });
         mainWindow.portTree.addTreeSelectionListener(event -> {
             try {
@@ -133,8 +137,8 @@ public class PortSystemGUIController {
         mainWindow.portTableModel.addAll(shipList);
     }
 
-    void addPort(String name, int numOfPiers) {
-        systemModel.addPortInList(name, numOfPiers, this);
+    public void addPort(String name, int numOfPiers, PortYard portYard) {
+        systemModel.addPortInList(name, numOfPiers, portYard,this);
         addPortInTree(name, numOfPiers);
         ((DefaultTreeModel) mainWindow.portTree.getModel()).reload();
     }
@@ -153,6 +157,7 @@ public class PortSystemGUIController {
         mainWindow = new PortSystemGUI();
         systemModel = new PortSystemModel();
         addShipDialog = new AddShipDialog(this,systemModel.getMapOfShipPorts(),mainWindow.portTableModel);
+        addPortDialog = new AddPortDialog(this);
         initializeListeners();
         mainWindow.setVisible(true);
     }
