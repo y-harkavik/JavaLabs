@@ -44,7 +44,7 @@ public class PortPier implements Runnable {
                 }
                 processingShips.remove(currentShip);
                 currentShip.setStatus(ShipStatus.ON_WAY);
-                controller.getMainWindow().logTextArea.append(currentShip.getNameShip() + " закончил операцию" + "\n");
+                controller.getMainWindow().logTextArea.append(currentShip.getNameShip() + " - закончил операцию" + "\n");
                 controller.repaintTables();
                 currentShip.getPhaser().arriveAndDeregister();
                 currentShip = null;

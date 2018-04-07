@@ -142,43 +142,41 @@ public class PortSystemGUI extends JFrame {
     }
 
     class ShipQueueTableModel extends AbstractTableModel {
-        final String[] headers = {"Ship", "Good", "Operation", "Count"};
-        final Class[] columnClasses = {String.class, String.class, ShipStatus.class, Integer.class};
-        final Vector<Ship> shipQueue = new Vector<>();
+        final Vector<Ship> listOfShipsInQueue = new Vector<>();
 
-        synchronized public void addAll(List<Ship> shipsList) {
-            shipQueue.addAll(shipsList);
+        public void addAll(List<Ship> shipsList) {
+            listOfShipsInQueue.addAll(shipsList);
             fireTableDataChanged();
         }
 
-        synchronized public void clearTable() {
-            shipQueue.removeAllElements();
+        public void clearTable() {
+            listOfShipsInQueue.removeAllElements();
         }
 
         @Override
         public int getRowCount() {
-            return shipQueue.size();
+            return listOfShipsInQueue.size();
         }
 
         @Override
         public int getColumnCount() {
-            return headers.length;
+            return TableConstants.QUEUE_TABLE_HEADERS.length;
         }
 
         @Override
         public Class getColumnClass(int c) {
-            return columnClasses[c];
+            return TableConstants.QUEUE_TABLE_COLUMN_CLASSES[c];
         }
 
         @Override
         public String getColumnName(int col) {
-            return headers[col];
+            return TableConstants.QUEUE_TABLE_HEADERS[col];
         }
 
         @Override
         public Object getValueAt(int rowIndex, int columnIndex) {
             try {
-                Ship ship = (Ship) shipQueue.elementAt(rowIndex);
+                Ship ship = (Ship) listOfShipsInQueue.elementAt(rowIndex);
                 if (columnIndex == 0) return ship.getNameShip();
                 else if (columnIndex == 1)
                     return ship.getCurrentCargo().getParameters().getTypeOfProduct().getType() + " " + ship.getCurrentCargo().getParameters().getMeasure();
@@ -195,64 +193,55 @@ public class PortSystemGUI extends JFrame {
     }
 
     class ShipTableModel extends AbstractTableModel implements Observer {
-        final String[] headers = {"Ship", "Good", "Operation", "Count", "Progress"};
-        final Class[] columnClasses = {String.class, String.class, ShipStatus.class, Integer.class, JProgressBar.class};
-        final Vector data = new Vector();
+        final Vector shipList = new Vector();
 
         public void addAll(List<Ship> shipsList) {
-            data.addAll(shipsList);
+            shipList.addAll(shipsList);
             fireTableDataChanged();
         }
 
         public void clearTable() {
-            data.removeAllElements();
+            shipList.removeAllElements();
         }
 
         public void addShip(Ship addingShip) {
-            /*if(addingShip==null) {
-                fireTableDataChanged();
-                return;
-            }*/
             if (addingShip == null) {
                 fireTableDataChanged();
                 return;
             }
-            data.addElement(addingShip);
-            fireTableRowsInserted(data.size() - 1, data.size() - 1);
+            shipList.addElement(addingShip);
+            fireTableRowsInserted(shipList.size() - 1, shipList.size() - 1);
         }
 
         @Override
         public void update(Observable o, Object arg) {
-            //int index = data.indexOf(o);
-            //if (index != -1)
-            //fireTableRowsUpdated(index, index);
             fireTableDataChanged();
         }
 
         @Override
         public int getRowCount() {
-            return data.size();
+            return shipList.size();
         }
 
         @Override
         public int getColumnCount() {
-            return headers.length;
+            return TableConstants.SHIP_TABLE_HEADERS.length;
         }
 
         @Override
         public Class getColumnClass(int c) {
-            return columnClasses[c];
+            return TableConstants.SHIP_TABLE_COLUMN_CLASSES[c];
         }
 
         @Override
         public String getColumnName(int col) {
-            return headers[col];
+            return TableConstants.SHIP_TABLE_HEADERS[col];
         }
 
         @Override
         public Object getValueAt(int rowIndex, int columnIndex) {
             try {
-                Ship ship = (Ship) data.elementAt(rowIndex);
+                Ship ship = (Ship) shipList.elementAt(rowIndex);
                 if (ship == null) return null;
                 if (columnIndex == 0) return ship.getNameShip();
                 else if (columnIndex == 1)

@@ -43,7 +43,7 @@ public class ShipPort implements Runnable {
                 Ship ship = portEntrance.take();
                // System.out.println(ship.getNameShip() + "portEntrance.take()");
 
-                controller.getMainWindow().logTextArea.append(ship.getNameShip() + "   пришвартовался\n");
+                controller.getMainWindow().logTextArea.append(ship.getNameShip() + " - пришвартовался\n");
                 //System.out.println("getPortPortYard().changeProductCount");
                 getPortPortYard().changeProductCount(ship.getCurrentCargo().getParameters().getTypeOfProduct(), ship.getCurrentCargo().getParameters().getCount(), ship.getCurrentCargo().getOperation());
                 //System.out.println("ship.getPhaser().arriveAndDeregister();");
