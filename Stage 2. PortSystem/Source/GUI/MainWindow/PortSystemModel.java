@@ -4,10 +4,6 @@ import objects.Transport.Marine.Ship;
 import objects.Buildings.Port.ShipPort;
 import objects.Buildings.Port.PortYard;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.ObjectOutputStream;
 import java.util.*;
 
 public class PortSystemModel {

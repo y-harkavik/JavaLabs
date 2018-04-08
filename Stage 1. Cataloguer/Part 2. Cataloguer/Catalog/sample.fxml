@@ -63,12 +63,12 @@
                 <!--<TableColumn fx:id="previewColumn" editable="false" maxWidth="170.0" minWidth="170.0" prefWidth="170.0"
                              resizable="false" sortable="false" text="Preview">
                     <cellValueFactory>
-                        <PropertyValueFactory property="name"/>
+                        <PropertyValueFactory property="portName"/>
                     </cellValueFactory>
                 </TableColumn>-->
                 <TableColumn fx:id="nameColumn" editable="false" minWidth="200.0" prefWidth="200.0" sortable="false" text="Name">
                     <cellValueFactory>
-                        <PropertyValueFactory property="name" />
+                        <PropertyValueFactory property="portName" />
                     </cellValueFactory>
                 </TableColumn>
                 <TableColumn fx:id="dateColumn" editable="false" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" resizable="false" sortable="false" text="Date">

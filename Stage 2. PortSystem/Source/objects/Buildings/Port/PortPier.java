@@ -31,7 +31,8 @@ public class PortPier implements Runnable {
             try {
                 currentShip = queueOfShips.take();
                 controller.getMainWindow().printAction(currentShip.getNameShip() + " - вошёл в " + name + "\n");
-                if (currentShip.getCurrentCargo().getOperation() == Operation.LOADNIG) {
+
+                if (currentShip.getCurrentCargo().getCargoOperation() == Operation.LOADING) {
                     currentShip.setStatus(ShipStatus.LOADING);
                     processingShips.add(currentShip);
                     controller.repaintTables();
@@ -44,6 +45,7 @@ public class PortPier implements Runnable {
                     Thread.sleep(200);
                     currentShip.unloading();
                 }
+
                 processingShips.remove(currentShip);
                 controller.getMainWindow().printAction(currentShip.getNameShip() + " - отшвартовался от " + name + "\n");
                 currentShip.setStatus(ShipStatus.ON_WAY);

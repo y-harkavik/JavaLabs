@@ -34,16 +34,16 @@ public class PortSystemGUIController {
 
     private void initializeListeners() {
         mainWindow.addShipItem.addActionListener(event -> {
-            List<Ship> ships = new ArrayList<Ship>(Arrays.asList(
+            /*List<Ship> ships = new ArrayList<Ship>(Arrays.asList(
                     new Ship(
                             String.valueOf(a++),
                             Arrays.asList
                                     (
-                                            new Cargo(TypeOfProduct.CLOTH, Measure.METR, 500, Operation.LOADNIG),
+                                            new Cargo(TypeOfProduct.CLOTH, Measure.METR, 500, Operation.LOADING),
                                             new Cargo(TypeOfProduct.COAL, Measure.KG, 500, Operation.UNLOADING),
                                             new Cargo(TypeOfProduct.GOLD, Measure.KG, 500, Operation.UNLOADING),
-                                            new Cargo(TypeOfProduct.SLAVES, Measure.PEOPLE, 500, Operation.LOADNIG),
-                                            new Cargo(TypeOfProduct.WEED, Measure.KG, 500, Operation.LOADNIG)
+                                            new Cargo(TypeOfProduct.SLAVES, Measure.PEOPLE, 500, Operation.LOADING),
+                                            new Cargo(TypeOfProduct.WEED, Measure.KG, 500, Operation.LOADING)
                                     ),
                             systemModel.getMapOfShipPorts()),
                     new Ship(
@@ -51,8 +51,8 @@ public class PortSystemGUIController {
                             Arrays.asList
                                     (
                                             new Cargo(TypeOfProduct.CLOTH, Measure.METR, 500, Operation.UNLOADING),
-                                            new Cargo(TypeOfProduct.COAL, Measure.KG, 500, Operation.LOADNIG),
-                                            new Cargo(TypeOfProduct.GOLD, Measure.KG, 500, Operation.LOADNIG),
+                                            new Cargo(TypeOfProduct.COAL, Measure.KG, 500, Operation.LOADING),
+                                            new Cargo(TypeOfProduct.GOLD, Measure.KG, 500, Operation.LOADING),
                                             new Cargo(TypeOfProduct.SLAVES, Measure.PEOPLE, 500, Operation.UNLOADING),
                                             new Cargo(TypeOfProduct.WEED, Measure.KG, 500, Operation.UNLOADING)
                                     ),
@@ -63,16 +63,16 @@ public class PortSystemGUIController {
                                     (
                                             new Cargo(TypeOfProduct.CLOTH, Measure.METR, 500, Operation.UNLOADING),
                                             new Cargo(TypeOfProduct.COAL, Measure.KG, 500, Operation.UNLOADING),
-                                            new Cargo(TypeOfProduct.GOLD, Measure.KG, 500, Operation.LOADNIG),
+                                            new Cargo(TypeOfProduct.GOLD, Measure.KG, 500, Operation.LOADING),
                                             new Cargo(TypeOfProduct.SLAVES, Measure.PEOPLE, 500, Operation.UNLOADING),
-                                            new Cargo(TypeOfProduct.WEED, Measure.KG, 500, Operation.LOADNIG)
+                                            new Cargo(TypeOfProduct.WEED, Measure.KG, 500, Operation.LOADING)
                                     ),
                             systemModel.getMapOfShipPorts())));
             for (Ship ship : ships) {
                 ship.addObserver(mainWindow.portTableModel);
                 new Thread(ship).start();
-            }
-            //addShipDialog.show();
+            }*/
+            addShipDialog.show();
         });
         mainWindow.addPortItem.addActionListener(e -> {
             // addPort("Port" + String.valueOf(portCount++ + 1), 3);
@@ -103,8 +103,9 @@ public class PortSystemGUIController {
                     Thread.sleep(100);
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
+                } finally {
+                    System.exit(0);
                 }
-                System.exit(0);
             }
         });
         statisticSaverThread.start();

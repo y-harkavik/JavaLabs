@@ -52,7 +52,6 @@ public class PortSystemGUI extends JFrame {
     }
 
     private void setComponents() {
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         GroupLayout groupLayout = new GroupLayout(mainJPanel);
@@ -183,11 +182,13 @@ public class PortSystemGUI extends JFrame {
                 Ship ship = (Ship) listOfShipsInQueue.elementAt(rowIndex);
                 if (columnIndex == 0) return ship.getNameShip();
                 else if (columnIndex == 1)
-                    return ship.getCurrentCargo().getParameters().getTypeOfProduct().getType() + " " + ship.getCurrentCargo().getParameters().getMeasure();
+                    return ship.getCurrentCargo().getCargoParameters().getTypeOfProduct().getType()
+                            + " "
+                            + ship.getCurrentCargo().getCargoParameters().getCargoMeasure().getMeasure();
                 else if (columnIndex == 2)
                     return ship.getStatus().getStatus();
                 else if (columnIndex == 3)
-                    return (Integer) ship.getCurrentCargo().getParameters().getCount();
+                    return (Integer) ship.getCurrentCargo().getCargoParameters().getCargoCount();
                 else
                     return null;
             } catch (ArrayIndexOutOfBoundsException ex) {
@@ -249,9 +250,11 @@ public class PortSystemGUI extends JFrame {
                 if (ship == null) return null;
                 if (columnIndex == 0) return ship.getNameShip();
                 else if (columnIndex == 1)
-                    return ship.getCurrentCargo().getParameters().getTypeOfProduct().getType();
+                    return ship.getCurrentCargo().getCargoParameters().getTypeOfProduct().getType()
+                            + " "
+                            + ship.getCurrentCargo().getCargoParameters().getCargoMeasure().getMeasure();
                 else if (columnIndex == 2) return ship.getStatus().getStatus();
-                else if (columnIndex == 3) return (Integer) ship.getCurrentCargo().getParameters().getCount();
+                else if (columnIndex == 3) return (Integer) ship.getCurrentCargo().getCargoParameters().getCargoCount();
                 else if (columnIndex == 4) return (Float) ship.getProgress();
                 else return null;
             } catch (ArrayIndexOutOfBoundsException e) {

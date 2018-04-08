@@ -1,7 +1,6 @@
 package AuxiliaryClasses;
 
 import objects.Buildings.Port.ShipPort;
-import objects.Product.Cargo.Cargo;
 import objects.Product.Characteristics.TypeOfProduct;
 import objects.Transport.Marine.Ship;
 
@@ -29,7 +28,7 @@ public class StatisticSaver implements Runnable {
                 Thread.sleep(5000);
                 List<ShipPort> shipPortArrayList = new ArrayList<>(shipPorts.values());
                 for (ShipPort port : shipPortArrayList) {
-                    fileWriter.write(port.getName() + ":\n");
+                    fileWriter.write(port.getPortName() + ":\n");
                     fileWriter.append("Ships in queue: ");
                     for (Ship ship : port.getListOfShipsInQueue()) {
                         fileWriter.append(ship.getNameShip());

@@ -3,15 +3,10 @@ package GUI.Dialogs;
 import GUI.MainWindow.PortSystemGUIController;
 import RegEx.RegEx;
 import objects.Buildings.Port.PortYard;
-import objects.Product.Cargo.Cargo;
-import objects.Product.Characteristics.Measure;
-import objects.Product.Characteristics.Operation;
 import objects.Product.Characteristics.TypeOfProduct;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.LinkedList;
-import java.util.List;
 
 public class AddPortDialog extends JDialog {
     private JCheckBox clothCheckBox;
@@ -84,7 +79,7 @@ public class AddPortDialog extends JDialog {
         clothCheckBox.setText("CLOTH");
         clothTextField.setFont(font);
 
-        addPortButton.setFont(new Font("Corbel", 0, 24)); // NOI18N
+        addPortButton.setFont(new Font("Corbel", 0, 24));
         addPortButton.setText("ADD");
         addPortButton.addActionListener(e -> {
             createPort();
@@ -94,7 +89,7 @@ public class AddPortDialog extends JDialog {
 
     private void createPort() {
         int flag = 0;
-        int numOfPiers = 0;
+        int numOfPiers;
         String num;
         PortYard portYard = new PortYard();
 

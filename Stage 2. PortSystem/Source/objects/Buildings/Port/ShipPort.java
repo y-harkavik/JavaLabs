@@ -10,7 +10,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.SynchronousQueue;
 
 public class ShipPort implements Runnable {
-    private final String name;
+    private final String portName;
     private Map<String, PortPier> listOfPiers;
     private BlockingQueue<Ship> queueOfShips;
     private BlockingQueue<Ship> portEntrance;
@@ -18,8 +18,30 @@ public class ShipPort implements Runnable {
     private PortYard portYard;
     private PortSystemGUIController controller;
 
-    public ShipPort(String name, int numOfPiers, PortSystemGUIController controller) {
-        this.name = name;
+    @Override
+    public void run() {
+        while (true) {
+            try {
+                Ship ship = portEntrance.take();
+                // System.out.println(ship.getNameShip() + "portEntrance.take()");
+
+                controller.getMainWindow().printAction(ship.getNameShip() + " - пришвартовался к " + portName + "\n");
+                //System.out.println("getPortYard().changeProductCount");
+                getPortYard().changeProductCount(ship.getCurrentCargo().getCargoParameters().getTypeOfProduct(), ship.getCurrentCargo().getCargoParameters().getCargoCount(), ship.getCurrentCargo().getCargoOperation());
+                //System.out.println("ship.getPhaser().arriveAndDeregister();");
+                ship.setStatus(ShipStatus.IN_QUEUE);
+                ship.getPhaser().arriveAndDeregister();
+                //System.out.println("queueOfShips.put(ship);");
+                queueOfShips.put(ship);
+                controller.repaintQueueTable();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public ShipPort(String portName, int numOfPiers, PortSystemGUIController controller) {
+        this.portName = portName;
         this.controller = controller;
 
         listOfPiers = new LinkedHashMap<>();
@@ -37,32 +59,6 @@ public class ShipPort implements Runnable {
         }
     }
 
-    @Override
-    public void run() {
-        while (true) {
-            try {
-                Ship ship = portEntrance.take();
-                // System.out.println(ship.getNameShip() + "portEntrance.take()");
-
-                controller.getMainWindow().printAction(ship.getNameShip() + " - пришвартовался к " + name + "\n");
-                //System.out.println("getPortYard().changeProductCount");
-                getPortYard().changeProductCount(ship.getCurrentCargo().getParameters().getTypeOfProduct(), ship.getCurrentCargo().getParameters().getCount(), ship.getCurrentCargo().getOperation());
-                //System.out.println("ship.getPhaser().arriveAndDeregister();");
-                ship.setStatus(ShipStatus.IN_QUEUE);
-                ship.getPhaser().arriveAndDeregister();
-                //System.out.println("queueOfShips.put(ship);");
-                queueOfShips.put(ship);
-                controller.repaintQueueTable();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public BlockingQueue<Ship> getQueueOfShips() {
-        return queueOfShips;
-    }
-
     public BlockingQueue<Ship> getPortEntrance() {
         return portEntrance;
     }
@@ -71,12 +67,12 @@ public class ShipPort implements Runnable {
         return new ArrayList<Ship>(queueOfShips);
     }
 
-    public Map<String, PortPier> getMapOfPiers() {
-        return listOfPiers;
-    }
-
     public List<Ship> getListOfProcessingShips() {
         return processingShips;
+    }
+
+    public Map<String, PortPier> getMapOfPiers() {
+        return listOfPiers;
     }
 
     public PortYard getPortYard() {
@@ -87,7 +83,7 @@ public class ShipPort implements Runnable {
         this.portYard = portYard;
     }
 
-    public String getName() {
-        return name;
+    public String getPortName() {
+        return portName;
     }
 }

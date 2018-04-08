@@ -21,9 +21,9 @@ public class PortYard {
         products.put(typeOfProduct, count);
     }
 
-    synchronized public void changeProductCount(TypeOfProduct typeOfProduct, int count, Operation operation) {
+    public void changeProductCount(TypeOfProduct typeOfProduct, int count, Operation operation) {
         Integer product = products.get(typeOfProduct);
-        if (Operation.LOADNIG == operation) {
+        if (Operation.LOADING == operation) {
             product -= count;
         } else {
             product += count;

@@ -5,31 +5,31 @@ import objects.Product.Characteristics.Operation;
 import objects.Product.Characteristics.TypeOfProduct;
 
 public class Cargo {
-    private Parameters parameters;
-    private Operation operation;
+    private Parameters cargoParameters;
+    private Operation cargoOperation;
 
-    public Cargo(TypeOfProduct typeOfProduct, Measure measure, int count, Operation operation) {
-        this.parameters = new Parameters(typeOfProduct, measure, count);
-        this.operation = operation;
+    public Cargo(TypeOfProduct typeOfProduct, Measure cargoMeasure, int cargoCount, Operation cargoOperation) {
+        this.cargoParameters = new Parameters(typeOfProduct, cargoMeasure, cargoCount);
+        this.cargoOperation = cargoOperation;
     }
 
-    public Parameters getParameters() {
-        return parameters;
+    public Parameters getCargoParameters() {
+        return cargoParameters;
     }
 
-    public Operation getOperation() {
-        return operation;
+    public Operation getCargoOperation() {
+        return cargoOperation;
     }
 
     public class Parameters {
         private TypeOfProduct typeOfProduct;
-        private Measure measure;
-        private int count;
+        private Measure cargoMeasure;
+        private int cargoCount;
 
-        Parameters(TypeOfProduct typeOfProduct, Measure measure, int count) {
+        Parameters(TypeOfProduct typeOfProduct, Measure cargoMeasure, int cargoCount) {
             this.typeOfProduct = typeOfProduct;
-            this.measure = measure;
-            this.count = count;
+            this.cargoMeasure = cargoMeasure;
+            this.cargoCount = cargoCount;
         }
 
         public TypeOfProduct getTypeOfProduct() {
@@ -40,28 +40,20 @@ public class Cargo {
             this.typeOfProduct = typeOfProduct;
         }
 
-        public Measure getMeasure() {
-            return measure;
+        public Measure getCargoMeasure() {
+            return cargoMeasure;
         }
 
-        public void setMeasure(Measure measure) {
-            this.measure = measure;
+        public void setCargoMeasure(Measure cargoMeasure) {
+            this.cargoMeasure = cargoMeasure;
         }
 
-        public int getCount() {
-            return count;
+        public int getCargoCount() {
+            return cargoCount;
         }
 
-        public void addCount() {
-            this.count += getCount();
-        }
-
-        public void subCount() {
-            this.count -= getCount();
-        }
-
-        public void setCount(int count) {
-            this.count = count;
+        public void setCargoCount(int cargoCount) {
+            this.cargoCount = cargoCount;
         }
     }
 }
