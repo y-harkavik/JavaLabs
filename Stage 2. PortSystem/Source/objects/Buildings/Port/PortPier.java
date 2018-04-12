@@ -30,28 +30,30 @@ public class PortPier implements Runnable {
         while (true) {
             try {
                 currentShip = queueOfShips.take();
-                controller.getMainWindow().printAction(currentShip.getNameShip() + " - вошёл в " + name + "\n");
+                if(currentShip!=null) {
+                    controller.getMainWindow().printAction(currentShip.getNameShip() + " - вошёл в " + name + "\n");
 
-                if (currentShip.getCurrentCargo().getCargoOperation() == Operation.LOADING) {
-                    currentShip.setStatus(ShipStatus.LOADING);
-                    processingShips.add(currentShip);
+                    if (currentShip.getCurrentCargo().getCargoOperation() == Operation.LOADING) {
+                        currentShip.setStatus(ShipStatus.LOADING);
+                        processingShips.add(currentShip);
+                        controller.repaintTables();
+                        Thread.sleep(200);
+                        currentShip.loading();
+                    } else {
+                        currentShip.setStatus(ShipStatus.UNLOADING);
+                        processingShips.add(currentShip);
+                        controller.repaintTables();
+                        Thread.sleep(200);
+                        currentShip.unloading();
+                    }
+
+                    processingShips.remove(currentShip);
+                    controller.getMainWindow().printAction(currentShip.getNameShip() + " - отшвартовался от " + name + "\n");
+                    currentShip.setStatus(ShipStatus.ON_WAY);
+                    currentShip.getPhaser().arriveAndDeregister();
+                    currentShip = null;
                     controller.repaintTables();
-                    Thread.sleep(200);
-                    currentShip.loading();
-                } else {
-                    currentShip.setStatus(ShipStatus.UNLOADING);
-                    processingShips.add(currentShip);
-                    controller.repaintTables();
-                    Thread.sleep(200);
-                    currentShip.unloading();
                 }
-
-                processingShips.remove(currentShip);
-                controller.getMainWindow().printAction(currentShip.getNameShip() + " - отшвартовался от " + name + "\n");
-                currentShip.setStatus(ShipStatus.ON_WAY);
-                currentShip.getPhaser().arriveAndDeregister();
-                currentShip = null;
-                controller.repaintTables();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
