@@ -122,18 +122,14 @@ public class Ship extends Observable implements Runnable {
                         if ((shipPort = checkShipPort(cargo)) != null) {
                             if (cargo.getCargoParameters().getCargoCount() <= 0) continue;
                             currentCargo = cargo;
-                            //System.out.println("currentCargo = cargo;");
                             shipPort.getPortEntrance().put(this);
-                            // System.out.println(getNameShip() + " shipPort.getPortEntrance().put(this);");
                             phaser.register();
-                            //System.out.println(getNameShip() + " phaser.register(); + await");
                             phaser.arriveAndAwaitAdvance();
                         } else {
                             continue;
                         }
                     }
                     phaser.register();
-                    // System.out.println(getNameShip() + "phaser.register(); + await");
                     phaser.arriveAndAwaitAdvance();
                     cargoIterator.remove();
                     Thread.sleep(1000);
@@ -171,6 +167,10 @@ public class Ship extends Observable implements Runnable {
 
     public Cargo getCurrentCargo() {
         return currentCargo;
+    }
+
+    public void setCurrentCargo(Cargo currentCargo) {
+        this.currentCargo = currentCargo;
     }
 
     public Phaser getPhaser() {
