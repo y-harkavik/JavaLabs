@@ -10,6 +10,12 @@ import objects.Transport.Status.ShipStatus;
 import java.util.*;
 import java.util.concurrent.Phaser;
 
+/**
+ * Class that defines ship.
+ *
+ * @author Yauheni
+ * @version 1.0
+ */
 public class Ship extends Observable implements Runnable {
     private String nameShip;
     private float progress;
@@ -30,6 +36,9 @@ public class Ship extends Observable implements Runnable {
         progress = 0.0f;
     }
 
+    /**
+     * Unloading cargo.
+     */
     public void unloading() {
         int count = currentCargo.getCargoParameters().getCargoCount();
         int cargoCount = count;
@@ -48,6 +57,9 @@ public class Ship extends Observable implements Runnable {
         progress = 0;
     }
 
+    /**
+     * Loading cargo.
+     */
     public void loading() {
         int count = 0;
         int shipCount = currentCargo.getCargoParameters().getCargoCount();
@@ -66,6 +78,12 @@ public class Ship extends Observable implements Runnable {
         progress = 0;
     }
 
+    /**
+     * Check port on needed cargo count.
+     *
+     * @param cargo
+     * @return shipPort if it found.
+     */
     ShipPort checkShipPort(Cargo cargo) {
         Integer count;
         List<ShipPort> shipPortsList = new ArrayList<>(this.shipPorts.values());
@@ -141,10 +159,20 @@ public class Ship extends Observable implements Runnable {
         }
     }
 
+    /**
+     * Return ship name.
+     *
+     * @return ship name.
+     */
     public String getNameShip() {
         return this.nameShip;
     }
 
+    /**
+     * Return current progress.
+     *
+     * @return current progress.
+     */
     public float getProgress() {
         return progress;
     }
@@ -157,22 +185,47 @@ public class Ship extends Observable implements Runnable {
         this.shipCargo = shipCargo;
     }
 
+    /**
+     * Return current status.
+     *
+     * @return current status.
+     */
     public ShipStatus getStatus() {
         return status;
     }
 
+    /**
+     * Set ship status.
+     *
+     * @param status Setting status.
+     */
     public void setStatus(ShipStatus status) {
         this.status = status;
     }
 
+    /**
+     * Return processing cargo.
+     *
+     * @return processing cargo.
+     */
     public Cargo getCurrentCargo() {
         return currentCargo;
     }
 
+    /**
+     * Sets cargo for processing.
+     *
+     * @param currentCargo Setting cargo for processing.
+     */
     public void setCurrentCargo(Cargo currentCargo) {
         this.currentCargo = currentCargo;
     }
 
+    /**
+     * Return ship phaser.
+     *
+     * @return ship phaser.
+     */
     public Phaser getPhaser() {
         return phaser;
     }

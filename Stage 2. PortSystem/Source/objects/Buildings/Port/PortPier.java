@@ -8,6 +8,12 @@ import objects.Transport.Status.ShipStatus;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 
+/**
+ * Class that defines port pier.
+ *
+ * @author Yauheni
+ * @version 1.0
+ */
 public class PortPier implements Runnable {
     private Ship currentShip;
     private PortSystemGUIController controller;
@@ -15,12 +21,26 @@ public class PortPier implements Runnable {
     private List<Ship> processingShips;
     private String name;
 
+    /**
+     * Creates port pier.
+     *
+     * @param queue           Common queue for piers.
+     * @param controller      GUI controller.
+     * @param processingShips Common list of processing ships.
+     * @see PortSystemGUIController
+     * @see Ship
+     */
     public PortPier(BlockingQueue<Ship> queue, PortSystemGUIController controller, List<Ship> processingShips) {
         this.controller = controller;
         this.queueOfShips = queue;
         this.processingShips = processingShips;
     }
 
+    /**
+     * Return current ships that processing.
+     *
+     * @return Current ships that processing.
+     */
     public Ship getCurrentShip() {
         return currentShip;
     }
@@ -30,7 +50,7 @@ public class PortPier implements Runnable {
         while (true) {
             try {
                 currentShip = queueOfShips.take();
-                if(currentShip!=null) {
+                if (currentShip != null) {
                     controller.getMainWindow().printAction(currentShip.getNameShip() + " - вошёл в " + name + "\n");
 
                     if (currentShip.getCurrentCargo().getCargoOperation() == Operation.LOADING) {
@@ -60,6 +80,11 @@ public class PortPier implements Runnable {
         }
     }
 
+    /**
+     * Set pier name.
+     *
+     * @param name Pier name.
+     */
     public void setName(String name) {
         this.name = name;
     }

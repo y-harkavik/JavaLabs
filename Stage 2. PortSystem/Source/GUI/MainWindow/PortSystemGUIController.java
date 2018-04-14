@@ -19,19 +19,26 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
+/**
+ * Controller class for PortSystem window. *
+ *
+ * @author Yauheni
+ * @version 1.0
+ */
 public class PortSystemGUIController {
     private static PortSystemGUI mainWindow;
     private PortSystemModel systemModel;
     public static int portCount;
     private String child;
     private String parent;
-    int a;
     private AddShipDialog addShipDialog;
     private AddPortDialog addPortDialog;
     private StatisticSaver statisticSaver;
     private Thread statisticSaverThread;
 
+    /**
+     * Initializes listeners for GUI components.
+     */
     private void initializeListeners() {
         mainWindow.addShipItem.addActionListener(event -> {
             /*List<Ship> ships = new ArrayList<Ship>(Arrays.asList(
@@ -111,15 +118,32 @@ public class PortSystemGUIController {
         statisticSaverThread.start();
     }
 
+    /**
+     * Return current PortSystemGUI
+     *
+     * @return PortSystemGUI
+     * @see PortSystemGUI
+     */
     public PortSystemGUI getMainWindow() {
         return mainWindow;
     }
 
+    /**
+     * Repaint queue ship and current ship tables.
+     *
+     * @see #repaintShipTable()
+     * @see #repaintQueueTable()
+     */
     public void repaintTables() {
         repaintShipTable();
         repaintQueueTable();
     }
 
+    /**
+     * Repaint ship table.
+     *
+     * @see #updatePortTable(List)
+     */
     public void repaintShipTable() {
         boolean containsPort = systemModel.checkPort(this.parent);
 
@@ -137,6 +161,11 @@ public class PortSystemGUIController {
         mainWindow.portTableModel.addShip(systemModel.getShipInPier(this.parent, this.child));
     }
 
+    /**
+     * Repaint queue ship table.
+     *
+     * @see #updateQueueTable(List) (List) ()
+     */
     public void repaintQueueTable() {
         if (systemModel.checkPort(this.parent)) {
             updateQueueTable(systemModel.getMapOfShipPorts().get(this.parent).getListOfShipsInQueue());
@@ -148,22 +177,50 @@ public class PortSystemGUIController {
         updateQueueTable(systemModel.getAllShipsInQueue());
     }
 
+    /**
+     * Caused by repaintQueueTable(), update ship queue table.
+     *
+     * @param shipList List of ships in queue.
+     * @see Ship
+     * @see #repaintQueueTable()
+     */
     public void updateQueueTable(List<Ship> shipList) {
         mainWindow.queueTableModel.clearTable();
         mainWindow.queueTableModel.addAll(shipList);
     }
 
+    /**
+     * Caused by repaintShipTable(), update ship table.
+     *
+     * @param shipList List of ships in processing.
+     * @see #repaintShipTable()
+     */
     public void updatePortTable(List<Ship> shipList) {
         mainWindow.portTableModel.clearTable();
         mainWindow.portTableModel.addAll(shipList);
     }
 
+    /**
+     * Add port on window and add port in list of ports by causing addPortInList(String, int, PortYard, PortSystemGUIController).
+     *
+     * @param name       Name of port.
+     * @param numOfPiers Count of piers.
+     * @param portYard   Port yard.
+     * @see PortSystemModel#addPortInList(String, int, PortYard, PortSystemGUIController)
+     * @see #addPortInTree(String, int)
+     */
     public void addPort(String name, int numOfPiers, PortYard portYard) {
         systemModel.addPortInList(name, numOfPiers, portYard, this);
         addPortInTree(name, numOfPiers);
         ((DefaultTreeModel) mainWindow.portTree.getModel()).reload();
     }
 
+    /**
+     * Add port in tree.
+     *
+     * @param name       Name of port.
+     * @param numOfPiers Count of piers.
+     */
     void addPortInTree(String name, int numOfPiers) {
         DefaultMutableTreeNode port = new DefaultMutableTreeNode(name);
         mainWindow.rootNode.add(port);
@@ -174,6 +231,12 @@ public class PortSystemGUIController {
         }
     }
 
+    /**
+     * Initializes GUI components, start statisticSaver and causes initializeListeners().
+     *
+     * @see #initializeListeners()
+     * @see StatisticSaver
+     */
     public void start() {
         mainWindow = new PortSystemGUI();
         systemModel = new PortSystemModel();

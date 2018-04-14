@@ -16,6 +16,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Observer;
 
+/**
+ * Class that serves to display AddShip dialog frame.
+ *
+ * @author Yauheni
+ * @version 1.0
+ */
 public class AddShipDialog extends JDialog {
     private JCheckBox clothCheckBox;
     private JComboBox<String> clothComboBox;
@@ -43,6 +49,19 @@ public class AddShipDialog extends JDialog {
     private Map<String, ShipPort> shipPortList;
     private Observer observer;
 
+    /**
+     * Creates addShipDialog by initComponents, setComponentsParameters, setComponentsOnWindow, initListeners.
+     *
+     * @param controller   Current PortSystemGUIController
+     * @param shipPortList Map of ShipPorts.
+     * @param observer     Observer above Ship.
+     *                     {@link #initComponents() initComponents()}
+     *                     {@link #setComponentsParameters() setComponentsParameters()}
+     *                     {@link #setComponentsOnWindow() setComponentsOnWindow()}
+     *                     {@link #initListeners() initListeners()}
+     * @see PortSystemGUIController
+     * @see ShipPort
+     */
     public AddShipDialog(PortSystemGUIController controller, Map<String, ShipPort> shipPortList, Observer observer) {
         super((Dialog) null, "Add ship", false);
         this.controller = controller;
@@ -55,6 +74,11 @@ public class AddShipDialog extends JDialog {
         setComponentsOnWindow();
     }
 
+    /**
+     * Initializes graphical components of AddShipDialog.
+     *
+     * @see Component
+     */
     private void initComponents() {
         String[] operations = {Operation.LOADING.toString(), Operation.UNLOADING.toString()};
 
@@ -82,6 +106,9 @@ public class AddShipDialog extends JDialog {
         addButton = new JButton();
     }
 
+    /**
+     * Set components parameters: font,size and etc.
+     */
     private void setComponentsParameters() {
         Font font = new Font("Corbel", 0, 18);
 
@@ -113,6 +140,11 @@ public class AddShipDialog extends JDialog {
 
     }
 
+    /**
+     * Initializes components listeners.
+     * <p>
+     * {@link #checkInfo() checkInfo()}
+     */
     private void initListeners() {
         addButton.addActionListener(e -> {
             List<Cargo> cargoList;
@@ -128,6 +160,9 @@ public class AddShipDialog extends JDialog {
         });
     }
 
+    /**
+     * Set components on AddPortDialog frame.
+     */
     private void setComponentsOnWindow() {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
@@ -219,6 +254,12 @@ public class AddShipDialog extends JDialog {
         pack();
     }
 
+    /**
+     * Caused when user typed "Add ship" button. This method checks entered parameters. If all parameters meet the requirements return list of ship cargo.
+     *
+     * @return If all parameters good returns cargoList, else return null.
+     * @see Cargo
+     */
     private List<Cargo> checkInfo() {
         String num;
         List<Cargo> cargoList = new LinkedList<>();

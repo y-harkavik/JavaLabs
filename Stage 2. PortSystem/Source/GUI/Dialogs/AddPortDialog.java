@@ -8,6 +8,12 @@ import objects.Product.Characteristics.TypeOfProduct;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Class that serves to display AddPort dialog frame.
+ *
+ * @author Yauheni
+ * @version 1.0
+ */
 public class AddPortDialog extends JDialog {
     private JCheckBox clothCheckBox;
     private JTextField clothTextField;
@@ -27,6 +33,13 @@ public class AddPortDialog extends JDialog {
     private JTextField woodTextField;
     private PortSystemGUIController controller;
 
+    /**
+     * Creates addPortDialog by initComponents, setComponentsParameters, setComponentsOnWindow.
+     *
+     * @param controller Our PortSystemGUIController variable
+     * @see PortSystemGUIController
+     * @see #initComponents()
+     */
     public AddPortDialog(PortSystemGUIController controller) {
         this.controller = controller;
         initComponents();
@@ -34,6 +47,11 @@ public class AddPortDialog extends JDialog {
         setComponentsOnWindow();
     }
 
+    /**
+     * Initializes graphical components of AddPortDialog.
+     *
+     * @see Component
+     */
     private void initComponents() {
         mainPanel = new JPanel();
         numOfPiersLabel = new JLabel();
@@ -53,6 +71,9 @@ public class AddPortDialog extends JDialog {
         addPortButton = new JButton();
     }
 
+    /**
+     * Set components parameters: font,size and etc.
+     */
     private void setComponentsParameters() {
         Font font = new Font("Corbel", 0, 18);
 
@@ -87,6 +108,14 @@ public class AddPortDialog extends JDialog {
         });
     }
 
+    /**
+     * Caused when user typed "Add port" button. This method checks entered parameters. If all parameters meet the requirements caused addPort method in PortSystemGUIController.
+     * <p>
+     * {@link PortSystemGUIController#addPort(String, int, PortYard) addPort(String, int, PortYard)}
+     *
+     * @see PortSystemGUIController
+     * @see PortYard
+     */
     private void createPort() {
         int flag = 0;
         int numOfPiers;
@@ -163,6 +192,9 @@ public class AddPortDialog extends JDialog {
         return;
     }
 
+    /**
+     * Set components on AddPortDialog frame.
+     */
     private void setComponentsOnWindow() {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 

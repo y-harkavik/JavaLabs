@@ -3,6 +3,12 @@ package RegEx;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Class that defines expressions to check.
+ *
+ * @author Yauheni
+ * @version 1.0
+ */
 public class RegEx {
     public static Pattern numberPattern = Pattern.compile("^[1-9][0-9]{0,5}");
     public static Pattern namePattern = Pattern.compile("^[a-zA-Z0-9][a-zA-Z0-9\\s]*");

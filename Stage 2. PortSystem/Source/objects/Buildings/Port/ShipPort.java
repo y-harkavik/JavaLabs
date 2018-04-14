@@ -9,6 +9,12 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.SynchronousQueue;
 
+/**
+ * Class that defines ship port.
+ *
+ * @author Yauheni
+ * @version 1.0
+ */
 public class ShipPort implements Runnable {
     private final String portName;
     private Map<String, PortPier> listOfPiers;
@@ -35,6 +41,13 @@ public class ShipPort implements Runnable {
         }
     }
 
+    /**
+     * Creates ship port and port piers.
+     *
+     * @param portName   Port name.
+     * @param numOfPiers Num of piers.
+     * @param controller GUI controller.
+     */
     public ShipPort(String portName, int numOfPiers, PortSystemGUIController controller) {
         this.portName = portName;
         this.controller = controller;
@@ -55,30 +68,65 @@ public class ShipPort implements Runnable {
     }
 
 
+    /**
+     * Return port entrance queue.
+     *
+     * @return Port entrance queue.
+     */
     public BlockingQueue<Ship> getPortEntrance() {
         return portEntrance;
     }
 
+    /**
+     * Return List of ships in queue.
+     *
+     * @return List of ships in queue.
+     */
     public List<Ship> getListOfShipsInQueue() {
         return new ArrayList<Ship>(queueOfShips);
     }
 
+    /**
+     * Return list of processing ships.
+     *
+     * @return list of processing ships.
+     */
     public List<Ship> getListOfProcessingShips() {
         return processingShips;
     }
 
+    /**
+     * Return Map of piers.
+     *
+     * @return map of piers.
+     */
     public Map<String, PortPier> getMapOfPiers() {
         return listOfPiers;
     }
 
+    /**
+     * Return port yard.
+     *
+     * @return port yard.
+     */
     public PortYard getPortYard() {
         return portYard;
     }
 
+    /**
+     * Set port yard for ship port.
+     *
+     * @param portYard adding port yard.
+     */
     public void setPortYard(PortYard portYard) {
         this.portYard = portYard;
     }
 
+    /**
+     * Return port name.
+     *
+     * @return port name.
+     */
     public String getPortName() {
         return portName;
     }

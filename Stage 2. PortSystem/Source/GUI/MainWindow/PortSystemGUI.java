@@ -18,6 +18,12 @@ import java.util.Observer;
 import java.util.Vector;
 import java.util.List;
 
+/**
+ * Class that serves to display main frame. *
+ *
+ * @author Yauheni
+ * @version 1.0
+ */
 public class PortSystemGUI extends JFrame {
 
     JMenu appMenu;
@@ -41,16 +47,30 @@ public class PortSystemGUI extends JFrame {
 
     unloadingShipProgressBar progressBarRenderer;
 
+    /**
+     * Shows ship state.
+     *
+     * @param text Text, that shows in log area.
+     */
     synchronized public void printAction(String text) {
         logTextArea.append(text);
     }
 
+    /**
+     * Creates PortSystem window by initComponents(), setComponents(), createTree().
+     * {@link #initComponents() initComponents()}
+     * {@link #setComponents() setComponents()}
+     * {@link #createTree() createTree()}
+     */
     public PortSystemGUI() {
         initComponents();
         setComponents();
         createTree();
     }
 
+    /**
+     * Set components on PortSystem frame.
+     */
     private void setComponents() {
         setResizable(false);
 
@@ -89,6 +109,9 @@ public class PortSystemGUI extends JFrame {
         pack();
     }
 
+    /**
+     * Initializes components on PortSystem frame.
+     */
     private void initComponents() {
         portTableModel = new ShipTableModel();
         queueTableModel = new ShipQueueTableModel();
@@ -137,6 +160,9 @@ public class PortSystemGUI extends JFrame {
         appMenuBar.add(appMenu);
     }
 
+    /**
+     * Creates tree for PortSystem window.
+     */
     private void createTree() {
         portTree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 

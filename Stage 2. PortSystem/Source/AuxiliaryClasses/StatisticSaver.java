@@ -8,10 +8,22 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * Class that is responsible for writing statistics about ShipPort state to a file.
+ *
+ * @author Yauheni
+ * @version 1.0
+ */
 public class StatisticSaver implements Runnable {
-    FileWriter fileWriter;
-    Map<String, ShipPort> shipPorts;
+    private FileWriter fileWriter;
+    private Map<String, ShipPort> shipPorts;
 
+    /**
+     * Creates a StatisticServer with map of ShipPorts.
+     *
+     * @param shipPorts Map of ShipPorts
+     * @see ShipPort
+     */
     public StatisticSaver(Map<String, ShipPort> shipPorts) {
         this.shipPorts = shipPorts;
         try {
@@ -21,6 +33,9 @@ public class StatisticSaver implements Runnable {
         }
     }
 
+    /**
+     * Records statistics every five seconds in log file.
+     */
     @Override
     public void run() {
         while (true) {
@@ -63,6 +78,11 @@ public class StatisticSaver implements Runnable {
         }
     }
 
+    /**
+     * Returns fileWriter for log file.
+     *
+     * @return fileWriter
+     */
     public FileWriter getFileWriter() {
         return fileWriter;
     }
