@@ -10,7 +10,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserSBase {
+public class UsersBase {
     private ArrayList<Person> listOfAccounts = new ArrayList<>();
 
     void createPerson(String password, String login) {
@@ -100,6 +100,6 @@ public class UserSBase {
     }
 
     public static void main(String[] args) {
-        new UserSBase().example();
+        new UsersBase().example();
     }
 }
