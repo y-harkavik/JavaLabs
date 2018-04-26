@@ -37,6 +37,7 @@ public class MainWindow {
     StyledText searchText;
     Menu menuBar;
     MenuItem addPersonnelFileItem;
+    MenuItem usersListItem;
     Font font14Arial;
     Font font12Arial;
 
@@ -70,6 +71,7 @@ public class MainWindow {
         menuBar = new Menu(shell, SWT.BAR);
 
         addPersonnelFileItem = new MenuItem(menuBar, SWT.NONE);
+        usersListItem = new MenuItem(menuBar, SWT.NONE);
 
         font14Arial = new Font(display, "Arial", 14, SWT.NORMAL);
         font12Arial = new Font(display, "Arial", 12, SWT.NORMAL);
@@ -168,6 +170,7 @@ public class MainWindow {
     private void setupMenuBar() {
         shell.setMenuBar(menuBar);
         addPersonnelFileItem.setText("Add personnel file");
+        usersListItem.setText("List of users");
     }
 
     private void setupComposite() {

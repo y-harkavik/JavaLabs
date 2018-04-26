@@ -1,5 +1,5 @@
 package operation;
 
 public enum OperationType {
-    UPDATE, DELETE, CREATE, READ;
+    UPDATE, DELETE, ADD, READ;
 }
