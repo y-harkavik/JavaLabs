@@ -1,5 +1,7 @@
 package person;
 
+import law.Laws;
+
 import java.io.Serializable;
 
 public abstract class Person implements Serializable {

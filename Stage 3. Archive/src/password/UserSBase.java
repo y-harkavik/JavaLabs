@@ -1,5 +1,6 @@
 package password;
 
+import law.Laws;
 import person.Person;
 import person.User;
 
