@@ -23,6 +23,60 @@ public class UsersBase {
         listOfAccounts.add(new User(hashedPassword, login, salt, lawsList));
     }
 
+    public int checkAccount(String login, String password) {
+        Person account = checkLogin(login);
+        if (account != null) {
+            if (checkPassword(Password.getHashedPassword(password, account.getSalt()), account.getPasswordAndSaltHash())) {
+                return listOfAccounts.indexOf(account);
+            }
+        }
+        return -1;
+    }
+
+    private boolean checkPassword(String enteredPassword, String accountPassword) {
+        if (enteredPassword.equals(accountPassword)) {
+            return true;
+        }
+        return false;
+    }
+
+    private Person checkLogin(String login) {
+        if (!listOfAccounts.isEmpty()) {
+            for (Person account : listOfAccounts) {
+                if (account.getAccountLogin().equals(login)) {
+                    return account;
+                }
+            }
+        }
+        return null;
+    }
+
+    public List<Person> getListOfAccounts() {
+        return listOfAccounts;
+    }
+
+    public void setListOfAccounts(ArrayList<Person> listOfAccounts) {
+        this.listOfAccounts = listOfAccounts;
+    }
+
+    public void saveBase() {
+        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("login.ser"))) {
+            objectOutputStream.writeObject(listOfAccounts);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void getBaseFromFile() {
+        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("login.ser"))) {
+            listOfAccounts = ((ArrayList<Person>) objectInputStream.readObject());
+        } catch (Exception e) {
+        }
+    }
+
+    /*public static void main(String[] args) {
+        new UsersBase().example();
+    }*/
 
     /*void example() {
         User user;
@@ -44,63 +98,4 @@ public class UsersBase {
 
         saveBase();
     }*/
-
-    public int checkAccount(String login, String password) {
-        Person account = checkLogin(login);
-        if (account != null) {
-            if (checkPassword(getSaltedHash(password, account.getSalt()), account.getPasswordAndSaltHash())) {
-                return listOfAccounts.indexOf(account);
-            }
-        }
-        return -1;
-    }
-
-    private boolean checkPassword(String enteredPassword, String accountPassword) {
-        boolean answer;
-        if (enteredPassword.equals(accountPassword)) {
-            answer = true;
-        } else {
-            answer = false;
-        }
-        return answer;
-    }
-
-    private Person checkLogin(String login) {
-        if (!listOfAccounts.isEmpty()) {
-            for (Person account : listOfAccounts) {
-                if (account.getAccountLogin().equals(login)) {
-                    return account;
-                }
-            }
-        }
-        return null;
-    }
-
-    public ArrayList<Person> getListOfAccounts() {
-        return listOfAccounts;
-    }
-
-    public void setListOfAccounts(ArrayList<Person> listOfAccounts) {
-        this.listOfAccounts = listOfAccounts;
-    }
-
-    public void saveBase() {
-        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("login.ser"))) {
-            objectOutputStream.writeObject(listOfAccounts);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void getBaseFromFile() {
-        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("login.ser"))) {
-            listOfAccounts = ((ArrayList<Person>) objectInputStream.readObject());
-        } catch (Exception e) {
-            Catalog.Model.createAlertError(Model.READ_ERROR);
-        }
-    }
-
-    public static void main(String[] args) {
-        new UsersBase().example();
-    }
 }
