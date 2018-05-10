@@ -1,6 +1,7 @@
 package graphics.ArchiveWindow;
 
 import client.Client;
+import person.Account;
 
 import java.util.Map;
 

@@ -1,6 +1,8 @@
 package password;
 
 import Law.Laws;
+import person.Account;
+import person.User;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

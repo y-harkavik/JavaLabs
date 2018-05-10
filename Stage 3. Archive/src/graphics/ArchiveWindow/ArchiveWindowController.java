@@ -5,6 +5,7 @@ import Communicate.Message.Request.Request;
 import Law.Laws;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
+import person.Account;
 
 import java.io.IOException;
 import java.util.List;
