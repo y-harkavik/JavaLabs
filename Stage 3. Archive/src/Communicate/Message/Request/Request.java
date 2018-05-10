@@ -1,7 +1,6 @@
 package Communicate.Message.Request;
 
 import Communicate.Message.Request.ClientRequest.RequestType;
-import person.PersonnelFile;
 
 public abstract class Request {
     protected RequestType requestType;

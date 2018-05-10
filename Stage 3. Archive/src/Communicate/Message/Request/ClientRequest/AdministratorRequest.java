@@ -1,8 +1,6 @@
 package Communicate.Message.Request.ClientRequest;
 
 import Communicate.Message.Request.Request;
-import person.Account;
-import person.PersonnelFile;
 
 public class AdministratorRequest extends Request {
     private Account changingAccount;

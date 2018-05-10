@@ -5,7 +5,6 @@ import Communicate.Message.Request.ClientRequest.AuthenticationRequest;
 import Communicate.Message.Response.ServerResponse.AuthenticationResponse;
 import Communicate.Message.Response.ServerResponse.ResponseType;
 import org.eclipse.swt.SWT;
-import server.ArchiveServer;
 
 import java.io.IOException;
 import java.net.Socket;

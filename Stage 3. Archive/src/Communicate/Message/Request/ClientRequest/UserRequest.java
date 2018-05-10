@@ -1,7 +1,6 @@
 package Communicate.Message.Request.ClientRequest;
 
 import Communicate.Message.Request.Request;
-import person.PersonnelFile;
 
 public class UserRequest extends Request {
 

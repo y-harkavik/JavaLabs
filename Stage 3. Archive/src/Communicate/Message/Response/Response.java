@@ -2,7 +2,6 @@ package Communicate.Message.Response;
 
 import Communicate.Message.Response.ServerResponse.ResponseType;
 import Law.Laws;
-import person.PersonnelFile;
 
 import java.util.List;
 import java.util.Map;
