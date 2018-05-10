@@ -47,7 +47,7 @@ public class LoginController {
 
     @FXML
     /**
-     * Caused when user push "Log In" button. If user inputted wrong login/password, create Alert Message.
+     * Caused when user push "Log In" button. If user inputted wrong login/Database, create Alert Message.
      * @param event Object of ActionEvent
      */
     private void loginAction(ActionEvent event) {

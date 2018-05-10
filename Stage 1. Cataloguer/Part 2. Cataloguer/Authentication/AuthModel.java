@@ -11,8 +11,8 @@ import Persons.Base;
  */
 public class AuthModel {
     /**
-     * Alert Message that shows for user if he inputted incorrect username or password.*/
-    public static final String LOGIN_ERROR = "Username or password entered incorrect.";
+     * Alert Message that shows for user if he inputted incorrect username or Database.*/
+    public static final String LOGIN_ERROR = "Username or Database entered incorrect.";
     /**
      * Variable that provides access for Base
      */
@@ -29,8 +29,8 @@ public class AuthModel {
     /**
      *
      * @param login Inputted login
-     * @param password Inputted password
-     * @return index Returns index, if user entered correct login/password
+     * @param password Inputted Database
+     * @return index Returns index, if user entered correct login/Database
      * @return -1 Returns -1, if account not found.
      */
     int checkEnteredInformation(String login, String password) {

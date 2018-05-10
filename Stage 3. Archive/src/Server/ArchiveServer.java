@@ -6,7 +6,7 @@ import Communicate.Message.Request.Request;
 import Communicate.Message.Response.Response;
 import Communicate.Message.Response.ServerResponse.*;
 import Law.Laws;
-import password.UsersBase;
+import Database.UsersBase;
 import Users.Account;
 import Users.PersonnelFile;
 

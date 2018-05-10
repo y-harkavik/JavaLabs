@@ -1,4 +1,4 @@
-package password;
+package Database;
 
 import Law.Laws;
 import Users.Account;

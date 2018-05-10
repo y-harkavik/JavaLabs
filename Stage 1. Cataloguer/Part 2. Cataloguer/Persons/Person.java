@@ -22,7 +22,7 @@ public abstract class Person implements Serializable {
     //protected static final int KEY_LENGTH = 256;
 
     Person(String password, String accountLogin, byte[] salt) {
-        //setPasswordAndSalt(password);
+        //setPasswordAndSalt(Database);
         passwordAndSaltHash = password;
         this.salt = salt;
         this.accountLogin = accountLogin;
@@ -46,16 +46,16 @@ public abstract class Person implements Serializable {
 
     public void setPasswordAndSalt(String password) {
         /*try {
-            this.passwordAndSaltHash = getSaltedHash(password);
+            this.passwordAndSaltHash = getSaltedHash(Database);
         } catch (Exception e) {
             e.printStackTrace();
         }*/
         this.passwordAndSaltHash = password;
     }
-    /*public String getSaltedHash(String password) {
+    /*public String getSaltedHash(String Database) {
         String saltedHash = null;
         try {
-            KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, ITERATION_COUNT, KEY_LENGTH);
+            KeySpec spec = new PBEKeySpec(Database.toCharArray(), salt, ITERATION_COUNT, KEY_LENGTH);
             SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
             byte[] enteredPasswordHash = factory.generateSecret(spec).getEncoded();
             saltedHash = Base64.getEncoder().encodeToString(enteredPasswordHash);
