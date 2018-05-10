@@ -1,4 +1,4 @@
-package graphics.AuthenticationWindow;
+package Graphics.AuthenticationWindow;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.MessageBox;

@@ -1,6 +1,6 @@
-package graphics.AuthenticationWindow;
+package Graphics.AuthenticationWindow;
 
-import graphics.Constants.GraphicsConstants;
+import Graphics.Constants.GraphicsConstants;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.widgets.*;

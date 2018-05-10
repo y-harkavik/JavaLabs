@@ -1,4 +1,4 @@
-package server;
+package Server;
 
 import client.Client;
 import Communicate.Message.Request.ClientRequest.AuthenticationRequest;
@@ -7,8 +7,8 @@ import Communicate.Message.Response.Response;
 import Communicate.Message.Response.ServerResponse.*;
 import Law.Laws;
 import password.UsersBase;
-import person.Account;
-import person.PersonnelFile;
+import Users.Account;
+import Users.PersonnelFile;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -16,7 +16,7 @@ import java.net.Socket;
 import java.util.List;
 import java.util.Map;
 
-import static parser.Parsers.*;
+import static Parser.Parsers.*;
 
 public class ArchiveServer {
     private ServerSocket serverSocket;

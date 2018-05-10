@@ -1,4 +1,4 @@
-package parser;
+package Parser;
 
 public class Parsers {
     public static final int DOM = 0;

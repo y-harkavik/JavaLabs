@@ -1,4 +1,4 @@
-package graphics.ArchiveWindow;
+package Graphics.ArchiveWindow;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.VerifyListener;
@@ -11,7 +11,7 @@ import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 
-import static graphics.Constants.GraphicsConstants.*;
+import static Graphics.Constants.GraphicsConstants.*;
 
 public class ArchiveWindow {
     Text textFirstName;

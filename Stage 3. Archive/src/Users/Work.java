@@ -1,4 +1,4 @@
-package person;
+package Users;
 
 public class Work {
     private String company;

@@ -1,4 +1,4 @@
-package graphics.Constants;
+package Graphics.Constants;
 
 public class GraphicsConstants {
     public static final String fontName = "Segoe UI Semilight";

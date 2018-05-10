@@ -1,11 +1,11 @@
-package graphics.ArchiveWindow;
+package Graphics.ArchiveWindow;
 
 import client.Client;
 import Communicate.Message.Request.Request;
 import Law.Laws;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
-import person.Account;
+import Users.Account;
 
 import java.io.IOException;
 import java.util.List;

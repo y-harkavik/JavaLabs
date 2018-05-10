@@ -1,4 +1,4 @@
-package parser;
+package Parser;
 
 public abstract class Parser {
     public void makeXML() {

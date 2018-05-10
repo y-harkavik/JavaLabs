@@ -1,4 +1,4 @@
-package person;
+package Users;
 
 import Law.Laws;
 
