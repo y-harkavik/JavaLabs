@@ -1,4 +1,4 @@
-package communicate.message.Response.ServerResponse;
+package Communicate.Message.Response.ServerResponse;
 
 public class TypeOfError {
     public static final String AUTHENTICATION_ERROR = "Login or password entered incorrect";

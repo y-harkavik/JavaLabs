@@ -1,6 +1,6 @@
-package communicate.message.Request;
+package Communicate.Message.Request;
 
-import communicate.message.Request.ClientRequest.RequestType;
+import Communicate.Message.Request.ClientRequest.RequestType;
 import person.PersonnelFile;
 
 public abstract class Request {

@@ -11,7 +11,7 @@ import Persons.Base;
  */
 public class AuthModel {
     /**
-     * Alert message that shows for user if he inputted incorrect username or password.*/
+     * Alert Message that shows for user if he inputted incorrect username or password.*/
     public static final String LOGIN_ERROR = "Username or password entered incorrect.";
     /**
      * Variable that provides access for Base

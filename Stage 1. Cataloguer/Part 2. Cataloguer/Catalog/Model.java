@@ -338,7 +338,7 @@ public class Model {
 
     /**
      * Create alert error.
-     * @param alertMessage Alert message
+     * @param alertMessage Alert Message
      */
     public static void createAlertError(String alertMessage) {
         Alert alertFileNotFound = new Alert(Alert.AlertType.ERROR);

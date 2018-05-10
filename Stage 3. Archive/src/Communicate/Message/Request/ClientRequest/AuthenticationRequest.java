@@ -1,6 +1,6 @@
-package communicate.message.Request.ClientRequest;
+package Communicate.Message.Request.ClientRequest;
 
-import communicate.message.Request.Request;
+import Communicate.Message.Request.Request;
 
 public class AuthenticationRequest extends Request {
     private String login;

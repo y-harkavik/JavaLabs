@@ -1,6 +1,6 @@
-package communicate.message.Response.ServerResponse;
+package Communicate.Message.Response.ServerResponse;
 
-import communicate.message.Response.Response;
+import Communicate.Message.Response.Response;
 import Law.Laws;
 import person.Account;
 import person.PersonnelFile;
