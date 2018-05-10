@@ -224,7 +224,7 @@ public class Controller {
     public void changeUser(ActionEvent event) {
         try {
             Stage primaryStage = (Stage) addButton.getScene().getWindow();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("..\\Authentication\\login.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("..\\AuthenticationWindow\\login.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             model.saveProgramInformation();

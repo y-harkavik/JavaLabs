@@ -1,7 +1,7 @@
 package password;
 
-import law.Laws;
-import person.Person;
+import Law.Laws;
+import person.Account;
 import person.User;
 
 import java.io.FileInputStream;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UsersBase {
-    private ArrayList<Person> listOfAccounts = new ArrayList<>();
+    private ArrayList<Account> listOfAccounts = new ArrayList<>();
 
     void createPerson(String password, String login) {
         List<Laws> lawsList = new ArrayList<>();
@@ -23,14 +23,14 @@ public class UsersBase {
         listOfAccounts.add(new User(hashedPassword, login, salt, lawsList));
     }
 
-    public int checkAccount(String login, String password) {
-        Person account = checkLogin(login);
+    public Account checkAccount(String login, String password) {
+        Account account = checkLogin(login);
         if (account != null) {
             if (checkPassword(Password.getHashedPassword(password, account.getSalt()), account.getPasswordAndSaltHash())) {
-                return listOfAccounts.indexOf(account);
+                return account;
             }
         }
-        return -1;
+        return null;
     }
 
     private boolean checkPassword(String enteredPassword, String accountPassword) {
@@ -40,9 +40,9 @@ public class UsersBase {
         return false;
     }
 
-    private Person checkLogin(String login) {
+    private Account checkLogin(String login) {
         if (!listOfAccounts.isEmpty()) {
-            for (Person account : listOfAccounts) {
+            for (Account account : listOfAccounts) {
                 if (account.getAccountLogin().equals(login)) {
                     return account;
                 }
@@ -51,16 +51,16 @@ public class UsersBase {
         return null;
     }
 
-    public List<Person> getListOfAccounts() {
+    public List<Account> getListOfAccounts() {
         return listOfAccounts;
     }
 
-    public void setListOfAccounts(ArrayList<Person> listOfAccounts) {
+    public void setListOfAccounts(ArrayList<Account> listOfAccounts) {
         this.listOfAccounts = listOfAccounts;
     }
 
     public void saveBase() {
-        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("login.ser"))) {
+        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("users.ser"))) {
             objectOutputStream.writeObject(listOfAccounts);
         } catch (Exception e) {
             e.printStackTrace();
@@ -68,8 +68,8 @@ public class UsersBase {
     }
 
     public void getBaseFromFile() {
-        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("login.ser"))) {
-            listOfAccounts = ((ArrayList<Person>) objectInputStream.readObject());
+        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("users.ser"))) {
+            listOfAccounts = ((ArrayList<Account>) objectInputStream.readObject());
         } catch (Exception e) {
         }
     }

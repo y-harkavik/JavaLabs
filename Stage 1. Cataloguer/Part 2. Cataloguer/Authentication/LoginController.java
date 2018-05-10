@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 import Persons.Base;
 
 /**
- * Class controller for Authentication window.
+ * Class controller for AuthenticationWindow window.
  *@author Yauheni
  *@version 1.0
  */

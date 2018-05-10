@@ -5,7 +5,7 @@ import Persons.Base;
 
 
 /**
- * Class that contains business logic of Authentication window.
+ * Class that contains business logic of AuthenticationWindow window.
  * @author Yauheni
  *@version 1.0
  */

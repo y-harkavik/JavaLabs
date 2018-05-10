@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persons xsi:noNamespaceSchemaLocation="file:///D:/Загрузки/person11.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<account ID="AAAAA33333666HH" birthday="1999-02-02">
+		<name lastName="1w" firstName="kkk1" middleName="f"/>
+		<parameters sex="male"/>
+		<contactInfo>
+			<mobileNumber>7788</mobileNumber>
+			<homeNumber>8880</homeNumber>
+			<address country="BY" city="LA" street="AS" house="1"/>
+		</contactInfo>
+		<works>
+			<work company="ASS" position="sss" experience="2"/>
+			<work company="ASS" position="sss" experience="1"/>
+			<work company="ASS" position="sss" experience="1"/>
+		</works>
+		<description>SDBfkjas asn falsn</description>
+	</account>
+</persons>
+
+
+
+
+
+
