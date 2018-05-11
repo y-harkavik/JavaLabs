@@ -9,6 +9,7 @@ import java.io.IOException;
 public class AuthenticationWindowController {
     AuthenticationWindowModel authenticationWindowModel;
     AuthenticationWindow authenticationWindow;
+    boolean authenticationSuccessfull = false;
 
     public AuthenticationWindowController() {
         authenticationWindowModel = new AuthenticationWindowModel(this);
@@ -26,7 +27,7 @@ public class AuthenticationWindowController {
             e.printStackTrace();
         }
 
-        while (!authenticationWindow.shell.isDisposed()) {
+        while (!authenticationSuccessfull) {
             if (!authenticationWindow.display.readAndDispatch()) {
                 authenticationWindow.display.sleep();
             }

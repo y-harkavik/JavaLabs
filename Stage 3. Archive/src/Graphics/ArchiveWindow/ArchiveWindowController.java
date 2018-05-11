@@ -38,45 +38,6 @@ public class ArchiveWindowController {
         }
     }
 
-    /*class IncomingReader implements Runnable {
-        Response serverResponse;
-
-        @Override
-        public void run() {
-            try {
-                while ((serverResponse = (Response) currentClient.getInputStream().readObject()) != null) {
-                    if (serverResponse instanceof ResponseForUser) {
-
-                    }
-                    if (serverResponse instanceof ResponseForAdministrator) {
-
-                    }
-                    if (serverResponse instanceof AuthenticationResponse) {
-                        checkAuthenticationResponse((AuthenticationResponse) serverResponse);
-
-                        continue;
-                    }
-                }
-            } catch (Exception e) {
-
-            }
-        }
-
-        void handleResponseForUser() {
-
-        }
-
-        void checkAuthenticationResponse(AuthenticationResponse authenticationResponse) {
-            if (authenticationResponse.getResponseType() == ResponseType.GOOD) {
-                Thread thread = new Thread(() -> {
-                    openMainWindow(authenticationResponse.getUserLaws());
-                });
-            } else {
-                showDialog(authenticationResponse.getMessage());
-            }
-        }
-    }*/
-
     public void setConstraints(List<Laws> laws) {
         flagSetupLaws = true;
 

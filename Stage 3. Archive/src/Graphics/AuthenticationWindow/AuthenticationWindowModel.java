@@ -1,5 +1,6 @@
 package Graphics.AuthenticationWindow;
 
+import Graphics.ArchiveWindow.ArchiveWindowController;
 import client.Client;
 import Communicate.Message.Request.ClientRequest.AuthenticationRequest;
 import Communicate.Message.Response.ServerResponse.AuthenticationResponse;
@@ -28,12 +29,16 @@ public class AuthenticationWindowModel {
                     if (authenticationResponse.getResponseType() == ResponseType.ERROR) {
                         AuthenticationWindowController.showDialog(authenticationResponse.getMessage(), SWT.ICON_ERROR);
                     } else {
-                        /*Thread thread = new Thread(() -> {
+                        authenticationWindowController.authenticationSuccessfull = true;
+                        Thread thread = new Thread(() -> {
                             new ArchiveWindowController(currentClient,
                                     authenticationWindowController.authenticationWindow.display,
-                                    authenticationWindowController.authenticationWindow.shell).openMainWindow();
+                                    authenticationWindowController.authenticationWindow.shell,
+                                    authenticationResponse.getlistOfPersonnelFiles(),
+                                    authenticationResponse.getAccountMap()
+                            ).openMainWindow();
                         });
-                        thread.start();*/
+                        thread.start();
                         break;
                     }
                 }

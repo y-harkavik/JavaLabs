@@ -79,9 +79,9 @@ public class ArchiveServer {
             if (currentAccount != null) {
                 sendMessage(client, new AuthenticationResponse(ResponseType.GOOD,
                         null,
-                        getListOfPersonnelFiles(),
-                        null,
-                        currentAccount.getLawsList()));
+                        getMapOfPersonnelFiles(),
+                        currentAccount.getLawsList(),
+                        getMapOfAccounts()));
             } else {
                 sendMessage(client, new AuthenticationResponse(ResponseType.ERROR,
                         TypeOfError.AUTHENTICATION_ERROR,
@@ -101,7 +101,11 @@ public class ArchiveServer {
         }
     }
 
-    public Map<String, Integer> getListOfPersonnelFiles() {
+    public Map<String, Integer> getMapOfPersonnelFiles() {
+        return null;
+    }
+
+    public Map<String, Account> getMapOfAccounts() {
         return null;
     }
 
@@ -147,7 +151,7 @@ public class ArchiveServer {
     void sendResponseForAdministrator(Client client, ResponseType responseType, String message, String passportID) {
         sendMessage(client, new ResponseForAdministrator(responseType,
                 message,
-                getListOfPersonnelFiles(),
+                getMapOfPersonnelFiles(),
                 getPersonnelFileOfSpecificMen(passportID),
                 null,
                 usersBase.getListOfAccounts()));
@@ -156,7 +160,7 @@ public class ArchiveServer {
     void sendResponseForUser(Client client, ResponseType responseType, String message, String passportID, List<Laws> userLaws) {
         sendMessage(client, new ResponseForUser(responseType,
                 message,
-                getListOfPersonnelFiles(),
+                getMapOfPersonnelFiles(),
                 getPersonnelFileOfSpecificMen(passportID),
                 userLaws));
     }
