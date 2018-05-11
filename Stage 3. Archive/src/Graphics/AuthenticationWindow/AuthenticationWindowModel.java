@@ -29,13 +29,14 @@ public class AuthenticationWindowModel {
                     if (authenticationResponse.getResponseType() == ResponseType.ERROR) {
                         AuthenticationWindowController.showDialog(authenticationResponse.getMessage(), SWT.ICON_ERROR);
                     } else {
-                        authenticationWindowController.authenticationSuccessfull = true;
+                        authenticationWindowController.authenticationSuccessful = true;
                         Thread thread = new Thread(() -> {
                             new ArchiveWindowController(currentClient,
                                     authenticationWindowController.authenticationWindow.display,
                                     authenticationWindowController.authenticationWindow.shell,
                                     authenticationResponse.getlistOfPersonnelFiles(),
-                                    authenticationResponse.getAccountMap()
+                                    authenticationResponse.getAccountMap(),
+                                    authenticationResponse.getUserLaws()
                             ).openMainWindow();
                         });
                         thread.start();

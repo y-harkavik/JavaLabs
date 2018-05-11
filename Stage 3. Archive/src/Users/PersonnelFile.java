@@ -10,15 +10,21 @@ public class PersonnelFile {
     ContactInformation contactInformation;
     List<Work> works;
 
-    class BasicInformation {
+    public PersonnelFile(String firstName, String middleName, String lastName, String gender, LocalDate birthDate, String passport,
+                         String country, String city, String street, Integer house, String mobilePhone, String homePhone) {
+        basicInformation = new BasicInformation(firstName, middleName, lastName, gender, birthDate, passport);
+        contactInformation = new ContactInformation(country, city, street, house, mobilePhone, homePhone);
+    }
+
+    public class BasicInformation {
         private String firstName;
         private String middleName;
         private String lastName;
         private String gender;
         private LocalDate birthDate;
-        private Integer passport;
+        private String passport;
 
-        BasicInformation(String firstName, String middleName, String lastName, String gender, LocalDate birthDate, Integer passport) {
+        BasicInformation(String firstName, String middleName, String lastName, String gender, LocalDate birthDate, String passport) {
             this.firstName = firstName;
             this.middleName = middleName;
             this.lastName = lastName;
@@ -59,11 +65,11 @@ public class PersonnelFile {
             this.gender = gender;
         }
 
-        public Integer getPassport() {
+        public String getPassport() {
             return passport;
         }
 
-        public void setPassport(Integer passport) {
+        public void setPassport(String passport) {
             this.passport = passport;
         }
 
@@ -76,7 +82,7 @@ public class PersonnelFile {
         }
     }
 
-    class ContactInformation {
+    public class ContactInformation {
         private String country;
         private String city;
         private String street;
@@ -148,5 +154,17 @@ public class PersonnelFile {
         dateTimeFormatter.parse(a);
         String s = dateTimeFormatter.toString();
         String text = LocalDateTime.now().format(dateTimeFormatter);
+    }
+
+    public BasicInformation getBasicInformation() {
+        return basicInformation;
+    }
+
+    public ContactInformation getContactInformation() {
+        return contactInformation;
+    }
+
+    public List<Work> getWorks() {
+        return works;
     }
 }

@@ -1,5 +1,6 @@
 package Server;
 
+import Communicate.Message.Request.ClientRequest.SetParserRequest;
 import client.Client;
 import Communicate.Message.Request.ClientRequest.AuthenticationRequest;
 import Communicate.Message.Request.Request;
@@ -63,6 +64,10 @@ public class ArchiveServer {
                     if (clientRequest instanceof AuthenticationRequest) {
                         Account currentAccount = userAuthentication((AuthenticationRequest) clientRequest);
                         checkDatabaseResponseAndSendClientRequest(currentAccount);
+                        continue;
+                    }
+                    if (clientRequest instanceof SetParserRequest) {
+                        currentParser = ((SetParserRequest) clientRequest).getParserID();
                         continue;
                     }
                     handleClientRequest(clientRequest);

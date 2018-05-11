@@ -9,11 +9,12 @@ import java.io.IOException;
 public class AuthenticationWindowController {
     AuthenticationWindowModel authenticationWindowModel;
     AuthenticationWindow authenticationWindow;
-    boolean authenticationSuccessfull = false;
+    boolean authenticationSuccessful = false;
 
     public AuthenticationWindowController() {
         authenticationWindowModel = new AuthenticationWindowModel(this);
         authenticationWindow = new AuthenticationWindow();
+        initListeners();
     }
 
     public void openAuthenticationWindow() {
@@ -24,10 +25,10 @@ public class AuthenticationWindowController {
             authenticationWindowModel.setupConnection();
             authenticationWindowModel.startListenSocket();
         } catch (IOException e) {
-            e.printStackTrace();
+            showDialog("Connection error", SWT.ICON_ERROR);
         }
 
-        while (!authenticationSuccessfull) {
+        while (!authenticationSuccessful) {
             if (!authenticationWindow.display.readAndDispatch()) {
                 authenticationWindow.display.sleep();
             }
@@ -36,7 +37,11 @@ public class AuthenticationWindowController {
 
     void initListeners() {
         authenticationWindow.buttonSignIn.addListener(SWT.Selection, (event) -> {
-            //authenticationWindowModel.
+            String login = authenticationWindow.textPassword.getText();
+            String password = authenticationWindow.textLogin.getText();
+            if (!login.isEmpty() && !password.isEmpty()) {
+                authenticationWindowModel.sendMessage(login, password);
+            }
         });
     }
 

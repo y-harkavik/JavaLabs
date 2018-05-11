@@ -1,5 +1,6 @@
 package Graphics.ArchiveWindow;
 
+import Graphics.Constants.GraphicsConstants;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.VerifyListener;
 import org.eclipse.swt.graphics.Font;
@@ -7,9 +8,10 @@ import org.eclipse.swt.widgets.*;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
+
+import java.awt.*;
 
 import static Graphics.Constants.GraphicsConstants.*;
 
@@ -44,9 +46,9 @@ public class ArchiveWindow {
     Label labelHomeNumber;
     Label labelMobilePhone;
     Button buttonAddWork;
-    List listWorks;
+    Table tableOfWorks;
     Button buttonDeleteWork;
-    List listPeople;
+    Table tableOfPersonnelFiles;
     Button buttonEditPerson;
     Button buttonSavePerson;
     Button buttonDeletePersonnelFile;
@@ -62,7 +64,7 @@ public class ArchiveWindow {
     MenuItem changeLawsItem;
     Composite compositeContactInformation;
     Composite compositeWorks;
-    Composite compositeArchivesList;
+    Composite compositeArchivesTable;
 
     public ArchiveWindow(Display display, Shell shell) {
         this.display = display;
@@ -96,9 +98,9 @@ public class ArchiveWindow {
         display = Display.getDefault();
         shell = new Shell();
 
-        font12 = new Font(display, fontName, 12, SWT.NORMAL);
-        font10 = new Font(display, fontName, 10, SWT.NORMAL);
-        font16 = new Font(display, fontName, 16, SWT.NORMAL);
+        font12 = new Font(display, SEGOE_UI_SEMILIGHT, 12, SWT.NORMAL);
+        font10 = new Font(display, SEGOE_UI_SEMILIGHT, 10, SWT.NORMAL);
+        font16 = new Font(display, SEGOE_UI_SEMILIGHT, 16, SWT.NORMAL);
 
         compositeBasicInformation = new Composite(shell, SWT.NONE);
 
@@ -142,17 +144,23 @@ public class ArchiveWindow {
 
         compositeWorks = new Composite(shell, SWT.NONE);
 
-        listWorks = new List(compositeWorks, SWT.BORDER);
+        tableOfWorks = new Table(compositeWorks, SWT.BORDER | SWT.SINGLE | SWT.FULL_SELECTION);
+        for (int i = 0; i < 3; i++) {
+            TableColumn column = new TableColumn(tableOfWorks, SWT.NONE);
+            column.setText(GraphicsConstants.TABLE_HEADERS_OF_WORKS[i]);
+        }
         buttonAddWork = new Button(compositeWorks, SWT.NONE);
         buttonDeleteWork = new Button(compositeWorks, SWT.NONE);
 
-        compositeArchivesList = new Composite(shell, SWT.NONE);
+        compositeArchivesTable = new Composite(shell, SWT.NONE);
 
-        textSearch = new Text(compositeArchivesList, SWT.BORDER);
-        listPeople = new List(compositeArchivesList, SWT.BORDER);
-        buttonEditPerson = new Button(compositeArchivesList, SWT.NONE);
-        buttonSavePerson = new Button(compositeArchivesList, SWT.NONE);
-        buttonDeletePersonnelFile = new Button(compositeArchivesList, SWT.NONE);
+        textSearch = new Text(compositeArchivesTable, SWT.BORDER);
+
+        tableOfPersonnelFiles = new Table(compositeArchivesTable, SWT.BORDER | SWT.SINGLE | SWT.FULL_SELECTION);
+
+        buttonEditPerson = new Button(compositeArchivesTable, SWT.NONE);
+        buttonSavePerson = new Button(compositeArchivesTable, SWT.NONE);
+        buttonDeletePersonnelFile = new Button(compositeArchivesTable, SWT.NONE);
     }
 
     void setComponentsSettings() {
@@ -189,16 +197,16 @@ public class ArchiveWindow {
         labelMobilePhone.setFont(font12);
 
         comboDayOfBirth.setFont(font10);
-        comboDayOfBirth.setItems(month30days);
+        comboDayOfBirth.setItems(MONTH_30_DAYS);
         comboDayOfBirth.setVisibleItemCount(10);
         comboMonthOfBirth.setFont(font10);
-        comboMonthOfBirth.setItems(months);
+        comboMonthOfBirth.setItems(MONTHS);
         comboMonthOfBirth.setVisibleItemCount(10);
         comboYearOfBirth.setFont(font10);
-        comboYearOfBirth.setItems(years);
+        comboYearOfBirth.setItems(YEARS);
         comboYearOfBirth.setVisibleItemCount(10);
         comboGender.setFont(font10);
-        comboGender.setItems(gender);
+        comboGender.setItems(GENDER);
 
         textFirstName.setFont(font10);
         textMiddleName.setFont(font10);
@@ -213,7 +221,6 @@ public class ArchiveWindow {
         textMobilePhone.setFont(font10);
         textSearch.setFont(font10);
 
-        buttonAddWork.setForeground(display.getSystemColor(SWT.DRAW_TRANSPARENT));
         buttonAddWork.setFont(font12);
         buttonAddWork.setText("Add");
         buttonDeleteWork.setFont(font12);
@@ -224,6 +231,16 @@ public class ArchiveWindow {
         buttonSavePerson.setText("Save");
         buttonDeletePersonnelFile.setText("Delete");
         buttonDeletePersonnelFile.setFont(font12);
+
+        TableColumn column = new TableColumn(tableOfPersonnelFiles, SWT.NONE);
+        column.setText(GraphicsConstants.TABLE_HEADERS_OF_PERSONNEL_FILES[0]);
+        column.setWidth(100);
+        column = new TableColumn(tableOfPersonnelFiles, SWT.NONE);
+        column.setText(GraphicsConstants.TABLE_HEADERS_OF_PERSONNEL_FILES[1]);
+        column.setWidth(240);
+
+        TableItem tableItem = new TableItem(tableOfPersonnelFiles, SWT.NONE);
+        tableItem.setText(new String[]{"MMMMM", "MMMMMMMMMMMMMMM"});
     }
 
     void addListenersForComponents() {
@@ -277,12 +294,12 @@ public class ArchiveWindow {
         textHomePhone.setBounds(136, 187, 430, 28);
         textMobilePhone.setBounds(136, 221, 430, 28);
         compositeWorks.setBounds(0, 487, 576, 231);
-        listWorks.setBounds(10, 0, 566, 184);
+        tableOfWorks.setBounds(10, 0, 566, 184);
         buttonAddWork.setBounds(10, 190, 280, 40);
         buttonDeleteWork.setBounds(296, 190, 280, 40);
-        compositeArchivesList.setBounds(582, 0, 350, 718);
+        compositeArchivesTable.setBounds(582, 0, 350, 718);
         textSearch.setBounds(0, 10, 340, 28);
-        listPeople.setBounds(0, 44, 340, 627);
+        tableOfPersonnelFiles.setBounds(0, 44, 340, 627);
         buttonEditPerson.setBounds(0, 677, 107, 40);
         buttonSavePerson.setBounds(116, 677, 107, 40);
         buttonDeletePersonnelFile.setBounds(233, 677, 107, 40);
@@ -291,6 +308,11 @@ public class ArchiveWindow {
     public void start() {
         shell.open();
         shell.layout();
+        tableOfPersonnelFiles.setLinesVisible(true);
+        tableOfPersonnelFiles.setHeaderVisible(true);
+        tableOfWorks.setLinesVisible(true);
+        tableOfWorks.setHeaderVisible(true);
+
         while (!shell.isDisposed()) {
             if (!display.readAndDispatch()) {
                 display.sleep();
@@ -298,7 +320,7 @@ public class ArchiveWindow {
         }
     }
 
-    /*public static void main(String[] args) {
-        EventQueue.invokeLater(() -> new ArchiveWindow().start());
-    }*/
+    public static void main(String[] args) {
+        EventQueue.invokeLater(() -> new ArchiveWindow(Display.getDefault(), new Shell()).start());
+    }
 }

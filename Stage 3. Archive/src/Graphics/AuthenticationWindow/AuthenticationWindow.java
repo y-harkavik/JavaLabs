@@ -8,7 +8,6 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 
-
 public class AuthenticationWindow {
     Shell shell;
     Text textLogin;
@@ -29,18 +28,10 @@ public class AuthenticationWindow {
         }
     }
 
-
-    public void open() {
+    public AuthenticationWindow() {
         this.display = Display.getDefault();
         this.shell = new Shell();
         createContents();
-        shell.open();
-        shell.layout();
-        while (!shell.isDisposed()) {
-            if (!display.readAndDispatch()) {
-                display.sleep();
-            }
-        }
     }
 
     void createContents() {
@@ -48,8 +39,8 @@ public class AuthenticationWindow {
         shell.setSize(450, 300);
         shell.setText("Sign in");
 
-        font12 = new Font(display, GraphicsConstants.fontName, 12, SWT.NORMAL);
-        font16 = new Font(display, GraphicsConstants.fontName, 16, SWT.NORMAL);
+        font12 = new Font(display, GraphicsConstants.SEGOE_UI_SEMILIGHT, 12, SWT.NORMAL);
+        font16 = new Font(display, GraphicsConstants.SEGOE_UI_SEMILIGHT, 16, SWT.NORMAL);
 
         Composite composite = new Composite(shell, SWT.NONE);
         composite.setBounds(0, 0, 432, 253);
