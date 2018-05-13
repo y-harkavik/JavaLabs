@@ -1,13 +1,12 @@
 package client;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.net.Socket;
 
 public class Client {
     private ObjectOutputStream outputStream;
     private ObjectInputStream inputStream;
+    private Socket clientSocket;
 
     public ObjectInputStream getInputStream() {
         return inputStream;
@@ -18,11 +17,19 @@ public class Client {
     }
 
     public Client(Socket clientSocket) {
+        this.clientSocket = clientSocket;
         try {
-            inputStream = new ObjectInputStream(clientSocket.getInputStream());
-            outputStream = new ObjectOutputStream(clientSocket.getOutputStream());
+            InputStream inputStream = clientSocket.getInputStream();
+            OutputStream outputStream = clientSocket.getOutputStream();
+            this.outputStream = new ObjectOutputStream(outputStream);
+            this.inputStream = new ObjectInputStream(inputStream);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public Socket getClientSocket() {
+        return clientSocket;
     }
 }

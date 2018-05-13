@@ -1,6 +1,8 @@
 package Server;
 
 import Communicate.Message.Request.ClientRequest.SetParserRequest;
+import Parser.*;
+
 import client.Client;
 import Communicate.Message.Request.ClientRequest.AuthenticationRequest;
 import Communicate.Message.Request.Request;
@@ -22,15 +24,16 @@ import static Parser.Parsers.*;
 public class ArchiveServer {
     private ServerSocket serverSocket;
     private UsersBase usersBase;
-    private int currentParser;
     public static final int SERVER_PORT = 5000;
     public static final String SERVER_IP = "127.0.0.1";
+    private static Parser currentParser;
 
     public ArchiveServer() {
         try {
             serverSocket = new ServerSocket(SERVER_PORT);
             usersBase = new UsersBase();
             usersBase.getBaseFromFile();
+            currentParser = DOMParser.getInstance();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -67,11 +70,10 @@ public class ArchiveServer {
                         continue;
                     }
                     if (clientRequest instanceof SetParserRequest) {
-                        currentParser = ((SetParserRequest) clientRequest).getParserID();
+                        setCurrentParser(((SetParserRequest) clientRequest).getParserID());
                         continue;
                     }
                     handleClientRequest(clientRequest);
-
                 }
             } catch (InterruptedException e) {
                 closeConnection();
@@ -84,7 +86,7 @@ public class ArchiveServer {
             if (currentAccount != null) {
                 sendMessage(client, new AuthenticationResponse(ResponseType.GOOD,
                         null,
-                        getMapOfPersonnelFiles(),
+                        currentParser.getMapOfLastNameAndID(),
                         currentAccount.getLawsList(),
                         getMapOfAccounts()));
             } else {
@@ -94,6 +96,33 @@ public class ArchiveServer {
                         null,
                         null));
             }
+        }
+
+        void handleClientRequest(Request clientRequest) throws InterruptedException {
+            switch (clientRequest.getRequestType()) {
+                case GET_PERSONNEL_FILE:
+                    sendMessage(client, new ResponseForAdministrator(
+                            ResponseType.GOOD,
+                            null,
+                            currentParser.getMapOfLastNameAndID(),
+                            currentParser.getPersonnelFile(clientRequest.getPreviousPassportID()),
+                            null,
+                            getMapOfAccounts()));
+                    break;
+                case ADD:
+                    break;
+                case READ:
+                    break;
+                case DELETE:
+                    break;
+                case UPDATE:
+                    break;
+                case CHANGE_LAWS:
+                    break;
+                case DISCONNECT:
+                    throw new InterruptedException();
+            }
+
         }
 
         void closeConnection() {
@@ -106,45 +135,22 @@ public class ArchiveServer {
         }
     }
 
-    public Map<String, Integer> getMapOfPersonnelFiles() {
-        return null;
+    void setCurrentParser(int id) {
+        switch (id) {
+            case DOM:
+                currentParser = DOMParser.getInstance();
+                break;
+            case StAX:
+                currentParser = StAXParser.getInstance();
+                break;
+            case SAX:
+                currentParser = SAXParser.getInstance();
+                break;
+        }
     }
 
     public Map<String, Account> getMapOfAccounts() {
         return null;
-    }
-
-    public PersonnelFile getPersonnelFileOfSpecificMen(String passportID) {
-        PersonnelFile personnelFile = new PersonnelFile();
-        switch (currentParser) {
-            case DOM:
-                break;
-            case SAX:
-                break;
-            case StAX:
-                break;
-        }
-        return null;
-    }
-
-    void handleClientRequest(Request clientRequest) throws InterruptedException {
-        switch (clientRequest.getRequestType()) {
-            case GET_PERSONNEL_FILE:
-                break;
-            case ADD:
-                break;
-            case READ:
-                break;
-            case DELETE:
-                break;
-            case UPDATE:
-                break;
-            case CHANGE_LAWS:
-                break;
-            case DISCONNECT:
-                throw new InterruptedException();
-        }
-
     }
 
     public Account userAuthentication(AuthenticationRequest authenticationRequest) {
@@ -153,28 +159,15 @@ public class ArchiveServer {
         return usersBase.checkAccount(login, password);
     }
 
-    void sendResponseForAdministrator(Client client, ResponseType responseType, String message, String passportID) {
-        sendMessage(client, new ResponseForAdministrator(responseType,
-                message,
-                getMapOfPersonnelFiles(),
-                getPersonnelFileOfSpecificMen(passportID),
-                null,
-                usersBase.getListOfAccounts()));
-    }
-
-    void sendResponseForUser(Client client, ResponseType responseType, String message, String passportID, List<Laws> userLaws) {
-        sendMessage(client, new ResponseForUser(responseType,
-                message,
-                getMapOfPersonnelFiles(),
-                getPersonnelFileOfSpecificMen(passportID),
-                userLaws));
-    }
-
     void sendMessage(Client client, Response serverResponse) {
         try {
             client.getOutputStream().writeObject(serverResponse);
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void main(String[] args) {
+        new Thread(() -> new ArchiveServer().startServer()).start();
     }
 }

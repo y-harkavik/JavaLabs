@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="persons">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="person" type="Person" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="Person">
+    <xs:sequence>
+      <xs:element name="basicInformation">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="name" type="Name"/>
+          </xs:sequence>
+          <xs:attribute name="birthday" type="xs:date" use="required"/>
+          <xs:attribute name="sex" type="Sex" use="required"/>
+          <xs:attribute name="heigth" type="xs:float"/>
+          <xs:attribute name="weigth" type="xs:float"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="contactInformation" type="ContactInfo"/>
+      <xs:element name="works" type="Works"/>
+    </xs:sequence>
+    <xs:attribute name="ID" type="PassportID" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="ContactInfo">
+    <xs:sequence>
+      <xs:element name="mobilePhone">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{1,15}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="homePhone">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{1,15}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="address" type="Address"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Address">
+    <xs:attribute name="country" type="string" use="required"/>
+    <xs:attribute name="city" type="string" use="required"/>
+    <xs:attribute name="street" type="string" use="required"/>
+    <xs:attribute name="house" type="xs:integer"/>
+  </xs:complexType>
+  <xs:complexType name="Works">
+    <xs:sequence>
+      <xs:element name="work" type="Work" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Name">
+    <xs:attribute name="lastName" type="string" use="required"/>
+    <xs:attribute name="firstName" type="string" use="required"/>
+    <xs:attribute name="middleName" type="string" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="Work">
+    <xs:attribute name="company" type="string"/>
+    <xs:attribute name="position" type="string"/>
+    <xs:attribute name="experience" type="xs:integer"/>
+  </xs:complexType>
+  <xs:simpleType name="PassportID">
+    <xs:restriction base="xs:ID">
+      <xs:length value="15"/>
+      <xs:pattern value="[A-Z0-9]{15}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Sex">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Female"/>
+      <xs:enumeration value="Male"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="string">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-Z]{2,}"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+

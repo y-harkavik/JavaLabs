@@ -60,6 +60,7 @@ public class ArchiveWindow {
     Composite compositeBasicInformation;
     VerifyListener verifyListenerForText;
     VerifyListener verifyListenerForPhone;
+    VerifyListener verifyListenerForPassport;
     MenuItem addPersonnelFileItem;
     MenuItem changeLawsItem;
     Composite compositeContactInformation;
@@ -69,22 +70,14 @@ public class ArchiveWindow {
     public ArchiveWindow(Display display, Shell shell) {
         this.display = display;
         this.shell = shell;
-        clearShell();
         initComponents();
         setComponentsSettings();
         setComponentsBounds();
-        addListenersForComponents();
-    }
-
-    void clearShell() {
-        for (Control control : shell.getChildren()) {
-            control.dispose();
-        }
     }
 
     void initComponents() {
         verifyListenerForText = verifyEvent -> {
-            if (verifyEvent.text.matches("[a-zA-Z]") || verifyEvent.character == '\b' || verifyEvent.character == 0x7f) {
+            if (verifyEvent.text.matches("[a-zA-Z]*") || verifyEvent.character == '\b' || verifyEvent.character == 0x7f) {
             } else {
                 verifyEvent.doit = false;
             }
@@ -95,6 +88,14 @@ public class ArchiveWindow {
                 verifyEvent.doit = false;
             }
         };
+        verifyListenerForPassport = verifyEvent -> {
+            if (verifyEvent.text.matches("[a-zA-Z0-9]") || verifyEvent.character == '\b' || verifyEvent.character == 0x7f) {
+                verifyEvent.text = verifyEvent.text.toUpperCase();
+            } else {
+                verifyEvent.doit = false;
+            }
+        };
+
         display = Display.getDefault();
         shell = new Shell();
 
@@ -145,10 +146,7 @@ public class ArchiveWindow {
         compositeWorks = new Composite(shell, SWT.NONE);
 
         tableOfWorks = new Table(compositeWorks, SWT.BORDER | SWT.SINGLE | SWT.FULL_SELECTION);
-        for (int i = 0; i < 3; i++) {
-            TableColumn column = new TableColumn(tableOfWorks, SWT.NONE);
-            column.setText(GraphicsConstants.TABLE_HEADERS_OF_WORKS[i]);
-        }
+
         buttonAddWork = new Button(compositeWorks, SWT.NONE);
         buttonDeleteWork = new Button(compositeWorks, SWT.NONE);
 
@@ -239,25 +237,11 @@ public class ArchiveWindow {
         column.setText(GraphicsConstants.TABLE_HEADERS_OF_PERSONNEL_FILES[1]);
         column.setWidth(240);
 
-        TableItem tableItem = new TableItem(tableOfPersonnelFiles, SWT.NONE);
-        tableItem.setText(new String[]{"MMMMM", "MMMMMMMMMMMMMMM"});
-    }
-
-    void addListenersForComponents() {
-        textFirstName.addVerifyListener(verifyListenerForText);
-        textMiddleName.addVerifyListener(verifyListenerForText);
-        textLastName.addVerifyListener(verifyListenerForText);
-        textPassport.addVerifyListener(verifyEvent -> {
-            if (verifyEvent.text.matches("[a-zA-Z0-9]") || verifyEvent.character == '\b' || verifyEvent.character == 0x7f) {
-                verifyEvent.text = verifyEvent.text.toUpperCase();
-            } else {
-                verifyEvent.doit = false;
-            }
-        });
-        textCountry.addVerifyListener(verifyListenerForText);
-        textCity.addVerifyListener(verifyListenerForText);
-        textHomePhone.addVerifyListener(verifyListenerForPhone);
-        textMobilePhone.addVerifyListener(verifyListenerForPhone);
+        for (int i = 0; i < 3; i++) {
+            TableColumn column1 = new TableColumn(tableOfWorks, SWT.NONE);
+            column1.setText(GraphicsConstants.TABLE_HEADERS_OF_WORKS[i]);
+            column1.setWidth(200);
+        }
     }
 
     void setComponentsBounds() {

@@ -1,5 +1,7 @@
 package Communicate.Message.Request.ClientRequest;
 
-public enum RequestType {
+import java.io.Serializable;
+
+public enum RequestType implements Serializable {
     UPDATE, DELETE, ADD, READ, DISCONNECT, CHANGE_LAWS, CREATE_USER, GET_PERSONNEL_FILE;
 }

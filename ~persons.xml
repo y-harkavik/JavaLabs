@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persons xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:///D:/Projects.%20Java/JavaLabs/personsScheme.xsd">
+	<person ID="AAAAA33333666HH">
+		<basicInformation sex="Male" birthday="1998-12-02">
+			<name lastName="Zubko" firstName="Evgen" middleName="Vital"/>
+		</basicInformation>
+		<contactInfo>
+			<mobilePhone>1234</mobilePhone>
+			<homePhone>1234</homePhone>
+			<address country="BY" city="Minsk" street="Kolasa" house="28"/>
+		</contactInfo>
+		<works>
+			<work company="Itransition" position="Manager" experience="2"/>
+			<work company="BSUIR" position="Student" experience="5"/>
+		</works>
+	</person>
+	<person ID="AAAAA33433666HH">
+		<basicInformation sex="Female" birthday="1989-02-22">
+			<name lastName="Harkavik" firstName="Evgeniy" middleName="Antonovich"/>
+		</basicInformation>
+		<contactInfo>
+			<mobilePhone>4321</mobilePhone>
+			<homePhone>4321</homePhone>
+			<address country="USA" city="LA" street="Pushkina" house="1"/>
+		</contactInfo>
+		<works>
+			<work company="Google" position="Director" experience="10"/>
+			<work company="Yandex" position="Manager" experience="3"/>
+			<work company="Sosedi" position="Prodavec" experience="4"/>
+		</works>
+	</person>
+	<person ID="AAAAA3HN33666HH">
+		<basicInformation sex="Male" birthday="1965-12-03">
+			<name lastName="Busko" firstName="Yauheni" middleName="Aleksandrovich"/>
+		</basicInformation>
+		<contactInfo>
+			<mobilePhone>7788</mobilePhone>
+			<homePhone>8880</homePhone>
+			<address country="Britain" city="London" street="Koroleva" house="5"/>
+		</contactInfo>
+		<works>
+			<work company="Swankeys" position="CEO" experience="10"/>
+		</works>
+	</person>
+	<person ID="AAAAA33335666HH">
+		<basicInformation sex="Female" birthday="1955-04-27">
+			<name lastName="Romanyk" firstName="Nikita" middleName="Konstantinovich"/>
+		</basicInformation>
+		<contactInfo>
+			<mobilePhone>7890</mobilePhone>
+			<homePhone>7890</homePhone>
+			<address country="Poland" city="Warsawa" street="Kostyshki" house="8"/>
+		</contactInfo>
+		<works>
+			<work company="Swankeys" position="CIO" experience="2"/>
+		</works>
+	</person>
+</persons>

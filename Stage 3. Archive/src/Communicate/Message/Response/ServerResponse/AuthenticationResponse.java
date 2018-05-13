@@ -12,7 +12,7 @@ public class AuthenticationResponse extends Response {
     Map<String, Account> accountMap;
 
     public AuthenticationResponse(ResponseType responseType,
-                                  String message, Map<String, Integer> listOfPersonnelFiles,
+                                  String message, Map<String, String> listOfPersonnelFiles,
                                   List<Laws> userLaws, Map<String, Account> accountMap) {
         super(responseType, message, listOfPersonnelFiles, null, userLaws);
         this.accountMap = accountMap;

@@ -1,5 +1,7 @@
 package Communicate.Message.Response.ServerResponse;
 
-public enum ResponseType {
+import java.io.Serializable;
+
+public enum ResponseType implements Serializable {
     GOOD, ERROR;
 }

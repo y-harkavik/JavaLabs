@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class ResponseForUser extends Response {
 
-    public ResponseForUser(ResponseType responseType, String message, Map<String, Integer> listOfPersonnelFiles, PersonnelFile personnelFileOfSpecificMen, List<Laws> userLaws) {
+    public ResponseForUser(ResponseType responseType, String message, Map<String, String> listOfPersonnelFiles, PersonnelFile personnelFileOfSpecificMen, List<Laws> userLaws) {
         super(responseType, message, listOfPersonnelFiles, personnelFileOfSpecificMen, userLaws);
     }
 }

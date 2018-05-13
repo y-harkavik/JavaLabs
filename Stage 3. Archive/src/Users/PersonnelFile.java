@@ -1,14 +1,20 @@
 package Users;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-public class PersonnelFile {
+public class PersonnelFile implements Serializable {
     BasicInformation basicInformation;
     ContactInformation contactInformation;
     List<Work> works;
+
+    public PersonnelFile() {
+        basicInformation = new BasicInformation();
+        contactInformation = new ContactInformation();
+    }
 
     public PersonnelFile(String firstName, String middleName, String lastName, String gender, LocalDate birthDate, String passport,
                          String country, String city, String street, Integer house, String mobilePhone, String homePhone) {
@@ -16,7 +22,7 @@ public class PersonnelFile {
         contactInformation = new ContactInformation(country, city, street, house, mobilePhone, homePhone);
     }
 
-    public class BasicInformation {
+    public class BasicInformation implements Serializable {
         private String firstName;
         private String middleName;
         private String lastName;
@@ -31,6 +37,10 @@ public class PersonnelFile {
             this.gender = gender;
             this.birthDate = birthDate;
             this.passport = passport;
+        }
+
+        public BasicInformation() {
+
         }
 
         public String getFirstName() {
@@ -82,7 +92,7 @@ public class PersonnelFile {
         }
     }
 
-    public class ContactInformation {
+    public class ContactInformation implements Serializable {
         private String country;
         private String city;
         private String street;
@@ -97,6 +107,10 @@ public class PersonnelFile {
             this.house = house;
             this.mobilePhone = mobilePhone;
             this.homePhone = homePhone;
+        }
+
+        public ContactInformation() {
+
         }
 
         public String getCountry() {
@@ -166,5 +180,9 @@ public class PersonnelFile {
 
     public List<Work> getWorks() {
         return works;
+    }
+
+    public void setWorks(List<Work> works) {
+        this.works = works;
     }
 }

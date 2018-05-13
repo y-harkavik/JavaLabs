@@ -1,6 +1,8 @@
 package Users;
 
-public class Work {
+import java.io.Serializable;
+
+public class Work implements Serializable {
     private String company;
     private String position;
     private Integer experience;

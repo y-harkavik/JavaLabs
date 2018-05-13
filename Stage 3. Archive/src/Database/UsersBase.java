@@ -2,6 +2,7 @@ package Database;
 
 import Law.Laws;
 import Users.Account;
+import Users.Administrator;
 import Users.User;
 
 import java.io.FileInputStream;
@@ -11,14 +12,17 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import static Database.Password.getHashedPassword;
+import static Database.Password.getSalt;
+
 public class UsersBase {
     private ArrayList<Account> listOfAccounts = new ArrayList<>();
 
     void createPerson(String password, String login) {
         List<Laws> lawsList = new ArrayList<>();
 
-        byte[] salt = Password.getSalt();
-        String hashedPassword = Password.getHashedPassword(password, salt);
+        byte[] salt = getSalt();
+        String hashedPassword = getHashedPassword(password, salt);
 
         listOfAccounts.add(new User(hashedPassword, login, salt, lawsList));
     }
@@ -26,7 +30,7 @@ public class UsersBase {
     public Account checkAccount(String login, String password) {
         Account account = checkLogin(login);
         if (account != null) {
-            if (checkPassword(Password.getHashedPassword(password, account.getSalt()), account.getPasswordAndSaltHash())) {
+            if (checkPassword(getHashedPassword(password, account.getSalt()), account.getPasswordAndSaltHash())) {
                 return account;
             }
         }
@@ -74,28 +78,35 @@ public class UsersBase {
         }
     }
 
-    /*public static void main(String[] args) {
+    public static void main(String[] args) {
         new UsersBase().example();
-    }*/
+    }
 
-    /*void example() {
+    void example() {
         User user;
-        getSalt();
+        byte[] salt = getSalt();
         String hashedPassword = getHashedPassword("admin", salt);
         listOfAccounts.add(new Administrator(hashedPassword, "admin", salt));
 
-        getSalt();
+        salt = getSalt();
         hashedPassword = getHashedPassword("user1", salt);
-        user = new User(hashedPassword, "user1", salt);
-        user.setLastUpdated(LocalDate.now());
+        List<Laws> laws = new ArrayList<>();
+        laws.add(Laws.CREATE);
+        laws.add(Laws.READ);
+        laws.add(Laws.DELETE);
+        laws.add(Laws.UPDATE);
+        user = new User(hashedPassword, "user1", salt, laws);
         listOfAccounts.add(user);
 
-        getSalt();
+        salt = getSalt();
+        laws = new ArrayList<>();
+        laws.add(Laws.READ);
+        laws.add(Laws.DELETE);
+        laws.add(Laws.UPDATE);
         hashedPassword = getHashedPassword("user2", salt);
-        user = new User(hashedPassword, "user2", salt);
-        user.setLastUpdated(LocalDate.of(2018, 03, 2));
+        user = new User(hashedPassword, "user2", salt, laws);
         listOfAccounts.add(user);
 
         saveBase();
-    }*/
+    }
 }
