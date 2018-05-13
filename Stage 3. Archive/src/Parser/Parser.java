@@ -1,19 +1,13 @@
 package Parser;
 
-public abstract class Parser {
-    public void makeXML() {
+public interface Parser {
+    void makeXML();
 
-    }
+    void findPersonnelFileInXML();
 
-    public void getPersonnelFile() {
+    void getPersonnelFile();
 
-    }
+    void insertPersonnelFileInXML();
 
-    public void insertPersonnelFileInXML() {
-
-    }
-
-    public void removePersonnelFileFromXML() {
-
-    }
+    void removePersonnelFileFromXML();
 }
