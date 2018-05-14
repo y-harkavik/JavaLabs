@@ -11,6 +11,13 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -20,6 +27,10 @@ import java.util.Map;
 
 public class DOMParser implements Parser {
     private static volatile DOMParser instance = null;
+    private static Transformer transformer;
+    private static StreamResult outputStream;
+    private static DOMSource domSource;
+
     private Document documentOfPersonnelFiles;
     private Node personsNode;
 
@@ -40,12 +51,17 @@ public class DOMParser implements Parser {
         try {
             DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
             documentOfPersonnelFiles = documentBuilder.parse("persons.xml");
+            domSource = new DOMSource(documentOfPersonnelFiles);
             personsNode = documentOfPersonnelFiles.getDocumentElement();
+            outputStream = new StreamResult(new File("persons.xml"));
+            transformer = TransformerFactory.newInstance().newTransformer();
         } catch (ParserConfigurationException e) {
             e.printStackTrace();
         } catch (SAXException e) {
             e.printStackTrace();
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (TransformerConfigurationException e) {
             e.printStackTrace();
         }
     }
@@ -174,6 +190,15 @@ public class DOMParser implements Parser {
     @Override
     public void removePersonnelFileFromXML() {
 
+    }
+
+    @Override
+    public void saveInFile() {
+        try {
+            transformer.transform(domSource, outputStream);
+        } catch (TransformerException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

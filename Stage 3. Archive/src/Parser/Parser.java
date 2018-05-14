@@ -15,5 +15,7 @@ public interface Parser {
 
     void removePersonnelFileFromXML();
 
+    void saveInFile();
+
     Map<String, String> getMapOfLastNameAndID();
 }
