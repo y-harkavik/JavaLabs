@@ -1,6 +1,6 @@
 package Graphics.Dialogs;
 
-import Users.Work;
+import Users.Job;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
@@ -11,19 +11,19 @@ import static Graphics.Constants.GraphicsConstants.SEGOE_UI_SEMILIGHT;
 import static Graphics.Constants.GraphicsConstants.verifyListenerForNumber;
 import static Graphics.Constants.GraphicsConstants.verifyListenerForText;
 
-public class AddWorkDialog extends Dialog {
+public class AddJobDialog extends Dialog {
     protected Shell shell;
     private Text textCompany;
     private Text textPosition;
     private Text textExperience;
-    private Work work = null;
-    private Button buttonAddWork;
+    private Job job = null;
+    private Button buttonAddJob;
 
-    public AddWorkDialog(Shell shell) {
+    public AddJobDialog(Shell shell) {
         super(shell, SWT.DIALOG_TRIM | SWT.APPLICATION_MODAL | SWT.CLOSE | SWT.TITLE);
     }
 
-    public Work open() {
+    public Job open() {
         shell = new Shell(getParent(), getStyle());
         Display display = getParent().getDisplay();
         createContents(shell, display);
@@ -34,7 +34,7 @@ public class AddWorkDialog extends Dialog {
         while (!shell.isDisposed()) {
             if (!display.readAndDispatch()) display.sleep();
         }
-        return work;
+        return job;
     }
 
     protected void createContents(Shell shell, Display display) {
@@ -42,7 +42,7 @@ public class AddWorkDialog extends Dialog {
         Font font10 = new Font(display, SEGOE_UI_SEMILIGHT, 10, SWT.NORMAL);
 
         shell.setSize(450, 300);
-        shell.setText("Adding work");
+        shell.setText("Adding job");
 
         Composite composite = new Composite(shell, SWT.NONE);
         composite.setBounds(0, 0, 432, 253);
@@ -75,17 +75,17 @@ public class AddWorkDialog extends Dialog {
         textExperience.setBounds(126, 81, 296, 28);
         textExperience.setTextLimit(3);
 
-        buttonAddWork = new Button(composite, SWT.NONE);
-        buttonAddWork.setText("Add");
-        buttonAddWork.setFont(font12);
-        buttonAddWork.setBounds(167, 203, 100, 40);
+        buttonAddJob = new Button(composite, SWT.NONE);
+        buttonAddJob.setText("Add");
+        buttonAddJob.setFont(font12);
+        buttonAddJob.setBounds(167, 203, 100, 40);
     }
 
     void initListeners() {
-        buttonAddWork.addSelectionListener(new SelectionListener() {
+        buttonAddJob.addSelectionListener(new SelectionListener() {
             @Override
             public void widgetSelected(SelectionEvent selectionEvent) {
-                work = createWork();
+                job = createJob();
                 shell.dispose();
             }
 
@@ -99,11 +99,11 @@ public class AddWorkDialog extends Dialog {
         textExperience.addVerifyListener(verifyListenerForNumber);
     }
 
-    Work createWork() {
-        Work work = new Work(
+    Job createJob() {
+        Job job = new Job(
                 textCompany.getText(),
                 textPosition.getText(),
                 Integer.valueOf(textExperience.getText()));
-        return work;
+        return job;
     }
 }

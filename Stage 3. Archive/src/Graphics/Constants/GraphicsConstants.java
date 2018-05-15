@@ -1,5 +1,7 @@
 package Graphics.Constants;
 
+import org.eclipse.swt.events.VerifyListener;
+
 public class GraphicsConstants {
     public static final String SEGOE_UI_SEMILIGHT = "Segoe UI Semilight";
     public static final String[] GENDER = {"Male", "Female"};
@@ -23,6 +25,27 @@ public class GraphicsConstants {
             "2000"};
     public static final String[] TABLE_HEADERS_OF_PERSONNEL_FILES = {"Name", "PassportID"};
     public static final String[] TABLE_HEADERS_OF_WORKS = {"Company", "Position", "Experience"};
+
+    public static final VerifyListener verifyListenerForText = verifyEvent -> {
+        if (verifyEvent.text.matches("[a-zA-Z]*") || verifyEvent.character == '\b' || verifyEvent.character == 0x7f) {
+        } else {
+            verifyEvent.doit = false;
+        }
+    };
+    public static final VerifyListener verifyListenerForNumber = verifyEvent -> {
+        if (verifyEvent.text.matches("[0-9]") || verifyEvent.character == '\b' || verifyEvent.character == 0x7f) {
+        } else {
+            verifyEvent.doit = false;
+        }
+    };
+    public static final VerifyListener verifyListenerForPassport = verifyEvent -> {
+        if (verifyEvent.text.matches("[a-zA-Z0-9]") || verifyEvent.character == '\b' || verifyEvent.character == 0x7f) {
+            verifyEvent.text = verifyEvent.text.toUpperCase();
+        } else {
+            verifyEvent.doit = false;
+        }
+    };
+
 
     private GraphicsConstants() {
     }

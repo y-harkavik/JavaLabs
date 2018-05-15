@@ -2,12 +2,12 @@ package Users;
 
 import java.io.Serializable;
 
-public class Work implements Serializable {
+public class Job implements Serializable {
     private String company;
     private String position;
     private Integer experience;
 
-    public Work(String company, String position, Integer experience) {
+    public Job(String company, String position, Integer experience) {
         this.company = company;
         this.position = position;
         this.experience = experience;
