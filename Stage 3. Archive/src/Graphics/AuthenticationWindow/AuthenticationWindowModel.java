@@ -1,5 +1,6 @@
 package Graphics.AuthenticationWindow;
 
+import Graphics.Constants.GraphicsDialogs;
 import client.Client;
 import Communicate.Message.Request.ClientRequest.AuthenticationRequest;
 import Communicate.Message.Response.ServerResponse.AuthenticationResponse;
@@ -21,6 +22,9 @@ public class AuthenticationWindowModel {
     }
 
     public void closeConnection() throws IOException {
+        if (currentClient == null) {
+            return;
+        }
         currentClient.getInputStream().close();
         currentClient.getOutputStream().close();
         currentClient.getClientSocket().close();
@@ -35,7 +39,7 @@ public class AuthenticationWindowModel {
                 while ((authenticationResponse = (AuthenticationResponse) currentClient.getInputStream().readObject()) != null) {
                     if (authenticationResponse.getResponseType() == ResponseType.ERROR) {
                         Display.getDefault().asyncExec(() ->
-                                AuthenticationWindowController.showDialog(authenticationResponse.getMessage(), SWT.ICON_ERROR));
+                                GraphicsDialogs.showDialog(authenticationResponse.getMessage(), SWT.ICON_ERROR));
                     } else {
                         authenticationWindowController.authenticationSuccessful = true;
                         authenticationWindowController.authenticationResponse = authenticationResponse;
@@ -43,7 +47,7 @@ public class AuthenticationWindowModel {
                     }
                 }
             } catch (SocketException ex) {
-
+                Display.getDefault().asyncExec(() -> GraphicsDialogs.showDialog("Connect error", SWT.ICON_ERROR));
             } catch (Exception e) {
                 e.printStackTrace();
             }

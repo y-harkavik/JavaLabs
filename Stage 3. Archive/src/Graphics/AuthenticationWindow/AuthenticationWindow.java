@@ -17,20 +17,9 @@ public class AuthenticationWindow {
     Button buttonSignIn;
     Display display;
 
-    public static void main(String[] args) {
-        try {
-            AuthenticationWindow window = new AuthenticationWindow();
-/*
-            window.open();
-*/
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     public AuthenticationWindow() {
         this.display = Display.getDefault();
-        this.shell = new Shell();
+        this.shell = new Shell(SWT.CLOSE | SWT.TITLE | SWT.MIN);
         createContents();
     }
 

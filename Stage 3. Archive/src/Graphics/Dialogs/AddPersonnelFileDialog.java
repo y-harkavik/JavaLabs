@@ -2,8 +2,10 @@ package Graphics.Dialogs;
 
 import Graphics.Constants.GraphicsConstants;
 import Users.PersonnelFile;
-import Users.Work;
+import Users.Job;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.widgets.*;
 
@@ -14,25 +16,25 @@ import java.util.List;
 import static Graphics.Constants.GraphicsConstants.SEGOE_UI_SEMILIGHT;
 
 public class AddPersonnelFileDialog extends Dialog {
-    Shell shell;
-    Text textFirstName;
-    Text textMiddleName;
-    Text textLastName;
-    Text textPassport;
-    Text textCountry;
-    Text textCity;
-    Text textStreet;
-    Text textHouse;
-    Text textHomePhone;
-    Text textMobilePhone;
-    Combo comboDayOfBirth;
-    Combo comboMonthOfBirth;
-    Combo comboYearOfBirth;
-    Combo comboGender;
+    private Shell shell;
+    private Text textFirstName;
+    private Text textMiddleName;
+    private Text textLastName;
+    private Text textPassport;
+    private Text textCountry;
+    private Text textCity;
+    private Text textStreet;
+    private Text textHouse;
+    private Text textHomePhone;
+    private Text textMobilePhone;
+    private Combo comboDayOfBirth;
+    private Combo comboMonthOfBirth;
+    private Combo comboYearOfBirth;
+    private Combo comboGender;
     private Button buttonSavePersonnelFile;
-    private Button buttonDeleteWork;
-    private Button buttonAddWork;
-    private Table tableOfWorks;
+    private Button buttonDeleteJob;
+    private Button buttonAddJob;
+    private Table tableOfJobs;
     private PersonnelFile personnelFile = null;
 
     public AddPersonnelFileDialog(Shell shell) {
@@ -59,7 +61,6 @@ public class AddPersonnelFileDialog extends Dialog {
         Font font10 = new Font(display, SEGOE_UI_SEMILIGHT, 10, SWT.NORMAL);
         Font font16 = new Font(display, SEGOE_UI_SEMILIGHT, 16, SWT.NORMAL);
 
-        shell.setModified(true);
         shell.setSize(589, 817);
         shell.setText("Add personnel file");
 
@@ -196,6 +197,7 @@ public class AddPersonnelFileDialog extends Dialog {
         textPassport = new Text(composite_1, SWT.BORDER);
         textPassport.setFont(font10);
         textPassport.setBounds(136, 185, 426, 28);
+        textPassport.setTextLimit(15);
 
         Label label_13 = new Label(composite_1, SWT.CENTER);
         label_13.setText("Basic Information");
@@ -205,26 +207,26 @@ public class AddPersonnelFileDialog extends Dialog {
         Composite composite_2 = new Composite(shell, SWT.NONE);
         composite_2.setBounds(0, 487, 572, 231);
 
-        tableOfWorks = new Table(composite_2, SWT.BORDER);
-        tableOfWorks.setBounds(10, 0, 552, 184);
+        tableOfJobs = new Table(composite_2, SWT.BORDER);
+        tableOfJobs.setBounds(10, 0, 552, 184);
         for (int i = 0; i < 3; i++) {
-            TableColumn column1 = new TableColumn(tableOfWorks, SWT.NONE);
+            TableColumn column1 = new TableColumn(tableOfJobs, SWT.NONE);
             column1.setText(GraphicsConstants.TABLE_HEADERS_OF_WORKS[i]);
             column1.setWidth(200);
         }
 
-        tableOfWorks.setLinesVisible(true);
-        tableOfWorks.setHeaderVisible(true);
+        tableOfJobs.setLinesVisible(true);
+        tableOfJobs.setHeaderVisible(true);
 
-        buttonAddWork = new Button(composite_2, SWT.NONE);
-        buttonAddWork.setText("Add");
-        buttonAddWork.setFont(font12);
-        buttonAddWork.setBounds(10, 190, 280, 40);
+        buttonAddJob = new Button(composite_2, SWT.NONE);
+        buttonAddJob.setText("Add");
+        buttonAddJob.setFont(font12);
+        buttonAddJob.setBounds(10, 190, 280, 40);
 
-        buttonDeleteWork = new Button(composite_2, SWT.NONE);
-        buttonDeleteWork.setText("Delete");
-        buttonDeleteWork.setFont(font12);
-        buttonDeleteWork.setBounds(296, 190, 266, 40);
+        buttonDeleteJob = new Button(composite_2, SWT.NONE);
+        buttonDeleteJob.setText("Delete");
+        buttonDeleteJob.setFont(font12);
+        buttonDeleteJob.setBounds(296, 190, 266, 40);
 
         buttonSavePersonnelFile = new Button(shell, SWT.NONE);
         buttonSavePersonnelFile.setText("Save personnel file");
@@ -237,6 +239,36 @@ public class AddPersonnelFileDialog extends Dialog {
         buttonSavePersonnelFile.addListener(SWT.Selection, event -> {
             personnelFile = createPersonnelFile();
             shell.dispose();
+        });
+        buttonAddJob.addSelectionListener(new SelectionListener() {
+            @Override
+            public void widgetSelected(SelectionEvent selectionEvent) {
+                Display.getCurrent().asyncExec(() -> {
+                    Job job = new AddJobDialog(new Shell()).open();
+                    if (job != null) {
+                        fillJobTable(job);
+                    }
+                });
+            }
+
+            @Override
+            public void widgetDefaultSelected(SelectionEvent selectionEvent) {
+
+            }
+        });
+        buttonDeleteJob.addSelectionListener(new SelectionListener() {
+            @Override
+            public void widgetSelected(SelectionEvent selectionEvent) {
+                int rowIndex = tableOfJobs.getSelectionIndex();
+                if (rowIndex != -1) {
+                    tableOfJobs.remove(rowIndex);
+                }
+            }
+
+            @Override
+            public void widgetDefaultSelected(SelectionEvent selectionEvent) {
+
+            }
         });
         comboMonthOfBirth.addModifyListener(modifyEvent -> {
             int month = Integer.parseInt(comboMonthOfBirth.getText());
@@ -259,11 +291,11 @@ public class AddPersonnelFileDialog extends Dialog {
         textPassport.addVerifyListener(GraphicsConstants.verifyListenerForPassport);
         textCountry.addVerifyListener(GraphicsConstants.verifyListenerForText);
         textCity.addVerifyListener(GraphicsConstants.verifyListenerForText);
-        textHomePhone.addVerifyListener(GraphicsConstants.verifyListenerForPhone);
+        textHomePhone.addVerifyListener(GraphicsConstants.verifyListenerForNumber);
         textHomePhone.setTextLimit(15);
-        textMobilePhone.addVerifyListener(GraphicsConstants.verifyListenerForPhone);
+        textMobilePhone.addVerifyListener(GraphicsConstants.verifyListenerForNumber);
         textMobilePhone.setTextLimit(15);
-        textHouse.addVerifyListener(GraphicsConstants.verifyListenerForPhone);
+        textHouse.addVerifyListener(GraphicsConstants.verifyListenerForNumber);
     }
 
     PersonnelFile createPersonnelFile() {
@@ -286,17 +318,24 @@ public class AddPersonnelFileDialog extends Dialog {
                 textMobilePhone.getText(),
                 textHomePhone.getText());
 
-        List<Work> workList = new ArrayList<>();
-        fillWorkList(workList);
-        personnelFile.setWorks(workList);
+        List<Job> jobList = new ArrayList<>();
+        fillJobList(jobList);
+        personnelFile.setJobs(jobList);
         return personnelFile;
     }
 
-    void fillWorkList(List<Work> works) {
-        for (int i = 0; i < tableOfWorks.getItemCount(); i++) {
-            TableItem workItem = tableOfWorks.getItem(i);
-            Work work = new Work(workItem.getText(0), workItem.getText(1), Integer.valueOf(workItem.getText(2)));
-            works.add(work);
+    void fillJobList(List<Job> jobs) {
+        for (int i = 0; i < tableOfJobs.getItemCount(); i++) {
+            TableItem jobItem = tableOfJobs.getItem(i);
+            Job job = new Job(jobItem.getText(0), jobItem.getText(1), Integer.valueOf(jobItem.getText(2)));
+            jobs.add(job);
         }
+    }
+
+    void fillJobTable(Job job) {
+        TableItem tableItem = new TableItem(tableOfJobs, SWT.NONE);
+        tableItem.setText(0, job.getCompany());
+        tableItem.setText(1, job.getPosition());
+        tableItem.setText(2, job.getExperience().toString());
     }
 }

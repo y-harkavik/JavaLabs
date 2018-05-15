@@ -9,7 +9,7 @@ import java.util.List;
 public class PersonnelFile implements Serializable {
     BasicInformation basicInformation;
     ContactInformation contactInformation;
-    List<Work> works;
+    List<Job> jobs;
 
     public PersonnelFile() {
         basicInformation = new BasicInformation();
@@ -178,11 +178,11 @@ public class PersonnelFile implements Serializable {
         return contactInformation;
     }
 
-    public List<Work> getWorks() {
-        return works;
+    public List<Job> getJobs() {
+        return jobs;
     }
 
-    public void setWorks(List<Work> works) {
-        this.works = works;
+    public void setJobs(List<Job> jobs) {
+        this.jobs = jobs;
     }
 }

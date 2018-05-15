@@ -3,10 +3,10 @@ package Graphics.AuthenticationWindow;
 import Communicate.Message.Response.ServerResponse.AuthenticationResponse;
 import client.Client;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.MessageBox;
-import org.eclipse.swt.widgets.Shell;
 
 import java.io.IOException;
+
+import static Graphics.Constants.GraphicsDialogs.showDialog;
 
 public class AuthenticationWindowController {
     AuthenticationWindowModel authenticationWindowModel;
@@ -68,12 +68,5 @@ public class AuthenticationWindowController {
 
     public Client getCurrentClient() {
         return authenticationWindowModel.currentClient;
-    }
-
-    public static void showDialog(String text, int style) {
-        Shell shell = new Shell();
-        MessageBox messageBox = new MessageBox(shell, style);
-        messageBox.setMessage(text);
-        messageBox.open();
     }
 }

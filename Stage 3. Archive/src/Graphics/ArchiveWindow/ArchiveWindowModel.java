@@ -2,11 +2,14 @@ package Graphics.ArchiveWindow;
 
 import Communicate.Message.Request.Request;
 import Communicate.Message.Response.Response;
-import Communicate.Message.Response.ServerResponse.ResponseForAdministrator;
+import Communicate.Message.Response.ServerResponse.ResponseType;
+import Graphics.Constants.GraphicsDialogs;
 import client.Client;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 
 import java.io.IOException;
+import java.util.Set;
 
 public class ArchiveWindowModel {
     ArchiveWindowController archiveWindowController;
@@ -30,21 +33,24 @@ public class ArchiveWindowModel {
         public void run() {
             try {
                 while ((serverResponse = (Response) currentClient.getInputStream().readObject()) != null) {
-                    if (serverResponse instanceof ResponseForAdministrator) {
-                        archiveWindowController.archiveWindow.display.asyncExec(() -> {
-                            archiveWindowController.makeFieldsEnable(false);
+                    archiveWindowController.archiveWindow.display.asyncExec(() -> {
+                        archiveWindowController.makeFieldsEnable(false);
 
-                            int index = archiveWindowController.archiveWindow.tableOfPersonnelFiles.getSelectionIndex();
-                            archiveWindowController.setPersonnelFilesInTable(serverResponse.getMapOfPersonnelFiles());
-                            archiveWindowController.archiveWindow.tableOfPersonnelFiles.select(index);
+                        archiveWindowController.setPersonnelFilesInTable(serverResponse.getMapOfPersonnelFiles());
 
-                            if (serverResponse.getPersonnelFileOfSpecificMen() != null) {
-                                archiveWindowController.setPersonnelFileInformation(serverResponse.getPersonnelFileOfSpecificMen());
-                            }
-                        });
-                    }
+                        if (serverResponse.getPersonnelFileOfSpecificMen() != null) {
+                            archiveWindowController.setPersonnelFileInformation(serverResponse.getPersonnelFileOfSpecificMen());
+                            archiveWindowController.archiveWindow.tableOfPersonnelFiles.select(indexOf(serverResponse.getMapOfPersonnelFiles().keySet(), serverResponse.getPersonnelFileOfSpecificMen().getBasicInformation().getPassport()));
+                        }
+                        if (serverResponse.getResponseType() == ResponseType.ERROR) {
+                            GraphicsDialogs.showDialog(serverResponse.getMessage(), SWT.ICON_ERROR);
+                        }
+                    });
                 }
             } catch (java.net.SocketException e) {
+                Display.getDefault().asyncExec(() -> {
+                    GraphicsDialogs.showDialog("Connect error. Maybe the server is unavailable.", SWT.ICON_ERROR);
+                });
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
@@ -57,6 +63,17 @@ public class ArchiveWindowModel {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    int indexOf(Set<String> setOfPassportID, String passportID) {
+        int index = 0;
+        for (String ID : setOfPassportID) {
+            if (ID.equals(passportID)) {
+                break;
+            }
+            index++;
+        }
+        return index;
     }
 
     void closeConnection() {

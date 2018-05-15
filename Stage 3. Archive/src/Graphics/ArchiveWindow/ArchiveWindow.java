@@ -34,8 +34,8 @@ public class ArchiveWindow {
     Combo comboDayOfBirth;
     Combo comboMonthOfBirth;
     Combo comboYearOfBirth;
-    Label labelGender;
     Combo comboGender;
+    Label labelGender;
     Label labelPassport;
     Label labelBasicInformation;
     Label labelContactInformation;
@@ -45,9 +45,9 @@ public class ArchiveWindow {
     Label labelHouse;
     Label labelHomeNumber;
     Label labelMobilePhone;
-    Button buttonAddWork;
-    Table tableOfWorks;
-    Button buttonDeleteWork;
+    Button buttonAddJob;
+    Table tableOfJobs;
+    Button buttonDeleteJob;
     Table tableOfPersonnelFiles;
     Button buttonEditPerson;
     Button buttonSavePerson;
@@ -58,13 +58,10 @@ public class ArchiveWindow {
     Font font16;
     Shell shell;
     Composite compositeBasicInformation;
-    VerifyListener verifyListenerForText;
-    VerifyListener verifyListenerForPhone;
-    VerifyListener verifyListenerForPassport;
     MenuItem addPersonnelFileItem;
     MenuItem changeLawsItem;
     Composite compositeContactInformation;
-    Composite compositeWorks;
+    Composite compositeJobs;
     Composite compositeArchivesTable;
 
     public ArchiveWindow(Display display, Shell shell) {
@@ -76,28 +73,7 @@ public class ArchiveWindow {
     }
 
     void initComponents() {
-        verifyListenerForText = verifyEvent -> {
-            if (verifyEvent.text.matches("[a-zA-Z]*") || verifyEvent.character == '\b' || verifyEvent.character == 0x7f) {
-            } else {
-                verifyEvent.doit = false;
-            }
-        };
-        verifyListenerForPhone = verifyEvent -> {
-            if (verifyEvent.text.matches("[0-9]") || verifyEvent.character == '\b' || verifyEvent.character == 0x7f) {
-            } else {
-                verifyEvent.doit = false;
-            }
-        };
-        verifyListenerForPassport = verifyEvent -> {
-            if (verifyEvent.text.matches("[a-zA-Z0-9]") || verifyEvent.character == '\b' || verifyEvent.character == 0x7f) {
-                verifyEvent.text = verifyEvent.text.toUpperCase();
-            } else {
-                verifyEvent.doit = false;
-            }
-        };
-
         display = Display.getDefault();
-        shell = new Shell();
 
         font12 = new Font(display, SEGOE_UI_SEMILIGHT, 12, SWT.NORMAL);
         font10 = new Font(display, SEGOE_UI_SEMILIGHT, 10, SWT.NORMAL);
@@ -127,6 +103,9 @@ public class ArchiveWindow {
         addPersonnelFileItem = new MenuItem(menuBar, SWT.NONE);
         addPersonnelFileItem.setText("Add personnel file");
 
+        changeLawsItem = new MenuItem(menuBar, SWT.NONE);
+        changeLawsItem.setText("Change users laws");
+
         compositeContactInformation = new Composite(shell, SWT.NONE);
 
         labelContactInformation = new Label(compositeContactInformation, SWT.CENTER);
@@ -143,12 +122,12 @@ public class ArchiveWindow {
         textHomePhone = new Text(compositeContactInformation, SWT.BORDER);
         textMobilePhone = new Text(compositeContactInformation, SWT.BORDER);
 
-        compositeWorks = new Composite(shell, SWT.NONE);
+        compositeJobs = new Composite(shell, SWT.NONE);
 
-        tableOfWorks = new Table(compositeWorks, SWT.BORDER | SWT.SINGLE | SWT.FULL_SELECTION);
+        tableOfJobs = new Table(compositeJobs, SWT.BORDER | SWT.SINGLE | SWT.FULL_SELECTION);
 
-        buttonAddWork = new Button(compositeWorks, SWT.NONE);
-        buttonDeleteWork = new Button(compositeWorks, SWT.NONE);
+        buttonAddJob = new Button(compositeJobs, SWT.NONE);
+        buttonDeleteJob = new Button(compositeJobs, SWT.NONE);
 
         compositeArchivesTable = new Composite(shell, SWT.NONE);
 
@@ -219,10 +198,10 @@ public class ArchiveWindow {
         textMobilePhone.setFont(font10);
         textSearch.setFont(font10);
 
-        buttonAddWork.setFont(font12);
-        buttonAddWork.setText("Add");
-        buttonDeleteWork.setFont(font12);
-        buttonDeleteWork.setText("Delete");
+        buttonAddJob.setFont(font12);
+        buttonAddJob.setText("Add");
+        buttonDeleteJob.setFont(font12);
+        buttonDeleteJob.setText("Delete");
         buttonEditPerson.setFont(font12);
         buttonEditPerson.setText("Edit");
         buttonSavePerson.setFont(font12);
@@ -238,7 +217,7 @@ public class ArchiveWindow {
         column.setWidth(240);
 
         for (int i = 0; i < 3; i++) {
-            TableColumn column1 = new TableColumn(tableOfWorks, SWT.NONE);
+            TableColumn column1 = new TableColumn(tableOfJobs, SWT.NONE);
             column1.setText(GraphicsConstants.TABLE_HEADERS_OF_WORKS[i]);
             column1.setWidth(200);
         }
@@ -277,10 +256,10 @@ public class ArchiveWindow {
         textHouse.setBounds(136, 153, 430, 28);
         textHomePhone.setBounds(136, 187, 430, 28);
         textMobilePhone.setBounds(136, 221, 430, 28);
-        compositeWorks.setBounds(0, 487, 576, 231);
-        tableOfWorks.setBounds(10, 0, 566, 184);
-        buttonAddWork.setBounds(10, 190, 280, 40);
-        buttonDeleteWork.setBounds(296, 190, 280, 40);
+        compositeJobs.setBounds(0, 487, 576, 231);
+        tableOfJobs.setBounds(10, 0, 566, 184);
+        buttonAddJob.setBounds(10, 190, 280, 40);
+        buttonDeleteJob.setBounds(296, 190, 280, 40);
         compositeArchivesTable.setBounds(582, 0, 350, 718);
         textSearch.setBounds(0, 10, 340, 28);
         tableOfPersonnelFiles.setBounds(0, 44, 340, 627);
@@ -294,8 +273,8 @@ public class ArchiveWindow {
         shell.layout();
         tableOfPersonnelFiles.setLinesVisible(true);
         tableOfPersonnelFiles.setHeaderVisible(true);
-        tableOfWorks.setLinesVisible(true);
-        tableOfWorks.setHeaderVisible(true);
+        tableOfJobs.setLinesVisible(true);
+        tableOfJobs.setHeaderVisible(true);
 
         while (!shell.isDisposed()) {
             if (!display.readAndDispatch()) {

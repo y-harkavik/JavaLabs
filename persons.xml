@@ -1,58 +1,58 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<persons xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:///D:/Projects.%20Java/JavaLabs/personsScheme.xsd">
-	<person ID="AAAAA33333666HH">
-		<basicInformation sex="Male" birthday="1998-12-02">
-			<name lastName="Zubko" firstName="Evgen" middleName="Vital"/>
-		</basicInformation>
-		<contactInformation>
-			<mobilePhone>1234</mobilePhone>
-			<homePhone>1234</homePhone>
-			<address country="BY" city="Minsk" street="Kolasa" house="28"/>
-		</contactInformation>
-		<works>
-			<work company="Itransition" position="Manager" experience="2"/>
-			<work company="BSUIR" position="Student" experience="5"/>
-		</works>
-	</person>
-	<person ID="AAAAA33433666HH">
-		<basicInformation sex="Male" birthday="1989-02-22">
-			<name lastName="Harkavik" firstName="Evgeniy" middleName="Antonovich"/>
-		</basicInformation>
-		<contactInformation>
-			<mobilePhone>4321</mobilePhone>
-			<homePhone>4321</homePhone>
-			<address country="USA" city="LA" street="Pushkina" house="1"/>
-		</contactInformation>
-		<works>
-			<work company="Google" position="Director" experience="10"/>
-			<work company="Yandex" position="Manager" experience="3"/>
-			<work company="Sosedi" position="Prodavec" experience="4"/>
-		</works>
-	</person>
-	<person ID="AAAAA3HN33666HH">
-		<basicInformation sex="Male" birthday="1965-12-03">
-			<name lastName="Busko" firstName="Yauheni" middleName="Aleksandrovich"/>
-		</basicInformation>
-		<contactInformation>
-			<mobilePhone>7788</mobilePhone>
-			<homePhone>8880</homePhone>
-			<address country="Britain" city="London" street="Koroleva" house="5"/>
-		</contactInformation>
-		<works>
-			<work company="Swankeys" position="CEO" experience="10"/>
-		</works>
-	</person>
-	<person ID="AAAAA33335666HH">
-		<basicInformation sex="Male" birthday="1955-04-27">
-			<name lastName="Romanyk" firstName="Nikita" middleName="Konstantinovich"/>
-		</basicInformation>
-		<contactInformation>
-			<mobilePhone>7890</mobilePhone>
-			<homePhone>7890</homePhone>
-			<address country="Poland" city="Warsawa" street="Kostyshki" house="8"/>
-		</contactInformation>
-		<works>
-			<work company="Swankeys" position="CIO" experience="2"/>
-		</works>
-	</person>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><persons xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:///D:/Projects.%20Java/JavaLabs/personsScheme.xsd">
+    <person ID="AAAAA33433666HH">
+        <basicInformation birthday="1992-02-02" sex="Male">
+            <name firstName="Evgeniy" lastName="Harkavik" middleName="Antonovich"/>
+        </basicInformation>
+        <contactInformation>
+            <mobilePhone>4254321</mobilePhone>
+            <homePhone>4354542</homePhone>
+            <address city="LA" country="USA" house="1" street="Pushkina"/>
+        </contactInformation>
+        <jobs>
+            <job company="Google" experience="10" position="Director"/>
+            <job company="Yandex" experience="3" position="Manager"/>
+            <job company="Sosedi" experience="4" position="Prodavec"/>
+        </jobs>
+    </person>
+    <person ID="ATYUA333MKU66HH">
+        <basicInformation birthday="1955-04-27" sex="Male">
+            <name firstName="Nikita" lastName="Romanyk" middleName="Konstantinovich"/>
+        </basicInformation>
+        <contactInformation>
+            <mobilePhone>7890</mobilePhone>
+            <homePhone>7890</homePhone>
+            <address city="Warsawa" country="Poland" house="8" street="Kostyshki"/>
+        </contactInformation>
+        <jobs>
+            <job company="Swankeys" experience="2" position="CIO"/>
+        </jobs>
+    </person>
+    <person ID="D4RT45TY7JHGUIR">
+        <basicInformation birthday="1998-10-17" sex="Male">
+            <name firstName="Kirill" lastName="Petrov" middleName="Vasil"/>
+        </basicInformation>
+        <contactInformation>
+            <mobilePhone>4548646</mobilePhone>
+            <homePhone>456729386</homePhone>
+            <address city="Minsk" country="Belarus" house="6" street="Pushkina"/>
+        </contactInformation>
+        <jobs>
+            <job company="qwer" experience="3" position="qwer"/>
+        </jobs>
+    </person>
+
+    <person ID="NH438HG83JJJJJJ">
+        <basicInformation birthday="1965-12-03" sex="Male">
+            <name firstName="Yauheni" lastName="Busko" middleName="Aleksandrovich"/>
+        </basicInformation>
+        <contactInformation>
+            <mobilePhone>7788</mobilePhone>
+            <homePhone>8880</homePhone>
+            <address city="London" country="Britain" house="5" street="Koroleva"/>
+        </contactInformation>
+        <jobs>
+            <job company="Swankeys" experience="10" position="CEO"/>
+        </jobs>
+    </person>
+    <person ID="EERT5TY678UT654"><basicInformation birthday="1954-12-04" sex="Male"><name firstName="Zubko" lastName="Evgen" middleName="Vital"/></basicInformation><contactInformation><mobilePhone>234523452</mobilePhone><homePhone>45235236</homePhone><address city="ete" country="ery" house="54" street="56"/></contactInformation><jobs/></person>
 </persons>

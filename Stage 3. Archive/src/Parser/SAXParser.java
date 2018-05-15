@@ -1,6 +1,7 @@
 package Parser;
 
 import Users.PersonnelFile;
+import org.w3c.dom.Element;
 
 import java.util.Map;
 
@@ -20,14 +21,10 @@ public class SAXParser implements Parser {
         return localInstance;
     }
 
-    @Override
-    public void makeXML() {
-
-    }
 
     @Override
-    public void findPersonnelFileInXML() {
-
+    public boolean checkPassportIDOnContainsInXML(String passportID) {
+        return false;
     }
 
     @Override
@@ -36,17 +33,32 @@ public class SAXParser implements Parser {
     }
 
     @Override
-    public void insertPersonnelFileInXML() {
+    public void insertPersonnelFileInXML(PersonnelFile personnelFile) {
 
     }
 
     @Override
-    public void removePersonnelFileFromXML() {
+    public void removePersonnelFileFromXML(String passportID) {
+
+    }
+
+    @Override
+    public void saveInFile() {
+
+    }
+
+    @Override
+    public void updatePersonInXML(PersonnelFile personnelFile, String oldPassportID) {
 
     }
 
     @Override
     public Map<String, String> getMapOfLastNameAndID() {
+        return null;
+    }
+
+    @Override
+    public Element validatePersonnelFile(PersonnelFile personnelFile) {
         return null;
     }
 }

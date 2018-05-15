@@ -8,16 +8,15 @@ import Communicate.Message.Request.ClientRequest.AuthenticationRequest;
 import Communicate.Message.Request.Request;
 import Communicate.Message.Response.Response;
 import Communicate.Message.Response.ServerResponse.*;
-import Law.Laws;
 import Database.UsersBase;
 import Users.Account;
-import Users.PersonnelFile;
 
+import java.io.EOFException;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.List;
-import java.util.Map;
 
 import static Parser.Parsers.*;
 
@@ -75,8 +74,12 @@ public class ArchiveServer {
                     }
                     handleClientRequest(clientRequest);
                 }
+            } catch (SocketException e) {
+                e.printStackTrace();
             } catch (InterruptedException e) {
                 closeConnection();
+            } catch (EOFException e) {
+                e.printStackTrace();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -88,7 +91,7 @@ public class ArchiveServer {
                         null,
                         currentParser.getMapOfLastNameAndID(),
                         currentAccount.getLawsList(),
-                        getMapOfAccounts()));
+                        getListOfAccounts()));
             } else {
                 sendMessage(client, new AuthenticationResponse(ResponseType.ERROR,
                         TypeOfError.AUTHENTICATION_ERROR,
@@ -107,22 +110,65 @@ public class ArchiveServer {
                             currentParser.getMapOfLastNameAndID(),
                             currentParser.getPersonnelFile(clientRequest.getPreviousPassportID()),
                             null,
-                            getMapOfAccounts()));
+                            getListOfAccounts()));
                     break;
                 case ADD:
-                    break;
-                case READ:
+                    if (!currentParser.checkPassportIDOnContainsInXML(clientRequest.getPreviousPassportID())) {
+                        currentParser.insertPersonnelFileInXML(clientRequest.getHandlingPersonnelFile());
+                        sendMessage(client, new ResponseForAdministrator(
+                                ResponseType.GOOD,
+                                null,
+                                currentParser.getMapOfLastNameAndID(),
+                                currentParser.getPersonnelFile(clientRequest.getPreviousPassportID()),
+                                null,
+                                getListOfAccounts()));
+                    } else {
+                        sendMessage(client, new ResponseForAdministrator(
+                                ResponseType.ERROR,
+                                TypeOfError.PASSPORT_ID_ERROR,
+                                currentParser.getMapOfLastNameAndID(),
+                                null,
+                                null,
+                                getListOfAccounts()));
+                    }
                     break;
                 case DELETE:
+                    currentParser.removePersonnelFileFromXML(clientRequest.getPreviousPassportID());
+                    sendMessage(client, new ResponseForAdministrator(
+                            ResponseType.GOOD,
+                            null,
+                            currentParser.getMapOfLastNameAndID(),
+                            null,
+                            null,
+                            getListOfAccounts()));
                     break;
                 case UPDATE:
+                    String newPassportID = clientRequest.getHandlingPersonnelFile().getBasicInformation().getPassport();
+                    if (newPassportID.equals(clientRequest.getPreviousPassportID()) || !currentParser.checkPassportIDOnContainsInXML(newPassportID)) {
+                        currentParser.updatePersonInXML(clientRequest.getHandlingPersonnelFile(), clientRequest.getPreviousPassportID());
+                        sendMessage(client, new ResponseForAdministrator(
+                                ResponseType.GOOD,
+                                null,
+                                currentParser.getMapOfLastNameAndID(),
+                                currentParser.getPersonnelFile(newPassportID),
+                                null,
+                                getListOfAccounts()));
+                    } else {
+                        sendMessage(client, new ResponseForAdministrator(
+                                ResponseType.ERROR,
+                                TypeOfError.PASSPORT_ID_ERROR,
+                                currentParser.getMapOfLastNameAndID(),
+                                currentParser.getPersonnelFile(clientRequest.getPreviousPassportID()),
+                                null,
+                                getListOfAccounts()));
+                    }
                     break;
                 case CHANGE_LAWS:
                     break;
                 case DISCONNECT:
                     throw new InterruptedException();
             }
-
+            currentParser.saveInFile();
         }
 
         void closeConnection() {
@@ -149,8 +195,8 @@ public class ArchiveServer {
         }
     }
 
-    public Map<String, Account> getMapOfAccounts() {
-        return null;
+    public List<Account> getListOfAccounts() {
+        return usersBase.getListOfAccounts();
     }
 
     public Account userAuthentication(AuthenticationRequest authenticationRequest) {

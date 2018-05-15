@@ -1,11 +1,8 @@
 package Parser;
 
 import Users.PersonnelFile;
-import Users.Work;
-import org.w3c.dom.Document;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import Users.Job;
+import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -18,8 +15,11 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -30,9 +30,10 @@ public class DOMParser implements Parser {
     private static Transformer transformer;
     private static StreamResult outputStream;
     private static DOMSource domSource;
+    private static DOMSource domSourcePerson;
 
     private Document documentOfPersonnelFiles;
-    private Node personsNode;
+    private Node personsRootNode;
 
     public static DOMParser getInstance() {
         DOMParser localInstance = instance;
@@ -52,9 +53,11 @@ public class DOMParser implements Parser {
             DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
             documentOfPersonnelFiles = documentBuilder.parse("persons.xml");
             domSource = new DOMSource(documentOfPersonnelFiles);
-            personsNode = documentOfPersonnelFiles.getDocumentElement();
+            //domSourcePerson = new DOMSource(documentBuilder.parse("person.xml"));
+            personsRootNode = documentOfPersonnelFiles.getDocumentElement();
             outputStream = new StreamResult(new File("persons.xml"));
             transformer = TransformerFactory.newInstance().newTransformer();
+
         } catch (ParserConfigurationException e) {
             e.printStackTrace();
         } catch (SAXException e) {
@@ -67,21 +70,11 @@ public class DOMParser implements Parser {
     }
 
     @Override
-    public void makeXML() {
-
-    }
-
-    @Override
-    public void findPersonnelFileInXML() {
-
-    }
-
-    @Override
     public PersonnelFile getPersonnelFile(String passportID) {
         PersonnelFile personnelFile = new PersonnelFile();
         personnelFile.getBasicInformation().setPassport(passportID);
 
-        Node personNode = findPersonNode(personsNode.getChildNodes(), passportID);
+        Node personNode = findPersonNode(passportID);
         parsePersonNode(personNode, personnelFile);
         return personnelFile;
     }
@@ -97,8 +90,8 @@ public class DOMParser implements Parser {
             if (node.getNodeName().equals("contactInformation")) {
                 parseContactInformation(node, personnelFile);
             }
-            if (node.getNodeName().equals("works")) {
-                parseWorks(node, personnelFile);
+            if (node.getNodeName().equals("jobs")) {
+                parseJobs(node, personnelFile);
             }
         }
     }
@@ -147,29 +140,30 @@ public class DOMParser implements Parser {
         }
     }
 
-    void parseWorks(Node worksNode, PersonnelFile personnelFile) {
-        List<Work> worksList = new ArrayList<>();
+    void parseJobs(Node jobsNode, PersonnelFile personnelFile) {
+        List<Job> jobsList = new ArrayList<>();
 
         NamedNodeMap attributes;
 
-        NodeList worksNodeList = worksNode.getChildNodes();
+        NodeList jobsNodeList = jobsNode.getChildNodes();
 
-        for (int i = 0; i < worksNodeList.getLength(); i++) {
-            Node workNode = worksNodeList.item(i);
-            if (workNode.getNodeName().equals("work")) {
-                attributes = workNode.getAttributes();
-                Work work = new Work(
+        for (int i = 0; i < jobsNodeList.getLength(); i++) {
+            Node jobNode = jobsNodeList.item(i);
+            if (jobNode.getNodeName().equals("job")) {
+                attributes = jobNode.getAttributes();
+                Job job = new Job(
                         attributes.getNamedItem("company").getNodeValue(),
                         attributes.getNamedItem("position").getNodeValue(),
                         Integer.valueOf(attributes.getNamedItem("experience").getNodeValue()));
-                worksList.add(work);
+                jobsList.add(job);
             }
         }
-        personnelFile.setWorks(worksList);
+        personnelFile.setJobs(jobsList);
     }
 
-    Node findPersonNode(NodeList listOfPersons, String passportID) {
+    Node findPersonNode(String passportID) {
         Node person = null;
+        NodeList listOfPersons = personsRootNode.getChildNodes();
         for (int i = 0; i < listOfPersons.getLength(); i++) {
             Node tempNode = listOfPersons.item(i);
             if (tempNode.getNodeType() != Node.TEXT_NODE) {
@@ -183,13 +177,92 @@ public class DOMParser implements Parser {
     }
 
     @Override
-    public void insertPersonnelFileInXML() {
-
+    public void insertPersonnelFileInXML(PersonnelFile personnelFile) {
+        Element personnelFileElement = createPersonnelFileElement(personnelFile);
+        personsRootNode.appendChild(personnelFileElement);
     }
 
     @Override
-    public void removePersonnelFileFromXML() {
+    public boolean checkPassportIDOnContainsInXML(String passportID) {
+        if (findPersonNode(passportID) != null) {
+            return true;
+        }
+        return false;
+    }
 
+    Element createPersonnelFileElement(PersonnelFile personnelFile) {
+        Element personnelFileElement = createPersonElement(personnelFile.getBasicInformation().getPassport());
+        Element basicInformationElement = createBasicInformationElement(personnelFile.getBasicInformation());
+        Element contactInformation = createContactInformationElement(personnelFile.getContactInformation());
+        Element jobsElement = createJobsElement(personnelFile.getJobs());
+
+        personnelFileElement.appendChild(basicInformationElement);
+        personnelFileElement.appendChild(contactInformation);
+        personnelFileElement.appendChild(jobsElement);
+
+        return personnelFileElement;
+    }
+
+    Element createBasicInformationElement(PersonnelFile.BasicInformation basicInformation) {
+        Element basicInformationElement = documentOfPersonnelFiles.createElement("basicInformation");
+        basicInformationElement.setAttribute("sex", basicInformation.getGender());
+        basicInformationElement.setAttribute("birthday", basicInformation.getDate().format(DateTimeFormatter.ISO_LOCAL_DATE));
+
+        Element name = documentOfPersonnelFiles.createElement("name");
+        name.setAttribute("firstName", basicInformation.getFirstName());
+        name.setAttribute("middleName", basicInformation.getMiddleName());
+        name.setAttribute("lastName", basicInformation.getLastName());
+        basicInformationElement.appendChild(name);
+
+        return basicInformationElement;
+    }
+
+    Element createContactInformationElement(PersonnelFile.ContactInformation contactInformation) {
+        Element contactInformationElement = documentOfPersonnelFiles.createElement("contactInformation");
+
+        Element mobilePhoneElement = documentOfPersonnelFiles.createElement("mobilePhone");
+        mobilePhoneElement.setTextContent(contactInformation.getMobilePhone());
+
+        Element homePhoneElement = documentOfPersonnelFiles.createElement("homePhone");
+        homePhoneElement.setTextContent(contactInformation.getHomePhone());
+
+        Element addressElement = documentOfPersonnelFiles.createElement("address");
+        addressElement.setAttribute("country", contactInformation.getCountry());
+        addressElement.setAttribute("city", contactInformation.getCity());
+        addressElement.setAttribute("street", contactInformation.getStreet());
+        addressElement.setAttribute("house", contactInformation.getHouse().toString());
+
+        contactInformationElement.appendChild(mobilePhoneElement);
+        contactInformationElement.appendChild(homePhoneElement);
+        contactInformationElement.appendChild(addressElement);
+
+        return contactInformationElement;
+    }
+
+    Element createPersonElement(String passportID) {
+        Element personnelFileElement = documentOfPersonnelFiles.createElement("person");
+        personnelFileElement.setAttribute("ID", passportID);
+
+        return personnelFileElement;
+    }
+
+    Element createJobsElement(List<Job> jobList) {
+        Element jobsElement = documentOfPersonnelFiles.createElement("jobs");
+
+        for (Job job : jobList) {
+            Element jobElement = documentOfPersonnelFiles.createElement("job");
+            jobElement.setAttribute("company", job.getCompany());
+            jobElement.setAttribute("position", job.getPosition());
+            jobElement.setAttribute("experience", job.getExperience().toString());
+            jobsElement.appendChild(jobElement);
+        }
+        return jobsElement;
+    }
+
+    @Override
+    public void removePersonnelFileFromXML(String passportID) {
+        Node deletingPersonNode = findPersonNode(passportID);
+        deletingPersonNode.getParentNode().removeChild(deletingPersonNode);
     }
 
     @Override
@@ -202,14 +275,26 @@ public class DOMParser implements Parser {
     }
 
     @Override
+    public void updatePersonInXML(PersonnelFile updatedPersonnelFile, String oldPassportID) {
+        Element personnelFileElement = createPersonnelFileElement(updatedPersonnelFile);
+        Node replacingPersonNode = findPersonNode(oldPassportID);
+        replacingPersonNode.getParentNode().replaceChild(personnelFileElement, replacingPersonNode);
+    }
+
+    @Override
     public Map<String, String> getMapOfLastNameAndID() {
         Map<String, String> mapOfPersonnelFiles = new HashMap<>();
 
         String passportID = null;
         String name = null;
 
-        fillMapOfLastNameAndID(personsNode.getChildNodes(), mapOfPersonnelFiles, passportID, name);
+        fillMapOfLastNameAndID(personsRootNode.getChildNodes(), mapOfPersonnelFiles, passportID, name);
         return mapOfPersonnelFiles;
+    }
+
+    @Override
+    public Element validatePersonnelFile(PersonnelFile personnelFile) {
+        return null;
     }
 
     void fillMapOfLastNameAndID(NodeList nodeList, Map<String, String> mapOfPersonnelFiles, String passportID, String lastName) {
@@ -221,7 +306,7 @@ public class DOMParser implements Parser {
                 }
                 if (node.getAttributes().getNamedItem("lastName") != null) {
                     lastName = node.getAttributes().getNamedItem("lastName").getNodeValue();
-                    mapOfPersonnelFiles.put(lastName, passportID);
+                    mapOfPersonnelFiles.put(passportID, lastName);
                     return;
                 }
                 fillMapOfLastNameAndID(node.getChildNodes(), mapOfPersonnelFiles, passportID, lastName);
@@ -229,7 +314,21 @@ public class DOMParser implements Parser {
         }
     }
 
+    void savePersonnelFileInXML() {
+
+    }
+
+    void clearFile() {
+        try {
+            PrintWriter printWriter = new PrintWriter(new File("person.xml"));
+            printWriter.print("");
+            printWriter.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
-        getInstance().getPersonnelFile("AAAAA3HN33666HH");
+        getInstance().clearFile();
     }
 }

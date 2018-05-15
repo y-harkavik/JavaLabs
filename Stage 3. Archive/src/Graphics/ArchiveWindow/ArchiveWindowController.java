@@ -2,8 +2,11 @@ package Graphics.ArchiveWindow;
 
 import Communicate.Message.Request.ClientRequest.AdministratorRequest;
 import Communicate.Message.Request.ClientRequest.RequestType;
+import Graphics.Constants.GraphicsConstants;
+import Graphics.Dialogs.AddPersonnelFileDialog;
+import Graphics.Dialogs.AddJobDialog;
 import Users.PersonnelFile;
-import Users.Work;
+import Users.Job;
 import client.Client;
 import Law.Laws;
 import org.eclipse.swt.SWT;
@@ -15,7 +18,7 @@ import Users.Account;
 import org.eclipse.swt.widgets.TableItem;
 
 import java.time.LocalDate;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -26,13 +29,13 @@ public class ArchiveWindowController {
 
     public ArchiveWindowController(Client currentClient,
                                    Map<String, String> mapOfPersonnelFiles,
-                                   Map<String, Account> mapOfUsers,
+                                   List<Account> accountList,
                                    List<Laws> lawsList) {
-        archiveWindow = new ArchiveWindow(Display.getCurrent(), new Shell());
+        archiveWindow = new ArchiveWindow(Display.getCurrent(), new Shell(SWT.CLOSE | SWT.TITLE | SWT.MIN));
         archiveWindowModel = new ArchiveWindowModel(this, currentClient);
         setConstraints(lawsList);
         initListeners();
-       setPersonnelFilesInTable(mapOfPersonnelFiles);
+        setPersonnelFilesInTable(mapOfPersonnelFiles);
         makeFieldsEnable(false);
     }
 
@@ -56,9 +59,6 @@ public class ArchiveWindowController {
             archiveWindow.changeLawsItem.setEnabled(false);
         } else {
             return;
-        }
-        if (!laws.contains(Laws.READ)) {
-
         }
         if (!laws.contains(Laws.CREATE)) {
             archiveWindow.addPersonnelFileItem.setEnabled(false);
@@ -89,8 +89,10 @@ public class ArchiveWindowController {
             }
         });
         archiveWindow.buttonEditPerson.addListener(SWT.Selection, event -> {
-            addListeners();
-            makeFieldsEnable(true);
+            if (archiveWindow.tableOfPersonnelFiles.getSelectionIndex() != -1) {
+                addVerifyListeners();
+                makeFieldsEnable(true);
+            }
         });
         archiveWindow.buttonDeletePersonnelFile.addListener(SWT.Selection, event -> {
             int rowIndex = archiveWindow.tableOfPersonnelFiles.getSelectionIndex();
@@ -99,10 +101,12 @@ public class ArchiveWindowController {
                         null,
                         archiveWindow.tableOfPersonnelFiles.getItem(rowIndex).getText(1),
                         null));
+                clearPersonnelFileInformation();
+                clearJobsTable();
             }
         });
         archiveWindow.buttonSavePerson.addListener(SWT.Selection, event -> {
-            if (archiveWindow.textFirstName.getEditable()) {
+            if (archiveWindow.textFirstName.getEnabled()) {
                 archiveWindowModel.sendMessage(
                         new AdministratorRequest(RequestType.UPDATE,
                                 createPersonnelFiles(),
@@ -111,7 +115,61 @@ public class ArchiveWindowController {
             }
         });
         archiveWindow.shell.addListener(SWT.Close, event -> {
+            archiveWindowModel.sendMessage(new AdministratorRequest(RequestType.DISCONNECT,
+                    null,
+                    null,
+                    null));
             archiveWindowModel.closeConnection();
+        });
+        archiveWindow.addPersonnelFileItem.addSelectionListener(new SelectionListener() {
+            @Override
+            public void widgetSelected(SelectionEvent selectionEvent) {
+                Display.getCurrent().asyncExec(() -> {
+                    PersonnelFile personnelFile = new AddPersonnelFileDialog(new Shell()).open();
+                    if (personnelFile != null) {
+                        archiveWindowModel.sendMessage(new AdministratorRequest(RequestType.ADD,
+                                personnelFile,
+                                null,
+                                null));
+                    }
+                });
+
+            }
+
+            @Override
+            public void widgetDefaultSelected(SelectionEvent selectionEvent) {
+
+            }
+        });
+        archiveWindow.buttonAddJob.addSelectionListener(new SelectionListener() {
+            @Override
+            public void widgetSelected(SelectionEvent selectionEvent) {
+                Display.getCurrent().asyncExec(() -> {
+                    Job job = new AddJobDialog(new Shell()).open();
+                    if (job != null) {
+                        fillJobTable(job);
+                    }
+                });
+            }
+
+            @Override
+            public void widgetDefaultSelected(SelectionEvent selectionEvent) {
+
+            }
+        });
+        archiveWindow.buttonDeleteJob.addSelectionListener(new SelectionListener() {
+            @Override
+            public void widgetSelected(SelectionEvent selectionEvent) {
+                int rowIndex = archiveWindow.tableOfJobs.getSelectionIndex();
+                if (rowIndex != -1) {
+                    archiveWindow.tableOfJobs.remove(rowIndex);
+                }
+            }
+
+            @Override
+            public void widgetDefaultSelected(SelectionEvent selectionEvent) {
+
+            }
         });
     }
 
@@ -134,36 +192,52 @@ public class ArchiveWindowController {
                 Integer.parseInt(archiveWindow.textHouse.getText()),
                 archiveWindow.textMobilePhone.getText(),
                 archiveWindow.textHomePhone.getText());
+
+        List<Job> jobList = new ArrayList<>();
+        fillJobList(jobList);
+        personnelFile.setJobs(jobList);
         return personnelFile;
     }
 
+    void fillJobList(List<Job> jobs) {
+        for (int i = 0; i < archiveWindow.tableOfJobs.getItemCount(); i++) {
+            TableItem jobItem = archiveWindow.tableOfJobs.getItem(i);
+            Job job = new Job(jobItem.getText(0), jobItem.getText(1), Integer.valueOf(jobItem.getText(2)));
+            jobs.add(job);
+        }
+    }
+
     void setPersonnelFileInformation(PersonnelFile personnelFile) {
-        removeListeners();
+        removeVerifyListeners();
         setBasicInformation(personnelFile.getBasicInformation());
         setContactInformation(personnelFile.getContactInformation());
-        setWorksInTable(personnelFile.getWorks());
+        setJobsInTable(personnelFile.getJobs());
     }
 
-    void removeListeners() {
-        archiveWindow.textFirstName.removeVerifyListener(archiveWindow.verifyListenerForText);
-        archiveWindow.textMiddleName.removeVerifyListener(archiveWindow.verifyListenerForText);
-        archiveWindow.textLastName.removeVerifyListener(archiveWindow.verifyListenerForText);
-        archiveWindow.textPassport.removeVerifyListener(archiveWindow.verifyListenerForPassport);
-        archiveWindow.textCountry.removeVerifyListener(archiveWindow.verifyListenerForText);
-        archiveWindow.textCity.removeVerifyListener(archiveWindow.verifyListenerForText);
-        archiveWindow.textHomePhone.removeVerifyListener(archiveWindow.verifyListenerForPhone);
-        archiveWindow.textMobilePhone.removeVerifyListener(archiveWindow.verifyListenerForPhone);
+    void removeVerifyListeners() {
+        archiveWindow.textFirstName.removeVerifyListener(GraphicsConstants.verifyListenerForText);
+        archiveWindow.textMiddleName.removeVerifyListener(GraphicsConstants.verifyListenerForText);
+        archiveWindow.textLastName.removeVerifyListener(GraphicsConstants.verifyListenerForText);
+        archiveWindow.textPassport.removeVerifyListener(GraphicsConstants.verifyListenerForPassport);
+        archiveWindow.textCountry.removeVerifyListener(GraphicsConstants.verifyListenerForText);
+        archiveWindow.textCity.removeVerifyListener(GraphicsConstants.verifyListenerForText);
+        archiveWindow.textHomePhone.removeVerifyListener(GraphicsConstants.verifyListenerForNumber);
+        archiveWindow.textMobilePhone.removeVerifyListener(GraphicsConstants.verifyListenerForNumber);
+        archiveWindow.textHouse.removeVerifyListener(GraphicsConstants.verifyListenerForNumber);
     }
 
-    void addListeners() {
-        archiveWindow.textFirstName.addVerifyListener(archiveWindow.verifyListenerForText);
-        archiveWindow.textMiddleName.addVerifyListener(archiveWindow.verifyListenerForText);
-        archiveWindow.textLastName.addVerifyListener(archiveWindow.verifyListenerForText);
-        archiveWindow.textPassport.addVerifyListener(archiveWindow.verifyListenerForPassport);
-        archiveWindow.textCountry.addVerifyListener(archiveWindow.verifyListenerForText);
-        archiveWindow.textCity.addVerifyListener(archiveWindow.verifyListenerForText);
-        archiveWindow.textHomePhone.addVerifyListener(archiveWindow.verifyListenerForPhone);
-        archiveWindow.textMobilePhone.addVerifyListener(archiveWindow.verifyListenerForPhone);
+    void addVerifyListeners() {
+        archiveWindow.textFirstName.addVerifyListener(GraphicsConstants.verifyListenerForText);
+        archiveWindow.textMiddleName.addVerifyListener(GraphicsConstants.verifyListenerForText);
+        archiveWindow.textLastName.addVerifyListener(GraphicsConstants.verifyListenerForText);
+        archiveWindow.textPassport.addVerifyListener(GraphicsConstants.verifyListenerForPassport);
+        archiveWindow.textCountry.addVerifyListener(GraphicsConstants.verifyListenerForText);
+        archiveWindow.textCity.addVerifyListener(GraphicsConstants.verifyListenerForText);
+        archiveWindow.textHomePhone.addVerifyListener(GraphicsConstants.verifyListenerForNumber);
+        archiveWindow.textHomePhone.setTextLimit(15);
+        archiveWindow.textMobilePhone.addVerifyListener(GraphicsConstants.verifyListenerForNumber);
+        archiveWindow.textMobilePhone.setTextLimit(15);
+        archiveWindow.textHouse.addVerifyListener(GraphicsConstants.verifyListenerForNumber);
     }
 
     void setBasicInformation(PersonnelFile.BasicInformation basicInformation) {
@@ -197,22 +271,22 @@ public class ArchiveWindowController {
         }
     }
 
-    void fillPersonnelFileTable(String name, String passportID) {
+    void fillPersonnelFileTable(String passportID, String name) {
         TableItem tableItem = new TableItem(archiveWindow.tableOfPersonnelFiles, SWT.NONE);
         tableItem.setText(0, name);
         tableItem.setText(1, passportID);
     }
 
-    void setWorksInTable(List<Work> works) {
-        clearWorksTable();
-        works.forEach(this::fillWorksTable);
+    void setJobsInTable(List<Job> jobs) {
+        clearJobsTable();
+        jobs.forEach(this::fillJobTable);
     }
 
-    void fillWorksTable(Work work) {
-        TableItem tableItem = new TableItem(archiveWindow.tableOfWorks, SWT.NONE);
-        tableItem.setText(0, work.getCompany());
-        tableItem.setText(1, work.getPosition());
-        tableItem.setText(2, work.getExperience().toString());
+    void fillJobTable(Job job) {
+        TableItem tableItem = new TableItem(archiveWindow.tableOfJobs, SWT.NONE);
+        tableItem.setText(0, job.getCompany());
+        tableItem.setText(1, job.getPosition());
+        tableItem.setText(2, job.getExperience().toString());
     }
 
     void clearPersonnelFilesTable() {
@@ -221,8 +295,8 @@ public class ArchiveWindowController {
         archiveWindow.tableOfPersonnelFiles.removeAll();
     }
 
-    void clearWorksTable() {
-        archiveWindow.tableOfWorks.removeAll();
+    void clearJobsTable() {
+        archiveWindow.tableOfJobs.removeAll();
     }
 
     void makeFieldsEnable(boolean enable) {
@@ -246,15 +320,37 @@ public class ArchiveWindowController {
         archiveWindow.textHomePhone.setEnabled(enable);
         archiveWindow.textMobilePhone.setEnabled(enable);
 
-        archiveWindow.buttonAddWork.setEnabled(enable);
-        archiveWindow.buttonDeleteWork.setEnabled(enable);
+        archiveWindow.buttonAddJob.setEnabled(enable);
+        archiveWindow.buttonDeleteJob.setEnabled(enable);
     }
 
     void setTablesHeadersVisible(boolean visible) {
         archiveWindow.tableOfPersonnelFiles.setLinesVisible(visible);
         archiveWindow.tableOfPersonnelFiles.setHeaderVisible(visible);
-        archiveWindow.tableOfWorks.setLinesVisible(visible);
-        archiveWindow.tableOfWorks.setHeaderVisible(visible);
+        archiveWindow.tableOfJobs.setLinesVisible(visible);
+        archiveWindow.tableOfJobs.setHeaderVisible(visible);
+    }
+
+    void clearPersonnelFileInformation() {
+        previousPassportID = archiveWindow.textPassport.getText();
+
+        archiveWindow.textFirstName.setText("");
+        archiveWindow.textMiddleName.setText("");
+        archiveWindow.textLastName.setText("");
+
+        archiveWindow.comboDayOfBirth.setText("");
+        archiveWindow.comboMonthOfBirth.setText("");
+        archiveWindow.comboYearOfBirth.setText("");
+        archiveWindow.comboGender.setText("");
+
+        archiveWindow.textPassport.setText("");
+
+        archiveWindow.textCountry.setText("");
+        archiveWindow.textCity.setText("");
+        archiveWindow.textStreet.setText("");
+        archiveWindow.textHouse.setText("");
+        archiveWindow.textHomePhone.setText("");
+        archiveWindow.textMobilePhone.setText("");
     }
 
     public static void main(String[] args) {
