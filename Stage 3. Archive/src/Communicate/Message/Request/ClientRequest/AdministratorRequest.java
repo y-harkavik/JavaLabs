@@ -5,16 +5,17 @@ import Users.Account;
 import Users.PersonnelFile;
 
 import java.util.List;
+import java.util.Map;
 
 public class AdministratorRequest extends Request {
-    private List<Account> changingAccountList;
+    private Map<String, Account> changingAccountMap;
 
-    public AdministratorRequest(RequestType requestType, PersonnelFile handlingPersonnelFile, String passportID, List<Account> changingAccountList) {
+    public AdministratorRequest(RequestType requestType, PersonnelFile handlingPersonnelFile, String passportID, Map<String, Account> changingAccountMap) {
         super(requestType, handlingPersonnelFile, passportID);
-        this.changingAccountList = changingAccountList;
+        this.changingAccountMap = changingAccountMap;
     }
 
-    public List<Account> getChangingAccountList() {
-        return changingAccountList;
+    public Map<String, Account> getChangingAccountMap() {
+        return changingAccountMap;
     }
 }

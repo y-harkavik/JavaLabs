@@ -21,20 +21,14 @@ public class StAXParser implements Parser {
         return localInstance;
     }
 
-
-    @Override
-    public boolean checkPassportIDOnContainsInXML(String passportID) {
-        return false;
-    }
-
     @Override
     public PersonnelFile getPersonnelFile(String passportID) {
         return null;
     }
 
     @Override
-    public void insertPersonnelFileInXML(PersonnelFile personnelFile) {
-
+    public String insertPersonnelFileInXML(PersonnelFile personnelFile, String oldPassportID) {
+        return null;
     }
 
     @Override
@@ -48,8 +42,8 @@ public class StAXParser implements Parser {
     }
 
     @Override
-    public void updatePersonInXML(PersonnelFile personnelFile, String oldPassportID) {
-
+    public String updatePersonInXML(PersonnelFile personnelFile, String oldPassportID) {
+        return null;
     }
 
     @Override

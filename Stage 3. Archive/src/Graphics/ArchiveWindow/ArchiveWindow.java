@@ -211,16 +211,25 @@ public class ArchiveWindow {
 
         TableColumn column = new TableColumn(tableOfPersonnelFiles, SWT.NONE);
         column.setText(GraphicsConstants.TABLE_HEADERS_OF_PERSONNEL_FILES[0]);
-        column.setWidth(100);
+        column.setWidth(130);
+        column.setResizable(false);
         column = new TableColumn(tableOfPersonnelFiles, SWT.NONE);
         column.setText(GraphicsConstants.TABLE_HEADERS_OF_PERSONNEL_FILES[1]);
-        column.setWidth(240);
+        column.setWidth(206);
+        column.setResizable(false);
 
-        for (int i = 0; i < 3; i++) {
-            TableColumn column1 = new TableColumn(tableOfJobs, SWT.NONE);
-            column1.setText(GraphicsConstants.TABLE_HEADERS_OF_WORKS[i]);
-            column1.setWidth(200);
-        }
+        column = new TableColumn(tableOfJobs, SWT.NONE);
+        column.setText(GraphicsConstants.TABLE_HEADERS_OF_WORKS[0]);
+        column.setWidth(232);
+        column.setResizable(false);
+        column = new TableColumn(tableOfJobs, SWT.NONE);
+        column.setText(GraphicsConstants.TABLE_HEADERS_OF_WORKS[1]);
+        column.setWidth(232);
+        column.setResizable(false);
+        column = new TableColumn(tableOfJobs, SWT.NONE);
+        column.setText(GraphicsConstants.TABLE_HEADERS_OF_WORKS[2]);
+        column.setWidth(98);
+        column.setResizable(false);
     }
 
     void setComponentsBounds() {

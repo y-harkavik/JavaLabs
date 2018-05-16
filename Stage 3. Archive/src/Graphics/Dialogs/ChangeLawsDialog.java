@@ -9,14 +9,16 @@ import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.widgets.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static Graphics.Constants.GraphicsConstants.SEGOE_UI_SEMILIGHT;
 
 public class ChangeLawsDialog extends Dialog {
     protected Shell shell;
     private Table tableOfAccounts;
-    private List<Account> accountList;
+    private Map<String, Account> accountMap;
     private Button buttonSave;
     private Button buttonCreate;
     private Button buttonDelete;
@@ -26,20 +28,20 @@ public class ChangeLawsDialog extends Dialog {
         super(shell, SWT.DIALOG_TRIM | SWT.APPLICATION_MODAL | SWT.CLOSE | SWT.TITLE);
     }
 
-    public List<Account> open(List<Account> accountList) {
-        this.accountList = new ArrayList<>(accountList);
+    public Map<String, Account> open(Map<String, Account> accountMap) {
+        this.accountMap = new HashMap<>(accountMap);
         shell = new Shell(getParent(), getStyle());
         Display display = getParent().getDisplay();
         createContents(shell, display);
         initListeners();
-        this.accountList.forEach(this::fillTable);
+        this.accountMap.keySet().forEach(this::fillTable);
         shell.open();
         shell.layout();
 
         while (!shell.isDisposed()) {
             if (!display.readAndDispatch()) display.sleep();
         }
-        return this.accountList;
+        return this.accountMap;
     }
 
     protected void createContents(Shell shell, Display display) {
@@ -55,7 +57,9 @@ public class ChangeLawsDialog extends Dialog {
         tableOfAccounts.setBounds(10, 10, 240, 683);
         TableColumn tableColumn = new TableColumn(tableOfAccounts, SWT.NONE);
         tableColumn.setText("Account");
-        tableColumn.setWidth(200);
+        tableColumn.setWidth(236);
+        tableOfAccounts.setHeaderVisible(true);
+        tableOfAccounts.setLinesVisible(true);
 
         buttonUpdate = new Button(composite, SWT.CHECK);
         buttonUpdate.setAlignment(SWT.CENTER);
@@ -88,9 +92,9 @@ public class ChangeLawsDialog extends Dialog {
 
     }
 
-    void fillTable(Account account) {
+    void fillTable(String name) {
         TableItem tableItem = new TableItem(tableOfAccounts, SWT.NONE);
-        tableItem.setText(0, account.getAccountLogin());
+        tableItem.setText(0, name);
     }
 
     void initListeners() {
@@ -99,6 +103,7 @@ public class ChangeLawsDialog extends Dialog {
             public void widgetSelected(SelectionEvent selectionEvent) {
                 int index = tableOfAccounts.getSelectionIndex();
                 if (index != -1) {
+                    clearCurrentLaws();
                     setCurrentLaws(getUserLaws(tableOfAccounts.getItem(index).getText()));
                 }
             }
@@ -113,7 +118,7 @@ public class ChangeLawsDialog extends Dialog {
             public void widgetSelected(SelectionEvent selectionEvent) {
                 int index = tableOfAccounts.getSelectionIndex();
                 if (index != -1) {
-                    findAccountInListByUsername(tableOfAccounts.getItem(index).getText()).setLawsList(getSelectedLaws());
+                    accountMap.get(tableOfAccounts.getItem(index).getText()).setLawsList(getSelectedLaws());
                 }
             }
 
@@ -125,7 +130,7 @@ public class ChangeLawsDialog extends Dialog {
     }
 
     List<Laws> getUserLaws(String name) {
-        return findAccountInListByUsername(name).getLawsList();
+        return accountMap.get(name).getLawsList();
     }
 
     List<Laws> getSelectedLaws() {
@@ -142,17 +147,6 @@ public class ChangeLawsDialog extends Dialog {
         return lawsList;
     }
 
-    Account findAccountInListByUsername(String name) {
-        Account foundAccount = null;
-        for (Account account : accountList) {
-            if (account.getAccountLogin().equals(name)) {
-                foundAccount = account;
-                break;
-            }
-        }
-        return foundAccount;
-    }
-
     void setCurrentLaws(List<Laws> laws) {
         if (laws.contains(Laws.UPDATE)) {
             buttonUpdate.setSelection(true);
@@ -163,5 +157,11 @@ public class ChangeLawsDialog extends Dialog {
         if (laws.contains(Laws.CREATE)) {
             buttonCreate.setSelection(true);
         }
+    }
+
+    void clearCurrentLaws() {
+        buttonUpdate.setSelection(false);
+        buttonDelete.setSelection(false);
+        buttonCreate.setSelection(false);
     }
 }

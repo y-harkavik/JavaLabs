@@ -9,14 +9,14 @@ import java.util.List;
 import java.util.Map;
 
 public class ResponseForAdministrator extends Response {
-    private List<Account> listOfAccounts;
+    private Map<String, Account> accountMap;
 
-    public ResponseForAdministrator(ResponseType responseType, String message, Map<String, String> listOfPersonnelFiles, PersonnelFile personnelFileOfSpecificMen, List<Laws> userLaws, List<Account> listOfAccounts) {
-        super(responseType, message, listOfPersonnelFiles, personnelFileOfSpecificMen, userLaws);
-        this.listOfAccounts = listOfAccounts;
+    public ResponseForAdministrator(ResponseType responseType, String message, Map<String, String> listOfPersonnelFiles, PersonnelFile personnelFileOfSpecificMen, Map<String, Account> listOfAccounts) {
+        super(responseType, message, listOfPersonnelFiles, personnelFileOfSpecificMen, null);
+        this.accountMap = listOfAccounts;
     }
 
-    public List<Account> getAccountList() {
-        return listOfAccounts;
+    public Map<String, Account> getAccountMap() {
+        return accountMap;
     }
 }

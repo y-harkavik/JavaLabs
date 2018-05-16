@@ -16,8 +16,8 @@ public class PersonnelFile implements Serializable {
         contactInformation = new ContactInformation();
     }
 
-    public PersonnelFile(String firstName, String middleName, String lastName, String gender, LocalDate birthDate, String passport,
-                         String country, String city, String street, Integer house, String mobilePhone, String homePhone) {
+    public PersonnelFile(String firstName, String middleName, String lastName, String gender, String birthDate, String passport,
+                         String country, String city, String street, String house, String mobilePhone, String homePhone) {
         basicInformation = new BasicInformation(firstName, middleName, lastName, gender, birthDate, passport);
         contactInformation = new ContactInformation(country, city, street, house, mobilePhone, homePhone);
     }
@@ -27,10 +27,10 @@ public class PersonnelFile implements Serializable {
         private String middleName;
         private String lastName;
         private String gender;
-        private LocalDate birthDate;
+        private String birthDate;
         private String passport;
 
-        BasicInformation(String firstName, String middleName, String lastName, String gender, LocalDate birthDate, String passport) {
+        BasicInformation(String firstName, String middleName, String lastName, String gender, String birthDate, String passport) {
             this.firstName = firstName;
             this.middleName = middleName;
             this.lastName = lastName;
@@ -83,11 +83,11 @@ public class PersonnelFile implements Serializable {
             this.passport = passport;
         }
 
-        public LocalDate getDate() {
+        public String getDate() {
             return birthDate;
         }
 
-        public void setDate(LocalDate birthDate) {
+        public void setDate(String birthDate) {
             this.birthDate = birthDate;
         }
     }
@@ -96,11 +96,11 @@ public class PersonnelFile implements Serializable {
         private String country;
         private String city;
         private String street;
-        private Integer house;
+        private String house;
         private String mobilePhone;
         private String homePhone;
 
-        ContactInformation(String country, String city, String street, Integer house, String mobilePhone, String homePhone) {
+        ContactInformation(String country, String city, String street, String house, String mobilePhone, String homePhone) {
             this.country = country;
             this.city = city;
             this.street = street;
@@ -137,11 +137,11 @@ public class PersonnelFile implements Serializable {
             this.street = street;
         }
 
-        public Integer getHouse() {
+        public String getHouse() {
             return house;
         }
 
-        public void setHouse(Integer house) {
+        public void setHouse(String house) {
             this.house = house;
         }
 

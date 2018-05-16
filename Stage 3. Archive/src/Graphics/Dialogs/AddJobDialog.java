@@ -103,7 +103,7 @@ public class AddJobDialog extends Dialog {
         Job job = new Job(
                 textCompany.getText(),
                 textPosition.getText(),
-                Integer.valueOf(textExperience.getText()));
+                textExperience.getText());
         return job;
     }
 }

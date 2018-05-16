@@ -6,17 +6,15 @@ import org.w3c.dom.Element;
 import java.util.Map;
 
 public interface Parser {
-    boolean checkPassportIDOnContainsInXML(String passportID);
-
     PersonnelFile getPersonnelFile(String passportID);
 
-    void insertPersonnelFileInXML(PersonnelFile personnelFile);
+    String insertPersonnelFileInXML(PersonnelFile personnelFile, String oldPassportID);
 
     void removePersonnelFileFromXML(String passportID);
 
     void saveInFile();
 
-    void updatePersonInXML(PersonnelFile personnelFile, String oldPassportID);
+    String updatePersonInXML(PersonnelFile personnelFile, String oldPassportID);
 
     Map<String, String> getMapOfLastNameAndID();
 

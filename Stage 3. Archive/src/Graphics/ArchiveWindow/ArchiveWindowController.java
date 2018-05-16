@@ -19,6 +19,7 @@ import Users.Account;
 import org.eclipse.swt.widgets.TableItem;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -26,12 +27,12 @@ import java.util.Map;
 public class ArchiveWindowController {
     ArchiveWindow archiveWindow;
     ArchiveWindowModel archiveWindowModel;
-    List<Account> accountList;
+    Map<String, Account> accountMap;
     String previousPassportID;
 
     public ArchiveWindowController(Client currentClient,
                                    Map<String, String> mapOfPersonnelFiles,
-                                   List<Account> accountList,
+                                   Map<String, Account> accountMap,
                                    List<Laws> lawsList) {
         archiveWindow = new ArchiveWindow(Display.getCurrent(), new Shell(SWT.CLOSE | SWT.TITLE | SWT.MIN));
         archiveWindowModel = new ArchiveWindowModel(this, currentClient);
@@ -39,7 +40,7 @@ public class ArchiveWindowController {
         initListeners();
         setPersonnelFilesInTable(mapOfPersonnelFiles);
         makeFieldsEnable(false);
-        this.accountList = accountList;
+        this.accountMap = accountMap;
     }
 
     public void openMainWindow() {
@@ -178,12 +179,12 @@ public class ArchiveWindowController {
             @Override
             public void widgetSelected(SelectionEvent selectionEvent) {
                 Display.getDefault().asyncExec(() -> {
-                    accountList = new ChangeLawsDialog(new Shell()).open(accountList);
+                    accountMap = new ChangeLawsDialog(new Shell()).open(accountMap);
                     archiveWindowModel.sendMessage(new AdministratorRequest(
                             RequestType.CHANGE_LAWS,
                             null,
                             null,
-                            accountList));
+                            accountMap));
                 });
             }
 
@@ -195,10 +196,8 @@ public class ArchiveWindowController {
     }
 
     PersonnelFile createPersonnelFiles() {
-        LocalDate localDate = LocalDate.of(
-                Integer.parseInt(archiveWindow.comboYearOfBirth.getText()),
-                Integer.parseInt(archiveWindow.comboMonthOfBirth.getText()),
-                Integer.parseInt(archiveWindow.comboDayOfBirth.getText()));
+        String localDate = archiveWindow.comboYearOfBirth.getText() + '-' + archiveWindow.comboMonthOfBirth.getText() + '-' + archiveWindow.comboDayOfBirth.getText();
+
 
         PersonnelFile personnelFile = new PersonnelFile(
                 archiveWindow.textFirstName.getText(),
@@ -210,7 +209,7 @@ public class ArchiveWindowController {
                 archiveWindow.textCountry.getText(),
                 archiveWindow.textCity.getText(),
                 archiveWindow.textStreet.getText(),
-                Integer.parseInt(archiveWindow.textHouse.getText()),
+                archiveWindow.textHouse.getText(),
                 archiveWindow.textMobilePhone.getText(),
                 archiveWindow.textHomePhone.getText());
 
@@ -223,7 +222,7 @@ public class ArchiveWindowController {
     void fillJobList(List<Job> jobs) {
         for (int i = 0; i < archiveWindow.tableOfJobs.getItemCount(); i++) {
             TableItem jobItem = archiveWindow.tableOfJobs.getItem(i);
-            Job job = new Job(jobItem.getText(0), jobItem.getText(1), Integer.valueOf(jobItem.getText(2)));
+            Job job = new Job(jobItem.getText(0), jobItem.getText(1), jobItem.getText(2));
             jobs.add(job);
         }
     }

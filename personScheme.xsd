@@ -1,81 +1,92 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
-           xmlns:xs="http://www.w3.org/2001/XMLSchema">
-    <xs:element name="person" type="Person"/>
-    <xs:complexType name="Person">
-        <xs:sequence>
-            <xs:element name="basicInformation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="name" type="Name"/>
-                    </xs:sequence>
-                    <xs:attribute name="birthday" type="xs:date" use="required"/>
-                    <xs:attribute name="sex" type="Sex" use="required"/>
-                    <xs:attribute name="heigth" type="xs:float"/>
-                    <xs:attribute name="weigth" type="xs:float"/>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="contactInformation" type="ContactInfo"/>
-            <xs:element name="jobs" type="Jobs"/>
-        </xs:sequence>
-        <xs:attribute name="ID" type="PassportID" use="required"/>
-    </xs:complexType>
-    <xs:complexType name="ContactInfo">
-        <xs:sequence>
-            <xs:element name="mobilePhone">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:pattern value="[0-9]{1,15}"/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
-            <xs:element name="homePhone">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:pattern value="[0-9]{1,15}"/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
-            <xs:element name="address" type="Address"/>
-        </xs:sequence>
-    </xs:complexType>
-    <xs:complexType name="Address">
-        <xs:attribute name="country" type="string" use="required"/>
-        <xs:attribute name="city" type="string" use="required"/>
-        <xs:attribute name="street" type="string" use="required"/>
-        <xs:attribute name="house" type="xs:integer"/>
-    </xs:complexType>
-    <xs:complexType name="Jobs">
-        <xs:sequence>
-            <xs:element name="job" type="Job" minOccurs="0" maxOccurs="unbounded"/>
-        </xs:sequence>
-    </xs:complexType>
-    <xs:complexType name="Name">
-        <xs:attribute name="lastName" type="string" use="required"/>
-        <xs:attribute name="firstName" type="string" use="required"/>
-        <xs:attribute name="middleName" type="string" use="required"/>
-    </xs:complexType>
-    <xs:complexType name="Job">
-        <xs:attribute name="company" type="string"/>
-        <xs:attribute name="position" type="string"/>
-        <xs:attribute name="experience" type="xs:integer"/>
-    </xs:complexType>
-    <xs:simpleType name="PassportID">
-        <xs:restriction base="xs:ID">
-            <xs:length value="15"/>
-            <xs:pattern value="[A-Z0-9]{15}"/>
-        </xs:restriction>
-    </xs:simpleType>
-    <xs:simpleType name="Sex">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="Female"/>
-            <xs:enumeration value="Male"/>
-        </xs:restriction>
-    </xs:simpleType>
-    <xs:simpleType name="string">
-        <xs:restriction base="xs:string">
-            <xs:pattern value="[a-zA-Z]{2,}"/>
-        </xs:restriction>
-    </xs:simpleType>
-</xs:schema>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="persons">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="person" type="Person" minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="Person">
+        <xsd:sequence>
+            <xsd:element name="basicInformation">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="name" type="Name"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="birthday" type="xsd:date" use="required"/>
+                    <xsd:attribute name="sex" type="Sex" use="required"/>
+                    <xsd:attribute name="heigth" type="xsd:float"/>
+                    <xsd:attribute name="weigth" type="xsd:float"/>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="contactInformation" type="ContactInfo"/>
+            <xsd:element name="jobs" type="Jobs"/>
+        </xsd:sequence>
+        <xsd:attribute name="ID" type="PassportID" use="required"/>
+    </xsd:complexType>
+    <xsd:complexType name="ContactInfo">
+        <xsd:sequence>
+            <xsd:element name="mobilePhone">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:pattern value="[0-9]{1,15}"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="homePhone">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:pattern value="[0-9]{1,15}"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="address" type="Address"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Address">
+        <xsd:attribute name="country" type="string" use="required"/>
+        <xsd:attribute name="city" type="string" use="required"/>
+        <xsd:attribute name="street" type="string" use="required"/>
+        <xsd:attribute name="house" type="xsd:integer"/>
+    </xsd:complexType>
+    <xsd:complexType name="Jobs">
+        <xsd:sequence>
+            <xsd:element name="job" type="Job" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Name">
+        <xsd:attribute name="lastName" type="string" use="required"/>
+        <xsd:attribute name="firstName" type="string" use="required"/>
+        <xsd:attribute name="middleName" type="string" use="required"/>
+    </xsd:complexType>
+    <xsd:complexType name="Job">
+        <xsd:attribute name="company" type="string"/>
+        <xsd:attribute name="position" type="string"/>
+        <xsd:attribute name="experience" type="Experience"/>
+    </xsd:complexType>
+    <xsd:simpleType name="Experience">
+        <xsd:restriction base="xsd:integer">
+            <xsd:pattern value="[0-9]+"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="PassportID">
+        <xsd:restriction base="xsd:ID">
+            <xsd:length value="15"/>
+            <xsd:pattern value="[A-Z0-9]{15}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="Sex">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Female"/>
+            <xsd:enumeration value="Male"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="string">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[a-zA-Z0-9]{2,}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>
 

@@ -10,6 +10,7 @@ import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.widgets.*;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -299,10 +300,7 @@ public class AddPersonnelFileDialog extends Dialog {
     }
 
     PersonnelFile createPersonnelFile() {
-        LocalDate localDate = LocalDate.of(
-                Integer.parseInt(comboYearOfBirth.getText()),
-                Integer.parseInt(comboMonthOfBirth.getText()),
-                Integer.parseInt(comboDayOfBirth.getText()));
+        String localDate = comboYearOfBirth.getText() + '-' + comboMonthOfBirth.getText() + '-' + comboDayOfBirth.getText();
 
         PersonnelFile personnelFile = new PersonnelFile(
                 textFirstName.getText(),
@@ -314,7 +312,7 @@ public class AddPersonnelFileDialog extends Dialog {
                 textCountry.getText(),
                 textCity.getText(),
                 textStreet.getText(),
-                Integer.parseInt(textHouse.getText()),
+                textHouse.getText(),
                 textMobilePhone.getText(),
                 textHomePhone.getText());
 
@@ -327,7 +325,7 @@ public class AddPersonnelFileDialog extends Dialog {
     void fillJobList(List<Job> jobs) {
         for (int i = 0; i < tableOfJobs.getItemCount(); i++) {
             TableItem jobItem = tableOfJobs.getItem(i);
-            Job job = new Job(jobItem.getText(0), jobItem.getText(1), Integer.valueOf(jobItem.getText(2)));
+            Job job = new Job(jobItem.getText(0), jobItem.getText(1), jobItem.getText(2));
             jobs.add(job);
         }
     }
@@ -336,6 +334,6 @@ public class AddPersonnelFileDialog extends Dialog {
         TableItem tableItem = new TableItem(tableOfJobs, SWT.NONE);
         tableItem.setText(0, job.getCompany());
         tableItem.setText(1, job.getPosition());
-        tableItem.setText(2, job.getExperience().toString());
+        tableItem.setText(2, job.getExperience());
     }
 }

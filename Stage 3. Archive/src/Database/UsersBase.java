@@ -9,15 +9,13 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 import static Database.Password.getHashedPassword;
 import static Database.Password.getSalt;
 
 public class UsersBase {
-    private List<Account> listOfAccounts = new ArrayList<>();
+    private Map<String, Account> mapOfAccounts = new HashMap<>();
 
     void createPerson(String password, String login) {
         List<Laws> lawsList = new ArrayList<>();
@@ -25,7 +23,7 @@ public class UsersBase {
         byte[] salt = getSalt();
         String hashedPassword = getHashedPassword(password, salt);
 
-        listOfAccounts.add(new User(hashedPassword, login, salt, lawsList));
+        mapOfAccounts.put(login, new User(hashedPassword, login, salt, lawsList));
     }
 
     public Account checkAccount(String login, String password) {
@@ -46,8 +44,8 @@ public class UsersBase {
     }
 
     private Account checkLogin(String login) {
-        if (!listOfAccounts.isEmpty()) {
-            for (Account account : listOfAccounts) {
+        if (!mapOfAccounts.isEmpty()) {
+            for (Account account : mapOfAccounts.values()) {
                 if (account.getAccountLogin().equals(login)) {
                     return account;
                 }
@@ -56,17 +54,17 @@ public class UsersBase {
         return null;
     }
 
-    public List<Account> getListOfAccounts() {
-        return listOfAccounts;
+    public Map<String, Account> getMapOfAccounts() {
+        return mapOfAccounts;
     }
 
-    public void setListOfAccounts(List<Account> listOfAccounts) {
-        this.listOfAccounts = listOfAccounts;
+    public void setMapOfAccounts(Map<String, Account> mapOfAccounts) {
+        this.mapOfAccounts = mapOfAccounts;
     }
 
     public void saveBase() {
         try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("users.ser"))) {
-            objectOutputStream.writeObject(listOfAccounts);
+            objectOutputStream.writeObject(mapOfAccounts);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -74,7 +72,7 @@ public class UsersBase {
 
     public void getBaseFromFile() {
         try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("users.ser"))) {
-            listOfAccounts = ((ArrayList<Account>) objectInputStream.readObject());
+            mapOfAccounts = ((Map<String, Account>) objectInputStream.readObject());
         } catch (Exception e) {
         }
     }
@@ -87,26 +85,40 @@ public class UsersBase {
         User user;
         byte[] salt = getSalt();
         String hashedPassword = getHashedPassword("admin", salt);
-        listOfAccounts.add(new Administrator(hashedPassword, "admin", salt));
+        mapOfAccounts.put("admin", new Administrator(hashedPassword, "admin", salt));
 
         salt = getSalt();
         hashedPassword = getHashedPassword("user1", salt);
         List<Laws> laws = new ArrayList<>();
         laws.add(Laws.CREATE);
-        laws.add(Laws.READ);
         laws.add(Laws.DELETE);
         laws.add(Laws.UPDATE);
         user = new User(hashedPassword, "user1", salt, laws);
-        listOfAccounts.add(user);
+        mapOfAccounts.put("user1", user);
 
         salt = getSalt();
         laws = new ArrayList<>();
-        laws.add(Laws.READ);
         laws.add(Laws.DELETE);
         laws.add(Laws.UPDATE);
         hashedPassword = getHashedPassword("user2", salt);
         user = new User(hashedPassword, "user2", salt, laws);
-        listOfAccounts.add(user);
+        mapOfAccounts.put("user2", user);
+
+        salt = getSalt();
+        laws = new ArrayList<>();
+        laws.add(Laws.DELETE);
+        laws.add(Laws.UPDATE);
+        hashedPassword = getHashedPassword("user3", salt);
+        user = new User(hashedPassword, "user3", salt, laws);
+        mapOfAccounts.put("user3", user);
+
+        salt = getSalt();
+        laws = new ArrayList<>();
+        laws.add(Laws.DELETE);
+        laws.add(Laws.UPDATE);
+        hashedPassword = getHashedPassword("user4", salt);
+        user = new User(hashedPassword, "user4", salt, laws);
+        mapOfAccounts.put("user4", user);
 
         saveBase();
     }

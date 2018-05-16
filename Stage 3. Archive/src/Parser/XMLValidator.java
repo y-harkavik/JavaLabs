@@ -8,14 +8,11 @@ import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.URL;
-import java.util.Objects;
 
 public class XMLValidator {
     private static volatile XMLValidator instance = null;
-    public static final String XML_FILE = "person.xml";
+    public static final String XML_FILE = "persons.xml";
     public static final String SCHEMA_FILE = "personScheme.xsd";
     private static Validator validator;
 
@@ -34,29 +31,23 @@ public class XMLValidator {
 
     private XMLValidator() {
         try {
-            Schema schema = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI).newSchema(new File(getResource(SCHEMA_FILE)));
+            Schema schema = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI).newSchema(new File(SCHEMA_FILE));
             validator = schema.newValidator();
         } catch (SAXException e) {
             e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         }
 
     }
 
-    private String getResource(String filename) throws FileNotFoundException {
-        URL resource = getClass().getClassLoader().getResource(filename);
-        Objects.requireNonNull(resource);
-
-        return resource.getFile();
-    }
-
-    public boolean validateXML() {
+    public String validateXML() {
         try {
-            validator.validate(new StreamSource(new File(getResource(XML_FILE))));
+            validator.validate(new StreamSource(new File(XML_FILE)));
         } catch (SAXException | IOException e) {
-            return false;
+            return e.getMessage();
         }
-        return true;
+        return null;
+    }
+
+    public static void main(String[] args) {
     }
 }

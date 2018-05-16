@@ -4,6 +4,7 @@ import Communicate.Message.Request.ClientRequest.AdministratorRequest;
 import Communicate.Message.Request.ClientRequest.SetParserRequest;
 import Parser.*;
 
+import Users.Administrator;
 import client.Client;
 import Communicate.Message.Request.ClientRequest.AuthenticationRequest;
 import Communicate.Message.Request.Request;
@@ -17,7 +18,10 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import static Parser.Parsers.*;
 
@@ -54,6 +58,7 @@ public class ArchiveServer {
 
     public class ClientHandler implements Runnable {
         Client client;
+        Account currentAccount;
 
         public ClientHandler(Client client) {
             this.client = client;
@@ -83,16 +88,19 @@ public class ArchiveServer {
                 e.printStackTrace();
             } catch (Exception e) {
                 e.printStackTrace();
+            } finally {
+                usersBase.saveBase();
             }
         }
 
         void checkDatabaseResponseAndSendClientRequest(Account currentAccount) {
             if (currentAccount != null) {
+                this.currentAccount = currentAccount;
                 sendMessage(client, new AuthenticationResponse(ResponseType.GOOD,
                         null,
                         currentParser.getMapOfLastNameAndID(),
                         currentAccount.getLawsList(),
-                        getListOfAccounts()));
+                        getMapOfAccountsWithoutCurrentUserAndAdmins(currentAccount)));
             } else {
                 sendMessage(client, new AuthenticationResponse(ResponseType.ERROR,
                         TypeOfError.AUTHENTICATION_ERROR,
@@ -103,6 +111,7 @@ public class ArchiveServer {
         }
 
         void handleClientRequest(Request clientRequest) throws InterruptedException {
+            String report;
             switch (clientRequest.getRequestType()) {
                 case GET_PERSONNEL_FILE:
                     sendMessage(client, new ResponseForAdministrator(
@@ -110,27 +119,26 @@ public class ArchiveServer {
                             null,
                             currentParser.getMapOfLastNameAndID(),
                             currentParser.getPersonnelFile(clientRequest.getPreviousPassportID()),
-                            null,
-                            getListOfAccounts()));
+                            getMapOfAccountsWithoutCurrentUserAndAdmins(currentAccount)));
                     break;
                 case ADD:
-                    if (!currentParser.checkPassportIDOnContainsInXML(clientRequest.getPreviousPassportID())) {
-                        currentParser.insertPersonnelFileInXML(clientRequest.getHandlingPersonnelFile());
+                    report = currentParser.insertPersonnelFileInXML(
+                            clientRequest.getHandlingPersonnelFile(),
+                            clientRequest.getHandlingPersonnelFile().getBasicInformation().getPassport());
+                    if (report == null) {
                         sendMessage(client, new ResponseForAdministrator(
                                 ResponseType.GOOD,
                                 null,
                                 currentParser.getMapOfLastNameAndID(),
-                                currentParser.getPersonnelFile(clientRequest.getPreviousPassportID()),
-                                null,
-                                getListOfAccounts()));
+                                currentParser.getPersonnelFile(clientRequest.getHandlingPersonnelFile().getBasicInformation().getPassport()),
+                                getMapOfAccountsWithoutCurrentUserAndAdmins(currentAccount)));
                     } else {
                         sendMessage(client, new ResponseForAdministrator(
                                 ResponseType.ERROR,
-                                TypeOfError.PASSPORT_ID_ERROR,
+                                report,
                                 currentParser.getMapOfLastNameAndID(),
                                 null,
-                                null,
-                                getListOfAccounts()));
+                                getMapOfAccountsWithoutCurrentUserAndAdmins(currentAccount)));
                     }
                     break;
                 case DELETE:
@@ -140,32 +148,30 @@ public class ArchiveServer {
                             null,
                             currentParser.getMapOfLastNameAndID(),
                             null,
-                            null,
-                            getListOfAccounts()));
+                            getMapOfAccountsWithoutCurrentUserAndAdmins(currentAccount)));
                     break;
                 case UPDATE:
-                    String newPassportID = clientRequest.getHandlingPersonnelFile().getBasicInformation().getPassport();
-                    if (newPassportID.equals(clientRequest.getPreviousPassportID()) || !currentParser.checkPassportIDOnContainsInXML(newPassportID)) {
-                        currentParser.updatePersonInXML(clientRequest.getHandlingPersonnelFile(), clientRequest.getPreviousPassportID());
+                    report = currentParser.updatePersonInXML(
+                            clientRequest.getHandlingPersonnelFile(),
+                            clientRequest.getPreviousPassportID());
+                    if (report == null) {
                         sendMessage(client, new ResponseForAdministrator(
                                 ResponseType.GOOD,
                                 null,
                                 currentParser.getMapOfLastNameAndID(),
-                                currentParser.getPersonnelFile(newPassportID),
-                                null,
-                                getListOfAccounts()));
+                                currentParser.getPersonnelFile(clientRequest.getHandlingPersonnelFile().getBasicInformation().getPassport()),
+                                getMapOfAccountsWithoutCurrentUserAndAdmins(currentAccount)));
                     } else {
                         sendMessage(client, new ResponseForAdministrator(
                                 ResponseType.ERROR,
-                                TypeOfError.PASSPORT_ID_ERROR,
+                                report,
                                 currentParser.getMapOfLastNameAndID(),
                                 currentParser.getPersonnelFile(clientRequest.getPreviousPassportID()),
-                                null,
-                                getListOfAccounts()));
+                                getMapOfAccountsWithoutCurrentUserAndAdmins(currentAccount)));
                     }
                     break;
                 case CHANGE_LAWS:
-                    usersBase.setListOfAccounts(((AdministratorRequest)clientRequest).getChangingAccountList());
+                    usersBase.getMapOfAccounts().putAll(((AdministratorRequest) clientRequest).getChangingAccountMap());
                     break;
                 case DISCONNECT:
                     throw new InterruptedException();
@@ -197,8 +203,15 @@ public class ArchiveServer {
         }
     }
 
-    public List<Account> getListOfAccounts() {
-        return usersBase.getListOfAccounts();
+    public Map<String, Account> getMapOfAccountsWithoutCurrentUserAndAdmins(Account currentAccount) {
+        Map<String, Account> accounts = new HashMap<>(usersBase.getMapOfAccounts());
+        for (Iterator<Account> iterator = accounts.values().iterator(); iterator.hasNext(); ) {
+            Account account = iterator.next();
+            if (account instanceof Administrator || currentAccount == account) {
+                iterator.remove();
+            }
+        }
+        return accounts;
     }
 
     public Account userAuthentication(AuthenticationRequest authenticationRequest) {

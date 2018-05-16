@@ -11,7 +11,7 @@ public class Main {
         if (authenticationResponse != null) {
             new ArchiveWindowController(authenticationWindowController.getCurrentClient(),
                     authenticationResponse.getMapOfPersonnelFiles(),
-                    authenticationResponse.getAccountList(),
+                    authenticationResponse.getAccountMap(),
                     authenticationResponse.getUserLaws()
             ).openMainWindow();
         }
