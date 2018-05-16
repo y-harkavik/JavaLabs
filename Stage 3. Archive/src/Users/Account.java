@@ -33,4 +33,8 @@ public abstract class Account implements Serializable {
     public List<Laws> getLawsList() {
         return lawsList;
     }
+
+    public void setLawsList(List<Laws> lawsList) {
+        this.lawsList = lawsList;
+    }
 }

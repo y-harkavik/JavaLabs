@@ -5,6 +5,7 @@ import Communicate.Message.Request.ClientRequest.RequestType;
 import Graphics.Constants.GraphicsConstants;
 import Graphics.Dialogs.AddPersonnelFileDialog;
 import Graphics.Dialogs.AddJobDialog;
+import Graphics.Dialogs.ChangeLawsDialog;
 import Users.PersonnelFile;
 import Users.Job;
 import client.Client;
@@ -25,6 +26,7 @@ import java.util.Map;
 public class ArchiveWindowController {
     ArchiveWindow archiveWindow;
     ArchiveWindowModel archiveWindowModel;
+    List<Account> accountList;
     String previousPassportID;
 
     public ArchiveWindowController(Client currentClient,
@@ -37,6 +39,7 @@ public class ArchiveWindowController {
         initListeners();
         setPersonnelFilesInTable(mapOfPersonnelFiles);
         makeFieldsEnable(false);
+        this.accountList = accountList;
     }
 
     public void openMainWindow() {
@@ -164,6 +167,24 @@ public class ArchiveWindowController {
                 if (rowIndex != -1) {
                     archiveWindow.tableOfJobs.remove(rowIndex);
                 }
+            }
+
+            @Override
+            public void widgetDefaultSelected(SelectionEvent selectionEvent) {
+
+            }
+        });
+        archiveWindow.changeLawsItem.addSelectionListener(new SelectionListener() {
+            @Override
+            public void widgetSelected(SelectionEvent selectionEvent) {
+                Display.getDefault().asyncExec(() -> {
+                    accountList = new ChangeLawsDialog(new Shell()).open(accountList);
+                    archiveWindowModel.sendMessage(new AdministratorRequest(
+                            RequestType.CHANGE_LAWS,
+                            null,
+                            null,
+                            accountList));
+                });
             }
 
             @Override

@@ -4,11 +4,17 @@ import Communicate.Message.Request.Request;
 import Users.Account;
 import Users.PersonnelFile;
 
-public class AdministratorRequest extends Request {
-    private Account changingAccount;
+import java.util.List;
 
-    public AdministratorRequest(RequestType requestType, PersonnelFile handlingPersonnelFile, String passportID, Account changingAccount) {
+public class AdministratorRequest extends Request {
+    private List<Account> changingAccountList;
+
+    public AdministratorRequest(RequestType requestType, PersonnelFile handlingPersonnelFile, String passportID, List<Account> changingAccountList) {
         super(requestType, handlingPersonnelFile, passportID);
-        this.changingAccount = changingAccount;
+        this.changingAccountList = changingAccountList;
+    }
+
+    public List<Account> getChangingAccountList() {
+        return changingAccountList;
     }
 }

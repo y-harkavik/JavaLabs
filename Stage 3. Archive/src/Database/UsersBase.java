@@ -10,13 +10,14 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import static Database.Password.getHashedPassword;
 import static Database.Password.getSalt;
 
 public class UsersBase {
-    private ArrayList<Account> listOfAccounts = new ArrayList<>();
+    private List<Account> listOfAccounts = new ArrayList<>();
 
     void createPerson(String password, String login) {
         List<Laws> lawsList = new ArrayList<>();
@@ -59,7 +60,7 @@ public class UsersBase {
         return listOfAccounts;
     }
 
-    public void setListOfAccounts(ArrayList<Account> listOfAccounts) {
+    public void setListOfAccounts(List<Account> listOfAccounts) {
         this.listOfAccounts = listOfAccounts;
     }
 

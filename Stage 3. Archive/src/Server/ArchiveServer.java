@@ -1,5 +1,6 @@
 package Server;
 
+import Communicate.Message.Request.ClientRequest.AdministratorRequest;
 import Communicate.Message.Request.ClientRequest.SetParserRequest;
 import Parser.*;
 
@@ -164,6 +165,7 @@ public class ArchiveServer {
                     }
                     break;
                 case CHANGE_LAWS:
+                    usersBase.setListOfAccounts(((AdministratorRequest)clientRequest).getChangingAccountList());
                     break;
                 case DISCONNECT:
                     throw new InterruptedException();
