@@ -18,9 +18,8 @@ import org.eclipse.swt.widgets.Shell;
 import Users.Account;
 import org.eclipse.swt.widgets.TableItem;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -28,6 +27,7 @@ public class ArchiveWindowController {
     ArchiveWindow archiveWindow;
     ArchiveWindowModel archiveWindowModel;
     Map<String, Account> accountMap;
+    Map<String, String> mapOfPersonnelFiles;
     String previousPassportID;
 
     public ArchiveWindowController(Client currentClient,
@@ -41,6 +41,7 @@ public class ArchiveWindowController {
         setPersonnelFilesInTable(mapOfPersonnelFiles);
         makeFieldsEnable(false);
         this.accountMap = accountMap;
+        this.mapOfPersonnelFiles = mapOfPersonnelFiles;
     }
 
     public void openMainWindow() {
@@ -193,6 +194,40 @@ public class ArchiveWindowController {
 
             }
         });
+        archiveWindow.comboMonthOfBirth.addModifyListener(modifyEvent -> {
+            int month = Integer.parseInt(archiveWindow.comboMonthOfBirth.getText());
+
+            if (month == 2) {
+                archiveWindow.comboDayOfBirth.removeAll();
+                archiveWindow.comboDayOfBirth.setItems(GraphicsConstants.MONTH_28_DAYS);
+                return;
+            }
+            if (GraphicsConstants.NUM_OF_MONTHS_THAT_HAS_31_DAYS.contains(month)) {
+                archiveWindow.comboDayOfBirth.removeAll();
+                archiveWindow.comboDayOfBirth.setItems(GraphicsConstants.MONTH_31_DAYS);
+
+                return;
+            } else {
+                archiveWindow.comboDayOfBirth.removeAll();
+                archiveWindow.comboDayOfBirth.setItems(GraphicsConstants.MONTH_30_DAYS);
+            }
+        });
+        archiveWindow.textSearch.addModifyListener(modifyEvent -> {
+            setPersonnelFilesInTable(mapOfPersonnelFiles);
+        });
+    }
+
+    Map<String, String> samplingPersonnelFilesWithSearchText(Map<String, String> mapOfPersonnelFiles) {
+        Map<String, String> filesInfo = new HashMap<>();
+        String searchText = archiveWindow.textSearch.getText();
+        for (Map.Entry<String, String> entry : mapOfPersonnelFiles.entrySet()) {
+            String passportID = entry.getKey();
+            String name = entry.getValue();
+            if (name.toLowerCase().contains(searchText.toLowerCase())) {
+                filesInfo.put(passportID, name);
+            }
+        }
+        return filesInfo;
     }
 
     PersonnelFile createPersonnelFiles() {
@@ -287,7 +322,8 @@ public class ArchiveWindowController {
     void setPersonnelFilesInTable(Map<String, String> personnelFiles) {
         clearPersonnelFilesTable();
         if (personnelFiles != null) {
-            personnelFiles.forEach(this::fillPersonnelFileTable);
+            samplingPersonnelFilesWithSearchText(personnelFiles).forEach(this::fillPersonnelFileTable);
+            //personnelFiles.forEach(this::fillPersonnelFileTable);
         }
     }
 

@@ -273,17 +273,20 @@ public class AddPersonnelFileDialog extends Dialog {
         });
         comboMonthOfBirth.addModifyListener(modifyEvent -> {
             int month = Integer.parseInt(comboMonthOfBirth.getText());
+
             if (month == 2) {
                 comboDayOfBirth.removeAll();
                 comboDayOfBirth.setItems(GraphicsConstants.MONTH_28_DAYS);
+                return;
             }
-            if (month % 2 == 0) {
-                comboDayOfBirth.removeAll();
-                comboDayOfBirth.setItems(GraphicsConstants.MONTH_30_DAYS);
-            }
-            if (month % 2 == 1) {
+            if (GraphicsConstants.NUM_OF_MONTHS_THAT_HAS_31_DAYS.contains(month)) {
                 comboDayOfBirth.removeAll();
                 comboDayOfBirth.setItems(GraphicsConstants.MONTH_31_DAYS);
+
+                return;
+            } else {
+                comboDayOfBirth.removeAll();
+                comboDayOfBirth.setItems(GraphicsConstants.MONTH_30_DAYS);
             }
         });
         textFirstName.addVerifyListener(GraphicsConstants.verifyListenerForText);

@@ -43,3 +43,6 @@ atlassian-ide-plugin.xml
 .idea/replstate.xml
 *.ser
 *.txt
+persons.xml
+server.jar
+archive.jar

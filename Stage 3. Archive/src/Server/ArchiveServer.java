@@ -1,7 +1,6 @@
 package Server;
 
 import Communicate.Message.Request.ClientRequest.AdministratorRequest;
-import Communicate.Message.Request.ClientRequest.SetParserRequest;
 import Parser.*;
 
 import Users.Administrator;
@@ -10,7 +9,7 @@ import Communicate.Message.Request.ClientRequest.AuthenticationRequest;
 import Communicate.Message.Request.Request;
 import Communicate.Message.Response.Response;
 import Communicate.Message.Response.ServerResponse.*;
-import Database.UsersBase;
+import Database.UserBase;
 import Users.Account;
 
 import java.io.EOFException;
@@ -20,14 +19,11 @@ import java.net.Socket;
 import java.net.SocketException;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
-
-import static Parser.Parsers.*;
 
 public class ArchiveServer {
     private ServerSocket serverSocket;
-    private UsersBase usersBase;
+    private UserBase userBase;
     public static final int SERVER_PORT = 5000;
     public static final String SERVER_IP = "127.0.0.1";
     private static Parser currentParser;
@@ -35,8 +31,8 @@ public class ArchiveServer {
     public ArchiveServer() {
         try {
             serverSocket = new ServerSocket(SERVER_PORT);
-            usersBase = new UsersBase();
-            usersBase.getBaseFromFile();
+            userBase = new UserBase();
+            userBase.getBaseFromFile();
             currentParser = DOMParser.getInstance();
         } catch (IOException e) {
             e.printStackTrace();
@@ -74,22 +70,17 @@ public class ArchiveServer {
                         checkDatabaseResponseAndSendClientRequest(currentAccount);
                         continue;
                     }
-                    if (clientRequest instanceof SetParserRequest) {
-                        setCurrentParser(((SetParserRequest) clientRequest).getParserID());
-                        continue;
-                    }
+
                     handleClientRequest(clientRequest);
                 }
-            } catch (SocketException e) {
-                e.printStackTrace();
+            } catch (SocketException | EOFException e) {
+                closeConnection();
             } catch (InterruptedException e) {
                 closeConnection();
-            } catch (EOFException e) {
-                e.printStackTrace();
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
-                usersBase.saveBase();
+                userBase.saveBase();
             }
         }
 
@@ -171,7 +162,7 @@ public class ArchiveServer {
                     }
                     break;
                 case CHANGE_LAWS:
-                    usersBase.getMapOfAccounts().putAll(((AdministratorRequest) clientRequest).getChangingAccountMap());
+                    userBase.getMapOfAccounts().putAll(((AdministratorRequest) clientRequest).getChangingAccountMap());
                     break;
                 case DISCONNECT:
                     throw new InterruptedException();
@@ -189,22 +180,8 @@ public class ArchiveServer {
         }
     }
 
-    void setCurrentParser(int id) {
-        switch (id) {
-            case DOM:
-                currentParser = DOMParser.getInstance();
-                break;
-            case StAX:
-                currentParser = StAXParser.getInstance();
-                break;
-            case SAX:
-                currentParser = SAXParser.getInstance();
-                break;
-        }
-    }
-
     public Map<String, Account> getMapOfAccountsWithoutCurrentUserAndAdmins(Account currentAccount) {
-        Map<String, Account> accounts = new HashMap<>(usersBase.getMapOfAccounts());
+        Map<String, Account> accounts = new HashMap<>(userBase.getMapOfAccounts());
         for (Iterator<Account> iterator = accounts.values().iterator(); iterator.hasNext(); ) {
             Account account = iterator.next();
             if (account instanceof Administrator || currentAccount == account) {
@@ -217,7 +194,7 @@ public class ArchiveServer {
     public Account userAuthentication(AuthenticationRequest authenticationRequest) {
         String login = authenticationRequest.getLogin();
         String password = authenticationRequest.getPassword();
-        return usersBase.checkAccount(login, password);
+        return userBase.checkAccount(login, password);
     }
 
     void sendMessage(Client client, Response serverResponse) {

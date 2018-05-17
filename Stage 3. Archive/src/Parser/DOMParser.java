@@ -154,11 +154,6 @@ public class DOMParser implements Parser {
         return mapOfPersonnelFiles;
     }
 
-    @Override
-    public Element validatePersonnelFile(PersonnelFile personnelFile) {
-        return null;
-    }
-
     void parsePersonNode(Node personNode, PersonnelFile personnelFile) {
         NodeList personNodeList = personNode.getChildNodes();
 

@@ -7,6 +7,7 @@ import Graphics.Constants.GraphicsDialogs;
 import client.Client;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.TableItem;
 
 import java.io.IOException;
 import java.util.Set;
@@ -36,11 +37,12 @@ public class ArchiveWindowModel {
                     archiveWindowController.archiveWindow.display.asyncExec(() -> {
                         archiveWindowController.makeFieldsEnable(false);
 
+                        archiveWindowController.mapOfPersonnelFiles = serverResponse.getMapOfPersonnelFiles();
                         archiveWindowController.setPersonnelFilesInTable(serverResponse.getMapOfPersonnelFiles());
 
                         if (serverResponse.getPersonnelFileOfSpecificMen() != null) {
                             archiveWindowController.setPersonnelFileInformation(serverResponse.getPersonnelFileOfSpecificMen());
-                            archiveWindowController.archiveWindow.tableOfPersonnelFiles.select(indexOf(serverResponse.getMapOfPersonnelFiles().keySet(), serverResponse.getPersonnelFileOfSpecificMen().getBasicInformation().getPassport()));
+                            archiveWindowController.archiveWindow.tableOfPersonnelFiles.select(indexOf(serverResponse.getPersonnelFileOfSpecificMen().getBasicInformation().getPassport()));
                         }
                         if (serverResponse.getResponseType() == ResponseType.ERROR) {
                             GraphicsDialogs.showDialog(serverResponse.getMessage(), SWT.ICON_ERROR);
@@ -65,10 +67,11 @@ public class ArchiveWindowModel {
         }
     }
 
-    int indexOf(Set<String> setOfPassportID, String passportID) {
+    int indexOf(String passportID) {
         int index = 0;
-        for (String ID : setOfPassportID) {
-            if (ID.equals(passportID)) {
+        archiveWindowController.archiveWindow.tableOfPersonnelFiles.getItems();
+        for (TableItem tableItem : archiveWindowController.archiveWindow.tableOfPersonnelFiles.getItems()) {
+            if (tableItem.getText(1).equals(passportID)) {
                 break;
             }
             index++;

@@ -2,10 +2,14 @@ package Graphics.Constants;
 
 import org.eclipse.swt.events.VerifyListener;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class GraphicsConstants {
     public static final String SEGOE_UI_SEMILIGHT = "Segoe UI Semilight";
     public static final String[] GENDER = {"Male", "Female"};
-
+    public static final List<Integer> NUM_OF_MONTHS_THAT_HAS_31_DAYS = Arrays.asList(1, 3, 5, 7, 8, 10, 12);
     public static final String[] MONTH_30_DAYS = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10",
             "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
             "21", "22", "23", "24", "25", "26", "27", "28", "29", "30"};

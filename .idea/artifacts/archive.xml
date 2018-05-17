@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="archive">
+    <output-path>$PROJECT_DIR$/out/artifacts/archive</output-path>
+    <root id="archive" name="archive.jar">
+      <element id="module-output" name="Stage 3. Archive" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/org.eclipse.swt.win32.win32.x86_64-4.3.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

@@ -14,7 +14,7 @@ import java.util.*;
 import static Database.Password.getHashedPassword;
 import static Database.Password.getSalt;
 
-public class UsersBase {
+public class UserBase {
     private Map<String, Account> mapOfAccounts = new HashMap<>();
 
     void createPerson(String password, String login) {
@@ -78,7 +78,7 @@ public class UsersBase {
     }
 
     public static void main(String[] args) {
-        new UsersBase().example();
+        new UserBase().example();
     }
 
     void example() {

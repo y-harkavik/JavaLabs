@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="server">
+    <output-path>$PROJECT_DIR$/out/artifacts/server</output-path>
+    <root id="archive" name="server.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/Stage 3. Archive/src/META-INF/ServerManifest/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="Stage 3. Archive" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/org.eclipse.swt.win32.win32.x86_64-4.3.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

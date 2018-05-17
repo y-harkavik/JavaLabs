@@ -17,6 +17,4 @@ public interface Parser {
     String updatePersonInXML(PersonnelFile personnelFile, String oldPassportID);
 
     Map<String, String> getMapOfLastNameAndID();
-
-    Element validatePersonnelFile(PersonnelFile personnelFile);
 }
