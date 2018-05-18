@@ -46,3 +46,6 @@ atlassian-ide-plugin.xml
 persons.xml
 server.jar
 archive.jar
+bin/
+target/
+maven/
