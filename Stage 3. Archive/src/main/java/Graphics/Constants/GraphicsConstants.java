@@ -2,7 +2,6 @@ package Graphics.Constants;
 
 import org.eclipse.swt.events.VerifyListener;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

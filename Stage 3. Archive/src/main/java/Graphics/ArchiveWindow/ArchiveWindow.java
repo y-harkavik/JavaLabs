@@ -2,10 +2,9 @@ package Graphics.ArchiveWindow;
 
 import Graphics.Constants.GraphicsConstants;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.VerifyListener;
 import org.eclipse.swt.graphics.Font;
-import org.eclipse.swt.widgets.*;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.*;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Menu;

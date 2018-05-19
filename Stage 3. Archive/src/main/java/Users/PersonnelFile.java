@@ -1,9 +1,6 @@
 package Users;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class PersonnelFile implements Serializable {
@@ -160,14 +157,6 @@ public class PersonnelFile implements Serializable {
         public void setHomePhone(String homePhone) {
             this.homePhone = homePhone;
         }
-    }
-
-    public static void main(String[] args) {
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ISO_LOCAL_DATE;
-        String a = "19990912";
-        dateTimeFormatter.parse(a);
-        String s = dateTimeFormatter.toString();
-        String text = LocalDateTime.now().format(dateTimeFormatter);
     }
 
     public BasicInformation getBasicInformation() {

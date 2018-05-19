@@ -1,16 +1,20 @@
 package Server;
 
-import Communicate.Message.Request.ClientRequest.AdministratorRequest;
-import Parser.*;
-
-import Users.Administrator;
 import Client.Client;
+import Communicate.Message.Request.ClientRequest.AdministratorRequest;
 import Communicate.Message.Request.ClientRequest.AuthenticationRequest;
 import Communicate.Message.Request.Request;
 import Communicate.Message.Response.Response;
-import Communicate.Message.Response.ServerResponse.*;
+import Communicate.Message.Response.ServerResponse.AuthenticationResponse;
+import Communicate.Message.Response.ServerResponse.ResponseForAdministrator;
+import Communicate.Message.Response.ServerResponse.ResponseType;
+import Communicate.Message.Response.ServerResponse.TypeOfError;
 import Database.UserBase;
+import Parser.DOMParser;
+import Parser.Parser;
 import Users.Account;
+import Users.Administrator;
+import Users.PersonnelFile;
 
 import java.io.EOFException;
 import java.io.IOException;
@@ -105,12 +109,22 @@ public class ArchiveServer {
             String report;
             switch (clientRequest.getRequestType()) {
                 case GET_PERSONNEL_FILE:
-                    sendMessage(client, new ResponseForAdministrator(
-                            ResponseType.GOOD,
-                            null,
-                            currentParser.getMapOfLastNameAndID(),
-                            currentParser.getPersonnelFile(clientRequest.getPreviousPassportID()),
-                            getMapOfAccountsWithoutCurrentUserAndAdmins(currentAccount)));
+                    PersonnelFile personnelFile = currentParser.getPersonnelFile(clientRequest.getPreviousPassportID());
+                    if (personnelFile != null) {
+                        sendMessage(client, new ResponseForAdministrator(
+                                ResponseType.GOOD,
+                                null,
+                                currentParser.getMapOfLastNameAndID(),
+                                currentParser.getPersonnelFile(clientRequest.getPreviousPassportID()),
+                                getMapOfAccountsWithoutCurrentUserAndAdmins(currentAccount)));
+                    } else {
+                        sendMessage(client, new ResponseForAdministrator(
+                                ResponseType.ERROR,
+                                "Didn't find personnel file with this passportID: " + clientRequest.getPreviousPassportID(),
+                                currentParser.getMapOfLastNameAndID(),
+                                null,
+                                getMapOfAccountsWithoutCurrentUserAndAdmins(currentAccount)));
+                    }
                     break;
                 case ADD:
                     report = currentParser.insertPersonnelFileInXML(

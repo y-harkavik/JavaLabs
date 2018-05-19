@@ -1,12 +1,12 @@
 package Graphics.AuthenticationWindow;
 
-import Graphics.Constants.GraphicsDialogs;
 import Client.Client;
 import Communicate.Message.Request.ClientRequest.AuthenticationRequest;
 import Communicate.Message.Response.ServerResponse.AuthenticationResponse;
 import Communicate.Message.Response.ServerResponse.ResponseType;
-import org.eclipse.swt.SWT;
+import Graphics.Constants.GraphicsDialogs;
 import Server.ArchiveServer;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 
 import java.io.IOException;

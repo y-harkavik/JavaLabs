@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<persons xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="file:///D:/Projects.%20Java/JavaLabs/personsScheme.xsd">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><persons xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:///D:/Projects.%20Java/JavaLabs/personsScheme.xsd">
     <person ID="AAAAA33433666HH">
         <basicInformation birthday="1955-04-27" sex="Male">
             <name firstName="Nikita" lastName="Romanyk" middleName="Konstantinovich"/>
@@ -27,30 +25,8 @@
             <job company="qwer" experience="3" position="qwer"/>
         </jobs>
     </person>
-    <person ID="D4RT45TY7JHGOIR">
-        <basicInformation birthday="1998-10-17" sex="Male">
-            <name firstName="Kirill" lastName="Petrov" middleName="Vasil"/>
-        </basicInformation>
-        <contactInformation>
-            <mobilePhone>4548646</mobilePhone>
-            <homePhone>456729386</homePhone>
-            <address city="Minsk" country="Belarus" house="6" street="Pushkina"/>
-        </contactInformation>
-        <jobs>
-            <job company="qwer" experience="3" position="qwer"/>
-        </jobs>
-    </person>
-    <person ID="EERT5TY678UT654">
-        <basicInformation birthday="1954-12-04" sex="Male">
-            <name firstName="Zubko" lastName="Evgensd" middleName="Vital"/>
-        </basicInformation>
-        <contactInformation>
-            <mobilePhone>234523452333333</mobilePhone>
-            <homePhone>45235236</homePhone>
-            <address city="ete" country="ery" house="54" street="ggg"/>
-        </contactInformation>
-        <jobs/>
-    </person>
+
+
     <person ID="EERT5TY678UT655">
         <basicInformation birthday="1954-12-04" sex="Male">
             <name firstName="Zubko" lastName="Evgen" middleName="Vital"/>
@@ -66,48 +42,27 @@
             <job company="rjrjujuy" experience="46" position="fgkjhdds"/>
         </jobs>
     </person>
-    <person ID="ERTTTTTTTTTTTTT">
-        <basicInformation birthday="1952-01-02" sex="Male">
-            <name firstName="rtyery" lastName="eryr" middleName="eryery"/>
+    <person ID="J48YJ395VC345W9">
+        <basicInformation birthday="1993-01-12" sex="Male">
+            <name firstName="Maxim" lastName="Borodin" middleName="Gena"/>
         </basicInformation>
         <contactInformation>
-            <mobilePhone>6346</mobilePhone>
-            <homePhone>546356</homePhone>
-            <address city="eryerery" country="wtyer" house="55" street="eryer"/>
+            <mobilePhone>39586913068</mobilePhone>
+            <homePhone>78396882396</homePhone>
+            <address city="Minsk" country="Belarus" house="23" street="asdas"/>
         </contactInformation>
         <jobs/>
     </person>
-    <person ID="WETWETEWRTWERTW">
-        <basicInformation birthday="1953-02-03" sex="Male">
-            <name firstName="twett" lastName="wetwet" middleName="ewrtwret"/>
+    <person ID="J48YJ3952C345W9">
+        <basicInformation birthday="1993-01-12" sex="Male">
+            <name firstName="Maxim" lastName="Borodin" middleName="Gena"/>
         </basicInformation>
         <contactInformation>
-            <mobilePhone>45634634</mobilePhone>
-            <homePhone>5526346</homePhone>
-            <address city="wetwe" country="wert" house="43" street="wt"/>
+            <mobilePhone>39586913068</mobilePhone>
+            <homePhone>78396882396</homePhone>
+            <address city="Minsk" country="Belarus" house="23" street="asdas"/>
         </contactInformation>
         <jobs/>
     </person>
-    <person ID="H56U47G5867R6YE">
-        <basicInformation birthday="1952-04-02" sex="Male">
-            <name firstName="rurt" lastName="adfhfdj" middleName="rtyueuw"/>
-        </basicInformation>
-        <contactInformation>
-            <mobilePhone>64274574</mobilePhone>
-            <homePhone>4634765484</homePhone>
-            <address city="yery" country="erye" house="65" street="yerye"/>
-        </contactInformation>
-        <jobs/>
-    </person>
-    <person ID="RG0G234G02KT394">
-        <basicInformation birthday="1997-01-02" sex="Male">
-            <name firstName="Vale" lastName="Abba" middleName="Fuko"/>
-        </basicInformation>
-        <contactInformation>
-            <mobilePhone>923403505536</mobilePhone>
-            <homePhone>2345235</homePhone>
-            <address city="EAFkla" country="AJjdsaj" house="45" street="kmASD"/>
-        </contactInformation>
-        <jobs/>
-    </person>
+    
 </persons>

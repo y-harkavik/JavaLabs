@@ -1,7 +1,7 @@
 package Graphics.AuthenticationWindow;
 
-import Communicate.Message.Response.ServerResponse.AuthenticationResponse;
 import Client.Client;
+import Communicate.Message.Response.ServerResponse.AuthenticationResponse;
 import org.eclipse.swt.SWT;
 
 import java.io.IOException;

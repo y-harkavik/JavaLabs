@@ -1,11 +1,8 @@
 package Parser;
 
 import Communicate.Message.Request.ClientRequest.RequestType;
-import Communicate.Message.Response.Response;
-import Communicate.Message.Response.ServerResponse.ResponseType;
-import Communicate.Message.Response.ServerResponse.TypeOfError;
-import Users.PersonnelFile;
 import Users.Job;
+import Users.PersonnelFile;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
@@ -20,8 +17,6 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -77,34 +72,35 @@ public class DOMParser implements Parser {
         personnelFile.getBasicInformation().setPassport(passportID);
 
         Node personNode = findPersonNode(passportID);
+        if (personNode == null) {
+            return null;
+        }
         parsePersonNode(personNode, personnelFile);
         return personnelFile;
     }
 
     @Override
     public String insertPersonnelFileInXML(PersonnelFile personnelFile, String previousPassportID) {
-        /*String report = checkPersonnelFile(personnelFile, previousPassportID, RequestType.ADD);
-        if (report == null) {
-            Element personnelFileElement = createPersonnelFileElement(personnelFile);
-            personsRootNode.appendChild(personnelFileElement);
-        }
-        return report;*/
         return checkPersonnelFile(personnelFile, previousPassportID, RequestType.ADD);
     }
 
     public String checkPersonnelFile(PersonnelFile personnelFile, String previousPassportID, RequestType requestType) {
-        Node oldPersonNode = findPersonNode(previousPassportID);
         Element elementPersonnelFile = createPersonnelFileElement(personnelFile);
         String report = null;
         switch (requestType) {
             case UPDATE:
-                personsRootNode.replaceChild(elementPersonnelFile, oldPersonNode);
-                saveInFile();
-                report = XMLValidator.getInstance().validateXML();
-                if (report != null) {
-                    personsRootNode.replaceChild(oldPersonNode, elementPersonnelFile);
+                Node oldPersonNode = findPersonNode(previousPassportID);
+                if (oldPersonNode != null) {
+                    personsRootNode.replaceChild(elementPersonnelFile, oldPersonNode);
                     saveInFile();
+                    report = XMLValidator.getInstance().validateXML();
+                    if (report != null) {
+                        personsRootNode.replaceChild(oldPersonNode, elementPersonnelFile);
+                        saveInFile();
+                    }
+                    break;
                 }
+                report = "During updating, old passportID didn't find.";
                 break;
             case ADD:
                 personsRootNode.appendChild(elementPersonnelFile);
@@ -137,9 +133,6 @@ public class DOMParser implements Parser {
 
     @Override
     public String updatePersonInXML(PersonnelFile updatedPersonnelFile, String oldPassportID) {
-        /*Element personnelFileElement = createPersonnelFileElement(updatedPersonnelFile);
-        Node replacingPersonNode = findPersonNode(oldPassportID);
-        replacingPersonNode.getParentNode().replaceChild(personnelFileElement, replacingPersonNode);*/
         return checkPersonnelFile(updatedPersonnelFile, oldPassportID, RequestType.UPDATE);
     }
 
@@ -291,7 +284,7 @@ public class DOMParser implements Parser {
         addressElement.setAttribute("country", contactInformation.getCountry());
         addressElement.setAttribute("city", contactInformation.getCity());
         addressElement.setAttribute("street", contactInformation.getStreet());
-        addressElement.setAttribute("house", contactInformation.getHouse().toString());
+        addressElement.setAttribute("house", contactInformation.getHouse());
 
         contactInformationElement.appendChild(mobilePhoneElement);
         contactInformationElement.appendChild(homePhoneElement);
@@ -314,7 +307,7 @@ public class DOMParser implements Parser {
             Element jobElement = documentOfPersonnelFiles.createElement("job");
             jobElement.setAttribute("company", job.getCompany());
             jobElement.setAttribute("position", job.getPosition());
-            jobElement.setAttribute("experience", job.getExperience().toString());
+            jobElement.setAttribute("experience", job.getExperience());
             jobsElement.appendChild(jobElement);
         }
         return jobsElement;

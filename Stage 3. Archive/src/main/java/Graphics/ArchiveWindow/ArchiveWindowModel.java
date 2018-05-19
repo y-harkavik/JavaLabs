@@ -1,10 +1,10 @@
 package Graphics.ArchiveWindow;
 
+import Client.Client;
 import Communicate.Message.Request.Request;
 import Communicate.Message.Response.Response;
 import Communicate.Message.Response.ServerResponse.ResponseType;
 import Graphics.Constants.GraphicsDialogs;
-import Client.Client;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.TableItem;

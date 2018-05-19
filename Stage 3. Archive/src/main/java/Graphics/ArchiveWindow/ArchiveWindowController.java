@@ -1,21 +1,21 @@
 package Graphics.ArchiveWindow;
 
+import Client.Client;
 import Communicate.Message.Request.ClientRequest.AdministratorRequest;
 import Communicate.Message.Request.ClientRequest.RequestType;
 import Graphics.Constants.GraphicsConstants;
-import Graphics.Dialogs.AddPersonnelFileDialog;
 import Graphics.Dialogs.AddJobDialog;
+import Graphics.Dialogs.AddPersonnelFileDialog;
 import Graphics.Dialogs.ChangeLawsDialog;
-import Users.PersonnelFile;
-import Users.Job;
-import Client.Client;
 import Law.Laws;
+import Users.Account;
+import Users.Job;
+import Users.PersonnelFile;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
-import Users.Account;
 import org.eclipse.swt.widgets.TableItem;
 
 import java.util.ArrayList;
@@ -195,21 +195,24 @@ public class ArchiveWindowController {
             }
         });
         archiveWindow.comboMonthOfBirth.addModifyListener(modifyEvent -> {
-            int month = Integer.parseInt(archiveWindow.comboMonthOfBirth.getText());
+            String comboText = archiveWindow.comboMonthOfBirth.getText();
+            if (!comboText.equals("")) {
+                int month = Integer.parseInt(comboText);
 
-            if (month == 2) {
-                archiveWindow.comboDayOfBirth.removeAll();
-                archiveWindow.comboDayOfBirth.setItems(GraphicsConstants.MONTH_28_DAYS);
-                return;
-            }
-            if (GraphicsConstants.NUM_OF_MONTHS_THAT_HAS_31_DAYS.contains(month)) {
-                archiveWindow.comboDayOfBirth.removeAll();
-                archiveWindow.comboDayOfBirth.setItems(GraphicsConstants.MONTH_31_DAYS);
+                if (month == 2) {
+                    archiveWindow.comboDayOfBirth.removeAll();
+                    archiveWindow.comboDayOfBirth.setItems(GraphicsConstants.MONTH_28_DAYS);
+                    return;
+                }
+                if (GraphicsConstants.NUM_OF_MONTHS_THAT_HAS_31_DAYS.contains(month)) {
+                    archiveWindow.comboDayOfBirth.removeAll();
+                    archiveWindow.comboDayOfBirth.setItems(GraphicsConstants.MONTH_31_DAYS);
 
-                return;
-            } else {
-                archiveWindow.comboDayOfBirth.removeAll();
-                archiveWindow.comboDayOfBirth.setItems(GraphicsConstants.MONTH_30_DAYS);
+                    return;
+                } else {
+                    archiveWindow.comboDayOfBirth.removeAll();
+                    archiveWindow.comboDayOfBirth.setItems(GraphicsConstants.MONTH_30_DAYS);
+                }
             }
         });
         archiveWindow.textSearch.addModifyListener(modifyEvent -> {
@@ -302,7 +305,7 @@ public class ArchiveWindowController {
 
         archiveWindow.comboGender.setText(basicInformation.getGender());
 
-        String[] date = basicInformation.getDate().toString().split("-");
+        String[] date = basicInformation.getDate().split("-");
         archiveWindow.comboYearOfBirth.setText(date[0]);
         archiveWindow.comboMonthOfBirth.setText(date[1]);
         archiveWindow.comboDayOfBirth.setText(date[2]);
@@ -314,7 +317,7 @@ public class ArchiveWindowController {
         archiveWindow.textCountry.setText(contactInformation.getCountry());
         archiveWindow.textCity.setText(contactInformation.getCity());
         archiveWindow.textStreet.setText(contactInformation.getStreet());
-        archiveWindow.textHouse.setText(contactInformation.getHouse().toString());
+        archiveWindow.textHouse.setText(contactInformation.getHouse());
         archiveWindow.textHomePhone.setText(contactInformation.getHomePhone());
         archiveWindow.textMobilePhone.setText(contactInformation.getMobilePhone());
     }
@@ -342,7 +345,7 @@ public class ArchiveWindowController {
         TableItem tableItem = new TableItem(archiveWindow.tableOfJobs, SWT.NONE);
         tableItem.setText(0, job.getCompany());
         tableItem.setText(1, job.getPosition());
-        tableItem.setText(2, job.getExperience().toString());
+        tableItem.setText(2, job.getExperience());
     }
 
     void clearPersonnelFilesTable() {
@@ -388,16 +391,16 @@ public class ArchiveWindowController {
     }
 
     void clearPersonnelFileInformation() {
-        previousPassportID = archiveWindow.textPassport.getText();
+        removeVerifyListeners();
 
         archiveWindow.textFirstName.setText("");
         archiveWindow.textMiddleName.setText("");
         archiveWindow.textLastName.setText("");
 
-        archiveWindow.comboDayOfBirth.setText("");
-        archiveWindow.comboMonthOfBirth.setText("");
-        archiveWindow.comboYearOfBirth.setText("");
-        archiveWindow.comboGender.setText("");
+        archiveWindow.comboDayOfBirth.deselectAll();
+        archiveWindow.comboMonthOfBirth.deselectAll();
+        archiveWindow.comboYearOfBirth.deselectAll();
+        archiveWindow.comboGender.deselectAll();
 
         archiveWindow.textPassport.setText("");
 
