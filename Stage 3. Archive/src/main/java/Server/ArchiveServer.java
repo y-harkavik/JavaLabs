@@ -1,17 +1,14 @@
 package Server;
 
 import Communicate.Message.Request.ClientRequest.AdministratorRequest;
-import Communicate.Message.Request.ClientRequest.AuthenticationRequest;
-import Communicate.Message.Request.Request;
-import Communicate.Message.Response.Response;
-import Communicate.Message.Response.ServerResponse.AuthenticationResponse;
-import Communicate.Message.Response.ServerResponse.ResponseForAdministrator;
-import Communicate.Message.Response.ServerResponse.ResponseType;
-import Communicate.Message.Response.ServerResponse.TypeOfError;
 import Parser.*;
 
 import Users.Administrator;
 import Client.Client;
+import Communicate.Message.Request.ClientRequest.AuthenticationRequest;
+import Communicate.Message.Request.Request;
+import Communicate.Message.Response.Response;
+import Communicate.Message.Response.ServerResponse.*;
 import Database.UserBase;
 import Users.Account;
 

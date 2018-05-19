@@ -4,6 +4,7 @@ import Communicate.Message.Request.Request;
 import Users.Account;
 import Users.PersonnelFile;
 
+import java.util.List;
 import java.util.Map;
 
 public class AdministratorRequest extends Request {

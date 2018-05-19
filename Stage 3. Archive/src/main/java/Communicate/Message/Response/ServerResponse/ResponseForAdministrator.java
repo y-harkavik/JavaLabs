@@ -1,9 +1,11 @@
 package Communicate.Message.Response.ServerResponse;
 
 import Communicate.Message.Response.Response;
+import Law.Laws;
 import Users.Account;
 import Users.PersonnelFile;
 
+import java.util.List;
 import java.util.Map;
 
 public class ResponseForAdministrator extends Response {

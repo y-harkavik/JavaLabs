@@ -37,7 +37,7 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>client</id>
+                        <id>Client</id>
                         <phase>package</phase>
                         <goals>
                             <goal>shade</goal>
@@ -49,7 +49,7 @@
                                     <mainClass>Main</mainClass>
                                 </transformer>
                             </transformers>
-                            <finalName>client</finalName>
+                            <finalName>Client</finalName>
                         </configuration>
                     </execution>
                 </executions>

@@ -1,6 +1,9 @@
 package Parser;
 
 import Communicate.Message.Request.ClientRequest.RequestType;
+import Communicate.Message.Response.Response;
+import Communicate.Message.Response.ServerResponse.ResponseType;
+import Communicate.Message.Response.ServerResponse.TypeOfError;
 import Users.PersonnelFile;
 import Users.Job;
 import org.w3c.dom.*;
@@ -17,6 +20,8 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
