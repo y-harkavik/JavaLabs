@@ -10,6 +10,7 @@ import Communicate.Message.Response.ServerResponse.ResponseForAdministrator;
 import Communicate.Message.Response.ServerResponse.ResponseType;
 import Communicate.Message.Response.ServerResponse.TypeOfError;
 import Database.UserBase;
+import Law.Laws;
 import Parser.DOMParser;
 import Parser.Parser;
 import Users.Account;
@@ -23,6 +24,7 @@ import java.net.Socket;
 import java.net.SocketException;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 public class ArchiveServer {
@@ -176,7 +178,7 @@ public class ArchiveServer {
                     }
                     break;
                 case CHANGE_LAWS:
-                    userBase.getMapOfAccounts().putAll(((AdministratorRequest) clientRequest).getChangingAccountMap());
+                    setNewUsersLaws(((AdministratorRequest) clientRequest).getChangingAccountMap());
                     break;
                 case DISCONNECT:
                     throw new InterruptedException();
@@ -194,15 +196,33 @@ public class ArchiveServer {
         }
     }
 
-    public Map<String, Account> getMapOfAccountsWithoutCurrentUserAndAdmins(Account currentAccount) {
-        Map<String, Account> accounts = new HashMap<>(userBase.getMapOfAccounts());
-        for (Iterator<Account> iterator = accounts.values().iterator(); iterator.hasNext(); ) {
+    void setNewUsersLaws(Map<String, List<Laws>> accountMap) {
+        Map<String, Account> userBaseAccounts = userBase.getMapOfAccounts();
+        for (Iterator<Account> iterator = userBaseAccounts.values().iterator(); iterator.hasNext(); ) {
+            Account account = iterator.next();
+            account.setLawsList(accountMap.get(account.getAccountLogin()));
+        }
+    }
+
+    public Map<String, List<Laws>> getMapOfAccountsWithoutCurrentUserAndAdmins(Account currentAccount) {
+        Map<String, List<Laws>> accounts = getMapOfUsernameAndLawList();
+
+        for (Iterator<Account> iterator = userBase.getMapOfAccounts().values().iterator(); iterator.hasNext(); ) {
             Account account = iterator.next();
             if (account instanceof Administrator || currentAccount == account) {
-                iterator.remove();
+                accounts.remove(account.getAccountLogin());
             }
         }
         return accounts;
+    }
+
+    public Map<String, List<Laws>> getMapOfUsernameAndLawList() {
+        Map<String, List<Laws>> accountsMap = new HashMap<>();
+        for (Iterator<Account> iterator = userBase.getMapOfAccounts().values().iterator(); iterator.hasNext(); ) {
+            Account account = iterator.next();
+            accountsMap.put(account.getAccountLogin(), account.getLawsList());
+        }
+        return accountsMap;
     }
 
     public Account userAuthentication(AuthenticationRequest authenticationRequest) {

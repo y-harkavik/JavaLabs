@@ -57,7 +57,6 @@ public class AddPersonnelFileDialog extends Dialog {
     }
 
     protected void createContents(Shell shell, Display display) {
-
         Font font12 = new Font(display, SEGOE_UI_SEMILIGHT, 12, SWT.NORMAL);
         Font font10 = new Font(display, SEGOE_UI_SEMILIGHT, 10, SWT.NORMAL);
         Font font16 = new Font(display, SEGOE_UI_SEMILIGHT, 16, SWT.NORMAL);
@@ -233,7 +232,6 @@ public class AddPersonnelFileDialog extends Dialog {
         buttonSavePersonnelFile.setText("Save personnel file");
         buttonSavePersonnelFile.setFont(font12);
         buttonSavePersonnelFile.setBounds(10, 724, 551, 40);
-
     }
 
     void initListeners() {

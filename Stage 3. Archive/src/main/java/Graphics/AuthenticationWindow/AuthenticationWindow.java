@@ -21,7 +21,6 @@ public class AuthenticationWindow {
     }
 
     void createContents() {
-        //shell = new Shell();
         shell.setSize(450, 300);
         shell.setText("Sign in");
 

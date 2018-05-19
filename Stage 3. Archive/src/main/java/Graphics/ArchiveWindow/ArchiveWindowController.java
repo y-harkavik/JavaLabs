@@ -8,7 +8,6 @@ import Graphics.Dialogs.AddJobDialog;
 import Graphics.Dialogs.AddPersonnelFileDialog;
 import Graphics.Dialogs.ChangeLawsDialog;
 import Law.Laws;
-import Users.Account;
 import Users.Job;
 import Users.PersonnelFile;
 import org.eclipse.swt.SWT;
@@ -26,13 +25,13 @@ import java.util.Map;
 public class ArchiveWindowController {
     ArchiveWindow archiveWindow;
     ArchiveWindowModel archiveWindowModel;
-    Map<String, Account> accountMap;
+    Map<String, List<Laws>> accountMap;
     Map<String, String> mapOfPersonnelFiles;
     String previousPassportID;
 
     public ArchiveWindowController(Client currentClient,
                                    Map<String, String> mapOfPersonnelFiles,
-                                   Map<String, Account> accountMap,
+                                   Map<String, List<Laws>> accountMap,
                                    List<Laws> lawsList) {
         archiveWindow = new ArchiveWindow(Display.getCurrent(), new Shell(SWT.CLOSE | SWT.TITLE | SWT.MIN));
         archiveWindowModel = new ArchiveWindowModel(this, currentClient);
@@ -236,7 +235,6 @@ public class ArchiveWindowController {
     PersonnelFile createPersonnelFiles() {
         String localDate = archiveWindow.comboYearOfBirth.getText() + '-' + archiveWindow.comboMonthOfBirth.getText() + '-' + archiveWindow.comboDayOfBirth.getText();
 
-
         PersonnelFile personnelFile = new PersonnelFile(
                 archiveWindow.textFirstName.getText(),
                 archiveWindow.textMiddleName.getText(),
@@ -326,7 +324,6 @@ public class ArchiveWindowController {
         clearPersonnelFilesTable();
         if (personnelFiles != null) {
             samplingPersonnelFilesWithSearchText(personnelFiles).forEach(this::fillPersonnelFileTable);
-            //personnelFiles.forEach(this::fillPersonnelFileTable);
         }
     }
 
@@ -410,8 +407,5 @@ public class ArchiveWindowController {
         archiveWindow.textHouse.setText("");
         archiveWindow.textHomePhone.setText("");
         archiveWindow.textMobilePhone.setText("");
-    }
-
-    public static void main(String[] args) {
     }
 }

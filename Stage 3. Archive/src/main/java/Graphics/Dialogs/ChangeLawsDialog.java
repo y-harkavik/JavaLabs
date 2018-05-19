@@ -18,7 +18,7 @@ import static Graphics.Constants.GraphicsConstants.SEGOE_UI_SEMILIGHT;
 public class ChangeLawsDialog extends Dialog {
     protected Shell shell;
     private Table tableOfAccounts;
-    private Map<String, Account> accountMap;
+    private Map<String, List<Laws>> accountMap;
     private Button buttonSave;
     private Button buttonCreate;
     private Button buttonDelete;
@@ -28,7 +28,7 @@ public class ChangeLawsDialog extends Dialog {
         super(shell, SWT.DIALOG_TRIM | SWT.APPLICATION_MODAL | SWT.CLOSE | SWT.TITLE);
     }
 
-    public Map<String, Account> open(Map<String, Account> accountMap) {
+    public Map<String, List<Laws>> open(Map<String, List<Laws>> accountMap) {
         this.accountMap = new HashMap<>(accountMap);
         shell = new Shell(getParent(), getStyle());
         Display display = getParent().getDisplay();
@@ -104,7 +104,7 @@ public class ChangeLawsDialog extends Dialog {
                 int index = tableOfAccounts.getSelectionIndex();
                 if (index != -1) {
                     clearCurrentLaws();
-                    setCurrentLaws(getUserLaws(tableOfAccounts.getItem(index).getText()));
+                    setCurrentLaws(accountMap.get(tableOfAccounts.getItem(index).getText()));
                 }
             }
 
@@ -118,7 +118,7 @@ public class ChangeLawsDialog extends Dialog {
             public void widgetSelected(SelectionEvent selectionEvent) {
                 int index = tableOfAccounts.getSelectionIndex();
                 if (index != -1) {
-                    accountMap.get(tableOfAccounts.getItem(index).getText()).setLawsList(getSelectedLaws());
+                    accountMap.put(tableOfAccounts.getItem(index).getText(), getSelectedLaws());
                 }
             }
 
@@ -127,10 +127,6 @@ public class ChangeLawsDialog extends Dialog {
 
             }
         });
-    }
-
-    List<Laws> getUserLaws(String name) {
-        return accountMap.get(name).getLawsList();
     }
 
     List<Laws> getSelectedLaws() {

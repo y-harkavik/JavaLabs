@@ -275,23 +275,4 @@ public class ArchiveWindow {
         buttonSavePerson.setBounds(116, 677, 107, 40);
         buttonDeletePersonnelFile.setBounds(233, 677, 107, 40);
     }
-
-    public void start() {
-        shell.open();
-        shell.layout();
-        tableOfPersonnelFiles.setLinesVisible(true);
-        tableOfPersonnelFiles.setHeaderVisible(true);
-        tableOfJobs.setLinesVisible(true);
-        tableOfJobs.setHeaderVisible(true);
-
-        while (!shell.isDisposed()) {
-            if (!display.readAndDispatch()) {
-                display.sleep();
-            }
-        }
-    }
-
-    public static void main(String[] args) {
-        EventQueue.invokeLater(() -> new ArchiveWindow(Display.getDefault(), new Shell()).start());
-    }
 }

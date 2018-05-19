@@ -9,22 +9,16 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static Database.Password.getHashedPassword;
 import static Database.Password.getSalt;
 
 public class UserBase {
     private Map<String, Account> mapOfAccounts = new HashMap<>();
-
-    void createPerson(String password, String login) {
-        List<Laws> lawsList = new ArrayList<>();
-
-        byte[] salt = getSalt();
-        String hashedPassword = getHashedPassword(password, salt);
-
-        mapOfAccounts.put(login, new User(hashedPassword, login, salt, lawsList));
-    }
 
     public Account checkAccount(String login, String password) {
         Account account = checkLogin(login);
